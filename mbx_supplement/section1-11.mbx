@@ -1,0 +1,397 @@
+
+<section>
+  <title>Chapter 23: Matched Pairs</title>
+  <p>
+    <em>Overview:</em> Last class, we analyzed the averages for two independent groups. Today, however, we will determine what to do if the groups are not independent.
+  </p>
+
+  <p>
+    Let's start with a table illustrating the before and after weights for some individuals using the P90x system:
+  </p>
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Starting Weight (lb)</cell>
+      <cell>Ending Weight (lb)</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Sam</cell>
+      <cell>185</cell>
+      <cell>165</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Carol</cell>
+      <cell>190</cell>
+      <cell>172</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Enrique</cell>
+      <cell>170</cell>
+      <cell>160</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Rebecca</cell>
+      <cell>160</cell>
+      <cell>158</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Eric</cell>
+      <cell>240</cell>
+      <cell>242</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+
+  <example>
+    <statement>
+      <p>
+        How much did each individual person lose?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        On <em>average</em>, how much did they lose per person?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        What is the standard deviation for the weight loss? HINT:
+        <me>
+          s^2=\Sigma \frac{(x_i-\bar{x})^2}{n-1}
+        </me>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Why are the before and after weight not considered independent?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    The previous is an example of <em>matched pair</em> data. That is, the information given is linked by some sort of before/after dependency. When analyzing this sort of data, we analyze the differences only which we call <m>d</m>.
+  </p>
+
+  <p>
+    NOTE: Since we are looking at d<m>=</m>before-after, we really one have one list of values that we care about. As such, we will use our model for one-sample averages.
+  </p>
+
+  <aside>
+    <p>
+      We will do confidence intervals for <m>\mu_d</m> using
+      <me>
+        \bar{x}\pm t_{df}^* \frac{s}{\sqrt{n}}\rightarrow\bar{d}\pm t_{df}^* \frac{s_d}{\sqrt{k}}
+      </me>
+      where <m>k</m> is the number of pairs. Confidence intervals are based off <fillin />
+    </p>
+  </aside>
+  <aside>
+    <p>
+      We will use the following model in step two of a hypothesis test of
+      <me>
+        \bar{X}\approx t_{df}\left(\mu, \frac{s}{\sqrt{n}}\right)\rightarrow\bar{d}\approx t_{df}\left(\mu_d, \frac{s_d}{\sqrt{k}}\right)
+      </me>
+    </p>
+
+    <p>
+      Hypothesis tests are based off <fillin />.
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Create a <m>90\%</m> confidence interval for the weight loss (before-after).
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    How do we know if the program was effective? Has it been effective?
+  </p>
+
+  <p>
+    <em>Understanding Results:</em> Still thinking about weight loss where d<m>=</m>before-after, what would it mean if <m>\mu_d>0</m>? What would <m>\mu_d\lt 0</m> mean? <m>\mu_d=0</m>?
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Test the claim that people on average lost weight using the P90x program.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II:
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    STEP IV:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        If we made a mistake in the conclusion, what type of error would that be?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        A local high school track team has <m>500</m> runners (very big school). Barry Allen wants to track improvement for the team on average. To do this, he randomly selects 12 runners and records their mile times at the start and end of the season. That data is as follows:
+      </p>
+      <tabular>
+        <row>
+          <cell>Start of Season (min)</cell>
+          <cell>8.75</cell>
+          <cell>7.30</cell>
+          <cell>12.50</cell>
+          <cell>6.40</cell>
+          <cell>7.15</cell>
+          <cell>9.50</cell>
+          <cell>10.68</cell>
+          <cell>9.32</cell>
+          <cell>11.15</cell>
+          <cell>13.20</cell>
+          <cell>8.76</cell>
+          <cell>7.43</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>End of Season (min)</cell>
+          <cell>8.40</cell>
+          <cell>6.30</cell>
+          <cell>14.6</cell>
+          <cell>6.00</cell>
+          <cell>8.18</cell>
+          <cell>8.58</cell>
+          <cell>9.30</cell>
+          <cell>7.22</cell>
+          <cell>9.09</cell>
+          <cell>10.00</cell>
+          <cell>6.48</cell>
+          <cell>6.52</cell>
+        </row>
+      </tabular>
+      <p>
+        Do we have evidence that they have improved on average? How much improvement if any?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Checking our work in the calculator is definitely doable. Simply type in your difference data and then do what you normally do for 1-samples.
+  </p>
+
+  <p>
+    <em>Checking CI with Calculator:</em> In our calculator, we use <q>tInt</q> to check our interval. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F7:Ints] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc Interval:
+  </p>
+
+  <p>
+    <em>Checking H-Test with Calculator:</em> In our calculator, we use <q>tTest</q> to check our hypothesis test. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc P-Value:
+  </p>
+
+  <p>
+    <em>Which Model?!</em> We have two very different methods for comparing averages in two groups. <em>Matched pair</em> is used when there is a linked dependency. <em>2-Independent means</em> is used when the groups are independent.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        For each of the following, determine if we should be using matched pair or 2-independent means for statistical inference. Also, state the df:
+        <ol>
+          <li>
+            <p>
+              We want to compare the age gap between two people in a relationship. We study 60 people (30 couples).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We want to compare the average time it takes to get to work for two different routes. We randomly select <m>60</m> days and record the data (30 days each route).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We want to compare the number of credits taken by SY and RC students at PCC. We sample <m>70</m> RC students and <m>80</m> SY students.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We want to compare how long it takes to complete a crossword with and without coffee. We measure the amount of time for <m>20</m> people without coffee and then remeasure the same <m>20</m> people with coffee.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              We want to compare how long it takes to complete a crossword with and without coffee. We measure the amount of time for <m>20</m> people without coffee and then measure <m>20</m> different people without coffee.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Design a matched-pair study that would analyze the affects of a new medication on balance.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Design a 2-indepdent means study that would analyze the affects of a new medication on balance.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Which of the previous two study designs do you prefer? Which one seems more practical?
+  </p>
+
+  <p>
+    Matched Pair Model:
+  </p>
+
+  <p>
+    Two-Independent Means Model:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Perform the indicated inference. Diane Edwards wants to compare the final exam averages for students in MTH243 that have come from (1) MTH95 and (2) MTH111. Using MyPCC/Banner, she randomly selects <m>40</m> students coming from each class (a total of <m>80</m> students) in such a way that all campuses are represented.
+        Unsure of how to do the inference, Diane calculates all of the following:
+        <ul>
+          <li>
+            <p>
+              MTH95: <m>\bar{x}=72\%</m> with <m>s=15\%</m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              MTH111: <m>\bar{x}=85\%</m> with <m>s=4\%</m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Difference=MTH111-MTH95: <m>\bar{d}=13\%</m> with <m>s=9\%</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        Test if students coming from MTH111 do better in MTH243 on average. If so, determine by how much.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Perform the indicated inference. Karin Glitchel wants to compare the number of hours a student attends the SLC per term. She randomly selects <m>31</m> students and records the number of hours they attended in Fall and Winter Term (<m>62</m> pieces of datum). She wants to determine if students spend a different number of hours.
+        <ul>
+          <li>
+            <p>
+              Fall Term: <m>\bar{x}=16\,hr</m> with <m>s=2\,hr</m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Winter Term: <m>\bar{x}=10\,hr</m> with <m>s=3\,hr</m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Difference=Winter-Fall: <m>\bar{d}=-6\,hr</m> with <m>s=2.4\,hr</m>
+            </p>
+          </li>
+        </ul>
+      </p>
+
+      <p>
+        Test if there is a difference in the number of hours a student spends at the SLC between terms. If so, determine by how much.
+      </p>
+    </statement>
+  </example>
+</section>

@@ -1,0 +1,305 @@
+
+<section>
+  <title>Chapter 18: Confidence Intervals for 1-Proportion</title>
+  <p>
+    <em>Overview:</em> Today, we will look at how information about samples (<em>statistics</em>) can be used to make predictions about information about larger populations (<em>parameters</em>). This will be done using confidence intervals (Pg. 472 to 485)
+  </p>
+
+  <aside>
+    <p>
+      to A <em>statistic</em> is a number that describes a sample. Examples of statistics include <m>\bar{x}</m> (mean), <m>s</m> (standard deviation), and <m>\hat{p}</m> (probability/proportion).
+    </p>
+  </aside>
+  <aside>
+    <p>
+      A <em>parameter</em> is a number that describes a population. Examples of parameters include <m>\mu</m> (mean), <m>\sigma</m> (standard deviation), and <m>p</m> (probability/proportion)
+    </p>
+  </aside>
+  <p>
+    We often want to know something about an entire population (e.g. what is the average salary for all Americans?) but it's not always possible to sample the entire population. In these cases, we rely on hypothesis tests and confidence intervals.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Label the values using the appropriate parameters and/or statistics: It is claimed that the average weight of all cats is <m>10</m> lbs with a standard deviation of <m>3</m> lbs. Mr. Wherry's cats have an average weight of <m>15</m> lbs with a standard deviation of <m>1</m> lb.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: All refers to a population. We use parameters to describe the population of all cats. <m>\mu=10</m> lbs with <m>\sigma=3</m> lbs. In contrast, Mr. Wherry's cats are merely a sample of all cats. So, <m>\bar{x}=15</m> lbs and <m>s=1</m> lb.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Label the values using the appropriate parameters and/or statistics: Coca-Cola tells you that the odds of winning a game are <m>1</m> in <m>3</m>. You manage to win <m>10</m> times in <m>25</m> plays.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Confidence intervals are guessing windows for what should happen for a population based off a sample. In it's most general form, we have that a confidence interval looks like
+    <me>
+      \text{ Center } \pm \text{ Margin of Error } =\text{ Center } \pm (\text{ Distribution } )^*\,SE.
+    </me>
+  </p>
+
+  <p>
+    One of the most common normal models that we will use is
+    <me>
+      \hat{P}=N(p,\sqrt{\frac{pq}{n}})
+    </me>
+    where <m>p</m> is the center, <m>N</m> is the normal model telling us to use <m>Z</m> scores, and <m>\sqrt{\frac{pq}{n}}</m> is the standard deviation. Rewriting this information to be based off statistics instead of parameters involving changing <m>p</m>'s to <m>\hat{p}</m>. So our interval of
+    <me>
+      \text{ Center } \pm (\text{ Distribution } )^*\,SE
+    </me>
+    becomes
+  </p>
+
+  <aside>
+    <p>
+      <em>Confidence Interval</em> The interval
+      <me>
+        \hat{p}\pm Z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}
+      </me>
+      gives us a guessing range for what we expect <m>p</m> to be in based off the SAMPLE information.
+    </p>
+  </aside>
+  <p>
+    The assumptions are...
+    <ol>
+      <li>
+        <p>
+          Random: These means there is no bias in how the data was collected. No point in doing Stats if you are misrepresenting the population.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Independence/<m>10\%</m> Rule: Sample less than <m>10\%</m> of the population or make sure that one outcome does not affect another. If there is dependency, the probability will be changing. This makes predictions much harder to do.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Large <m>n</m>: It takes time for the distribution to look normal. We need ten successes and failures before that happen. Number of successes: <m>n\hat{p}\geq 10</m> and number of failures <m>n\hat{q}\geq 10</m>.
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Using a random sample, an employee at the PCC bookstore finds that <m>97</m> out of <m>112</m> customers use their credit card to pay for books. Create a <m>95\%</m> confidence interval for what should go on for ALL PCC students.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: Our success rate is <m>\hat{p}=\frac{x}{n}=\frac{97}{112}</m> for those that used a credit card. Our failure rate would be the other <m>15</m> people out of <m>112</m> that did NOT use a credit card to pay for books. <m>\hat{q}=\frac{15}{112}</m>. <m>n=112</m>. To get about <m>95\%</m> percent of the area underneath the normal curve, we need to go out about <m>2</m> standard deviations (68/95/99.7 Rule). More accurately, <m>Z^*\approx 1.96</m>.
+    <me>
+      \hat{p}\pm Z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}=\frac{97}{112}\pm 1.96\sqrt{\frac{\frac{97}{112}\frac{15}{112}}{112}}
+    </me>
+  </p>
+
+  <p>
+    Typing this in our calculator once with the <m>+</m> and once with the <m>-</m> gives us a Low: <m>0.803</m> and High: <m>0.929</m>. ``We are <m>95\%</m> confident that the interval of <m>80.3\%</m> to <m>92.9\%</m> contains the proportion of ALL PCC students that use a credit card at the bookstore."
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        You try: Suppose that Sasha can successful throw a snowball through a tire swing <m>60</m> out of <m>75</m> times in a recent sample. Using this information, estimate her population success rate by making a <m>95\%</m> confidence interval. [Do on scratch paper]
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE: We are confident in the intervals ability to capture the true probability. <m>95\%</m> of the time that we create intervals like this using the same sample size, we should capture the true value for <m>p</m>. This tells us that <m>5\%</m> of the time we will be wrong. Error in Stats is unavoidable. We can only hope to understand what potential for error exists.
+  </p>
+
+  <p>
+    A little terminology:
+  </p>
+
+  <aside>
+    <p>
+      The <em>critical value</em> is denoted by <m>z^*</m>. It's the <m>z</m>-score corresponding to a specified confidence level.
+    </p>
+
+    <p>
+      The <em>standard error</em> is our guess for the SD based off the sample. <m>SE=\sqrt{\frac{\hat{p}\hat{q}}{n}}</m>
+    </p>
+
+    <p>
+      The <em>margin of error</em> is given by <m>MOE=z^*SE(\hat{p})</m>, or <m>ME=z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}</m>.
+    </p>
+
+    <p>
+      The <em>confidence interval</em> for the true value of a proportion is determined by:
+      <me>
+        \textrm{best point estimate (center)} \ \pm\ \textrm{margin of error}  \hspace{0.5in} \textrm{i.e.} \ \hspace{0.5in} \hat{p}\pm z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}
+      </me>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Let's examine some current data. As of today, Gallup Daily estimates, with <m>95\%</m> certainty, that <m>29.1\%</m> of US employees are actively engaged at work give or take <m>3\%</m>. Identify all key terms
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: We have an estimate of <m>29.1\%</m> for our center. We call this our best point estimate. In other words, <m>\hat{p}=0.291</m>.
+  </p>
+
+  <p>
+    The <q>give or take</q> tells us that we are looking at the wiggly room. This is exactly what the Margin of Error does. So, <m>MoE=0.03</m>.
+  </p>
+
+  <p>
+    They are using <m>95\%</m> confidence, so our <m>C=95\%</m>. This gives us a <m>Z^*</m>, or Critical Value, of <m>1.96</m>.
+  </p>
+
+  <p>
+    NOTE: We could make a confidence interval by taking the center and adding and subtracting the MoE. So, our <m>95\%</m> CI here would look like <m>0.291\pm 0.03</m>. The critical value is built in the MoE.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        How many people did Gallup survey?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: I'll set this up, but double-check my solving. The MoE is given by <m>ME=z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}</m>. We plug in our success rate <m>\hat{p}=0.291</m>, failure rate <m>\hat{q}=1-0.291=0.709</m>, critical value <m>1.96</m>, and MoE of <m>0.03</m> to get...
+    <me>
+      0.03=1.96 \sqrt{\frac{0.291*0.709}{n}}.
+    </me>
+  </p>
+
+  <p>
+    Solving for <m>n</m> (process on pg. 482 if you need to review), the number of samples, gives us
+    <me>
+      n=\frac{1.96^2*0.291*0.709}{0.03^2}\approx 881 \text{ people } .
+    </me>
+  </p>
+
+  <p>
+    Okay, but what about <m>C=90\%</m>? What's <m>Z^*</m>?
+  </p>
+
+  <aside>
+    <p>
+      Here's the general process...
+      <ul>
+        <li>
+          <p>
+            Place the area <m>C</m> in the center of a normal curve.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Determine the area in BOTH tails, <m>\alpha</m>. Then, determine the area in the left-tail.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Use the table to get the z-score OR InvNorm(area). Switch the sign.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Find <m>Z^*</m> for <m>C=95\%</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: We start with <m>95\%</m> in the center of our curve. This leaves <m>\alpha=1-0.95=0.05</m> for both the remaining tails. Or, we have <m>\alpha=0.05/2=0.025</m> in just the left tail. For today, just use this online calculator:
+  </p>
+
+  <p>
+    \url{http://stattrek.com/online-calculator/normal.aspx}
+  </p>
+
+  <p>
+    Type your <m>\alpha/2</m> in the <q>Cumulative Probability</q> spot and hit calculate. Then, take the <q>Standard Score</q> but write it as a positive. For example, I typed in <m>0.025</m> in that second space, hit enter, and I got a <m>Z^*=1.960</m>. Reload between uses.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>Z^*</m> for <m>C=90\%</m> and <m>C=99\%</m>
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    ANS: You should be getting <m>Z^*=1.645</m> and <m>Z^*=2.576</m> respectively. Try it out.
+  </p>
+
+  <p>
+    NEXT STEPS:
+    <ol>
+      <li>
+        <p>
+          Log into MyStatLab and do the HW for Ch. 18 OR do it from the book.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Watch the Week 1 videos in MyStatLab. You can sign up for a two-week free trial. I highly recommend doing that. In particular, I'd go to <q>Homework</q>, <q>Week 1 Multimedia</q>, and finally ``Step-by-Step Example: A Confidence Interval for a Proportion".
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Watch some videos I made here:
+          <ul>
+            <li>
+              <p>
+                General Idea: \url{https://youtu.be/QRlWfODRfLo}
+              </p>
+            </li>
+
+            <li>
+              <p>
+                TI-83/84 help: \url{https://youtu.be/A2fqAlmm3W0}
+              </p>
+            </li>
+
+            <li>
+              <p>
+                TI-89 help:\url{https://youtu.be/kXZCMrErE4s}
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Look up videos on YouTube. For example:
+
+          \url{https://youtu.be/Vgkyn39DdZM}
+
+          is okay even though the terminology doesn't perfectly match up.
+        </p>
+      </li>
+    </ol>
+  </p>
+</section>

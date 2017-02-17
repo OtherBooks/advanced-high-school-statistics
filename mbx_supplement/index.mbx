@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<docinfo>
+<macros>
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+</macros>
+
+<latex-image-preamble>
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,matrix,arrows}
+\usetikzlibrary{shapes,decorations,shadows,fadings}
+
+\usepackage{pgfplots}
+
+</latex-image-preamble>
+
+</docinfo>
+
+
+<book>
+<title>Title Goes Here</title>
+<frontmatter>
+<titlepage>
+</titlepage>
+</frontmatter>
+
+
+<xi:include href="./chapter1.mbx" />
+<backmatter>
+
+</backmatter>
+</book>
+</mathbook>

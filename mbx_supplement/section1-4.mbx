@@ -1,0 +1,163 @@
+
+<section>
+  <title>Chapter 19: Hypothesis Tests for 1-Proportion</title>
+  <p>
+    <em>Overview:</em> Today, we will practice hypothesis tests. This covers primarily topics from chapter 19 (H-Tests). Recall that there are four steps to testing claims about proportions:
+  </p>
+
+  <aside>
+    <ol>
+      <li>
+        <p>
+          State the Hypotheses. These will look something like the following:
+          <me>
+            H_0:\text{ parameter } =\#
+          </me>
+          <me>
+            H_A:\text{ parameter }  [\lt ,>,\neq]\#
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Determine the Model and Check Assumptions. For example, the model for analyzing proportions is
+          <me>
+            \hat{P}=N\left(p,\sqrt{\frac{pq}{n}}\right)
+          </me>
+          where the assumptions are
+          <ul>
+            <li>
+              <p>
+                Random [little to no bias]
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Independence/<m>10\%</m> Rule
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Large n: <m>np\geq10</m> AND <m>nq\geq 10</m>
+              </p>
+            </li>
+          </ul>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Calculate the P-Value. This is the likelihood of your sample data or more extreme if <m>H_0</m> is true. You should commit this to memory.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Conclusion. If your <m>P-Val\lt \alpha</m>, then you reject <m>H_0</m> and have evidence of the <m>H_A</m>. If your <m>P-Val\geq \alpha</m>, then you fail to reject <m>H_0</m> and do NOT have evidence of the <m>H_A</m>.
+        </p>
+      </li>
+    </ol>
+  </aside>
+  <p>
+    NOTE: Recall that <em>parameters</em> are numbers that describe a population <m>(\mu,\sigma,p)</m> and statistics are numbers that describe a <em>sample</em> <m>(\bar{x},s,\hat{p})</m>. Let's practice forming hypotheses.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Previously, <m>80\%</m> of Comcast customers were satisified with their service. They want to test if they have improved.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Last year, the average length of a Delta flight from San Francisco to Portland was <m>90</m> minutes. They hope they have improved (more efficient).
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        You want to test if a coin is fair.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        A ruler manufacturer states that their measuring sticks vary by <m>0.01</m> inches. You think they actually vary less.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Let's look at a test from start to finish.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        According to Time magazine, <m>33\%</m> of all cars sold in the US are SUVs. After some investigation, it appears that the actual value is less. Suppose a random sample of <m>500</m> recently sold cars shows that <m>145</m> are SUVS.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        National Geographic claims that <m>40\%</m> of individuals like cats more than dogs. An informal student survey at PCC shows that <m>80</m> people and <m>30</m> of those preferred cats over dogs. Test the claim that the actual proportion of those that prefer cats is less than what National Geographic claims.
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      <em>Checking work with Calculator:</em> In our calculator, we use <q>1-propZTest</q> to check our z-score and p-value. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. If it asks for <m>P_0</m>, then it wants the probability from the null-hypothesis!
+    </p>
+  </aside>
+  <p>
+    <nbsp />
+  </p>
+
+  <p>
+    Calc P-value:<nbsp />
+  </p>
+
+  <p>
+    It is now your time to try! Follow the four steps to do the following H-Tests.
+    <ol>
+      <li>
+        <p>
+          <em>Two-Tailed Tests:</em> How would the previous problem change if we thought that the actual value was <em>different</em>? That is according to Time magazine, <m>33\%</m> of all cars sold in the US are SUVs. After some investigation, it appears that the actual value is <em>different</em>. Suppose a random sample of <m>500</m> recently sold cars shows that <m>145</m> are SUVS.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Census.gov claims that <m>29.7\%</m> of students work <q>full time</q>. An informal student survey at PCC shows that <m>18</m> out of <m>68</m> students worked full time. Test the claim that the actual proportion is higher than claimed.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          USNews claims that <m>86.6\%</m> of Oregonians have health care (Q1 of 2014). We want to test if the actual proportion is different than claimed. An informal student survey at PCC shows that <m>64</m> out of <m>68</m> individuals had health care. Test the claim.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          It is estimated that <m>20\%</m> of all freshwater fish in the US have such high levels of mercury that they are dangerous to eat. Suppose a fish market has <m>250</m> fish tested, and <m>60</m> of them have dangerous levels of mercury. Test the claim that the true proportion of fish with high levels of mercury is different than claimed.
+   
+             Using the above data, create a <m>90\%</m> CI for the proportion of fish with high levels of mercury:
+        </p>
+      </li>
+    </ol>
+  </p>
+</section>

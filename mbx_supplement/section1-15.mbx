@@ -1,0 +1,360 @@
+
+<section>
+  <title>Chapter 25 Day One: Linear Regression Day 2</title>
+  <p>
+    <em>Overview:</em> Linear Regression is used for examining the relationship between two variables<ndash />an <em>explanatory variable</em>, x, and a <em>response variable</em>, y.
+  </p>
+
+  <aside>
+    <p>
+      When done correctly, it allows us to make predictions about what should happen given a limited amount of information. Here's what we know so far.
+      <ul>
+        <li>
+          <p>
+            Our approximation for the line of best fit is <m>\hat{y}=b_1(x)+b_0</m> where <m>b_1</m> is our slope and <m>b_0</m> is our <m>y</m>-intercept.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            We calculate the slope using the formula <m>b_1=r\frac{s_y}{s_x}</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            We found the slope by plugging in the point <m>(\bar{x},\bar{y})</m> and solving for <m>b_0</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r</m> and <m>R^2</m> were both calculated using technology. Recall that <m>R^2</m> is the percentage of variation accounted for by our model.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Residuals are the error in our predictions. We find these by <m>e=y-\hat{y}=\text{ data value } -\text{ line value } .</m>
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <aside>
+    <p>
+      Much to our surprise, we found that under ideal situations the residuals followed a t-distribution
+      <me>
+        e\approx t_{k-2}(0,s_e)
+      </me>
+      where <m>s^2_e=\Sigma\frac{(e-0)^2}{k-2}</m>.
+    </p>
+  </aside>
+  <p>
+    Unfortunately, error is unavoidable. We are making two big predictions that cause this. We predict a value for the slope <m>b_1</m> when the actual slope is <m>\beta_1</m>. We predict a value for the starting value <m>b_0</m> when the actual starting value is <m>\beta_0</m>. As a result, we <q>lost</q> two degrees of freedom due to the unknown factors. This gave us <m>df=k-2</m>. Both of these predictions are affected by our residual distribution, so both of these unknowns can be analyzed with the t-distribution. The assumptions for these tests include...
+    <ul>
+      <li>
+        <p>
+          The usual: Random, Independence.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Linearity: The data should look linear when plotted. Of course.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Equal Spread: Much like ANOVA. This means that the data stays clumped near the line.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Normal Population for Errors: We want the errors to look normal. Everything else is based off this. We can either do a histogram of the errors to check for nearly normal OR do a normality plot.
+        </p>
+      </li>
+    </ul>
+  </p>
+
+  <p>
+    Let's do one final experiment for the term! I want to know if the drop height of a ball in centimeters affects the bounce height of a ball.
+  </p>
+  <tabular>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Drop Height</cell>
+      <cell>Bounce Height</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>10</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>15</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>20</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>25</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>30</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>35</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>40</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>45</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>50</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>55</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>60</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>65</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>70</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>75</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>80</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>85</cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+  <ol>
+    <li>
+      <p>
+        State the Explanatory and Response Variable.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Determine the line of best fit. Using technology is okay.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Calculate <m>R^2</m>. How good is the fit?
+      </p>
+    </li>
+
+    <li>
+      <p>
+        <em>Test for Linearity</em> Using technology, perform the test for linearity! Recall that this refers to <m>\beta_1</m>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Assumption Check:
+        <ul>
+          <li>
+            <p>
+              The usual:
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Linearity:
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Equal Spread:
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Normal Population for Errors:
+            </p>
+          </li>
+        </ul>
+      </p>
+    </li>
+  </ol>
+  <p>
+    will use a printout from CrunchIt \url{http://crunchit2.bfwpub.com/crunchit2/ips5e/} for the last two components. Fill in the table first. You may be expected to read such tables for the final.
+  </p>
+  <tabular>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Estimates</cell>
+      <cell>t-Stat</cell>
+      <cell>P-Value</cell>
+      <cell>CI Low</cell>
+      <cell>CI High</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>(Intercept)</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Drop Height</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+  <ol>
+    <li>
+      <p>
+        <em>Test for <m>y</m>-intercept, <m>\beta_0</m>.</em> Using the printout, perform a test for a <m>y</m>-intercept. State your hypotheses, degrees of freedom, model, P-value, and conclusion.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        State the <m>95\%</m> CI for the slope, <m>\beta_1</m>.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        State the  <m>95\%</m> CI for the y-intercept.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Create the <m>95\%</m> CI for predicted bounce height if we drop the ball from <m>100</m> cm.
+      </p>
+    </li>
+  </ol>
+</section>

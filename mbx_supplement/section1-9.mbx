@@ -1,0 +1,231 @@
+
+<section>
+  <title>Chapter 22 Day Two: Comparing Two Proportions Using Hypothesis Tests</title>
+  <p>
+    <em>Overview:</em> Today, we will practice hypothesis tests for two proportions. There are four steps to hypothesis tests:
+  </p>
+
+  <aside>
+    <ol>
+      <li>
+        <p>
+          State the Hypotheses. These will look something like the following:
+          <me>
+            H_0:\text{ parameter } =\#
+          </me>
+          <me>
+            H_A:\text{ parameter }  [\lt ,>,\neq]\#
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Determine the Model and Check Assumptions. Last class we saw that the model was...
+          <me>
+            \hat{p}_1-\hat{p}_2=N\left( p_1-p_2, \sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}\right)
+          </me>
+          and the assumptions are 
+
+            1. Random [little to no bias].
+
+            2. Independence/<m>10\%</m> Rule.
+
+            3. Large n: <m>np\geq10</m> AND <m>nq\geq 10</m>.
+ 
+            4. We also need independent groups.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Calculate the P-Value. The definition of a P-value is...
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Conclusion. If your <m>P-Val\lt \alpha</m>, then you reject <m>H_0</m> and have evidence of the <m>H_A</m>. If your <m>P-Val\geq \alpha</m>, then you fail to reject <m>H_0</m> and do NOT have evidence of the <m>H_A</m>.
+        </p>
+      </li>
+    </ol>
+  </aside>
+  <p>
+    NOTE: Recall that parameters are numbers that describe a population <m>(\mu,\sigma,p)</m> and statistics are numbers that describe a sample <m>(\bar{x},s,\hat{p})</m>.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Consider the following scenario: Tim Drake has enjoyed most of the spring along the waterfront. After several weeks of casual observation, he notices that a higher percentage of individuals tend to go inner tubing in the evening (<m>3</m>pm to <m>6</m>pm) than during the morning (<m>9</m>am to <m>11</m>am). He decides to test this. He randomly selects several summer days and attends the river on those days (sometimes in the morning, sometimes in the evening, but never both). He finds that <m>60</m> out of <m>140</m> individuals on the river inner tubed during the morning while <m>150</m> out of <m>260</m> individuals on the river inner tubed during the evening.
+        <ol>
+          <li>
+            <p>
+              State the null and alternative hypotheses!
+ 
+ 
+                There are some ramifications for having our null hypothesis as is is. These include...
+            </p>
+          </li>
+
+          <li>
+            <p>
+              What is the collective success rate? As a reminder, Tim Drake found that <m>60</m> out of <m>140</m> individuals on the river inner tubed during the morning while <m>150</m> out of <m>260</m> individuals on the river inner tubed during the evening.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              What is the model we will use to analyze the data?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the P-value.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              State the conclusion. Let <m>\alpha=0.05</m>.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Jessica Drew is a water slide aficionado. She is also a student of gender studies. While at Wild Waves, she notices what she perceives to be a gender bias towards certain rides. In particular, she is wondering if there is a relationship between gender and those that ride <q>High Tide</q>. She collects the following data:
+      </p>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Rides <q>High Tide</q></cell>
+          <cell>Does Not Ride <q>High Tide</q></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Male</cell>
+          <cell>250</cell>
+          <cell>640</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Female</cell>
+          <cell>390</cell>
+          <cell>720</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+      <p>
+        Test the claim that the proportion of males that ride <q>High Tide</q> is different than the proportion of females that ride <q>High Time</q>. Use an <m>\alpha=0.10</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <hr style="width:50%;" align="left" />
+
+    <nbsp />
+  </p>
+
+  <p>
+    <em>Checking work with Calculator:</em> In our calculator, we use <q>2-propZTest</q> to check our z-score and p-value. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc P-value:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Zak, who works as a cat suite manager at The Grand Cat Tower Hotel, thinks that the proportion of hotels in the US allowing pets has increased from <m>2014</m> to <m>2015</m>. In <m>2014</m>, he found that <m>60\%</m> of <m>150</m> hotels sampled allowed pets. In contrast, in <m>2015</m>, <m>83</m> out of <m>120</m> hotels allowed pets.
+        <ol>
+          <li>
+            <p>
+              State the implied null and alternative hypotheses for the test.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Determine the model including the center and standard deviation. Do not check assumptions!
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the <m>p</m>-value.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              State your conclusion in context. Be sure to use <m>\alpha=0.05</m>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Create the appropriate level confidence interval as a follow up. Hint: What confidence level should you use if you have done a 1-tailed test with <m>\alpha=0.05</m>?
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mike and his friend El are playing a game of Dungeons and Dragons. Mike thinks El might be cheating by moving the die. In <m>50</m> rolls, Mike gets <m>4</m> <q>critical rolls</q>. El gets <m>14</m> <q>critical rolls</q> in <m>60</m> rolls. Determine if El is getting more <q>critical hits</q> using a <m>95\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Jenny and Dory are competing to see who can remember more street names. Dory managed to remember <m>40\%</m> of <m>150</m> tested street names. Jenny remembered <m>60\%</m> of <m>150</m> tested street names. Determine if Dory remembers less street names using a <m>99\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Jack and Diane, two American kids growing up in the heartland, are competing to see how many Slurpee flavors they can correctly identify. Jack identified <m>10</m> correct out of <m>30</m>. Diane identified <m>13</m> correct out of <m>30</m>. Determine if the difference is statistically significant using a <m>90\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry has two cats: Victor and Fiona. In the <m>200</m> selected afternoons, Fiona is at the front door waiting <m>180</m> times. In contrast, Victor is at the front door waiting <m>40</m> times in a different <m>50</m> randomly selected days. Determine if Fiona is more frequently at the front door waiting using a <m>99\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+</section>

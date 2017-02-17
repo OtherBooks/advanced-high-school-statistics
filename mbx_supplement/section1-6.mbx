@@ -1,0 +1,240 @@
+
+<section>
+  <title>Chapter 20: Confidence Intervals for One Average</title>
+  <p>
+    <em>Overview:</em> We just finished looking at singular and multiple proportions. Today, however, we begin doing inference for means/averages.
+  </p>
+
+  <p>
+    As a reminder, confidence intervals in general look like (Center)<m>\pm</m>(Dist<m>)^*</m>SE. So, assuming we have a model that looks at averages, we should be good to go. And, well, we do!
+  </p>
+
+  <aside>
+    <p>
+      The <em>Central Limit Theorem</em> states that
+      <me>
+        \bar{X}=N\left(\mu,\frac{\sigma}{\sqrt{n}}\right)
+      </me>
+      assuming that
+    </p>
+  </aside>
+  <p>
+    In short, it tells us that regardless of the original distribution <m>X</m>, we should expect the distribution for the sample averages to look normal for large <m>n</m>. As <m>n</m> gets larger, the distribution will look more and more normal.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Using the distribution above and the fact that confidence intervals are based off samples, create the formula for the CI for <m>\mu</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    WARNING: <m>\bar{x}\approx \mu</m> but <m>\sigma</m> and <m>s</m> are not interchangeable (it's a biased estimator). The two values are only close for VERY large <m>n</m>.
+  </p>
+
+  <p>
+    Okay. We have a confidence interval, but it doesn't work for most values of <m>n</m>. What's the fix? A new distribution!
+  </p>
+
+  <aside>
+    <p>
+      <em>Student t-Distribution</em> is like a normal distribution, but it has a built-in error correcter to deal with small sample sizes. Using it, we can rewrite the CLT as
+      <me>
+        \bar{X}=t_{df}\left(\mu,\frac{s}{\sqrt{n}}\right)
+      </me>
+    </p>
+  </aside>
+  <p>
+    If you switch <m>\sigma</m> for <m>s</m>, then change <m>Z</m> to <m>t</m>. That's pretty much it. For example, our CI was <m>\bar{x}\pm Z^* \frac{\sigma}{\sqrt{n}}</m>. Now we have the following:
+  </p>
+
+  <aside>
+    <p>
+      A confidence interval for <m>\mu</m> based off sample information <m>\bar{x}</m> and <m>s</m> can be found using
+      <me>
+        \bar{x}\pm t^*_{df} \frac{s}{\sqrt{n}}
+      </me>
+      assuming that
+    </p>
+  </aside>
+  <p>
+    Problem almost solved. There's just the matter of finding <m>t^*</m>.
+  </p>
+
+  <p>
+    <em>Degrees of Freedom:</em>
+  </p>
+
+  <p>
+    In general, <m>df=</m>
+  </p>
+
+  <p>
+    There is a different <m>t</m>-distribution for each <m>df</m>. That's like having a different normal type distribution for infinitely many different values of <m>n</m>. So, if we want to find the critical values, we need either a table for every possible value for <m>n</m> OR a critical value table that works for most values of <m>n</m>.
+  </p>
+
+  <p>
+    Using the Critical Value table: Determine the <m>df</m>. Determine the <m>C</m>-level. Use the <m>t^*</m> value in the table where the <m>df</m> row meets the <m>C</m> column.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>t^*</m> if <m>C=90\%</m> and <m>n=16</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>t^*</m> if <m>C=95\%</m> and <m>n=51</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>t^*</m> if <m>C=99\%</m> and <m>n=500</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>t^*</m> if <m>C=92\%</m> and <m>n=30</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Find <m>t^*</m> if <m>C=99\%</m> and <m>n=10000</m>
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    OBSERVATION: For large <m>n</m>...<fillin />
+  </p>
+
+  <p>
+    Below are pictures of the <m>t</m>-distribution for <m>df=1</m> (dashed) and <m>df=12</m> (solid) to give you some context.
+  </p>
+  <image>
+    <latex-image-code>
+      <![CDATA[\begin{tikzpicture}(-6,-0.1)(6,0.5)
+      \psaxes[Dy=0.1]{->}(0,0)(-5,0)(5.5,0.5)
+      \psTDist[linecolor=blue,nue=12]{-5}{5}
+      \psTDist[linestyle=dashed,nue=1]{-5}{5}\end{tikzpicture}]]>
+    </latex-image-code>
+  </image>
+  <p>
+    In general, the <m>t</m>-distribution is like a short and stocky version of the normal distribution. Small values of <m>n</m> give larger interval. However, as <m>n</m> increases, the graph will look more and more normal. The graph has several <m>t</m>-distributions with increasing <m>n</m> and a solid normal distribution.
+  </p>
+  <image>
+    <latex-image-code>
+      <![CDATA[\begin{tikzpicture}(-6,-0.1)(6,0.5)
+      \psaxes[Dy=0.1]{->}(0,0)(-5,0)(5.5,0.5)
+      \psGauss[linecolor=blue,mu=0,sigma=1]{-5}{5}
+      \psTDist[linestyle=dashed,nue=1]{-5}{5}
+      \psTDist[linestyle=dashed,nue=2]{-5}{5}
+      \psTDist[linestyle=dashed,nue=3]{-5}{5}
+      \psTDist[linestyle=dashed,nue=100]{-5}{5}\end{tikzpicture}]]>
+    </latex-image-code>
+  </image>
+  <p>
+    <hr style="width:50%;" align="left" />
+
+    Okay, we now have a way to find <m>t*</m> in the formula <m>\bar{x}\pm t^*_{df} \frac{s}{\sqrt{n}}</m>. Let's find some confidence intervals!
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        If <m>\bar{x}=18</m>in, <m>s=20</m>in, and <m>n=31</m>, create a <m>90\%</m> CI for <m>\mu</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry weighs <m>100</m> cats and find that they have an average weight of <m>8.5</m> pounds with a standard deviation of <m>1.8</m> lbs. Assuming that the sample is representative, create a <m>95\%</m> CI for <m>\mu</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        The average cost of <m>15</m> cars is found to be <m>\dollar26,000</m> with a SD of <m>\dollar500</m>. Why can we not create a CI with just this information?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        How many students does the average PCC Rock Creek student take? Survey time!
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>Checking work with Calculator:</em> In our calculator, we use <q>tInt</q> to check our interval. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F7:Ints] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc Interval for PCC student information:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        The Oregon Zoo is curious how much on average people spend on food. A worker performs a survey and finds that out of <m>200</m> people sampled (various days and times) that spent <m>\dollar10.72</m> per person on average with a standard deviation of <m>\dollar1.35</m>. Create a <m>95\%</m> confidence interval for the true average amount that people spend on food.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        The owners of Cinetopia want to know the average length of feature films. They sample <m>100</m> movies from the last <m>4</m> years and find that they have an average run length of <m>100\,mins</m> with a standard deviation of <m>18\,mins</m>. Create a <m>90\%</m> confidence interval for the true average film length.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Barry Allen is training for the mile. In a recent study at STAR Labs, it was determined that he's running an average mile time of <m>0.1</m> second with a standard deviation of <m>0.01</m> seconds for a collection of <m>52</m> samples. Using this information and assuming that his sample is representative, create a <m>99\%</m> confidence interval for his mile time.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Claire works as a night nurse. She samples <m>50</m> individuals and finds that they have an average hospital bill of <m>\dollar3,200</m> for one night with a standard deviation of <m>\dollar700</m>. Using this information, create a <m>90\%</m> for the true average cost per night at the hospital.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry is training his cat, Fiona, for the Cat Olympics. She is known for her high jump. Curious as to what her true average high jump height is, Mr. Wherry measures several jump heights and gets the following data in feet: <m>4.5</m>, <m>4.75</m>, <m>4.75</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>5</m>, <m>5</m>, and <m>5.25</m>. Create a <m>95\%</m> for the true average jump height. [Picture included for educational purposes]
+      </p>
+    </statement>
+  </example>
+
+  <figure>
+    <image width="46%" source="images/" />
+  </figure>
+</section>

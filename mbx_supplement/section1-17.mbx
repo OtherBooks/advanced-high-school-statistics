@@ -1,0 +1,333 @@
+
+<section>
+  <title>Chapter 26 Day Two: Analysis of Variation (ANOVA)</title>
+  <p>
+    <em>Overview:</em> Last class, we learned how to compare multiple groups. Today, we will look at terminology more critically and determine how to do ANOVA with technology
+  </p>
+
+  <p>
+    Here is the general process from start to finish:
+  </p>
+
+  <aside>
+    <p>
+      STEP I: State the hypotheses. <m>H_0:\mu_1=...=\mu_k</m> and <m>H_A:</m> At least one average is different.
+    </p>
+
+    <p>
+      STEP II: When comparing multiple averages, we use the <m>F</m>-Distribution. Where...
+      <me>
+        \text{ Variation Between Groups } =\Sigma \frac{n_i(\bar{x}_i-\bar{X})^2}{k-1}
+      </me>
+      with <m>k</m> the number of groups and <m>\bar{X}</m> the overall average AND
+      <me>
+        \text{ Variation Within Groups } =s_{pool}^2=\Sigma \frac{df_i(s_i)^2}{N-k}
+      </me>
+      with <m>N</m> the total number of values.
+      <me>
+        F=\frac{\text{ Variation Between Groups } }{\text{ Variation Within Groups } }
+      </me>
+      has df's of <m>k-1</m> and <m>N-k</m> in that order.
+    </p>
+
+    <p>
+      The assumptions are
+      <ol>
+        <li>
+          <p>
+            Random
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Independence/<m>10\%</m> Rule
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Large n:
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Indepedent Groups
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Equal Spread:
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      STEP III: ANOVA is always a right-tailed test.
+    </p>
+
+    <p>
+      We find the P-value using <q>Fcdf(<m>F</m>-score, <m>\infty</m>, <m>df_{Between}</m>,<m>df_{Within}</m>)</q>
+    </p>
+
+    <p>
+      STEP IV: Conclusion
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Perform ANOVA for the Excel file located on your desktop.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    We've covered the neccessary math at this point, but let's improve our vocabulary.
+  </p>
+
+  <aside>
+    <p>
+      <em>Variation Between Groups</em> in a medical setting might compare the average duration of various <em>treatments</em>.
+      <me>
+        \text{ Variation Between Groups } =\frac{\Sigma n_i(\bar{x}_i-\bar{X})^2}{k-1}=\frac{\text{ Sum of the Squares of the Treatment } }{df}
+      </me>
+    </p>
+
+    <p>
+      By dividing the Sum of the Squares of the Treatment (SST), we are finding the Mean for the Squares of the Treatment (MST).
+      <me>
+        \text{ Variation Between Groups } =\frac{\text{ SST } }{df}=\text{ MST }
+      </me>
+    </p>
+  </aside>
+  <aside>
+    <p>
+      <em>Variation Within Groups</em> is based solely off the Standard <em>Errors</em>.
+      <me>
+        \text{ Variation Within Groups } =s_{pool}^2=\Sigma \frac{df_i(s_i)^2}{N-k}=\frac{\text{ Sum of the Squared standard Errors } }{df}
+      </me>
+    </p>
+
+    <p>
+      By dividing the Sum of the Squared standard Errors (SSE), we are finding the Mean for the Squares of the Errors (MSE). This is our <em>pooled</em> variance.
+      <me>
+        \text{ Variation Between Groups } =s_{pool}^2=\frac{\text{ SSE } }{df}=\text{ MSE }
+      </me>
+    </p>
+  </aside>
+  <aside>
+    <p>
+      Using the terminology above, we rewrite to get that
+      <me>
+        F=\frac{\text{ Variation Between Groups } }{\text{ Variation Within Groups } }=\frac{\text{ MST } }{\text{ MSE } }
+      </me>
+    </p>
+  </aside>
+  <p>
+    OBSERVATION: You may have noticed this already, but
+    <me>
+      df_{top}+df_{bottom}=(k-1)+(N-k)=N-1.
+    </me>
+  </p>
+
+  <p>
+    This will come in handy for the next exercise.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Fill in the following ANOVA table:
+      </p>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Source</cell>
+          <cell>df</cell>
+          <cell>SS</cell>
+          <cell>MS</cell>
+          <cell>\mc{1}{c|}{F-Stat}</cell>
+          <cell>\mc{1}{c|}{P-Value}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Treatment</cell>
+          <cell>2</cell>
+          <cell>28.22</cell>
+          <cell></cell>
+          <cell>\mc{1}{c|}{ }</cell>
+          <cell>\mc{1}{c|}{ }</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Error</cell>
+          <cell>24</cell>
+          <cell>28.44</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>26</cell>
+          <cell>56.66</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </statement>
+  </example>
+
+  <p>
+    Verifying our answers in the calculator takes two processes. We first must type in our lists. Then, we must perform the test.
+  </p>
+
+  <p>
+    <em>Creating lists:</em> If you have a TI-83, TI-84, hit [Stat]<m>\rightarrow</m>[Edit] your lists. Type in your dat.
+  </p>
+
+  <p>
+    If you have a TI-89, go into [Apps]<m>\rightarrow</m>[Stat/List Editor]. Then, type in your data.
+  </p>
+
+  <p>
+    <em>Checking H-Test with Calculator:</em> In our calculator, we use <q>ANOVA</q> (1-way not 2-way) to check our hypothesis test. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    It will look like <q>ANOVA(<m>L_1,L_2,L_3</m>)</q> on the TI-83/84. To get <m>L_1</m>, hit [2nd]<m>\rightarrow</m>[1]. To get <m>L_2</m>, hit [2nd]<m>\rightarrow</m>[2] and so on.
+  </p>
+
+  <p>
+    In the TI-89, you will have to type in the complete name of the lists. For example <q>list1</q>.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Use your calculator to collect the following information for the warm-up data on tip amounts.
+      </p>
+    </statement>
+  </example>
+
+  <ul>
+    <li>
+      <p>
+        MST?
+      </p>
+    </li>
+
+    <li>
+      <p>
+        MSE?
+      </p>
+    </li>
+
+    <li>
+      <p>
+        F?
+      </p>
+    </li>
+
+    <li>
+      <p>
+        P-value?
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Pooled Standard Error? <m>s_p</m>?
+      </p>
+    </li>
+  </ul>
+  <p>
+    What do we do if we do notice a difference in averages? Follow it up with <m>2</m>-sample <m>t</m>-tests. The downside? Error adds up really quickly.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        If we want to compare three groups, how many pairs will we need to analyze?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        If we want the total <m>\alpha</m> for all tests to be <m>0.05</m>, what would each individual <m>\alpha^*</m> need to be?
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      Bonferroni Correction. Let
+      <me>
+        \alpha^*=
+      </me>
+      when comparing multiple pairs. This will give you a corrected <m>C^*=1-\alpha*</m> if you want to create confidence intervals as a follow up.
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Compare each pair of individuals for the tip data. Which pairs, if any, indicate a difference in average tip amount?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>Options, Options, Options:</em> We now have multiple ways of doing problems involving averages.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        You want to compare two routes to work. Route 1 takes <m>30</m> minutes on average with a standard deviation of <m>15</m> minutes and <m>n=100</m>. In contrast, Route 2 takes <m>25</m> minutes on average with a standard deviation of <m>10</m> minutes and <m>n=100</m> [When both sample sizes are the same size the study is <em>balanced</em>]. Compare the averages using ANOVA.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        You want to compare two routes to work. Route 1 takes <m>30</m> minutes on average with a standard deviation of <m>15</m> minutes and <m>n=100</m>. In contrast, Route 2 takes <m>25</m> minutes on average with a standard deviation of <m>10</m> minutes and <m>n=100</m>. Compare the averages using 2-sampletTest. Go ahead and pool.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    OBSERVATIONS:
+  </p>
+</section>

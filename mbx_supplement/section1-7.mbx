@@ -1,0 +1,329 @@
+
+<section>
+  <title>Chapter 21: A Detailed Analysis of Hypothesis Tests</title>
+  <p>
+    <em>Overview:</em> Today, we will continue practicing the topics of confidence intervals and hypothesis tests. We will also analyze potential error and selecting an appropriate significance level.
+    We begin by reviewing how we have constructed confidence intervals and hypothesis tests using the model
+    <me>
+      \hat{P}=N\left(p,\sqrt{\frac{pq}{n}}\right)
+    </me>
+  </p>
+
+  <p>
+    <nbsp />
+  </p>
+
+  <aside>
+    <p>
+      <em>Confidence intervals:</em>
+    </p>
+
+    <p>
+      What are they used for? Based off <em>samples</em>, we predict what should happen for a <em>population</em>.
+    </p>
+
+    <p>
+      Visualizing it:
+    </p>
+
+    <p>
+      The general formula: (Center)<m>\pm(</m>Dist<m>)^*</m> SE
+    </p>
+
+    <p>
+      Our formula for 1-proportion:
+    </p>
+
+    <p>
+      <em>A confidence interval gives a range of potential values for a parameter based off statistics</em>
+    </p>
+  </aside>
+  <aside>
+    <p>
+      <em>Hypothesis Tests:</em>
+    </p>
+
+    <p>
+      What are they used for? Based off <em>population</em> information, we predict what should happen for a <em>sample</em>.
+    </p>
+
+    <p>
+      Visualizing it:
+    </p>
+
+    <p>
+      The general process:
+      <ol>
+        <li>
+          <p>
+            State the Hypotheses
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Determine the model
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Calculate the P-value:
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Conclusion
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      Our model for 1-propotion:
+    </p>
+
+    <p>
+      <em>A hypothesis test is a process that using statistics to test a claim about a parameter.</em>
+    </p>
+  </aside>
+  <p>
+    NOTE: Error is unavoidable in both situations. The best we can hope to do is to minimize the potential for error and to understand what could go wrong.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        In the warm up, we compared local students to a national value. As a reminder, we got a P-value of <fillin />. How do we determine <em>how</em> good her students did?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>What is a P-value?</em>
+  </p>
+
+  <p>
+    NOTE: We assume that <m>H_0</m> is true. However, it's possible that the initial claim is NOT true. We can realistically never be <m>100\%</m> certain. Let's see what could go wrong:
+  </p>
+  <tabular>
+    <row>
+      <cell>{llll}</cell>
+      <cell>\mc{3}{l}{What Actually Happens}</cell>
+    </row>
+    <row>
+      <cell></cell>
+      <cell>\mc{1}{l|}{ }</cell>
+      <cell>\mc{1}{l|}{<m>H_0</m> True}</cell>
+      <cell>\mc{1}{l|}{<m>H_0</m> Not True}</cell>
+    </row>
+    <row>
+      <cell>Our Conclusion</cell>
+      <cell>\mc{1}{l|}{Reject <m>H_0</m>}</cell>
+      <cell>\mc{1}{l|}{ }</cell>
+      <cell>\mc{1}{l|}{ }</cell>
+    </row>
+    <row>
+      <cell></cell>
+      <cell>\mc{1}{l|}{Fail to Reject <m>H_0</m>}</cell>
+      <cell>\mc{1}{l|}{ }</cell>
+      <cell>\mc{1}{l|}{ }</cell>
+    </row>
+    <row>
+      <cell></cell>
+    </row>
+  </tabular>
+  <p>
+    We have two types of errors.
+  </p>
+
+  <aside>
+    <p>
+      Type I Error:
+    </p>
+
+    <p>
+      This is sometimes called a...
+    </p>
+  </aside>
+  <aside>
+    <p>
+      Type II Error:
+    </p>
+
+    <p>
+      This is sometimes called a...
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Determine what a Type I and Type II error would be for the following scenario. Begin by stating the <m>H_0</m> and <m>H_A</m>. <q>A person tests to see if they are pregnant</q>
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE: We think that a <fillin /> Error is worse.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Determine what a Type I and Type II error would be for the following scenario. Begin by stating the <m>H_0</m> and <m>H_A</m>. <q>A person tests to see if they have strepthroat</q>
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE: We think that a <fillin /> Error is worse.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Determine what a Type I and Type II error would be for the following scenario. Begin by stating the <m>H_0</m> and <m>H_A</m>. <q>A person is on trial for stealing a loaf of bread. The penalty would be <m>\dollar400,000</m></q>
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE: We think that a <fillin /> Error is worse.
+  </p>
+
+  <p>
+    <em>What is <m>\alpha</m>?</em> If we reject the <m>H_0</m>, a P-value gives us the likelihood of making a Type I error. Our significance level, <m>\alpha</m>, is our willingness to make a Type I error.
+  </p>
+
+  <p>
+    Why don't we just make <m>\alpha</m> small all the time then?
+  </p>
+
+  <aside>
+    <p>
+      If we think that a Type I Error is worse, we should use a <fillin /> <m>\alpha</m>. This will make it less likely to make a <fillin /> Error, BUT it will also make it more likely to make a <fillin /> Error.
+    </p>
+  </aside>
+  <aside>
+    <p>
+      If we think that a Type II Error is worse, we should use a <fillin /> <m>\alpha</m>. This will make it less likely to make a <fillin /> Error, BUT it will also make it more likely to make a <fillin /> Error.
+    </p>
+  </aside>
+  <p>
+    A neutral level for <m>\alpha</m> is <m>0.05</m>. Go back and determine <m>\alpha</m> for all previous examples!
+  </p>
+
+  <p>
+    More Terminology:
+  </p>
+
+  <aside>
+    <p>
+      The probability of making a Type II error is called <m>\beta</m>.
+    </p>
+
+    <p>
+      The probability of not making a Type II error (avoiding error would be a good thing) is called the <em>power</em>. Power<m>=1-\beta</m>.
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        What happens to <m>\beta</m> and the power if we increase <m>\alpha</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        What happens to <m>\beta</m> and the power if we decrease <m>\alpha</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        What is the only way to reduce the likelihood of BOTH a Type I and Type II error?
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      Connecting <m>\alpha</m> and <m>C</m>-Level for a TWO-TAILED Hypothesis Test:
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=95\%</m>.
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=90\%</m>.
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=99\%</m>.
+    </p>
+  </aside>
+  <p>
+    In general, for a two-tailed test <m>\alpha=</m> or rather <m>C=</m>
+  </p>
+
+  <aside>
+    <p>
+      Connecting <m>\alpha</m> and <m>C</m>-Level for a ONE-TAILED Hypothesis Test:
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=95\%</m>.
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=90\%</m>.
+    </p>
+
+    <p>
+      Find <m>\alpha</m> if <m>C=99\%</m>.
+    </p>
+  </aside>
+  <p>
+    In general, for a one-tailed test <m>\alpha=</m> or rather <m>C=</m>
+    <nbsp />
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Due to the unexpected weight of keychains, several Chevy brand cars had to get recalled due to the keys bouncing out while running. Prior to the recall, it was determined that approximately <m>20\%</m> of all Chevy cars had this problem. The PR specialist tests <m>200</m> cars after repairs have been made and finds that <m>25</m> still have this problem. The PR specialist plans to test if the company has improved, but he wants a lot of evidence before going to the public.
+        <ol>
+          <li>
+            <p>
+              Determine the implied <m>H_0</m> and <m>H_A</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              What <m>\alpha</m> should be used? What error is the PR specialist worried about?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Perform the H-Test.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Follow up the test with the appropriate confidence interval.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </statement>
+  </example>
+</section>

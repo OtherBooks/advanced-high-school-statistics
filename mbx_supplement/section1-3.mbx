@@ -1,0 +1,350 @@
+
+<section>
+  <title>Chapter 18: Confidence Intervals for 1-Proportion</title>
+  <p>
+    <em>Overview:</em> Today, we will look at how information about samples (<em>statistics</em>) can be used to make predictions about information about larger populations (<em>parameters</em>). To do this, we will briefly review a few terms and tools before diving head first into the topic of confidence intervals.
+  </p>
+
+  <aside>
+    <p>
+      A <em>statistic</em> is a number that describes a sample. Examples of statistics include...
+    </p>
+  </aside>
+  <aside>
+    <p>
+      A <em>parameter</em> is a number that describes a population. Examples of parameters include...
+    </p>
+  </aside>
+  <p>
+    We often want to know something about an entire population (e.g. what is the average salary for all Americans?) but it's not always possible to sample the entire population. In these cases, we rely on population models. Arguably the most important such model covered in MTH243 is the Normal Model/Distribution.
+  </p>
+
+  <p>
+    <em>Normal Model</em> The standard bell curve looks something like below. It is often a population model, so we describe the mean using <fillin /> and the spread using <fillin />.
+  </p>
+  <image>
+    <latex-image-code>
+      <![CDATA[\begin{tikzpicture}\begin{axis}[
+         no markers, 
+         domain=0:6, 
+         samples=100,
+         ymin=0,
+         axis lines*=left, 
+         every axis y label/.style={at=(current axis.above origin),anchor=south},
+         every axis x label/.style={at=(current axis.right of origin),anchor=west},
+         height=4cm, 
+         width=9.6cm,
+         xtick=, 
+         ytick=,
+         enlargelimits=false, 
+         clip=false, 
+         axis on top,
+         grid = major,
+         hide y axis
+         ]
+   
+         \addplot [very thick,cyan!50!black] {gauss(x,3, 1)};
+   
+         \pgfmathsetmacro\valueA{gauss(1,3,1)}
+         \pgfmathsetmacro\valueB{gauss(2,3,1)}
+         \pgfmathsetmacro\valueC{gauss(3,3,1)}
+         \draw [gray] (axis cs:1,0) -- (axis cs:1,\valueA)
+         (axis cs:5,0) -- (axis cs:5,\valueA);
+         \draw [gray] (axis cs:2,0) -- (axis cs:2,\valueB)
+         (axis cs:4,0) -- (axis cs:4,\valueB);
+         \draw [gray] (axis cs:3,0) -- (axis cs:3,\valueC)
+         (axis cs:3,0) -- (axis cs:3,\valueC);
+   
+         \node[below] at (axis cs:3, 0)  ; 
+         \end{axis}\end{tikzpicture}]]>
+    </latex-image-code>
+  </image>
+  <p>
+    When using the normal distribution, we use the notation
+    <me>
+      X=
+    </me>
+  </p>
+
+  <p>
+    In our class, we will find the likelihood of events using the 68-95-99.7 Rule and with the aid of <m>Z</m>-scores.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>X=N(25,5)</m>. Calculate <m>P(10\lt X\lt 40)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>X=N(-3,7)</m>. Calculate <m>P(-17\lt x\lt 11)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    What if I wanted to know <m>P(x\lt 10)</m> in the previous example?
+  </p>
+
+  <aside>
+    <p>
+      A <m>Z</m>-score tells us the number of standard deviations a value is away from the mean. We calculate it by doing...
+    </p>
+  </aside>
+  <p>
+    This is a powerful tool for calculating probabilities using the normal distribution. For example, let's calculate <m>P(X\lt 10)</m> using the following steps:
+    <ol>
+      <li>
+        <p>
+          Draw a picture
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Calculate the z-score(s)
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Look up the z-score(s)
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        The number of hours of sleep an average person in the US gets is normally distributed: <m>X=N(8,0.5)</m>. Calculate <m>P(X\lt 9.25)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Using the same information above, calculate <m>P(X>7)</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Using the same information above, calculate <m>P(7\lt X\lt 9.25)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    In MTH 243, we studied many different normal models used for making predictions:
+  </p>
+
+  <aside>
+    <ul>
+      <li>
+        <p>
+          If we are studying sample means, we use the model...
+          <me>
+            \bar{X}=N(
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If we are studying the number of success in n-trials, we use the model...
+          <me>
+            X=N(
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If we are studying sample success rates/proportions, we use the model...
+          <me>
+            \hat{P}=N(
+          </me>
+        </p>
+      </li>
+    </ul>
+  </aside>
+  <p>
+    We will revisit these models throughout the term, but lets start with the model for <m>\hat{P}</m>. As a reminder, the assumptions are...
+    <ol>
+      <li>
+        <p>
+          Random
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Independence
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Large <m>n</m>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        We are told that a coin is fair. With <m>68\%</m> certainty, what proportion of the time should we get heads in <m>100</m> flips?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        We are told that a coin is fair. With <m>95\%</m> certainty, what proportion of the time should we get heads in <m>100</m> flips?
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      The interval <m>p\pm Z^*\sqrt{\frac{pq}{n}}</m> gives us the interval that we expect <m>\hat{p}</m> to be in based off population information.
+    </p>
+  </aside>
+  <p>
+    This is the complete OPPOSITE of what we want. But...
+  </p>
+
+  <aside>
+    <p>
+      <em>Confidence Interval</em> The interval...
+    </p>
+
+    <p>
+      gives us the interval that we expect <m>\hat{p}</m> to be in based off the SAMPLE information. YEAH!!!
+    </p>
+  </aside>
+  <p>
+    The assumptions are...
+    <ol>
+      <li>
+        <p>
+          Random
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Independence
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Large <m>n</m>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Using a random sample, an employee at the PCC bookstore finds that <m>97</m> out of <m>112</m> customers use their credit card to pay for books. Create a <m>95\%</m> confidence interval for what should go on for ALL PCC students.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Let's create a <m>68\%</m> confidence interval for the proportion of students that identify as <q>female</q> using in-class data
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    A little terminology:
+  </p>
+
+  <aside>
+    <p>
+      The <em>critical value</em> is denoted by <m>z^*</m>. It's the <m>z</m>-score corresponding to a specified confidence level.
+    </p>
+
+    <p>
+      The <em>standard error</em> is our guess for the SD based off the sample. <m>SE=\sqrt{\frac{\hat{p}\hat{q}}{n}}</m>
+    </p>
+
+    <p>
+      The <em>margin of error</em> is given by <m>MOE=z^*SE(\hat{p})</m>, or <m>ME=z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}</m>.
+    </p>
+
+    <p>
+      The <em>confidence interval</em> for the true value of a proportion is determined by:
+      <me>
+        \textrm{best point estimate (center)} \ \pm\ \textrm{margin of error}  \hspace{0.5in} \textrm{i.e.} \ \hspace{0.5in} \hat{p}\pm z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}
+      </me>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Using the current presidential approval information, let's determine the number of people sampled by Gallup. Assume <m>95\%</m> confidence: \url{http://www.gallup.com/poll/113980/Gallup-Daily-Obama-Job-Approval.aspx}
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        What was the best point estimate in the previous problem?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Okay, but what about <m>C=90\%</m>? What's <m>Z^*</m>?
+  </p>
+
+  <aside>
+    <p>
+      Here's the general process...
+      <ul>
+        <li>
+          <p>
+            Place the area <m>C</m> in the center of a normal curve.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Determine the area in BOTH tails, <m>\alpha</m>. Then, determine the area in the left-tail.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Use the table to get the z-score OR InvNorm(area). Switch the sign.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Find <m>Z^*</m> for <m>C=90\%</m>, <m>C=95\%</m>, and <m>C=99\%</m>.
+      </p>
+    </statement>
+  </example>
+</section>

@@ -1,0 +1,520 @@
+
+<section>
+  <title>Chapter 24: Chi-Squared Goodness of Fit</title>
+  <p>
+    <em>Overview:</em> We return today to analyzing counts and proportions, much like the material from Exam I. Today, however, we will find a way to analyze multiple counts all at once.
+  </p>
+
+  <p>
+    Mr. Wherry is given a <q>fair</q> six sided die. He's not convinced in its fairness however, and after rolling it several times he gets the following outcomes:
+  </p>
+  <tabular>
+    <row>
+      <cell>Outcome of Die</cell>
+      <cell>1</cell>
+      <cell>2</cell>
+      <cell>3</cell>
+      <cell>4</cell>
+      <cell>5</cell>
+      <cell>6</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell><m>\#</m> of trials</cell>
+      <cell>9</cell>
+      <cell>13</cell>
+      <cell>9</cell>
+      <cell>12</cell>
+      <cell>8</cell>
+      <cell>15</cell>
+    </row>
+  </tabular>
+
+  <example>
+    <statement>
+      <ol>
+        <li>
+          <p>
+            If the die is actually fair, what proportion of the time should Mr. Wherry get an outcome of a <q>1</q>? How many counts should he expect for the number of <q>1</q>s? Do this for all values.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            In terms of counts, how far off is the observed number of trials (table) from the expected number of trials (last part)?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            What is the relative/percentage error for each outcome? For example, maybe the observed outcome <m>2</m> is <m>50\%</m> more than what we were expecting [not actual numbers].
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Should we use a test or an interval to determine if the die is fair?
+          </p>
+        </li>
+      </ol>
+    </statement>
+  </example>
+
+  <p>
+    NOTE: Our total for the relative/percentage errors for each outcome is <fillin />.
+  </p>
+
+  <p>
+    <em>What happened?!</em>
+  </p>
+
+  <p>
+    Let's create a new model:
+    <me>
+      \chi^2=
+    </me>
+  </p>
+
+  <p>
+    Degrees of freedom are based off the number of groups. For example, our die problem has df<m>=\underline{\hspace{1in}}</m>. In general, df<m>=</m>.
+  </p>
+
+  <aside>
+    <p>
+      The assumptions are...
+      <ol>
+        <li>
+          <p>
+            Countable data.
+          </p>
+        </li>
+      </ol>
+    </p>
+  </aside>
+  <p>
+    To help you visualize it, <m>\chi^2</m> looks like the graph below. The <em>mean=df</em> and the mound is at df-2.
+  </p>
+  <image>
+    <latex-image-code>
+      <![CDATA[\begin{tikzpicture}(-1,-0.1)(21,0.2)
+      \psChiIIDist[linewidth=1pt,nue=5]{0.01}{19.5}
+      \psaxes[labels=none,ticks=none]{->}(20,0.2)\end{tikzpicture}]]>
+    </latex-image-code>
+  </image>
+
+  <example>
+    <statement>
+      <p>
+        Let's look at the six-sided die hypothesis test in detail. Recall that
+      </p>
+      <tabular>
+        <row>
+          <cell>Outcome of Die</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>OBSERVED <m>\#</m> of trials</cell>
+          <cell>9</cell>
+          <cell>13</cell>
+          <cell>9</cell>
+          <cell>12</cell>
+          <cell>8</cell>
+          <cell>15</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>EXPECTED <m>\#</m> of trials</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+      <p>
+        STEP I:
+      </p>
+
+      <p>
+        STEP II:
+      </p>
+
+      <p>
+        STEP III:
+      </p>
+
+      <p>
+        STEP IV:
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>Which way do we shade?</em>
+  </p>
+
+  <p>
+    Assume that the die is perfectly fair...
+    <ol>
+      <li>
+        <p>
+          How should the observed and expected compare?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Should we have a large value for <m>\chi^2</m> or a small value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want to reject or fail to reject the null-hypothesis?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want a large or small P-value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          SHADE IN THE CURVE:
+          <image>
+            <latex-image-code>
+              <![CDATA[\begin{tikzpicture}(-1,-0.1)(21,0.2)
+              \psChiIIDist[linewidth=1pt,nue=5]{0.01}{19.5}
+              \psaxes[labels=none,ticks=none]{->}(20,0.2)\end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    Assume that the die is extremely unfair...
+    <ol>
+      <li>
+        <p>
+          How should the observed and expected compare?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Should we have a large value for <m>\chi^2</m> or a small value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want to reject or fail to reject the null-hypothesis?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want a large or small P-value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          SHADE IN THE CURVE:
+          <image>
+            <latex-image-code>
+              <![CDATA[\begin{tikzpicture}(-1,-0.1)(21,0.2)
+              \psChiIIDist[linewidth=1pt,nue=5]{0.01}{19.5}
+              \psaxes[labels=none,ticks=none]{->}(20,0.2)\end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    OBSERVATION:
+  </p>
+
+  <p>
+    <em>TI-83 and TI-84:</em> [2nd]<m>\rightarrow</m>[Vars]<m>\rightarrow</m>[chi-square cdf].
+  </p>
+
+  <p>
+    <em>TI-89:</em> [Apps]<m>\rightarrow</m>[Stat/List]<m>\rightarrow</m>[F5:Dist]<m>\rightarrow</m>[chi-square cdf].
+  </p>
+
+  <p>
+    The general setup is the same for all calculators. We need to type in <q>chisquarecdf(low <m>\chi^2</m>-score, high <m>\chi^2</m>-score, df)</q>.
+  </p>
+
+  <p>
+    Our P-value<m>=</m><fillin />
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        We're going to analyze a bag of M<m>\\amp</m>M's. Let's test the claim that the color distribution is uniform. The colors are blue, brown, green, orange, red, and yellow.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Blue</cell>
+      <cell>Brown</cell>
+      <cell>Green</cell>
+      <cell>Orange</cell>
+      <cell>Red</cell>
+      <cell>Yellow</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>OBSERVED <m>\#</m> of trials</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>EXPECTED <m>\#</m> of trials</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II:
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    STEP IV:
+  </p>
+
+  <aside>
+    <p>
+      We call <m>Obs-Exp</m> the residual.
+    </p>
+
+    <p>
+      We call <m>\frac{Obs-Exp}{\sqrt{Exp}}</m> the standardized residual. It looks like the square-root of a single entry for our <m>\chi^2</m> and it works like a z-score!
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Calculate all the standardized residuals.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Blue</cell>
+      <cell>Brown</cell>
+      <cell>Green</cell>
+      <cell>Orange</cell>
+      <cell>Red</cell>
+      <cell>Yellow</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>St. Res.</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+  <p>
+    <em>Critical Value:</em> Just like <m>Z^*</m> and <m>t^*</m>, we can find <m>(\chi^2)^*</m> using a table. This can be thought of as the cutoff for what we consider a large or small <m>\chi^2</m>-score.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Let's reanalyze the bag of M<m>\\amp</m>M's. This time, we will test the claim for the company itself. They claim that the percentages are as follows: blue<m>=24\%</m>, brown<m>=13\%</m>, green<m>=16\%</m>, orange<m>=20\%</m>, red<m>=13\%</m>, and yellow<m>=14\%</m>.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Blue</cell>
+      <cell>Brown</cell>
+      <cell>Green</cell>
+      <cell>Orange</cell>
+      <cell>Red</cell>
+      <cell>Yellow</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>OBSERVED <m>\#</m> of trials</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>EXPECTED <m>\#</m> of trials</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II:
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    STEP IV:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Recalculate all the standardized residuals.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Blue</cell>
+      <cell>Brown</cell>
+      <cell>Green</cell>
+      <cell>Orange</cell>
+      <cell>Red</cell>
+      <cell>Yellow</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>St. Res.</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+</section>

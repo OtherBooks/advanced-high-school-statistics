@@ -1,0 +1,314 @@
+
+<section>
+  <title>Chapter 22 Revisited: Comparing Two independent Means</title>
+  <p>
+    <em>Overview:</em> Today, we will compare the sample averages for two groups using both confidence intervals and hypothesis tests. This will use many of the techniques from the previous chapters.
+    <nbsp />
+  </p>
+
+  <aside>
+    <p>
+      We found our confidence interval for one-sample average using the formula
+      <me>
+        \bar{x}\pm t_{df}^* \frac{s}{\sqrt{n}}
+      </me>
+      or rather (Center)<m>\pm</m>(Dist<m>)^*</m>SE. Confidence intervals are based off <fillin />
+    </p>
+  </aside>
+  <aside>
+    <p>
+      We used the model in step two of a hypothesis test of
+      <me>
+        \bar{X}\approx t_{df}\left(\mu, \frac{s}{\sqrt{n}}\right)
+      </me>
+    </p>
+
+    <p>
+      Hypothesis tests are based off <fillin />.
+    </p>
+  </aside>
+  <p>
+    Both our CI and our H-Test were created from the same model. So, if we have a model for comparing two independent averages, we'll be able to test claims and determine the actual difference in two groups.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>\mu_{Safeway}-\mu_{Grocery Outlet}>0</m> for the average cost for a weeks worth of groceries at the two stores. Which store costs more?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>\mu_{Safeway}-\mu_{Fred Meyer}\lt 0</m> for the average cost for a weeks worth of groceries at the two stores. Which store costs more?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>\mu_{Safeway}-\mu_{Albertsons}=0</m> for the average cost for a weeks worth of groceries at the two stores. Which store costs more?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE:
+  </p>
+
+  <p>
+    We need a model for <m>\bar{X}_2-\bar{X}_1</m>. We start with some quick observations...
+    <ol>
+      <li>
+        <p>
+          The model for a single average, CLT, is
+          <me>
+            \bar{X}_1\approx t_{df}\left(\mu_1, \frac{s_1}{\sqrt{n_1}}\right)=t_{df}\left(\mu_1, \sqrt{\frac{s_1^2}{n_1}}\right).
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Much like the normal distribution: If you add/subtract two t-distribution models, you will get another t-distribution model.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If <m>X</m> and <m>Y</m> are independent variables, then
+          <me>
+            Var[X-Y]=Var[X]+Var[Y].
+          </me>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    Our model for <m>\bar{X}_2-\bar{X}_1</m> is still a t-distribution based off the second fact. Let's determine which t-distribution.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        CENTER: <m>E[\bar{X}_1]=\mu_1</m> and <m>E[\bar{X}_2]=\mu_2</m> are the centers for each of our individual models. What is the center for <m>E[\bar{X}_1-\bar{X}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        VARIANCE: <m>Var[\bar{X}_1]=\frac{s_1^2}{n_1}</m> and <m>Var[\bar{X}_2]=\frac{s_2^2}{n_2}</m> are the variances for each of our individual models. What is the variance for the difference, <m>Var[\bar{X}_1-\bar{X}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Based off the variance, what is the standard deviation, <m>SD[\bar{X}_1-\bar{X}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      Our model is
+    </p>
+  </aside>
+  <p>
+    NOTE: The actual df is <m>\displaystyle df=\frac{\left(\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}\right)^2}{\frac{1}{n_1-1}\left(\frac{s_1^2}{n_1}\right)^2+\frac{1}{n_2-1}\left(\frac{s_2^2}{n_2}\right)^2}</m>. This is often not a whole number.
+  </p>
+
+  <aside>
+    <p>
+      Mr. Wherry's Lie: Let <m>df=\min{df_1,df_2}</m>. Our intervals and H-tests should be close to the actual results even though our df will appear very different.
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Find df for comparing two independent means if <m>n_1=100</m> and <m>n_2=31</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Find df for comparing two independent means if <m>n_1=11</m> and <m>n_2=200</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <hr style="width:50%;" align="left" />
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Using the model
+        <me>
+          \bar{X}_1-\bar{X}_2\approx t_{df}\left( \mu_1-\mu_2, \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\right)
+        </me>
+        create the confidence interval for <m>\mu_1-\mu_2</m>.
+      </p>
+
+      <p>
+        HINT: Our interval will be based off samples and look something like (Center)<m>\pm t^*</m> SE.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Our assumptions are...
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Create a <m>90\%</m> CI for <m>\mu_1-\mu_2</m> if <m>\bar{x_1}=3\,hrs</m>, <m>s_1=2\,hrs</m>, <m>n_1=25</m>, <m>\bar{x_2}=8\,hrs</m>, <m>s_2=1\,hr</m>, and <m>n_2=50</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Which group appears to have a larger average? Why?
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for the average jumping difference in feet, <m>\mu_{Victor}-\mu_{Fiona}</m>, of <m>(-0.04,-0.03)</m>. What does this tell us?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for the average jumping difference in feet, <m>\mu_{Victor}-\mu_{Fiona}</m>, of <m>(-0.04,0.10)</m>. What does this tell us?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for the average jumping difference in feet, <m>\mu_{Victor}-\mu_{Fiona}</m>, of <m>(-0.04,-0.03)</m>. What would the <m>95\%</m> for <m>\mu_{Fiona}-\mu_{Victor}</m> look like?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        During a clinical study it is found that Tylenol lasts <m>4</m> hours for headache relief on average with a standard deviation of <m>0.5</m> hrs in <m>150</m> trials. In contrast, Advil lasts <m>6</m> hours for headache relief on average with a standard deviation of <m>3</m> hrs in <m>100</m> trials. Compare the groups using a <m>90\%</m> CI. Check the assumptions assuming that patients were selected at random from hospitals throughout the nation.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Recall that during a clinical study it is found that Tylenol lasts <m>4</m> hours for headache relief on average with a standard deviation of <m>0.5</m> hrs in <m>150</m> trials. In contrast, Advil lasts <m>6</m> hours for headache relief on average with a standard deviation of <m>3</m> hrs in <m>100</m> trials. This time, however, let's use a hypothesis test to test if ``Advil lasts longer the Tylenol``.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II: We already have the model: <m>\bar{X}_1-\bar{X}_2\approx t_{df}\left( \mu_1-\mu_2, \sqrt{\frac{s_1^2}{n_1}+\frac{s_2^2}{n_2}}\right)</m>. So, let's check assumptions and fill in numbers.
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    Step IV: What <m>\alpha</m> should we use to be consistent?
+  </p>
+
+  <p>
+    <em>Checking CI with Calculator:</em> In our calculator, we use <q>2-sampletInt</q> to check our interval. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F7:Ints] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc Interval:
+  </p>
+
+  <p>
+    <em>Checking H-Test with Calculator:</em> In our calculator, we use <q>2-sampletTest</q> to check our hypothesis test. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc P-Value:
+  </p>
+
+  <p>
+    <hr style="width:50%;" align="left" />
+
+    <nbsp />
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Sonya is preparing her spring garden. Last year, she bought sunflower starters from Al's Garden Store and Orchard's Supply Store. Sonya believes that the sunflowers from Al's are taller on average. After collecting some data, she found that for the <m>50</m> sunflowers bought at Al's, plants grew to be an average of <m>6.3</m> feet with a standard deviation of <m>1.2</m> feet. In contrast, the <m>25</m> sunflowers she bought from Orchard's, which ended up having a unimodal/symmetric height histogram, grew to <m>4.8</m> feet on average with a standard deviation of <m>2</m> feet. Test for a difference in heights and follow it up with the appropriate level confidence interval. Be sure to check assumptions.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        A survey done at the Oregon Zoo finds that out of <m>200</m> people sampled (various days and times) people spent <m>\dollar10.72</m> per person on average with a standard deviation of <m>\dollar1.35</m>. In contrast, people at OMSI spent <m>\dollar13</m> per person with a standard deviation of <m>\dollar5</m> in a survey of <m>150</m> people. Test if OMSI costs more on average than the Oregon Zoo.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        The owners of Cinetopia sample <m>100</m> movies from the last <m>4</m> years and find that they have an average run length of <m>100\,mins</m> with a standard deviation of <m>18\,mins</m>. The local Regal does a similar survey and finds an average of <m>120\,mins</m> with a standard deviation of <m>30\,mins</m> for <m>80</m> samples. Test if there is a difference in average run length between the theaters.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Barry Allen is training for the mile. In a recent study at STAR Labs, it was determined that he's running an average mile time of <m>0.1</m> second with a standard deviation of <m>0.01</m> seconds for a collection of <m>52</m> samples. Wally West thinks he is faster. He can run the mile in <m>0.099</m> seconds with a standard deviation of <m>0.1</m> second for a collection of <m>1000</m> samples. Test if Wally is faster.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Claire works as a night nurse. She samples <m>50</m> individuals and finds that they have an average hospital bill of <m>\dollar3,200</m> for one night with a standard deviation of <m>\dollar700</m>. Blue Cross/Blue Shield reports a cost of <m>\dollar4,000</m> on average with a standard deviation of <m>\dollar1000</m> for a sample of <m>200</m>. Test if Claire's local hospital is cheaper on average.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry is training his cat, Fiona, for the Cat Olympics. She is known for her high jump. Curious as to what her true average high jump height is, Mr. Wherry measures several jump heights and gets the following data in feet: <m>4.5</m>, <m>4.75</m>, <m>4.75</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>5</m>, <m>5</m>, and <m>5.25</m>. Victor, Mr. Wherry's other cat, isn't too bad at jumping either. His heights are as follows: <m>4.3</m>, <m>4.5</m>, <m>4.5</m>, <m>4.85</m>, <m>4.85</m>, <m>4.85</m>, <m>5.2</m>, <m>5.2</m>, <m>5.7</m>. Test if there is a difference in their averages.
+      </p>
+    </statement>
+  </example>
+
+  <figure>
+    <image width="46%" source="images/" />
+  </figure>
+</section>

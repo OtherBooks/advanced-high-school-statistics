@@ -1,0 +1,351 @@
+
+<section>
+  <title>Chapter 25 Day One: Linear Regression Day 1</title>
+  <p>
+    <em>Overview:</em> Today, we will practice hypothesis tests for two proportions. There are four steps to hypothesis tests:
+  </p>
+
+  <p>
+    Linear Regression is used for examining the relationship between two variables<ndash />an <em>explanatory variable</em>, x, and a <em>response variable</em>, y. When done correctly, it allows us to make predictions about what should happen given a limited amount of information. Let's look at a quick review:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Find the equation of the line that runs through the points <m>(1,10)</m> and <m>(3,6)</m>.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Plot the data using a scatter plot
+      </p>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Year</cell>
+          <cell>Average Cost of Bread <m>\dollar</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1930</cell>
+          <cell>0.09</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1940</cell>
+          <cell>0.10</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1950</cell>
+          <cell>0.12</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1960</cell>
+          <cell>0.22</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1970</cell>
+          <cell>0.25</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1980</cell>
+          <cell>0.50</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1990</cell>
+          <cell>0.70</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>2000</cell>
+          <cell>1.64</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>2010</cell>
+          <cell>2.79</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>2015</cell>
+          <cell>1.98</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Describe the above scatter plot
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      We describe scatter plot by looking at...
+      <ul>
+        <li>
+          <p>
+            Shape: Does it look like a line? Parabola? Exponential? Etc.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Direction: Is it mostly increasing or decreasing globally?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Fit: How much does it look like the indicated shape (e.g. linear)? Is it a good fit? Okay fit? Poor fit?
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <p>
+    Examples:
+
+    NOTE: We call the input the EXPLANATORY VARIABLE (it is the variable we control or independent variable) and the output the RESPONSE VARIABLE (it is the variable we measure or dependent variable). For example, the Year might be the explanatory variable and the Cost of Bread might be the response variable.
+  </p>
+
+  <aside>
+    <p>
+      When describing the fit for a linear relationship, we use the terminology of <q>correlation</q>. It simply tells us how to variables are related (it does not tell us the cause of the relationship though). <m>r</m> is the correlation coefficient. Here are properties of <m>r</m>:
+      <ul>
+        <li>
+          <p>
+            <m>-1\leq r\leq 1</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r>0</m> means the data is increasing. Think of it like slope!
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r\lt 0</m> means the data is decreasing. Think of it like slope!
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r\approx 1</m> is an almost perfect increasing linear fit.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r\approx -1</m> is an almost perfect decreasing linear fit.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>r\approx 0</m> indicates that the variables are not correlated [may look like a cloud of points].
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <p>
+    Examples:
+
+    By hand, we would calculate it using the formula
+    <me>
+      r=\Sigma \frac{Z_x*Z_y}{(n-1)}
+    </me>
+    where <m>Z_x</m> and <m>Z_y</m> are the z-scores for <m>x</m>-values and <m>y</m>-values respectively. This can be time consuming, so we often find it using technology instead...
+  </p>
+
+  <p>
+    <em>TI-83/84:</em> Go into [Stat]<m>\rightarrow</m>[Edit] and type in your data in L1 and L2. Then,
+  </p>
+
+  <p>
+    go [Stat]<m>\rightarrow</m>[Calc]<m>\rightarrow</m>[LinReg(ax+b)].
+  </p>
+
+  <p>
+    <em>TI-89:</em> Go into [Stat/list Editor]<m>\rightarrow</m>[Edit] and type in your data in list1 and list2. Then, go [F4:Calc]<m>\rightarrow</m>[Regression]<m>\rightarrow</m>[LinReg(ax+b)].
+  </p>
+
+  <p>
+    Our <m>r</m> for the Cost of Bread example was...
+  </p>
+
+  <aside>
+    <p>
+      Since both <m>r=-1</m> and <m>r=1</m> are considered good fits, we often consider <m>R^2</m> instead [takes care of the negatives]. By design, <m>0\leq R^2\leq 1</m>. It's actually a probability!
+      <ul>
+        <li>
+          <p>
+            <m>R^2</m> is the percentage of variation accounted for by our model.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>1-R^2</m> is the percentage of variation left to luck or a lurking variable.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If <m>R^2\geq 0.85</m> or <m>85\%</m>, we consider it a good fit.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If <m>0.75\lt R^2\lt 0.85</m>, we consider it an okay fit.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If <m>R^2\leq 0.75</m>, we consider it a poor fit.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <p>
+    For our Cost of Bread example, our <m>R^2</m> was...
+  </p>
+
+  <p>
+    Your calculator also gives you <m>R^2</m> when you calculate <m>r</m>. Go back and verify it!
+  </p>
+
+  <p>
+    You may have noticed that your calculator does one better than that<ndash />it actually gives us our LINE of best fit! For our Cost of Bread example...
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        We can use this line to make predictions. How much did bread cost in <m>1960?</m> How much will it cost in <m>2016</m>? How much did it cost in <m>1800</m>?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Recall that the equation of a line is <m>y=mx+b</m> where <m>m</m> is the slope and <m>b</m> is part of the y-intercept <m>(0,b)</m>. In Stats, we write this as <m>\hat{y}=b_1(x)+b_0</m> where <m>b_1</m> is our slope and <m>b_0</m> is our <m>y</m>-intercept. Here's why:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        How do we find the slope?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <m>b_1=</m>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        How do we find the y-intercept?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <m>b_0=</m>
+  </p>
+
+  <p>
+    Recall that <m>\hat{y}=b_1(x)+b_0</m>. We calculate the slope using the formula <m>b_1=r\frac{s_y}{s_x}</m>. We found the slope by plugging in the point <m>(\bar{x},\bar{y})</m> and solving for <m>b_0</m>.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Find the equation of a line of best fit if <m>r=0.80</m>, <m>\bar{x}=10</m>, <m>s_x=5</m>, <m>\bar{y}=4</m>, and <m>s_y=3</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Let's verify our Cost of Bread equation:
+  </p>
+
+  <p>
+    More predictions: What will the cost of bread be in <m>1970</m>?
+  </p>
+
+  <p>
+    Predictions are rarely perfect. Residuals are the error in our predictions. We find these by <m>e=y-\hat{y}=\text{ data value } -\text{ line value } .</m>
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Let's find the error in our prediction for the year <m>1970</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    What do the errors typically look like?
+  </p>
+
+  <p>
+    Model:
+  </p>
+</section>

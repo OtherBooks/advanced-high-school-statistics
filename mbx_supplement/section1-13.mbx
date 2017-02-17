@@ -1,0 +1,448 @@
+
+<section>
+  <title>Chapter 24: Chi-Squared Tests for Homogeneity and Independence</title>
+  <p>
+    <em>Overview:</em> Last class, we examined a distribution of values using a <m>\chi^2</m> Goodness of Fit test. This time, we will expand on that to test Homogeneity and Independence.
+  </p>
+
+  <aside>
+    <p>
+      We are using the <m>\chi^2</m>-distribution to test claims involving expected and observed counts. For the purposes of this class, we will only be using it for hypthesis tests. For Goodness of Fit, this looked like...
+      <ul>
+        <li>
+          <p>
+            STEP I: <m>H_0:p_1=\#_1,...,p_n=\#_n</m> and <m>H_A:</m>At least one proportion is different.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            STEP II: Our model is
+            <me>
+              \chi^2=\Sigma \frac{(Obs-Exp)^2}{Exp}
+            </me>
+            where <m>Exp=np_i</m>. The assumptions are
+            <ol>
+              <li>
+                <p>
+                  Random
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Independence/<m>10\%</m> Rule for each trial
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Large n: <m>np_i\geq5</m>. We need five expected counts for each category. NOTE: No restriction on the observed.
+                </p>
+              </li>
+
+              <li>
+                <p>
+                  Countable data.
+                </p>
+              </li>
+            </ol>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            STEP III: Find the P-Value.
+             <m>\chi^2</m> is always a right-tailed test, so <m>P-Val=\chi^2cdf(Low\,\chi^2,\infty,df)</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            STEP IV: Conclusion.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Also, we determined how rare individual categories were using standardized residuals. These acted like Z-scores.
+      <me>
+        St. Res.=\frac{Obs-Exp}{\sqrt{Exp}}
+      </me>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        According to Marvel Comics, <m>10\%</m> of all Ms. Marvel covers are <q>variants</q>. If <m>200</m> Ms. Marvel comics are sampled and <m>15</m> variant covers are found, what can we say about Marvel's claim for the distribution?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>Independence Review:</em> Before moving on to new topics, let's revisit the idea of independent variables from MTH243.
+  </p>
+
+  <aside>
+    <p>
+      Two random events, <m>A</m> and <m>B</m>, are considered to be independent if any of the following are true:
+      <ul>
+        <li>
+          <p>
+            <m>P(A)=P(A|B)</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The outcome of <m>A</m> does not affect the likelihood of an outcome for <m>B</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>P(A\text{ and } B)=P(A)P(B)</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The column/rows are proportional. That is, the columns will have similar ratios.
+          </p>
+        </li>
+      </ul>
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Cat Adoption Team in Sherwood has <m>60</m> cats. Of those, <m>20</m> are kittens, <m>24</m> are male, and <m>10</m> are male kittens. Are the events of <q>male</q> and <q>kitten</q> independent?
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>Male</cell>
+      <cell>Not Male</cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Kitten</cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Not Kitten</cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+  </tabular>
+
+  <example>
+    <statement>
+      <p>
+        Determine if events <m>A</m> and <m>B</m> are independent in the following table.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>A</cell>
+      <cell>Not A</cell>
+      <cell><em>Total</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>B</cell>
+      <cell>3</cell>
+      <cell>12</cell>
+      <cell><em>15</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Not B</cell>
+      <cell>13</cell>
+      <cell>52</cell>
+      <cell><em>65</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell><em>Total</em></cell>
+      <cell><em>16</em></cell>
+      <cell><em>64</em></cell>
+      <cell><em>80</em></cell>
+    </row>
+  </tabular>
+
+  <example>
+    <statement>
+      <p>
+        Fill in the following table assuming that <m>A</m> and <m>B</m> are independent. You might get decimals. That's okay.
+      </p>
+    </statement>
+  </example>
+
+  <tabular>
+    <row>
+      <cell></cell>
+      <cell>A</cell>
+      <cell>Not A</cell>
+      <cell><em>Total</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>B</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell><em>25</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell>Not B</cell>
+      <cell></cell>
+      <cell></cell>
+      <cell><em>75</em></cell>
+    </row>
+    <row bottom="minor">
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+      <cell></cell>
+    </row>
+    <row>
+      <cell><em>Total</em></cell>
+      <cell><em>20</em></cell>
+      <cell><em>80</em></cell>
+      <cell><em>100</em></cell>
+    </row>
+  </tabular>
+
+  <aside>
+    <p>
+      Assuming that two events are independent, we can find <m>EXP_{A\text{ and } B}=</m>
+    </p>
+  </aside>
+  <p>
+    <em>Degrees of Freedom:</em> Given row/column totals, how many cells do we need to fill in before we can solve for the rest by adding/subtracting?
+  </p>
+
+  <aside>
+    <p>
+      Given a <m>r\times c</m> matrix, we find the df by <m>df=</m>
+    </p>
+  </aside>
+  <p>
+    Now that we have a way to find expected counts and the degrees of freedom, we can test for independence using <m>\chi^2</m>.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Cat Adoption Team in Sherwood has <m>60</m> cats. Of those, <m>20</m> are kittens, <m>24</m> are male, and <m>10</m> are male kittens. Are the events of <q>male</q> and <q>kitten</q> independent?
+      </p>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell>Male</cell>
+          <cell>Not Male</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Kitten</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Not Kitten</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </statement>
+  </example>
+
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II:
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    STEP IV:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        What is the standardized residual for Male Kitten?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    This same process can be used to check if two variables are related (Independent) or if multiple column distributions appear the same (Homogeneity).
+  </p>
+
+  <aside>
+    <p>
+      A test for <em>Goodness of Fit</em> compares one distribution for a variable to a claimed distribution.
+    </p>
+
+    <p>
+      A test for <em>Independence</em> compares two or more variables to see if they are related. Typically, the information all comes from one large sample and it is sorted accordingly.
+    </p>
+
+    <p>
+      A test for <em>Homogeneity</em> compares one variable for several subpopulations. Typically, the information is collected separately for each subpopulation.
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Determine what test should be used.
+      </p>
+    </statement>
+  </example>
+
+  <ol>
+    <li>
+      <p>
+        We want to see if there is a relationship between gender and health care coverage (Covered/Not Covered).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        The Division Dean wants to compare the final grade distributions for three different professors to see if they look the same.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Laura at OHSU wants to check if there is a relationship between BP (high/low) and diabetes (yes/no).
+      </p>
+    </li>
+
+    <li>
+      <p>
+        A trading card company claims that <m>5\%</m> of cards are rare, <m>20\%</m> are uncommon, and <m>75\%</m> are common. We want to check the claim.
+      </p>
+    </li>
+  </ol>
+
+  <example>
+    <statement>
+      <p>
+        Let's do one of these in detail: The Division Dean wants to compare the grade distribution for two different instructors. For Mr. Wherry, he passed <m>50</m> students, failed <m>20</m>, and <m>10</m> withdrew. For Mrs. Mushet, she passed <m>80</m> students, failed <m>10</m>, and <m>30</m> withdrew. Do the distributions appear the same?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Verifying our answers in the calculator takes two processes. We first must type in our matrix. Then, we must perform the test.
+  </p>
+
+  <p>
+    <em>Creating a Matrix:</em> If you have a TI-83, TI-84, hit [2nd]<m>\rightarrow</m>[Matrix] and [Edit] Matrix A. You will need to state the Rows then Columns when determining the size.
+  </p>
+
+  <p>
+    If you have a TI-89, go into [Apps]<m>\rightarrow</m>[Data/Matrix]. Select the option for <q>Matrix</q> and name it something you'll remember. State the number of Rows then Columns. Then, type in your data.
+  </p>
+
+  <p>
+    <em>Checking H-Test with Calculator:</em> In our calculator, we use <q>Chi-SquaredTest</q> (not GoF) to check our hypothesis test. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:Tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc P-Value:
+  </p>
+
+  <p>
+    <em>Options, Options, Options:</em> We now have multiple ways of doing problems involving proportions and counts.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Test the claim that the probability of winning a contest by Coca Cola is <m>1</m> in <m>4</m> if we actually win <m>10</m> times in <m>60</m> trials. Do this twice: Once with <m>\chi^2</m> GoF and again with <m>1</m>-propZtest.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Hal and Carol want to test if there is a difference in the proportion of times that they are late to work. Hal was late <m>50</m> times in <m>200</m> days. In contrast, Carol was late <m>40</m> times in <m>200</m> days. Do this twice: Once with <m>\chi^2</m> Homogeneity and again with <m>2</m>-propZtest.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    OBSERVATIONS:
+  </p>
+</section>

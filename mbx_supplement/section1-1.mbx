@@ -1,0 +1,842 @@
+
+<section>
+  <title>Start Class Thinking</title>
+  <p>
+    <em>Overview:</em> These are the experiments that will be done in Mr. Wherry's MTH244 class.
+  </p>
+
+  <aside>
+    <em>Candy Count<ndash />Confidence Interval for One Proportion</em>
+
+    <p>
+      <em>What you need:</em> Several large bags of candies. One paper bag for each group of four students.
+    </p>
+
+    <p>
+      <em>Setup:</em> Pour the candy evenly among the bags. Give one bag to each group. Have each group come up with a name or number for identification purposes.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Create a <m>90\%</m> CI for the true proportion of blue candies.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a <m>95\%</m> CI for the true proportion of blue candies.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Write up your group name/number and confidence intervals on the board!
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> After collecting all of the confidence intervals, pick one group's <m>95\%</m> CI. Using their high and low values, calculate their <m>\hat{p}</m>, margin of error, number of blue candies (<m>x</m>), and number of total candies (<m>n</m>). Students are often impressed that you are able to deconstruct an interval like this down usually to within 1 candy.
+    </p>
+  </aside>
+  <aside>
+    <em>Pepsi/Coke Taste Off<ndash />Hypothesis Tests for One Proportion</em>
+
+    <p>
+      <em>What you need:</em> At least <m>30</m> small cups. A pen to write on the cups. <m>20</m> oz of Pepsi and <m>20</m> oz of Coke. Garbage can for used cups.
+    </p>
+
+    <p>
+      <em>Setup:</em> Do AFTER getting students started on the sampling model to minimize stale soda. Put a dot on the bottom of about <m>15</m> cups. Pour a small amount of Pepsi in all cups with a dot and a small amount of Coke in the remaining cups. Mix the cups.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            If we can't taste the difference between the cups, how often should we guess the soda brand correctly?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If we can taste the difference, what can you say about the proportion of times we can guess correctly?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Complete the first two steps of the H-Test knowing that <m>30</m> cups will be sampled.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Send students out to the hall except for two volunteers that don't want to drink soda. They will be your record keepers. They will keep track of correct guesses and incorrect guesses. For example, a student who guess <q>Coke</q> for a cup with a dot on the bottom would be incorrect.
+
+            IMPORTANT: Students are not told if they are right or wrong.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Bring the students back in from the halls. Run two lines of students<ndash />one for each volunteer. Students taste, guess, get recorded, and then recycle/dispose of their cup. Send them back to the end of the line and keep going until you are out of soda.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Complete the hypothesis test! Follow up with a confidence interval.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Ask students why they think the SD is so large and how that might impact the overall test. Your standard deviation will likely be large if you only run <m>30</m> samples. Ask how they could improve this further if they wanted to do this again on their own to see if they could <em>individually</em> taste a difference.
+    </p>
+  </aside>
+  <aside>
+    <em>Beans!<ndash />Selecting an Alpha Level for One Proportion</em>
+
+    <p>
+      <em>What you need:</em> BEANS!!! But yeah, you'll need beans. Have two types of beans with a known ratio (say <m>1</m> to <m>4</m>) in a large container to sample from. You'll also need a cup for each group of four.
+    </p>
+
+    <p>
+      <em>Setup:</em> Bring out the beans. Give a cup to each group.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em> Okay, here's the deal. You are aiming for <m>2</m> points (real or imaginary, whatever). You are welcome to sample beans as often as you would like. Mr. Wherry claims that <m>25\%</m> of the beans are pinto beans. You are testing to see if the value different. If you say the value is <m>25\%</m>, in other words fail to reject <m>H_0</m>, the group will earn <m>1</m> point regardless of the result. If you say the value is NOT <m>25\%</m>, you will receive either <m>0</m> points if you are wrong (Mr. Wherry does not enjoy being called a liar) or <m>2</m> points if you are correct (Mr. Wherry appreciates people who can discover the truth).
+      <ol>
+        <li>
+          <p>
+            Perform a sample of an appropriate size (left that up to the students to decide).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Perform a hypothesis test.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Choose an appropriate level for you <m>\alpha</m>. Be very specific about the reasons behind your choice.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Groups turn in their names, alpha level, and conclusion.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> After collecting the results, talk about what a Type I and Type II error might look like. Explain what an <m>\alpha</m> should look like for a conservative guesser and what an <m>\alpha</m> should look like for a wild guesser. Also, ask why they probably should have sampled more beans (why is a large <m>n</m> nice?).
+    </p>
+  </aside>
+  <aside>
+    <em>Left or Right Hand?<ndash />Comparing Two Proportions with Confidence Intervals</em>
+
+    <p>
+      <em>What you need:</em> A ping-pong ball for each group of four. A paper bag for each group of four. A timer.
+    </p>
+
+    <p>
+      <em>Setup:</em> Shorten the length of the bag by about half to make it easier to throw in a ping-pong ball. Students stand <m>4</m> feet from the bag.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em> Throw the ping-pong ball into the bag as many times as you can with your dominant and then non-dominant hand.
+      <ol>
+        <li>
+          <p>
+            <m>1</m> minute timed (alternating group members): Make as many shots as you can in a minute. Record the number of attempts, <m>n</m>, and the number of successes, <m>x</m>. Do this with your dominant hand<ndash />likely the hand you write with. Switch after a minute and repeat until everyone has gone.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>1</m> minute timed (alternating group members): Make as many shots as you can in a minute. Record the number of attempts, <m>n</m>, and the number of successes, <m>x</m>. Do this with your non-dominant hand<ndash />likely the hand you write with. Switch after a minute and repeat until everyone has gone.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Write your groups totals for all <m>x</m>'s and <m>n</m>'s. [Board has space for dominant and non-dominant hand]
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a <m>90\%</m> confidence interval to determine if people are more accurate throwing something with their dominant hand!
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Do the interval using technology after doing it by hand. Without actually doing the hypothesis test, determine what the corresponding <m>\alpha</m> level and conclusion should be based off the confidence interval.
+    </p>
+  </aside>
+  <aside>
+    <em>Memory Tests<ndash />Comparing Two Proportions with Hypothesis Tests</em>
+
+    <p>
+      <em>What you need:</em> Two lists of words: l list with <m>25</m> words without anything in common and 1 list with <m>25</m> words broken up into themes. A timer.
+    </p>
+
+    <p>
+      <em>Setup:</em> Have students get out a blank piece of paper for each trial. Get the words ready on the document camera.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            <m>1</m> minute timed (x2): Show students the list of words without anything in common for <m>1</m> minute. Hide the list. Give them <m>1</m> minute afterwards to remember and write down as much as they can.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Bring the list of words back up. Have them score themselves.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <m>1</m> minute timed (x2): Show students the list of words with a theme for <m>1</m> minute. Hide the list. Give them <m>1</m> minute afterwards to remember and write down as much as they can.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Bring the list of words back up. Have them score themselves.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Write up all the class data on the board to get a larger data set. Determine <m>x</m> and <m>n</m> for each list.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Compare the lists using a hypothesis test!
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> The immediate follow up here is obviously a confidence interval. Be sure that they know what level of confidence they should be using based off the previous <m>\alpha</m> level. After coming up with the results, point out that concepts are easier to remember if they are related. This can turn into a conversation about meta-cognition. In particular, explain how students can be studying topics in themes instead of trying to memorize a bunch of formulas. I like to do this activity before an exam day to give them study tips.
+    </p>
+  </aside>
+  <aside>
+    <em>Gummies per Pack?<ndash />Inference for a Sample Average</em>
+
+    <p>
+      <em>What you need:</em> A large box with individual packages gummies/candies. Ideally, this is something that tells you the number of candies per pack.
+    </p>
+
+    <p>
+      <em>Setup:</em> Students grab packages of candies.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Students count the number of gummies in each package.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Students record the number of gummies on the board.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a histogram for the data to help check the Nearly Normal condition.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Test the claim that the number of gummies is different than what the box states. If the box doesn't have a value, make one up.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Create a <m>90\%</m> for the number of gummies per package.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> This one is pretty straightforward as we can actually count things. Explain how you might do this to check the average amount of soda in a can. Get students thinking about testing claims in the real world.
+    </p>
+  </aside>
+  <aside>
+    <em>Don't Hold Your Breath<ndash />Inference for a Sample Average</em>
+
+    <p>
+      <em>What you need:</em> A timer.
+    </p>
+
+    <p>
+      <em>Setup:</em> Students break up into groups of four.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em> Back in <m>2008</m>, David Blane held his breath for <m>17</m> minutes and <m>4</m> seconds. Time magazine, \url{http://content.time.com/time/health/article/0,8599,1736834,00.html}, claims that an average person can hold their breath for <m>2</m> minutes. In contrast, Slate claims that an average person can hold their breath for <m>30</m> seconds. \url{http://www.slate.com/articles/health_and_science/explainer/2013/11/nicholas_mevoli_freediving_death_what_happens_to_people_who_practice_holding.html}
+      <ol>
+        <li>
+          <p>
+            Students taking turns holding their breath. Record the amount of time that they can do this. WARNING: Students MUST stop if they even feel slightly lightheaded.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Students record the number of seconds on the board.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The estimate from Time seems high. Test if the average is lower than Time's claim.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Slate's claim seems more reasonable. Test if the average is different than claimed for Slate.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> The most natural follow-up to this is a confidence interval. I strongly recommend doing so. Be sure to talk about assumptions as well<ndash />they have not always been met in the past for my classes. In particular, watch out for that nearly normal check.
+    </p>
+  </aside>
+  <aside>
+    <em>Strength of a Tissue<ndash />Inference for Two Independent Averages</em>
+
+    <p>
+      <em>What you need:</em> Two brands of facial tissues: Kleenex and generic. Two cups for each group of four students. Water. Rubberbands. Pennies (LOTS of pennies). Straws.
+    </p>
+
+    <p>
+      <em>Setup:</em> Split the room in half. One side will test the strength of Kleenex. The other side will test the strength of the generic. Make sure that one of the two cups for each group has some water in it.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Using a rubberband, fasten the tissue on the top of the cup without water.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Place water on top of the tissue (use one straw full). Wait for it to dissipate.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Drop coins one at a time on the tissue about one inch from the service. Do this until the tissue breaks.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Count the number of coins. REPEAT for as many trials as you can do.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collect the class data for both brands and test if Kleenex brand is stronger than generic using a hypothesis test.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Complete a confidence interval after doing the hypothesis test. Do this both by-hand and using technology.
+    </p>
+  </aside>
+  <aside>
+    <em>Balancing<ndash />Inference for Matched Pair</em>
+
+    <p>
+      <em>What you need:</em> Timer.
+    </p>
+
+    <p>
+      <em>Setup:</em> Students break up into pairs.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Have one person time and the other participate. Stand on one foot with your eyes open for as long as you can. Foot must be held as far back as possible. Bouncing or loss of balance ends the count.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Switch roles. Do it again.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Same thing, but this time you must balance with your eyes closed!
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collected the Eyes Open/Eyes Closed for all individuals. Data must be kept pair.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Test the claim using a hypothesis test.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Complete a confidence interval after doing the hypothesis test. Show how to do this using lists and technology (e.g. <m>L_3=L_1-L_2</m>)
+    </p>
+  </aside>
+  <aside>
+    <em>M<m>\\amp</m>M's<ndash />Chi-Squared Goodness of Fit</em>
+
+    <p>
+      <em>What you need:</em> One or two large party sized bags of regular M<m>\\amp</m>M's. Bags for groups of four.
+    </p>
+
+    <p>
+      <em>Setup:</em> Split the candy up evenly for all groups of four. Bags make this easy to do.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Count the number of each color for the candy.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collect the data on the board coming up with classroom totals.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Perform the Chi-Squared Test under the assumption that the color distribution is uniform.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Calculate the standardized residuals.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Perform the Chi-Squared Test for the claim that the proportions are actually as follows: blue<m>=24\%</m>, brown<m>=13\%</m>, green<m>=16\%</m>, orange<m>=20\%</m>, red<m>=13\%</m>, and yellow<m>=14\%</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Calculate the standardized residuals.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Compare the standardized residuals. Has the fit gotten better or worse? You might still end up with some individual colors that don't match up. That's fine. Use one-proportion confidence intervals for those colors to determine what the actual percentages should be.
+    </p>
+  </aside>
+  <aside>
+    <em>Guessing or RNG?<ndash />Chi-Squared Homogeneity</em>
+
+    <p>
+      <em>What you need:</em> Internet.
+    </p>
+
+    <p>
+      <em>Setup:</em> Each student ideally should be at a computer.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Have students write down a number from the options: <m>\{1,2,3,4,5\}</m>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            If you are able, have students go out and collect more of this data from other students out in the hall, food areas, etc.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collect the class data for the man-made data (picking at <q>random</q>).
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Using random.org, have students run simulations to collect data for integers from <m>1</m> to <m>5</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collect the class data for the RNG.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Perform the Chi-Squared Test for Homogeneity.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Compare the standardized residuals. There'll be some numbers that really stand out. This is a fantastic time to follow up with the discussion of data collection methods. The assumption of <q>random</q> for models is not always an easy one to check. It's important to stress the concept of no bias, but acknowledge that error is sometimes unavoidable. Stating potential flaws is an honest thing to do.
+    </p>
+  </aside>
+  <aside>
+    <em>BluRay Shopping<ndash />ANOVA</em>
+
+    <p>
+      <em>What you need:</em> The Internet.
+    </p>
+
+    <p>
+      <em>Setup:</em> Break students up in groups: Target, Best Buy, and Wal-Mart.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Each group of student will find as many single movie BluRays (no collections/special editions) as possible. Record the cost of the movie.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Calculate the mean, standard deviation, and sample size for each group.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Each group must create a histogram for their data [used to check Nearly Normal].
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Compare the average cost of BluRays for the different stores using ANOVA!
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Do ANOVA by hand and using technology. If the null-hypothesis is rejected, perform an adjusted confidence interval to determine which groups have a statistical difference. Break students up into groups to analyze all possible pairs. I like to have repeats (Target-Best Buy and Best Buy-Target) so that students are reminded of the symmetry.
+    </p>
+  </aside>
+  <aside>
+    <em>Bounce Heights<ndash />Linear Regression</em>
+
+    <p>
+      <em>What you need:</em> One bouncy ball and ruler for each group of four.
+    </p>
+
+    <p>
+      <em>Setup:</em> Give students supply. Assign groups drop heights from the following table.
+    </p>
+
+    <p>
+      <em>Student Instructions:</em>
+      <ol>
+        <li>
+          <p>
+            Drop the bouncy ball for your assigned height and fill in the table. Units are <m>cm</m>. NOTE: You may find that slow-motion video on your phone makes this easier to see.
+            <tabular>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>Drop Height</cell>
+                <cell>Bounce Height</cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>10</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>15</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>20</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>25</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>30</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>35</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>40</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>45</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>50</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>55</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>60</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>65</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>70</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>75</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>80</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+              <row>
+                <cell>85</cell>
+                <cell></cell>
+              </row>
+              <row bottom="minor">
+                <cell></cell>
+                <cell></cell>
+              </row>
+            </tabular>
+          </p>
+        </li>
+
+        <li>
+          <p>
+            State the Explanatory and Response Variable.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Determine the line of best fit. Using technology is okay.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Calculate <m>R^2</m>. How good is the fit?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Test for Linearity</em> Using technology, perform the test for linearity! Recall that this refers to <m>\beta_1</m>.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      <nbsp />
+    </p>
+
+    <p>
+      <em>Follow-Up:</em> Doing a prediction interval for a given drop height is an excellent idea. I mark the ruler with the interval and have a student slo-mo film the drop. We then see how close the prediction actually is.
+    </p>
+  </aside>
+</section>

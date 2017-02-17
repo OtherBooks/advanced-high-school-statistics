@@ -1,0 +1,258 @@
+
+<section>
+  <title>Chapter 22 Day One: Comparing Two Proportions Using a Confidence Interval</title>
+  <p>
+    <em>Overview:</em> Today, we will compare the success rates/proportions for two groups using a confidence interval. This will use many of the techniques from the previous chapters.
+    <nbsp />
+  </p>
+
+  <aside>
+    <p>
+      We found our confidence interval for one-proportion using the formula
+      <me>
+        \hat{p}\pm Z^*\sqrt{\frac{\hat{p}\hat{q}}{n}}
+      </me>
+      or rather (Center)<m>\pm</m>(Dist<m>)^*</m>SE. Confidence intervals are based off <fillin />
+    </p>
+  </aside>
+  <aside>
+    <p>
+      We used the model in step two of a hypothesis test of
+      <me>
+        \hat{p}=N\left(p,\sqrt{\frac{pq}{n}} \right).
+      </me>
+    </p>
+
+    <p>
+      Hypothesis tests are based off <fillin />.
+    </p>
+  </aside>
+  <p>
+    Both our CI and our H-Test were created from the same model. So, if we have a model for comparing two proportions, we'll be able to test claims and determine the actual difference in two groups.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>P_{Seattle}-P_{Portland}>0</m> for two winning rates for local roller derby teams. Which city is better?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>P_{Seattle}-P_{Portland}\lt 0</m> for two winning rates for local roller derby teams. Which city is better?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose that <m>P_{Seattle}-P_{Portland}=0</m> for two winning rates for local roller derby teams. Which city is better?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    NOTE:
+  </p>
+
+  <p>
+    We need a model for <m>\hat{p}_1-\hat{p}_2</m>. We start with some quick observations...
+    <ol>
+      <li>
+        <p>
+          The model for a single proportion is
+          <me>
+            \hat{p}_1=N\left(p_1,\sqrt{\frac{p_1q_1}{n_1}} \right).
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If you add/subtract two normal models, you will get another normal model.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          If <m>X</m> and <m>Y</m> are independent variables, then
+          <me>
+            Var[X-Y]=Var[X]+Var[Y].
+          </me>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    Our model for <m>\hat{p}_2-\hat{p}_1</m> is normal based off the first two facts. Let's determine which normal.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        CENTER: <m>E[\hat{p}_1]=p_1</m> and <m>E[\hat{p}_2]=p_2</m> are the centers for each of our individual models. What is the center for <m>E[\hat{p}_1-\hat{p}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        VARIANCE: <m>Var[\hat{p}_1]=\frac{p_1q_1}{n_1}</m> and <m>Var[\hat{p}_2]=\frac{p_2q_2}{n_2}</m> are the variances for each of our individual models. What is the variance for the difference, <m>Var[\hat{p}_1-\hat{p}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Based off the variance, what is the standard deviation, <m>SD[\hat{p}_1-\hat{p}_2]</m>?
+      </p>
+    </statement>
+  </example>
+
+  <aside>
+    <p>
+      Our model is
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Using the model
+        <me>
+          \hat{p}_1-\hat{p}_2=N\left( p_1-p_2, \sqrt{\frac{p_1q_1}{n_1}+\frac{p_2q_2}{n_2}}\right)
+        </me>
+        create the confidence interval for <m>p_1-p_2</m>.
+      </p>
+
+      <p>
+        HINT: Our interval will be based off samples and look something like (Center)<m>\pm Z^*</m> SE.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Our assumptions are...
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Create a <m>90\%</m> CI for <m>p_1-p_2</m> if <m>x_1=18</m>, <m>n_1=25</m>, <m>x_2=22</m>, and <m>n_2=50</m>.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Which group appears to have a larger success rate? Why?
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry performs a random study of PCC students and finds that out of <m>200</m> students, under the age of <m>20</m>, <m>120</m> have played Pok&#xe9;mon Go! In contrast, he finds that out of <m>100</m> students, age <m>20</m> or older, <m>40</m> have played Pok&#xe9;mon Go!
+        Create a <m>95\%</m> for the difference in proportions for Pok&#xe9;mon Go! players for the two age groups. Assume that people were sampled individually to avoid bias.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for <m>P_{Seattle}-P_{Portland}</m> of <m>(-0.04,-0.03)</m>. What does this tell us?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for <m>P_{Seattle}-P_{Portland}</m> of <m>(-0.04,0.10)</m>. What does this tell us?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Suppose you got a <m>95\%</m> CI for <m>P_{Seattle}-P_{Portland}</m> of <m>(-0.04,-0.03)</m>. What would the <m>95\%</m> for <m>P_{Portland}-P_{Seattle}</m> look like?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Batman Preference: Create a <m>95\%</m> CI to examine the difference in proportions for people that like Batman.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        What was the best point estimate in the previous problem?
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        What was the MOE in the previous problem?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <nbsp />
+  </p>
+
+  <p>
+    <hr style="width:50%;" align="left" />
+
+    <nbsp />
+  </p>
+
+  <p>
+    <em>Checking work with Calculator:</em> In our calculator, we use <q>2-propZInt</q> to check our interval. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F7:Ints] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc Interval:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Mike and his friend El are playing a game of Dungeons and Dragons. Mike thinks El might be cheating by moving the die. In <m>50</m> rolls, Mike gets <m>4</m> <q>critical rolls</q>. El gets <m>14</m> <q>critical rolls</q> in <m>60</m> rolls. Determine if El is getting more <q>critical hits</q> using a <m>95\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Jenny and Dory are competing to see who can remember more street names. Dory managed to remember <m>40\%</m> of <m>150</m> tested street names. Jenny remembered <m>60\%</m> of <m>150</m> tested street names. Determine if Dory remembers less street names using a <m>99\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Jack and Diane, two American kids growing up in the heartland, are competing to see how many Slurpee flavors they can correctly identify. Jack identified <m>10</m> correct out of <m>30</m>. Diane identified <m>13</m> correct out of <m>30</m>. Determine if the difference is statistically significant using a <m>90\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry has two cats: Victor and Fiona. In the <m>200</m> selected afternoons, Fiona is at the front door waiting <m>180</m> times. In contrast, Victor is at the front door waiting <m>40</m> times in a different <m>50</m> randomly selected days. Determine if Fiona is more frequently at the front door waiting using a <m>99\%</m> confidence interval.
+      </p>
+    </statement>
+  </example>
+</section>

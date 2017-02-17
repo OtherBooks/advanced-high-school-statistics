@@ -1,0 +1,397 @@
+
+<section>
+  <title>Chapter 26 Day One: Analysis of Variation (ANOVA)</title>
+  <p>
+    <em>Overview:</em> Last class, we compared multiple counts/proportions. This time, we will look at comparing multiple averages.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry likes to make bread. Recently, he has begun to experiment with different brands of flour to see if the average amount of time needed to knead dough varies by company. His initial data for the needed time in minutes is listed below:
+        <nbsp />
+      </p>
+      <tabular>
+        <row>
+          <cell>Arthur's Flour</cell>
+          <cell>Bob's Red Mill</cell>
+          <cell>Cost Smart</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>20</cell>
+          <cell>23</cell>
+          <cell>35</cell>
+        </row>
+        <row>
+          <cell>30</cell>
+          <cell>26</cell>
+          <cell>36</cell>
+        </row>
+        <row>
+          <cell>25</cell>
+          <cell>27</cell>
+          <cell>37</cell>
+        </row>
+        <row>
+          <cell>28</cell>
+          <cell>33</cell>
+          <cell>38</cell>
+        </row>
+        <row>
+          <cell>26</cell>
+          <cell>30</cell>
+          <cell>36</cell>
+        </row>
+        <row>
+          <cell>26</cell>
+          <cell>31</cell>
+          <cell>30</cell>
+        </row>
+        <row>
+          <cell>21</cell>
+          <cell>31</cell>
+          <cell>37</cell>
+        </row>
+        <row>
+          <cell>22</cell>
+          <cell>32</cell>
+          <cell>38</cell>
+        </row>
+        <row>
+          <cell>26</cell>
+          <cell>29</cell>
+          <cell>37</cell>
+        </row>
+        <row>
+          <cell>24</cell>
+          <cell>30</cell>
+          <cell>36</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>29</cell>
+          <cell>37</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>32</cell>
+          <cell>37</cell>
+        </row>
+      </tabular>
+    </statement>
+  </example>
+
+  <ol>
+    <li>
+      <p>
+        Calculate the average amount of time needed to knead for ALL brands.
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Calculate the average and standard deviation for each brand. As a reminder,
+        <me>
+          s^2=\Sigma \frac{(x_i-\bar{x})^2}{n-1}.
+        </me>
+      </p>
+    </li>
+
+    <li>
+      <p>
+        Does there appear to be a difference in brands?
+      </p>
+    </li>
+  </ol>
+  <p>
+    It feels like we should be doing a hypothesis test. But it's unclear what the model should be and how it should work. Let's look at some examples to see what's going on:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Which of the following sets of side-by-side box-plots appear to have a difference in average?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    Observations:
+
+    We have to study two types of variation: (1) Variation between groups and (2) Variation within groups. We will then compare the two types of variation.
+  </p>
+
+  <p>
+    Let's bring that variance equation up again:
+    <me>
+      s^2=\Sigma \frac{(x_i-\bar{x})^2}{n-1}.
+    </me>
+  </p>
+
+  <p>
+    In the most general sense, we have
+    <me>
+      Variance=\Sigma \frac{(value-center)^2}{df}.
+    </me>
+  </p>
+
+  <p>
+    <em>Variation Between Groups:</em> We want to compare each of the individual averages. What is the <q>center</q>? How will we do this?
+  </p>
+
+  <aside>
+    <p>
+      <em>Variation Between Groups</em> can be found using the formula:
+    </p>
+
+    <p>
+      It has a <m>df</m> of <fillin />
+    </p>
+  </aside>
+  <p>
+    The variation between groups for the flour brands was <fillin />
+  </p>
+
+  <p>
+    <em>Variation Within Groups:</em> We need something to compare with the variation between groups (comparing centers). Luckily, we have the individual spreads of those boxes that inform us of the individual spread that is typical. So, let's <em>POOL</em> together each of those variances to get a collective variance.
+  </p>
+
+  <aside>
+    <p>
+      <em>Variation Within Groups</em> (Based off the SE's) can be found using the formula:
+      <me>
+        s_{pool}^2=
+      </me>
+    </p>
+
+    <p>
+      It has a <m>df</m> of <fillin />
+    </p>
+  </aside>
+  <p>
+    The variation within groups for the flour brands was <fillin />
+  </p>
+
+  <p>
+    <em>Episode IV: A New Distribution</em> Okay. We have two variances, but how do we compare them? Informally, we consider the Variation Between Groups to be the amount of spread between the centers and the Variation Within Groups to be the amount of spread we are allowed in typical situations. As such...
+  </p>
+
+  <aside>
+    <p>
+      <m>F=\frac{Var\,Between}{Var\,Within}</m> is the basis for the <m>F</m>-Distribution. You can think of <m>F</m> as ROUGHLY being the <m>\%</m> of allowed variation taken by the differences.
+    </p>
+  </aside>
+  <p>
+    <em>Which way do we shade?</em>
+  </p>
+
+  <p>
+    Assume that the averages are very similar...
+    <ol>
+      <li>
+        <p>
+          Should the variation between groups be large or small?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Should our <m>F</m> ratio be large or small?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want to reject or fail to reject the null-hypothesis?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want a large or small P-value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          SHADE IN THE CURVE:
+          <image>
+            <latex-image-code>
+              <![CDATA[\begin{tikzpicture}(-1,-0.1)(15,0.8)
+              \psFDist[linewidth=1pt,nue=3,mue=12]{0.01}{14.5}
+              \psaxes[labels=none,ticks=none]{->}(14,0.8)\end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    Assume that the averages are very different...
+    <ol>
+      <li>
+        <p>
+          Should the variation between groups be large or small?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Should our <m>F</m> ratio be large or small?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want to reject or fail to reject the null-hypothesis?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Do we want a large or small P-value?
+        </p>
+      </li>
+
+      <li>
+        <p>
+          SHADE IN THE CURVE:
+          <image>
+            <latex-image-code>
+              <![CDATA[\begin{tikzpicture}(-1,-0.1)(15,0.8)
+              \psFDist[linewidth=1pt,nue=3,mue=12]{0.01}{14.5}
+              \psaxes[labels=none,ticks=none]{->}(14,0.8)\end{tikzpicture}]]>
+            </latex-image-code>
+          </image>
+        </p>
+      </li>
+    </ol>
+  </p>
+
+  <p>
+    Our F-Score:
+  </p>
+
+  <p>
+    OBSERVATION:
+  </p>
+
+  <p>
+    Much like <m>\chi^2</m>, ANOVA, which uses the <m>F</m>-distribution, is always a right-tailed test. We can find the <m>P</m>-value by doing the following:
+  </p>
+
+  <p>
+    <em>TI-83 and TI-84:</em> [2nd]<m>\rightarrow</m>[Vars]<m>\rightarrow</m>[Fcdf].
+  </p>
+
+  <p>
+    <em>TI-89:</em> [Apps]<m>\rightarrow</m>[Stat/List]<m>\rightarrow</m>[F5:Dist]<m>\rightarrow</m>[Fcdf].
+  </p>
+
+  <p>
+    The general setup is the same for all calculators. We need to type in <q>Fcdf(<m>F</m>-score, <m>\infty</m>, <m>df_{Between}</m>,<m>df_{Within}</m>)</q>.
+  </p>
+
+  <p>
+    Our P-value<m>=</m><fillin />
+    <nbsp />
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Assuming that the null-hypothesis is that all brands of flour work equally well on average and the alternative hypothesis is that at least one brand is different, what conclusion can we draw based off our P-value?
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    How can we figure out which group is different?
+  </p>
+
+  <p>
+    Here is the general process from start to finish:
+  </p>
+
+  <aside>
+    <p>
+      STEP I: State the hypotheses. <m>H_0:\mu_1=...=\mu_k</m> and <m>H_A:</m> At least one average is different.
+    </p>
+
+    <p>
+      STEP II: When comparing multiple averages, we use the <m>F</m>-Distribution. Where...
+      <me>
+        \text{ Variation Between Groups } =\Sigma \frac{n_i(\bar{x}_i-\bar{X})^2}{k-1}
+      </me>
+      with <m>k</m> the number of groups and <m>\bar{X}</m> the overall average AND
+      <me>
+        \text{ Variation Within Groups } =s_{pool}^2=\Sigma \frac{df_i(s_i)^2}{N-k}
+      </me>
+      with <m>N</m> the total number of values.
+      <me>
+        F=\frac{\text{ Variation Between Groups } }{\text{ Variation Within Groups } }
+      </me>
+      has df's of <m>k-1</m> and <m>N-k</m> in that order.
+    </p>
+
+    <p>
+      The assumptions are
+      <ol>
+        <li>
+          <p>
+            Random
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Independence/<m>10\%</m> Rule
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Large n:
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Indepedent Groups
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Equal Spread:
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      STEP III: ANOVA is always a right-tailed test.
+    </p>
+
+    <p>
+      We find the P-value using <q>Fcdf(<m>F</m>-score, <m>\infty</m>, <m>df_{Between}</m>,<m>df_{Within}</m>)</q>
+    </p>
+
+    <p>
+      STEP IV: Conclusion
+    </p>
+  </aside>
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry wants to know if there is an average difference in GPA (out of 4.0) for daytime versus evening students. Daytime: <m>\bar{x}=2.86</m>, <m>s=1.4</m>, and <m>n=20</m>. Evening: <m>\bar{x}=3.16</m>, <m>s=1.6</m>, and <m>n=30</m>. Use ANOVA to compare.
+      </p>
+    </statement>
+  </example>
+</section>

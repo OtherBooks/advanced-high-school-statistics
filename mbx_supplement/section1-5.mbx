@@ -1,0 +1,234 @@
+
+<section>
+  <title>Chapter 20: Hypothesis Tests for One Average</title>
+  <p>
+    <em>Overview:</em> We are continuing our investigation of averages. Last time, we did confidence intervals for a population mean (<m>\mu</m>). Today, we will test claims using hypothesis tests. We start with an overview of the H-test process.
+  </p>
+
+  <aside>
+    <ol>
+      <li>
+        <p>
+          State the Hypotheses. These will look something like the following:
+          <me>
+            H_0:\text{ parameter } =\#
+          </me>
+          <me>
+            H_A:\text{ parameter }  [\lt ,>,\neq]\#
+          </me>
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Determine the Model and Check Assumptions.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Calculate the P-Value.
+        </p>
+      </li>
+
+      <li>
+        <p>
+          Conclusion.
+        </p>
+      </li>
+    </ol>
+  </aside>
+  <p>
+    We are testing claims about <m>\mu</m> so we will be using the CLT as our model:
+  </p>
+
+  <aside>
+    <p>
+      The <em>Central Limit Theorem</em> states that
+      <me>
+        \bar{X}=
+      </me>
+      assuming that
+    </p>
+  </aside>
+  <p>
+    The test will be remarkably similar to our 1-proportion z-test from a few weeks ago with a couple of minor exceptions.
+  </p>
+
+  <aside>
+    <p>
+      <m>z</m>-scores are found by taking <m>z=\frac{value-center}{SD}</m>.
+    </p>
+
+    <p>
+      <m>t</m>-scores are found by taking <m>t=\frac{value-center}{SE}</m>.
+    </p>
+  </aside>
+  <p>
+    <nbsp />
+  </p>
+
+  <p>
+    We will look <m>t</m>-scores up using technology.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        It is claimed that Tylenol lasts for <m>4</m> hours on average. After a clinical study involving <m>30</m> randomly selected patients, Mr. Wherry is led to believe that the actual average is less than claimed. His data yields an average of <m>3.25</m> hours with a standard deviation of <m>1</m> hr. Test the claim!
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    STEP I:
+  </p>
+
+  <p>
+    STEP II:
+  </p>
+
+  <p>
+    Assumptions?
+  </p>
+
+  <p>
+    STEP III:
+  </p>
+
+  <p>
+    Okay, we are a bit stuck, but let's do what we typically do. Draw a picture, find a z or t score, and look it up. Finally, let's use our calculator to help us from here.
+  </p>
+
+  <p>
+    <em>TI-83 and TI-84:</em> [2nd]<m>\rightarrow</m>[Vars]<m>\rightarrow</m>[tcdf].
+  </p>
+
+  <p>
+    <em>TI-89:</em> [Apps]<m>\rightarrow</m>[Stat/List]<m>\rightarrow</m>[F5:Dist]<m>\rightarrow</m>[tcdf].
+  </p>
+
+  <p>
+    The general setup is the same for all calculators. We need to type in <q>tcdf(low t-score, high t-score, df)</q>.
+  </p>
+
+  <p>
+    Our P-value<m>=</m><fillin />
+  </p>
+
+  <p>
+    STEP IV:
+  </p>
+
+  <p>
+    Let's practice more with finding the area given <m>t</m>-scores.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        <m>P(t>2.31)</m> if <m>df=15</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        <m>P(t\leq -1.5)</m> if <m>n=31</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        <m>P(-1.96\lt t\lt 1.96)</m> if <m>n=10000</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        <m>P(x>10\,ft)</m> if <m>\bar{x}=8\,ft</m>, <m>SE=\frac{s}{\sqrt{n}}=2\,ft</m>, and <m>n=31</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        <m>P(152\,lb\lt x\lt 160\,lb)</m> if <m>\bar{x}=150\,lb</m>, <m>SE=\frac{s}{\sqrt{n}}=10\,lb</m>, and <m>n=16</m>
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Subway claims that their subs are <m>12</m> inches long. A local woman tests <m>100</m> subs and finds that their average is <m>11</m> inches with a standard deviation of <m>2</m> inches. Test the claim that the true average is LESS than claimed. If there is evidence of a difference, follow it up with a CI.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Claim: The average PCC student takes <m>13.2</m> credits. Let's test it.
+      </p>
+    </statement>
+  </example>
+
+  <p>
+    <em>Checking work with Calculator:</em> In our calculator, we use <q>tTest</q> to check our test. This is found in either [Stat]<m>\rightarrow</m>[Tests] on the TI-83/84 OR [Stat/List]<m>\rightarrow</m>[F6:tests] on the TI-89. Type in your relevant information and you are good to go!
+  </p>
+
+  <p>
+    Calc P-value:
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        The Oregon Zoo is curious how much on average people spend on food. A worker performs a survey and finds that out of <m>200</m> people sampled (various days and times) that spent <m>\dollar10.72</m> per person on average with a standard deviation of <m>\dollar1.35</m>. Test the claim that the average person spends <m>\dollar11</m> or less.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        The owners of Cinetopia want to know the average length of feature films. They sample <m>100</m> movies from the last <m>4</m> years and find that they have an average run length of <m>100\,mins</m> with a standard deviation of <m>18\,mins</m>. Test the claim that the average movie length is different than <m>110</m> minutes.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Barry Allen is training for the mile. In a recent study at STAR Labs, it was determined that he's running an average mile time of <m>0.1</m> second with a standard deviation of <m>0.01</m> seconds for a collection of <m>52</m> samples. Using this information and assuming that his sample is representative, test the claim that Barry can run the mile in <m>0.11</m> seconds or less.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Claire works as a night nurse. She samples <m>50</m> individuals and finds that they have an average hospital bill of <m>\dollar3,200</m> for one night with a standard deviation of <m>\dollar700</m>. Test the claim that it costs more than <m>\dollar3,000</m> on average.
+      </p>
+    </statement>
+  </example>
+
+  <example>
+    <statement>
+      <p>
+        Mr. Wherry is training his cat, Fiona, for the Cat Olympics. She is known for her high jump. Curious as to what her true average high jump height is, Mr. Wherry measures several jump heights and gets the following data in feet: <m>4.5</m>, <m>4.75</m>, <m>4.75</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>4.8</m>, <m>5</m>, <m>5</m>, and <m>5.25</m>. Test the claim that the average is more than <m>4.7</m> feet. [Picture included for educational purposes]
+      </p>
+    </statement>
+  </example>
+
+  <figure>
+    <image width="46%" source="images/" />
+  </figure>
+</section>
