@@ -1,0 +1,14 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="summarizingData">
+  <title>Summarizing data</title>
+  <introduction>
+    <p>
+      After collecting data, the next stage in the investigative process is to summarize the data. Graphical displays allow us to visualize and better understand the important features of a data set.
+    </p>
+  </introduction>
+  <xi:include  href="numericalData.mbx" />
+  <xi:include  href="numericalSummariesAndBoxPlots.mbx" />
+  <xi:include  href="categoricalData.mbx" />
+  <xi:include  href="caseStudyGenderDiscrimination.mbx" />
+  <xi:include  href="section3-5.mbx" />
+</chapter>

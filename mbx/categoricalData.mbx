@@ -1,0 +1,416 @@
+
+<section xml:id="categoricalData">
+  <title>Considering categorical data MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      <index><main>data</main><sub>email</sub></index>
+    </p>
+
+    <p>
+      Like numerical data, categorical data can also be organized and analyzed. In this section, we will introduce tables and other basic tools for categorical data that are used throughout this book. The <c>email50</c> data set represents a sample from a larger email data set called <c>email</c>. This larger data set contains information on 3,921 emails. In this section we will examine whether the presence of numbers, small or large, in an email provides any useful value in classifying email as spam or not spam.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Contingency tables and bar plots</title>
+    <p>
+      <xref ref="emailSpamNumberTableTotals">Table</xref> summarizes two variables: <c>spam</c> and <c>number</c>. Recall that <c>number</c> is a categorical variable that describes whether an email contains no numbers, only small numbers (values under 1 million), or at least one big number (a value of 1 million or more). A table that summarizes data for two categorical variables in this way is called a <term>contingency table</term>. Each value in the table represents the number of times a particular combination of variable outcomes occurred. For example, the value 149 corresponds to the number of emails in the data set that are spam <em>and</em> had no number listed in the email. Row and column totals are also included. The <term>row totals</term> <index><main>contingency table</main><sub>row totals</sub></index> provide the total counts across each row (e.g. <m>149 + 168 + 50 = 367</m>), and <term>column totals</term> <index><main>contingency table</main><sub>column totals</sub></index> are total counts down each column.
+    </p>
+
+    <p>
+      <xref ref="emailNumberTable">Table</xref> shows a frequency table for the <c>number</c> variable. If we replaced the counts with percentages or proportions, the table is a <term>relative frequency table</term>.
+    </p>
+
+    <table xml:id="emailSpamNumberTableTotals" >
+      <caption>A contingency table for <c>spam</c> and <c>number</c>.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{3}{c}<em><c>number</c></em></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>none</cell>
+          <cell>small</cell>
+          <cell>big</cell>
+          <cell>Total</cell>
+          <cell>\hspace{2mm}<nbsp /></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>spam</cell>
+          <cell>149</cell>
+          <cell>168</cell>
+          <cell>50</cell>
+          <cell>367</cell>
+        </row>
+        <row>
+          <cell><c>spam</c></cell>
+          <cell>not spam</cell>
+          <cell>400</cell>
+          <cell>2659</cell>
+          <cell>495</cell>
+          <cell>3554</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>549</cell>
+          <cell>2827</cell>
+          <cell>545</cell>
+          <cell>3921</cell>
+        </row>
+        <row>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="emailNumberTable" >
+      <caption>A frequency table for the <c>number</c> variable.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>none</cell>
+          <cell>small</cell>
+          <cell>big</cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell>549</cell>
+          <cell>2827</cell>
+          <cell>545</cell>
+          <cell>3921</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      Because the numbers in these tables are counts, not to data points, they cannot be graphed using the methods we applied to numerical data. Instead, another set of graphing methods are needed that are suitable for categorical data.
+    </p>
+
+    <p>
+      A bar plot is a common way to display a single categorical variable. The left panel of <xref ref="emailNumberBarPlot">Figure</xref> shows a <term>bar plot</term> for the <c>number</c> variable. In the right panel, the counts are converted into proportions (e.g. <m>549/3921=0.140</m> for <c>none</c>), showing the proportion of observations that are in each level (i.e. in each category).
+    </p>
+
+    <figure xml:id="emailNumberBarPlot" >
+      <caption>Two bar plots of <c>number</c>. The left panel shows the counts, and the right panel shows the proportions in each group.</caption>
+      <image width="73%" source="images/emailNumberBarPlot.png" />
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Row and column proportions</title>
+    <p>
+      <xref ref="rowPropSpamNumber">Table</xref> shows the row proportions for <xref ref="emailSpamNumberTableTotals">Table</xref>. The <em>row proportions</em><index><main>contingency table</main><sub>row proportions|textbf</sub></index> are computed as the counts divided by their row totals. The value 149 at the intersection of <c>spam</c> and <c>none</c> is replaced by <m>149/367=0.406</m>, i.e. 149 divided by its row total, 367. So what does 0.406 represent? It corresponds to the proportion of spam emails in the sample that do not have any numbers.
+    </p>
+
+    <table xml:id="rowPropSpamNumber" >
+      <caption>A contingency table with row proportions for the <c>spam</c> and <c>number</c> variables.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>none</cell>
+          <cell>small</cell>
+          <cell>big</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>spam</cell>
+          <cell><m>149/367 = 0.406</m></cell>
+          <cell><m>168/367 = 0.458</m></cell>
+          <cell><m>50/367 = 0.136</m></cell>
+          <cell>1.000</cell>
+        </row>
+        <row>
+          <cell>not spam</cell>
+          <cell><m>400/3554 = 0.113</m></cell>
+          <cell><m>2657/3554 = 0.748</m></cell>
+          <cell><m>495/3554 = 0.139</m></cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell><m>549/3921 = 0.140</m></cell>
+          <cell><m>2827/3921 = 0.721</m></cell>
+          <cell><m>545/3921 = 0.139</m></cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      A contingency table of the column proportions is computed in a similar way, where each <em>column proportion</em><index><main>contingency table</main><sub>column proportion|textbf</sub></index> is computed as the count divided by the corresponding column total. <xref ref="colPropSpamNumber">Table</xref> shows such a table, and here the value 0.271 indicates that 27.1<percent /> of emails with no numbers were spam. This rate of spam is much higher compared to emails with only small numbers (5.9<percent />) or big numbers (9.2<percent />). Because these spam rates vary between the three levels of <c>number</c> (<c>none</c>, <c>small</c>, <c>big</c>), this provides evidence that the <c>spam</c> and <c>number</c> variables are associated.
+    </p>
+
+    <table xml:id="colPropSpamNumber" >
+      <caption>A contingency table with column proportions for the <c>spam</c> and <c>number</c> variables.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>none</cell>
+          <cell>small</cell>
+          <cell>big</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>spam</cell>
+          <cell><m>149/549 = 0.271</m></cell>
+          <cell><m>168/2827 = 0.059</m></cell>
+          <cell><m>50/545 = 0.092</m></cell>
+          <cell><m>367/3921 = 0.094</m></cell>
+        </row>
+        <row>
+          <cell>not spam</cell>
+          <cell><m>400/549 = 0.729</m></cell>
+          <cell><m>2659/2827 = 0.941</m></cell>
+          <cell><m>495/545 = 0.908</m></cell>
+          <cell><m>3684/3921 = 0.906</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+          <cell>1.000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      We could also have checked for an association between <c>spam</c> and <c>number</c> in <xref ref="rowPropSpamNumber">Table</xref> using row proportions. When comparing these row proportions, we would look down columns to see if the fraction of emails with no numbers, small numbers, and big numbers varied from <c>spam</c> to <c>not<nbsp />spam</c>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          What does 0.458 represent in <xref ref="rowPropSpamNumber">Table</xref>? What does 0.059 represent in <xref ref="colPropSpamNumber">Table</xref>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          0.458 represents the proportion of spam emails that had a small number. 0.059 represents the fraction of emails with small numbers that are spam.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What does 0.139 at the intersection of <c>not<nbsp />spam</c> and <c>big</c> represent in <xref ref="rowPropSpamNumber">Table</xref>? What does 0.908 represent in the <xref ref="colPropSpamNumber">Table</xref>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          0.139 represents the fraction of non-spam email that had a big number. 0.908 represents the fraction of emails with big numbers that are non-spam emails.
+        </p>
+      </hint>
+    </exercise>
+
+    <example xml:id="weighingRowColumnProportions">
+      <statement>
+        <p>
+          Data scientists use statistics to filter spam from incoming email messages. By noting specific characteristics of an email, a data scientist may be able to classify some emails as spam or not spam with high accuracy. One of those characteristics is whether the email contains no numbers, small numbers, or big numbers. Another characteristic is whether or not an email has any HTML content. A contingency table for the <c>spam</c> and <c>format</c> variables from the <c>email</c> data set are shown in <xref ref="emailSpamHTMLTableTotals">Table</xref>. Recall that an HTML email is an email with the capacity for special formatting, e.g. bold text. In <xref ref="emailSpamHTMLTableTotals">Table</xref>, which would be more helpful to someone hoping to classify email as spam or regular email: row or column proportions?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Such a person would be interested in how the proportion of spam changes within each email format. This corresponds to column proportions: the proportion of spam in plain text emails and the proportion of spam in HTML emails.
+        </p>
+
+        <p>
+          If we generate the column proportions, we can see that a higher fraction of plain text emails are spam (<m>209/1195 = 17.5\%</m>) than compared to HTML emails (<m>158/2726 = 5.8\%</m>). This information on its own is insufficient to classify an email as spam or not spam, as over 80<percent /> of plain text emails are not spam. Yet, when we carefully combine this information with many other characteristics, such as <c>number</c> and other variables, we stand a reasonable chance of being able to classify some email as spam or not spam.
+        </p>
+      </answer>
+    </example>
+
+    <table xml:id="emailSpamHTMLTableTotals" >
+      <caption>A contingency table for <c>spam</c> and <c>format</c>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>text</cell>
+          <cell>HTML</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>spam</cell>
+          <cell>209</cell>
+          <cell>158</cell>
+          <cell>367</cell>
+        </row>
+        <row>
+          <cell>not spam</cell>
+          <cell>986</cell>
+          <cell>2568</cell>
+          <cell>3554</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1195</cell>
+          <cell>2726</cell>
+          <cell>3921</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      <xref ref="weighingRowColumnProportions">Example</xref> points out that row and column proportions are not equivalent. Before settling on one form for a table, it is important to consider each to ensure that the most useful table is constructed.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Look back to <xref ref="rowPropSpamNumber">Tables</xref> and <xref ref="colPropSpamNumber"></xref>. Which would be more useful to someone hoping to identify spam emails using the <c>number</c> variable?<fn>The column proportions in <xref ref="colPropSpamNumber">Table</xref> will probably be most useful, which makes it easier to see that emails with small numbers are spam about 5.9<percent /> of the time (relatively rare). We would also see that about 27.1<percent /> of emails with no numbers are spam, and 9.2<percent /> of emails with big numbers are spam.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="segmentedBarPlotsAndIndependence">
+    <title>Segmented bar plots</title>
+    <p>
+      Contingency tables using row or column proportions are especially useful for examining how two categorical variables are related. Segmented bar plots provide a way to visualize the information in these tables.
+    </p>
+
+    <p>
+      A <em>segmented bar plot</em><index><main>bar plot</main><sub>segmented bar plot|textbf</sub></index> is a graphical display of contingency table information. For example, a segmented bar plot representing <xref ref="colPropSpamNumber">Table</xref> is shown in <xref ref="emailSpamNumberSegBar">Figure</xref>, where we have first created a bar plot using the <c>number</c> variable and then separated each group by the levels of <c>spam</c>. The column proportions of <xref ref="colPropSpamNumber">Table</xref> have been translated into a standardized segmented bar plot in <xref ref="emailSpamNumberSegBarSta">Figure</xref>, which is a helpful visualization of the fraction of spam emails in each level of <c>number</c>.
+    </p>
+
+    <figure xml:id="emailSpamNumberSegBar" >
+      <caption>\subref{emailSpamNumberSegBar} Segmented bar plot for numbers found in emails, where the counts have been further broken down by <c>spam</c>. \subref{emailSpamNumberSegBarSta} Standardized version of Figure<nbsp />\subref{emailSpamNumberSegBar}.\textA{\vspace{-3mm}}</caption>
+      <image width="44%" source="images/emailSpamNumberSegBar.png" />
+      }
+      <image width="44%" source="images/emailSpamNumberSegBarSta.png" />
+      }
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          Examine both of the segmented bar plots. Which is more useful?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <xref ref="emailSpamNumberSegBar">Figure</xref> contains more information, but <xref ref="emailSpamNumberSegBarSta">Figure</xref> presents the information more clearly. This second plot makes it clear that emails with no number have a relatively high rate of spam email <mdash /> about 27<percent />! On the other hand, less than 10<percent /> of email with small or big numbers are spam.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Since the proportion of spam changes across the groups in <xref ref="emailSpamNumberSegBarSta">Figure</xref>, we can conclude the variables are dependent, which is something we were also able to discern using table proportions. Because both the <c>none</c> and <c>big</c> groups have relatively few observations compared to the <c>small</c> group, the association is more difficult to see in <xref ref="emailSpamNumberSegBar">Figure</xref>.
+    </p>
+
+    <p>
+      In some other cases, a segmented bar plot that is not standardized will be more useful in communicating important information. Before settling on a particular segmented bar plot, create standardized and non-standardized forms and decide which is more effective at communicating features of the data.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>The only pie chart you will see in this book</title>
+    <p>
+      While pie charts are well known, they are not typically as useful as other charts in a data analysis. A <term>pie chart</term> is shown in <xref ref="emailNumberPieChart">Figure</xref> alongside a bar plot. It is generally more difficult to compare group sizes in a pie chart than in a bar plot, especially when categories have nearly identical counts or proportions. In the case of the <c>none</c> and <c>big</c> categories, the difference is so slight you may be unable to distinguish any difference in group sizes for either<nbsp />plot!
+    </p>
+
+    <figure xml:id="emailNumberPieChart" >
+      <caption>A pie chart and bar plot of <c>number</c> for the <c>email</c> data set.</caption>
+      <image width="90%" source="images/emailNumberPieChart.png" />
+    </figure>
+
+    <p>
+      <index><main>data</main><sub>email</sub></index>
+    </p>
+  </subsection>
+</section>

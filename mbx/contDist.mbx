@@ -1,0 +1,148 @@
+
+<section xml:id="contDist">
+  <title>Continuous distributions</title>
+  <introduction>
+    <p>
+      <index><main>data</main><sub>FCID</sub></index>
+      <index><main>hollow histogram</main></index>
+    </p>
+
+    <example xml:id="usHeights">
+      <statement>
+        <p>
+          <xref ref="fdicHistograms">Figure</xref> shows a few different hollow histograms of the variable <c>height</c> for 3 million US adults from the mid-90's.<fn>This sample can be considered a simple random sample from the US population. It relies on the USDA Food Commodity Intake Database.</fn> How does changing the number of bins allow you to make different interpretations of the data?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Adding more bins provides greater detail. This sample is extremely large, which is why much smaller bins still work well. Usually we do not use so many bins with smaller sample sizes since small counts per bin mean the bin heights are very volatile.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="fdicHistograms" >
+      <caption>Four hollow histograms of US adults heights with varying bin widths.</caption>
+      <image width="73%" source="images/fdicHistograms.png" />
+    </figure>
+
+    <example xml:id="contDistProb">
+      <statement>
+        <p>
+          What proportion of the sample is between <c>180</c> cm and <c>185</c> cm tall (about 5'11" to 6'1")?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We can add up the heights of the bins in the range <c>180</c> cm and <c>185</c> and divide by the sample size. For instance, this can be done with the two shaded bins shown in <xref ref="usHeightsHist180185">Figure</xref>. The two bins in this region have counts of 195,307 and 156,239 people, resulting in the following estimate of the probability:
+          <md>
+            <mrow>\frac{195307+156239}{\text{ 3,000,000 } } = 0.1172</mrow>
+          </md>
+        </p>
+
+        <p>
+          This fraction is the same as the proportion of the histogram's area that falls in the range <c>180</c> to <c>185</c> cm.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="usHeightsHist180185" >
+      <caption>A histogram with bin sizes of 2.5 cm. The shaded region represents individuals with heights between <c>180</c> and <c>185</c> cm.</caption>
+      <image width="95%" source="images/usHeightsHist180185.png" />
+    </figure>
+  </introduction>
+
+  <subsection>
+    <title>From histograms to continuous distributions</title>
+    <p>
+      Examine the transition from a boxy hollow histogram in the top-left of <xref ref="fdicHistograms">Figure</xref> to the much smoother plot in the lower-right. In this last plot, the bins are so slim that the hollow histogram is starting to resemble a smooth curve. This suggests the population height as a <em>continuous</em> numerical variable might best be explained by a curve that represents the outline of extremely slim bins.
+    </p>
+
+    <p>
+      This smooth curve represents a <term>probability density function</term> (also called a <term>density</term> or <term>distribution</term>), and such a curve is shown in <xref ref="fdicHeightContDist">Figure</xref> overlaid on a histogram of the sample. A density has a special property: the total area under the density's curve is 1.
+    </p>
+
+    <figure xml:id="fdicHeightContDist" >
+      <caption>The continuous probability distribution of heights for US adults.</caption>
+      <image width="87%" source="images/fdicHeightContDist.png" />
+    </figure>
+
+    <p>
+      <index><main>hollow histogram</main></index>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Probabilities from continuous distributions</title>
+    <p>
+      We computed the proportion of individuals with heights <c>180</c> to <c>185</c> cm in <xref ref="contDistProb">Example</xref> as a fraction:
+      <md>
+        <mrow>\frac{\text{number of people between \texttt{180} and \texttt{185}} }{\text{ total sample size } }</mrow>
+      </md>
+    </p>
+
+    <p>
+      We found the number of people with heights between <c>180</c> and <c>185</c> cm by determining the fraction of the histogram's area in this region. Similarly, we can use the area in the shaded region under the curve to find a probability (with the help of a computer):
+      <md>
+        <mrow>P(\text{\texttt{height} between \texttt{180} and \texttt{185}} )
+          = \text{area between \texttt{180} and \texttt{185}} 
+          = 0.1157</mrow>
+      </md>
+    </p>
+
+    <p>
+      The probability that a randomly selected person is between <c>180</c> and <c>185</c> cm is 0.1157. This is very close to the estimate from <xref ref="contDistProb">Example</xref>: 0.1172.
+    </p>
+
+    <figure xml:id="fdicHeightContDistFilled" >
+      <caption>Density for heights in the US adult population with the area between 180 and 185 cm shaded. Compare this plot with <xref ref="usHeightsHist180185">Figure</xref>.</caption>
+      <image width="80%" source="images/fdicHeightContDistFilled.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+        Three US adults are randomly selected. The probability a single adult is between <c>180</c> and <c>185</c> cm is 0.1157.<fn>Brief answers: (a) <m>0.1157 \times 0.1157 \times 0.1157 = 0.0015</m>. (b) <m>(1-0.1157)^3 = 0.692</m></fn>
+        <ol>
+          <li>
+          <title>(a)</title>
+          <p>
+          What is the probability that all three are between <c>180</c> and <c>185</c> cm tall?
+            </p>
+          </li>
+
+          <li>
+          <title>(b)</title>
+          <p>
+            What is the probability that none are between <c>180</c> and <c>185</c> cm?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+
+    <example xml:id="probabilityOfExactly180cm">
+      <statement>
+        <p>
+          What is the probability that a randomly selected person is <em>exactly</em> <c>180</c><nbsp />cm? Assume you can measure perfectly.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          This probability is zero. A person might be close to <c>180</c> cm, but not exactly <c>180</c> cm tall. This also makes sense with the definition of probability as area; there is no area captured between <c>180</c><nbsp />cm and <c>180</c><nbsp />cm.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Suppose a person's height is rounded to the nearest centimeter. Is there a chance that a random person's <em>measured</em> height will be <c>180</c><nbsp />cm?<fn>This has positive probability. Anyone between <c>179.5</c> cm and <c>180.5</c> cm will have a <em>measured</em> height of <c>180</c> cm. This is probably a more realistic scenario to encounter in practice versus <xref ref="probabilityOfExactly180cm">Example</xref>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <index><main>data</main><sub>FCID</sub></index>
+    </p>
+  </subsection>
+</section>

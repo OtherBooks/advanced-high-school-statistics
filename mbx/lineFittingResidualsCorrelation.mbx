@@ -1,0 +1,317 @@
+
+<section xml:id="lineFittingResidualsCorrelation">
+  <title>Line fitting, residuals, and correlation MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      It is helpful to think deeply about the line fitting process. In this section, we examine criteria for identifying a linear model and introduce a new statistic, <em>correlation</em>.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Beginning with straight lines</title>
+    <p>
+      <index><main>data</main><sub>possum</sub></index>
+    </p>
+
+    <p>
+      Scatterplots were introduced in <xref ref="summarizingData">Chapter</xref> as a graphical technique to present two numerical variables simultaneously. Such plots permit the relationship between the variables to be examined with ease. <xref ref="scattHeadLTotalL">Figure</xref> shows a scatterplot for the head length and total length of 104 brushtail possums from Australia. Each point represents a single possum from the data.
+    </p>
+
+    <figure xml:id="scattHeadLTotalL" >
+      <caption>A scatterplot showing head length against total length for 104 brushtail possums. A point representing a possum with head length 94.1mm and total length 89cm is highlighted.</caption>
+      <image width="85%" source="images/scattHeadLTotalL.png" />
+    </figure>
+
+    <figure xml:id="possumPic" >
+      <caption>The common brushtail possum of Australia.\vspace{-1mm} 
+
+         <ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash />-\vspace{-2mm}
+
+         { Photo by Peter Firminger on Flickr: MISSINGoiRedirect MISSINGoiRedirect.}\vspace{-8mm}</caption>
+      <image width="70%" source="images/possumPic.png" />
+    </figure>
+
+    <p>
+      The head and total length variables are associated. Possums with an above average total length also tend to have above average head lengths. While the relationship is not perfectly linear, it could be helpful to partially explain the connection between these variables with a straight line.
+    </p>
+
+    <figure xml:id="scattHeadLTotalLTube" >
+      <caption>The figure on the left shows head length versus total length, and reveals that many of the points could be captured by a straight band. On the right, we see that a curved band is more appropriate in the scatterplot for <c>weight</c> and <c>mpgCity</c> from the <c>cars</c> data set.</caption>
+      <image width="73%" source="images/scattHeadLTotalLTube.png" />
+    </figure>
+
+    <p>
+      Straight lines should only be used when the data appear to have a linear relationship, such as the case shown in the left panel of <xref ref="scattHeadLTotalLTube">Figure</xref>. The right panel of <xref ref="scattHeadLTotalLTube">Figure</xref> shows a case where a curved line would be more useful in understanding the relationship between the two variables.
+    </p>
+
+    <warning>
+    <title>Watch out for curved trends</title>
+    <p>
+      {We only consider models based on straight lines in this chapter. If data show a nonlinear trend, like that in the right panel of <xref ref="scattHeadLTotalLTube">Figure</xref>, more advanced techniques should be used.}
+    </p>
+
+    </warning>
+  </subsection>
+
+  <subsection>
+    <title>Fitting a line by eye</title>
+    <p>
+      We want to describe the relationship between the head length and total length variables in the possum data set using a line. In this example, we will use the total length as the predictor variable, <m>x</m>, to predict a possum's head length, <m>y</m>. We could fit the linear relationship by eye, as in <xref ref="scattHeadLTotalLLine">Figure</xref>. The equation for this line is
+      <md>
+        <mrow>\hat{y} = 41 + 0.59x</mrow>
+      </md>
+    </p>
+
+    <p>
+      We can use this line to discuss properties of possums. For instance, the equation predicts a possum with a total length of 80 cm will have a head length of
+      <md>
+        <mrow>\hat{y} \amp = 41 + 0.59\times 80</mrow>
+        <mrow>\amp = 88.2</mrow>
+      </md>
+    </p>
+
+    <p>
+      A <q>hat</q> on <m>y</m> is used to signify that this is an estimate. This estimate may be viewed as an average: the equation predicts that possums with a total length of 80 cm will have an average head length of 88.2 mm. Absent further information about an 80 cm possum, the prediction for head length that uses the average is a reasonable estimate.
+    </p>
+
+    <figure xml:id="scattHeadLTotalLLine" >
+      <caption>A reasonable linear model was fit to represent the relationship between head length and total length.</caption>
+      <image width="80%" source="images/scattHeadLTotalLLine.png" />
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Residuals</title>
+    <p>
+      <index><main>residual</main></index>
+    </p>
+
+    <p>
+      <em>Residuals</em><index><main>residual|textbf</main></index> are the leftover variation in the data after accounting for the model fit:
+      <md>
+        <mrow>\text{ Data }  = \text{ Fit }  + \text{ Residual }</mrow>
+      </md>
+    </p>
+
+    <p>
+      Each observation will have a residual. If an observation is above the regression line, then its residual, the vertical distance from the observation to the line, is positive. Observations below the line have negative residuals. One goal in picking the right linear model is for these residuals to be as small as possible.
+    </p>
+
+    <p>
+      Three observations are noted specially in <xref ref="scattHeadLTotalLLine">Figure</xref>. The observation marked by an <q><times /></q> has a small, negative residual of about -1; the observation marked by <q><m>+</m></q> has a large residual of about +7; and the observation marked by <q><m>\triangle</m></q> has a moderate residual of about -4. The size of a residual is usually discussed in terms of its absolute value. For example, the residual for <q><m>\triangle</m></q> is larger than that of <q><times /></q> because <m>|-4|</m> is larger than <m>|-1|</m>.
+    </p>
+
+    <definition>
+      <title>Residual: difference between observed and expected</title>
+      <statement>
+        <p>
+          The residual of the <m>i^{th}</m> observation <m>(x_i, y_i)</m> is the difference of the observed response (<m>y_i</m>) and the response we would predict based on the model fit (<m>\hat{y}_i</m>):
+          <md>
+            <mrow>\text{ residual } _i = y_i - \hat{y}_i</mrow>
+          </md>
+        </p>
+
+        <p>
+          We typically identify <m>\hat{y}_i</m> by plugging <m>x_i</m> into the model.
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          The linear fit shown in <xref ref="scattHeadLTotalLLine">Figure</xref> is given as <m>\hat{y} = 41 + 0.59x</m>. Based on this line, formally compute the residual of the observation <m>(77.0, 85.3)</m>. This observation is denoted by <q><times /></q> on the plot. Check it against the earlier visual estimate,<nbsp />-1.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We first compute the predicted value of point <q><times /></q> based on the model:
+          <md>
+            <mrow>\hat{y}_{\times} = 41+0.59x_{\times} = 41+0.59\times 77.0 = 86.4</mrow>
+          </md>
+        </p>
+
+        <p>
+          Next we compute the difference of the actual head length and the predicted head length:
+          <md>
+            <mrow>residual_{\times} = y_{\times} - \hat{y}_{\times} = 85.3 -  86.4 = -1.1</mrow>
+          </md>
+        </p>
+
+        <p>
+          This is very close to the visual estimate of -1.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          If a model underestimates an observation, will the residual be positive or negative? What about if it overestimates the observation?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If a model underestimates an observation, then the model estimate is below the actual. The residual, which is the actual observation value minus the model estimate, must then be positive. The opposite is true when the model overestimates the observation: the residual is negative.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Compute the residuals for the observations <m>(85.0, 98.6)</m> (<q><m>+</m></q> in the figure) and <m>(95.5, 94.0)</m> (<q><m>\triangle</m></q>) using the linear relationship <m>\hat{y} = 41 + 0.59x</m>. <fn>(<m>+</m>) First compute the predicted value based on the model:
+          <me>
+            \hat{y}_{+} = 41+0.59x_{+} = 41+0.59\times 85.0 = 91.15
+          </me>
+          Then the residual is given by
+          <me>
+            residual_{+} = y_{+} - \hat{y}_{+} = 98.6-91.15=7.45
+          </me>
+          This was close to the earlier estimate of 7.
+
+          (<m>\triangle</m>) <m>\hat{y}_{\triangle} = 41+0.59x_{\triangle} = 97.3</m>. <m>residual_{\triangle} = y_{\triangle} - \hat{y}_{\triangle} = -3.3</m>, close to the estimate of -4.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Residuals are helpful in evaluating how well a linear model fits a data set. We often display them in a <term>residual plot</term> such as the one shown in <xref ref="scattHeadLTotalLResidualPlot">Figure</xref> for the regression line in <xref ref="scattHeadLTotalLLine">Figure</xref>. The residuals are plotted at their original horizontal locations but with the vertical coordinate as the residual. For instance, the point <m>(85.0,98.6)_{+}</m> had a residual of 7.45, so in the residual plot it is placed at <m>(85.0, 7.45)</m>. Creating a residual plot is sort of like tipping the scatterplot over so the regression line is horizontal.
+    </p>
+
+    <p>
+      From the residual plot, we can better estimate the <term>standard deviation of the residuals</term>, often denoted by the letter <m>s</m>.
+      The standard deviation of the residuals tells us the average size of the residuals. As such, it is a measure of the average deviation between the <m>y</m> values and the regression line. In other words, it tells us the average prediction error using the linear model.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Estimate the standard deviation of the residuals for predicting head length from total length using the regression line. Also, interpret the quantity in context.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          To estimate this graphically, we use the residual plot. The approximate 68, 95 rule for standard deviations applies. Approximately 2/3 of the points are within <m>\pm</m> 2.5 and approximately 95<percent /> of the points are within <m>\pm</m> 5, so 2.5 is a good estimate for the standard deviation of the residuals. On average, the prediction of head length is off by about 2.5 cm.
+        </p>
+
+        <p>
+          <index><main>data</main><sub>possum</sub></index>
+        </p>
+      </answer>
+    </example>
+
+    <definition>
+      <title>Standard deviation of the residuals</title>
+      <statement>
+        <p>
+          The standard deviation of the residuals, often denoted by the letter <m>s</m>, tells us the average error in the predictions using the regression model. It can be estimated from a residual plot.
+        </p>
+      </statement>
+    </definition>
+
+    <figure xml:id="scattHeadLTotalLResidualPlot" >
+      <caption>Residual plot for the model in <xref ref="scattHeadLTotalLLine">Figure</xref>.</caption>
+      <image width="90%" source="images/scattHeadLTotalLResidualPlot.png" />
+    </figure>
+
+    <example xml:id="sampleLinesAndResPlots">
+      <statement>
+        <p>
+          One purpose of residual plots is to identify characteristics or patterns still apparent in data after fitting a model. <xref ref="sampleLinesAndResPlots">Figure</xref> shows three scatterplots with linear models in the first row and residual plots in the second row. Can you identify any patterns remaining in the residuals?
+        </p>
+      </statement>
+      <answer>
+        <figure>
+          <caption>Sample data with their best fitting lines (top row) and their corresponding residual plots (bottom row).</caption>
+          <image width="73%" source="images/sampleLinesAndResPlots.png" />
+        </figure>
+
+        <p>
+          In the first data set (first column), the residuals show no obvious patterns. The residuals appear to be scattered randomly around the dashed line that represents 0.
+        </p>
+
+        <p>
+          The second data set shows a pattern in the residuals. There is some curvature in the scatterplot, which is more obvious in the residual plot. We should not use a straight line to model these data. Instead, a more advanced technique should be used.
+        </p>
+
+        <p>
+          The last plot shows very little upwards trend, and the residuals also show no obvious patterns. It is reasonable to try to fit a linear model to the data. However, it is unclear whether there is statistically significant evidence that the slope parameter is different from zero. The point estimate of the slope parameter, labeled <m>b_1</m>, is not zero, but we might wonder if this could just be due to chance. We will address this sort of scenario in <xref ref="inferenceForLinearRegression">Section</xref>.
+          <index><main>residual</main></index>
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Describing linear relationships with correlation</title>
+    <p>
+      <index><main>correlation</main></index>
+    </p>
+
+    <definition>
+      <title>Correlation coefficient, $r$, measures the strength of a linear relationship</title>
+      <statement>
+        <p>
+          <term>Correlation</term><index><main>correlation|textbf</main></index>, which always takes values between -1 and 1, describes the strength of the linear relationship between two variables. It can be strong, moderate, or<nbsp />weak.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      <fn>
+
+      <m>r</m>
+       correlation</fn>
+    </p>
+
+    <p>
+      We can compute the correlation coefficient (or just correlation for short) using a formula, just as we did with the sample mean and standard deviation. However, this formula is rather complex,<fn>Formally, we can compute the correlation for observations <m>(x_1, y_1)</m>, <m>(x_2, y_2)</m>, ..., <m>(x_n, y_n)</m> using the formula
+      <m>r = \frac{1}{n-1}\sum_{i=1}^{n} \frac{x_i-\bar{x}}{s_x}\frac{y_i-\bar{y}}{s_y}</m>, 
+      where <m>\bar{x}</m>, <m>\bar{y}</m>, <m>s_x</m>, and <m>s_y</m> are the sample means and standard deviations for each variable.</fn> so we generally perform the calculations on a computer or calculator. <xref ref="posNegCorPlots">Figure</xref> shows eight plots and their corresponding correlations. Only when the relationship is perfectly linear is the correlation either -1 or 1. If the relationship is strong and positive, the correlation will be near +1. If it is strong and negative, it will be near -1. If there is no apparent linear relationship between the variables, then the correlation will be near zero.
+    </p>
+
+    <figure xml:id="posNegCorPlots" >
+      <caption>Sample scatterplots and their correlations. The first row shows variables with a positive relationship, represented by the trend up and to the right. The second row shows variables with a negative trend, where a large value in one variable is associated with a low value in the other.</caption>
+      <image width="95%" source="images/posNegCorPlots.png" />
+    </figure>
+
+    <p>
+      The correlation is intended to quantify the strength of a linear trend. Nonlinear trends, even when strong, sometimes produce correlations that do not reflect the strength of the relationship; see three such examples in <xref ref="corForNonLinearPlots">Figure</xref>.
+    </p>
+
+    <figure xml:id="corForNonLinearPlots" >
+      <caption>Sample scatterplots and their correlations. In each case, there is a strong relationship between the variables. However, the correlation is not very strong, and the relationship is not linear.</caption>
+      <image width="96%" source="images/corForNonLinearPlots.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          It appears no straight line would fit any of the datasets represented in <xref ref="corForNonLinearPlots">Figure</xref>. Try drawing nonlinear curves on each plot. Once you create a curve for each, describe what is important in your fit.<fn>We'll leave it to you to draw the lines. In general, the lines you draw should be close to most points and reflect overall trends in the data.</fn>
+          <index><main>correlation</main></index>
+        </p>
+      </statement>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          Take a look at <xref ref="scattHeadLTotalLLine">Figure</xref> on <xref ref="scattHeadLTotalLLine">page</xref>. How would this correlation change if head length were measured in cm rather than mm? What if head length were measure in inches rather than mm?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Here, changing the units of <m>y</m> corresponds to multiplying all the <m>y</m> values by a certain number. This would change the mean and the standard deviation of <m>y</m>, but it would not change the correlation. To see this, imagine dividing every number on the vertical axes by 10. The units of <m>y</m> are now cm rather than mm, but the graph has remain exactly the same
+        </p>
+      </answer>
+    </example>
+
+    <definition>
+      <title>Changing units of $x$ and $y$ does not affect $r$.</title>
+      <statement>
+        <p>
+          The correlation between two variables should not be dependent upon the units in which the variables are recorded. Adding a constant, subtracting a constant, or multiplying a <term>positive</term> constant to all values of <m>x</m> or <m>y</m> does not affect the \mbox{correlation.}
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+</section>

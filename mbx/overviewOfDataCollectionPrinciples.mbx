@@ -1,0 +1,244 @@
+
+<section xml:id="overviewOfDataCollectionPrinciples">
+  <title>Overview of data collection principles MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      <index><main>sample</main></index>
+      <index><main>population</main></index>
+      <index><main>parameter</main></index>
+      <index><main>statistic</main></index>
+    </p>
+
+    <p>
+      The first step in conducting research is to identify topics or questions that are to be investigated. A clearly laid out research question is helpful in identifying what subjects or cases should be studied and what variables are important. It is also important to consider <em>how</em> data are collected so that they are reliable and help achieve the research goals.
+    </p>
+  </introduction>
+
+  <subsection xml:id="populationsAndSamples">
+    <title>Populations and samples</title>
+    <p>
+    Consider the following three research questions:
+    <ol>
+      <li>
+        <p>
+          What is the average mercury content in swordfish in the Atlantic Ocean?
+        </p>
+      </li>
+
+      <li xml:id="timeToGraduationQuestionForUCLAStudents" ><p>
+      Over the last 5 years, what is the average time to complete a degree for Duke undergraduate students?
+        </p>
+      </li>
+
+      <li xml:id="identifyPopulationOfStentStudy" ><p>
+        Does a new drug reduce the number of deaths in patients with severe heart disease?
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      Each research question refers to a target <term>population</term>. In the first question, the target population is all swordfish in the Atlantic ocean, and each fish represents a case. Often times, it is too expensive to collect data for every case in a population. Instead, a sample is taken. A <term>sample</term> represents a subset of the cases and is often a small fraction of the population. For instance, 60 swordfish (or some other number) in the population might be selected, and this sample data may be used to provide an estimate of the population average and answer the research question.
+    </p>
+    <exercise xml:id="identifyingThePopulationForTwoQuestionsInPopAndSampSubsection">
+      <statement>
+        <p>
+          For the second and third questions above, identify the target population and what represents an individual case.<fn><xref ref="timeToGraduationQuestionForUCLAStudents" /> Notice that this question is only relevant to students who complete their degree; the average cannot be computed using a student who never finished her degree. Thus, only Duke undergraduate students who have graduated in the last five years are part of the population of interest. Each such student would represent an individual case. <xref ref="identifyPopulationOfStentStudy" /> A person with severe heart disease represents a case. The population includes all people with severe heart disease.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We collect a sample of data to better understand the characteristics of a population. A <term>variable</term> is a characteristic we measure for each individual or case. The overall quantity of interest may be the mean, median, proportion, or some other summary of a population. These population values are called <em>parameters</em><index><main>parameter|textbf</main></index>. We estimate the value of a parameter by taking a sample and computing a numerical summary called a <term>statistic</term> based on that sample. Note that the two p's (population, parameter) go together and the two s's (sample, statistic) go together.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Earlier we asked the question: what is the average mercury content in swordfish in the Atlantic Ocean? Identify the variable to be measured and the parameter and statistic of interest.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The variable is the level of mercury content in swordfish in the Atlantic Ocean. It will be measured for each individual swordfish. The parameter of interest is the average mercury content in <em>all</em> swordfish in the Atlantic Ocean. If we take a sample of 50 swordfish from the Atlantic Ocean, the average mercury content among just those 50 swordfish will be the statistic.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Two statistics we will study are the <term>mean</term> (also called the <term>average</term>) and <term>proportion</term>. When we are discussing a population, we label the mean as <m>\mu</m> (the Greek letter, <em>mu</em>), while we label the sample mean as <m>\bar{x}</m> (read as <em>x-bar</em>). When we are discussing a proportion in the context of a population, we use the label <m>p</m>, while the sample proportion has a label of <m>\hat{p}</m> (read as <em>p-hat</em>). Generally, we use <m>\bar{x}</m> to estimate the population mean, <m>\mu</m>. Likewise, we use the sample proportion <m>\hat{p}</m> to estimate the population proportion, <m>p</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Is <m>\mu</m> a parameter or statistic? What about <m>\hat{p}</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <m>\mu</m> is a parameter because it refers to the average of the <em>entire</em> population. <m>\hat{p}</m> is a statistic because it is calculated from a sample.
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          For the second question regarding time to complete a degree for a Duke undergraduate, is the variable numerical or categorical? What is the parameter of interest?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The characteristic that we record on each individual is the number of years until graduation, which is a numerical variable. The parameter of interest is the average time to degree for all Duke undergraduates, and we use <m>\mu</m> to describe this quantity.
+        </p>
+      </solution>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          The third question asked whether a new drug reduces deaths in patients with severe heart disease. Is the variable numerical or categorical? Describe the statistic that should be calculated in this study.<fn>The variable is whether or not a patient with severe heart disease dies within the time frame of the study. This is categorical because it will be a yes or a no. The statistic that should be recorded is the proportion of patients that die within the time frame of the study, and we would use <m>\hat{p}</m> to denote this quantity.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If these topics are still a bit unclear, don't worry. We'll cover them in greater detail in the next chapter.
+    </p>
+  </subsection>
+
+  <subsection xml:id="anecdotalEvidenceSubsection">
+    <title>Anecdotal evidence</title>
+    <p>
+    Consider the following possible responses to the three research questions:
+    <ol>
+      <li>
+        <p>
+          A man on the news got mercury poisoning from eating swordfish, so the average mercury concentration in swordfish must be dangerously high.
+        </p>
+      </li>
+
+      <li xml:id="iKnowThreeStudentsWhoTookMoreThan7YearsToGraduateAtDuke" ><p>
+      I met two students who took more than 7 years to graduate from Duke, so it must take longer to graduate at Duke than at many other colleges.
+        </p>
+      </li>
+
+      <li xml:id="myFriendsDadDiedAfterSulphinpyrazon" ><p>
+        My friend's dad had a heart attack and died after they gave him a new heart disease drug, so the drug must not work.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      Each conclusion is based on data. However, there are two problems. First, the data only represent one or two cases. Second, and more importantly, it is unclear whether these cases are actually representative of the population. Data collected in this haphazard fashion are called <term>anecdotal evidence</term>.
+    </p>
+
+    <figure>
+      \hspace{8mm}
+      <image width="6000%" source="images/" />
+      \hspace{4mm}
+
+      <sidebyside>
+        \caption[anecdotal evidence]{In February 2010, some media pundits cited one large snow storm as valid evidence against global warming. As comedian Jon Stewart pointed out, <q>It's one storm, in one region, of one country.</q>\vspace{-4.5mm} 
+
+
+           <ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash /><ndash />-\vspace{-2mm}
+
+           { February 10th, 2010.} }
+      </sidebyside>
+    </figure>
+
+    <definition>
+      <title>Anecdotal evidence</title>
+      <statement>
+        <p>
+          Be careful of making inferences based on anecdotal evidence. Such evidence may be true and verifiable, but it may only represent extraordinary cases. The majority of cases and the average case may in fact be very different.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Anecdotal evidence typically is composed of unusual cases that we recall based on their striking characteristics. For instance, we may vividly remember the time when our friend bought a lottery ticket and won <dollar />250 but forget most the times she bought one and lost. Instead of focusing on the most unusual cases, we should examine a representative sample of many cases.
+    </p>
+  </subsection>
+
+  <subsection xml:id="explanatoryAndResponse">
+    <title>Explanatory and response variables</title>
+    <p>
+      <index><main>data</main><sub>county</sub></index>
+    </p>
+
+    <p>
+    Consider the following question from <xref ref="fedSpendingPovertyQuestion">page</xref> for the <c>county</c> data set:
+    <ol>
+      <li>
+      <title>(1)</title>
+      <p>
+        Is federal spending, on average, higher or lower in counties with high rates of poverty?
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      If we suspect poverty might affect spending in a county, then poverty is the <term>explanatory</term> variable and federal spending is the <term>response</term> variable in the relationship.<fn>Sometimes the explanatory variable is called the <term>independent</term> variable and the response variable is called the <term>dependent</term> variable. However, this becomes confusing since a <em>pair</em> of variables might be independent or dependent, so we avoid this language.</fn> If there are many variables, it may be possible to consider a number of them as explanatory variables.
+    </p>
+
+    <aside>
+      <title>Explanatory and response variables</title>
+      <p>
+        To identify the explanatory variable in a pair of variables, identify which of the two is suspected of affecting the other.
+      </p>
+
+      <p>
+        <image width="73%" source="images/expResp.png" />
+      </p>
+    </aside>
+    <warning>
+    <title>Association does not imply causation</title>
+    <p>
+      {Labeling variables as <em>explanatory</em> and <em>response</em> does not guarantee the relationship between the two is actually causal, even if there is an association identified between the two variables. We use these labels only to keep track of which variable we suspect affects the other.}
+    </p>
+
+    </warning>
+
+    <p>
+      In many cases, the relationship is complex or unknown. It may be unclear whether variable <m>A</m> explains variable <m>B</m> or whether variable <m>B</m> explains variable <m>A</m>. For example, it is now known that a particular protein called REST is much depleted in people suffering from Alzheimer's disease. While this raises hopes of a possible approach for treating Alzheimer's, it is still unknown whether the lack of the protein causes brain deterioration, whether brain deterioration causes depletion in the REST protein, or whether some third variable causes both brain deterioration and REST depletion. That<nbsp />is, we do not know if the lack of the protein is an explanatory variable or a response variable. Perhaps it is both.<fn>MISSINGoiRedirect</fn>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Observational studies versus experiments</title>
+    <p>
+      There are two primary types of data collection: observational studies and experiments.
+    </p>
+
+    <p>
+      Researchers perform an <term>observational study</term> when they collect data without interfering with how the data arise. For instance, researchers may collect information via surveys, review medical or company records, or follow a <term>cohort</term> of many similar individuals to study why certain diseases might develop. In each of these situations, researchers merely observe or take measurements of things that arise naturally.
+    </p>
+
+    <p>
+      When researchers want to investigate the possibility of a causal connection, they conduct an <term>experiment</term>. For all experiments, the researchers must impose a treatment. For most studies there will be both an explanatory and a response variable. For instance, we may suspect administering a drug will reduce mortality in heart attack patients over the following year. To check if there really is a causal connection between the explanatory variable and the response, researchers will collect a sample of individuals and split them into groups. The individuals in each group are <em>assigned</em> a treatment. When individuals are randomly assigned to a group, the experiment is called a <term>randomized experiment</term>. For example, each heart attack patient in the drug trial could be randomly assigned into one of two groups: the first group receives a <term>placebo</term> (fake treatment) and the second group receives the drug. See the case study in <xref ref="basicExampleOfStentsAndStrokes">Section</xref> for another example of an experiment, though that study did not employ a placebo.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Suppose that a researcher is interested in the average tip customers at a particular restaurant give. Should she carry out an observational study or an experiment?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In addressing this question, we ask, <q>Will the researcher be imposing any treatment?</q> Because there is no treatment or interference that would be applicable here, it will be an observational study. Additionally, one consideration the researcher should be aware of is that, if customers know their tips are being recorded, it could change their behavior, making the results of the study inaccurate.
+        </p>
+      </solution>
+    </example>
+
+    <aside>
+      <title>Association $\neq$ causation</title>
+      <p>
+        In general, association does not imply causation, and causation can only be inferred from a randomized experiment.
+      </p>
+    </aside>
+  </subsection>
+</section>

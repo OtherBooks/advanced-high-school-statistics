@@ -1,0 +1,106 @@
+
+<section xml:id="typesOfOutliersInLinearRegression">
+  <title>Types of outliers in linear regression MISSINGVIDEOLINK</title>
+  <p>
+    In this section, we identify criteria for determining which outliers are important and influential.
+  </p>
+
+  <p>
+    Outliers in regression are observations that fall far from the <q>cloud</q> of points. These points are especially important because they can have a strong influence on the least squares line.
+  </p>
+
+  <example xml:id="outlierPlotsExample">
+    <statement>
+      <p>
+        There are six plots shown in <xref ref="outlierPlots">Figure</xref> along with the least squares line and residual plots. For each scatterplot and residual plot pair, identify any obvious outliers and note how they influence the least squares line. Recall that an outlier is any point that doesn't appear to belong with the vast majority of the other points.
+      </p>
+    </statement>
+    <answer>
+      <ul>
+        <li>
+        <title>(1)</title>
+        <p>
+        There is one outlier far from the other points, though it only appears to slightly influence the line.
+          </p>
+        </li>
+
+        <li>
+        <title>(2)</title>
+        <p>
+        There is one outlier on the right, though it is quite close to the least squares line, which suggests it wasn't very influential.
+          </p>
+        </li>
+
+        <li>
+        <title>(3)</title>
+        <p>
+        There is one point far away from the cloud, and this outlier appears to pull the least squares line up on the right; examine how the line around the primary cloud doesn't appear to fit very well.
+          </p>
+        </li>
+
+        <li>
+        <title>(4)</title>
+        <p>
+        There is a primary cloud and then a small secondary cloud of four outliers. The secondary cloud appears to be influencing the line somewhat strongly, making the least square line fit poorly almost everywhere. There might be an interesting explanation for the dual clouds, which is something that could be investigated.
+          </p>
+        </li>
+
+        <li>
+        <title>(5)</title>
+        <p>
+        There is no obvious trend in the main cloud of points and the outlier on the right appears to largely control the slope of the least squares line.
+          </p>
+        </li>
+
+        <li>
+        <title>(6)</title>
+        <p>
+        There is one outlier far from the cloud, however, it falls quite close to the least squares line and does not appear to be very influential.
+          </p>
+        </li>
+      </ul>
+    </answer>
+  </example>
+
+  <figure xml:id="outlierPlots" >
+    <caption>Six plots, each with a least squares line and residual plot. All data sets have at least one outlier.</caption>
+    <image width="73%" source="images/outlierPlots.png" />
+  </figure>
+
+  <p>
+    Examine the residual plots in <xref ref="outlierPlots">Figure</xref>. You will probably find that there is some trend in the main clouds of (3) and (4). In these cases, the outliers influenced the slope of the least squares lines. In (5), data with no clear trend were assigned a line with a large trend simply due to one outlier (!).
+  </p>
+
+  <definition>
+    <title>Leverage</title>
+    <statement>
+      <p>
+        Points that fall horizontally away from the center of the cloud tend to pull harder on the line, so we call them points with <term>high leverage</term>.
+      </p>
+    </statement>
+  </definition>
+
+  <p>
+    Points that fall horizontally far from the line are points of high leverage; these points can strongly influence the slope of the least squares line. If one of these high leverage points does appear to actually invoke its influence on the slope of the line <mdash /> as in cases (3), (4), and (5) of <xref ref="outlierPlotsExample">Example</xref> <mdash /> then we call it an <term>influential point</term>. Usually we can say a point is influential if, had we fitted the line without it, the influential point would have been unusually far from the least squares line.
+  </p>
+
+  <p>
+    It is tempting to remove outliers. Don't do this without a very good reason. Models that ignore exceptional (and interesting) cases often perform poorly. For instance, if a financial firm ignored the largest market swings <mdash /> the <q>outliers</q> <mdash /> they would soon go bankrupt by making poorly thought-out investments.
+  </p>
+
+  <warning>
+  <title>Don't ignore outliers when fitting a final model</title>
+  <p>
+    {If there are outliers in the data, they should not be removed or ignored without a<nbsp />good reason. Whatever final model is fit to the data would not be very helpful if it ignores the most exceptional cases.}
+  </p>
+
+  </warning>
+  
+  <warning>
+  <title>Outliers for a categorical predictor with two levels</title>
+  <p>
+    {Be cautious about using a categorical predictor when one of the levels has very few observations. When this happens, those few observations become influential points.}
+  </p>
+
+  </warning>
+</section>

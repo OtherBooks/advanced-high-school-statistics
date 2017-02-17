@@ -1,0 +1,291 @@
+
+<section>
+  <title>Simulations</title>
+  <p>
+    <index><main>simulations</main></index>
+  </p>
+
+  <p>
+    In the previous section we saw how to apply the binomial formula to find the probability of exactly <m>k</m> successes in <m>n</m> independent trials when a success has probability <m>p</m>. Sometimes we have a problem we want to solve but we don't know the appropriate formula, or even worse, a formula may not exist. In this case, one common approach is to estimate the probability using <em>simulations</em><index><main>simulation|textbf</main></index>.
+  </p>
+
+  <p>
+    You may already be familiar with simulations. Want to know the probability of rolling a sum of 7 with a pair of dice? Roll a pair of dice many, many, many times and see what proportion of times the sum was 7. The more times you roll the pair of dice, the better the estimate will tend to be. Of course, such experiments can be time consuming or even infeasible.
+  </p>
+
+  <p>
+    In this section, we consider simulations using <term>random numbers</term>. Random numbers (or technically, <em>psuedo-random numbers</em><index><main>random numbers</main><sub>psuedo-random numbers</sub></index>) can be produced using a calculator or computer. Random digits are produced such that each digit, <em>0-9</em>, is equally likely to come up in each spot. You'll find that occasionally we may have the same number in a row <mdash /> sometimes multiple times <mdash /> but in the long run, each digit should appear 1/10th of the time.
+  </p>
+
+  <table xml:id="sampleRandomNumberTable" >
+    <caption>Random number table. A full page of random numbers may be found in <xref ref="randomNumberTable">Appendix</xref> on <xref ref="randomNumberTable">page</xref>.</caption>
+    <tabular>
+      <row>
+        <cell></cell>
+        <cell>Column</cell>
+      </row>
+      <row>
+        <cell><nbsp /><nbsp /><nbsp />Row<nbsp /><nbsp /><nbsp /><nbsp /></cell>
+        <cell>1-5</cell>
+        <cell></cell>
+        <cell>6-10</cell>
+        <cell></cell>
+        <cell>11-15</cell>
+        <cell></cell>
+        <cell>16-20</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>1</cell>
+        <cell>43087</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>41864</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>51009</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>39689</cell>
+      </row>
+      <row>
+        <cell>2</cell>
+        <cell>63432</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>72132</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>40269</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>56103</cell>
+      </row>
+      <row>
+        <cell>3</cell>
+        <cell>19025</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>83056</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>62511</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>52598</cell>
+      </row>
+      <row>
+        <cell>4</cell>
+        <cell>85117</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>16706</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>31083</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>24816</cell>
+      </row>
+      <row>
+        <cell>5</cell>
+        <cell>16285</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>56280</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>01494</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>90240</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+      <row>
+        <cell>6</cell>
+        <cell>94342</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>18473</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>50845</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>77757</cell>
+      </row>
+      <row>
+        <cell>7</cell>
+        <cell>61099</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>14136</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>39052</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>50235</cell>
+      </row>
+      <row>
+        <cell>8</cell>
+        <cell>37537</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>58839</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>56876</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>02960</cell>
+      </row>
+      <row>
+        <cell>9</cell>
+        <cell>04510</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>16172</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>90838</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>15210</cell>
+      </row>
+      <row>
+        <cell>10</cell>
+        <cell>27217</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>12151</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>52645</cell>
+        <cell><nbsp /><nbsp /></cell>
+        <cell>96218</cell>
+      </row>
+      <row bottom="minor">
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+        <cell></cell>
+      </row>
+    </tabular>
+  </table>
+
+  <example>
+    <statement>
+      <p>
+        Mika's favorite brand of cereal is running a special where 20<percent /> of the cereal boxes contain a prize. Mika really wants that prize. If her mother buys 6 boxes of the cereal over the next few months, what is the probability Mika will get a prize?
+      </p>
+    </statement>
+    <answer>
+      <p>
+        To solve this problem using simulation, we need to be able to assign digits to outcomes. Each box should have a 20<percent /> chance of having a prize and an 80<percent /> chance of not having a prize. Therefore, a valid assignment would be:
+        <md>
+          <mrow>\emph{0, 1} \amp \rightarrow \text{ prize }</mrow>
+          <mrow>\emph{2-9} \amp \rightarrow \text{ no prize }</mrow>
+        </md>
+      </p>
+
+      <p>
+        Of the ten possible digits (<em>0, 1, 2, ..., 8, 9</em>), two of them, i.e. 20<percent /> of them, correspond to winning a prize, which exactly matches the odds that a cereal box contains a prize.
+      </p>
+
+      <p>
+        In Mika's simulation, one trial will consist of 6 boxes of cereal, and therefore a trial will require six digits (each digit will correspond to one box of cereal). We will repeat the simulation for 20 trials. Therefore we will need 20 sets of 6 digits. Let's begin on row 1 of the random digit table, shown in <xref ref="sampleRandomNumberTable">Table</xref>. If a trial consisted of 5 digits, we could use the first 5 digits going across: <em>43087</em>. Because here a trial consists of 6 digits, it may be easier to read down the table, rather than read across. We will let trial 1 consist of the first 6 digits in column 1 (<em>461819</em>), trial 2 consist of the first 6 digits in column 2 (<em>339564</em>), etc. For this simulation, we will end up using the first 6 rows of each of the 20 columns.
+      </p>
+
+      <p>
+        In trial 1, there are two <em>1</em>'s, so we record that as a success; in this trial there were actually two prizes. In trial 2 there were no <em>0</em>'s or <em>1</em>'s, therefore we do not record this as a success. In trial 3 there were three prizes, so we record this as a success. The rest of this exercise is left as a Guided Practice problem for you to complete.
+      </p>
+    </answer>
+  </example>
+
+  <exercise>
+    <statement>
+      <p>
+        Finish the simulation above and report the estimate for the probability that Mika will get a prize if her mother buys 6 boxes of cereal where each one has a 20<percent /> chance of containing a prize.
+      </p>
+    </statement>
+    <hint>
+      <p>
+        The trials that contain at least one 0 or 1 and therefore are successes are trials: 1, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 19, and 20. There were 17 successes among the 20 trials, so our estimate of the probability based on this simulation is 17/20 = 0.85.
+      </p>
+    </hint>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        In the previous example, the probability that a box of cereal contains a prize is 20<percent />. The question presented is equivalent to asking, what is the probability of getting at least one prize in six randomly selected boxes of cereal. This probability question can be solved explicitly using the method of complements. Find this probability. How does the estimate arrived at by simulation compare to this probability?<fn>The true probability is given by <m>1 - P(\text{ no prizes in six boxes } ) = 1- 0.8^6 = 0.74</m>. The estimate arrived at by simulation was 11<percent /> too high. Note: We only repeated the simulation 20 times. If we had repeated it 1000 times, we would (very likely) have gotten an estimate closer to the true probability.</fn>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    We can also use simulations to estimate quantities other than probabilities. Consider the following example.
+  </p>
+
+  <example>
+    <statement>
+      <p>
+        Let's say that instead of buying exactly 6 boxes of cereal, Mika's mother agrees to buy boxes of this cereal <em>until</em> she finds one with a prize. On average, how many boxes of cereal would one have to buy until one gets a prize?
+      </p>
+    </statement>
+    <answer>
+      <p>
+        For this question, we can use the same digit assignment. However, our stopping rule is different. Each trial may require a different number of digits. For each trial, the stopping rule is: look at digits until we encounter a <em>0</em> or a <em>1</em>. Then, record how many digits/boxes of cereal it took. Repeat the simulation for 20 trials, and then average the numbers from each trial.
+      </p>
+
+      <p>
+        Let's begin again at row 1. We can read across or down, depending upon what is most convenient. Since there are 20 columns and we want 20 trials, we will read down the columns. Starting at column 1, we count how many digits (boxes of cereal) we encounter until we reach a <em>0</em> or <em>1</em> (which represent a prize). For trial 1 we see <em>461</em>, so we record 3. For trial 2 we see <em>3395641</em>, so we record 7. For trial 3, we see <em>0</em>, so we record 1. The rest of this exercise is left as a Guided Practice problem for you to complete.
+      </p>
+    </answer>
+  </example>
+
+  <exercise>
+    <statement>
+      <p>
+        Finish the simulation above and report your estimate for the average number of boxes of cereal one would have to buy until encountering a prize, where the probability of a prize in each box is 20<percent />.<fn>For the 20 trials, the number of digits we see until we encounter a <em>0</em> or <em>1</em> is: 3,7,1,4,9,  4,1,2,4,5,  5,1,1,1,3,   8,5,2,2,6. Now we take the average of these 20 numbers to get 74/20 = 3.7.</fn>
+      </p>
+    </statement>
+  </exercise>
+
+  <example>
+    <statement>
+      <p>
+        Now, consider a case where the probability of interest is not 20<percent />, but rather 28<percent />. Which digits should correspond to success and which to failure?
+      </p>
+    </statement>
+    <answer>
+      <p>
+        This example is more complicated because with only 10 digits, there is no way to select exactly 28<percent /> of them. Therefore, each observation will have to consist of <em>two</em> digits. We can use two digits at a time and assign pairs of digits as follows:
+        <md>
+          <mrow>\textit{{00-27}} \amp \rightarrow \text{ success }</mrow>
+          <mrow>\textit{{28-99}} \amp \rightarrow \text{ failure }</mrow>
+        </md>
+      </p>
+    </answer>
+  </example>
+
+  <exercise>
+    <statement>
+      <p>
+        Assume the probability of winning a particular casino game is 45<percent />. We want to carry out a simulation to estimate the probability that we will win at least 5 times in 10 plays. We will use 30 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?<fn>One possible assignment is: <em>00-44</em> <m>\rightarrow</m> win and <em>45-99</em> <m>\rightarrow</m> lose. Each trial requires 10 pairs of digits, so we will need 30 sets of 10 pairs of digits for a total of <m>30 \times 10 \times 2 = 600</m> digits.</fn>
+      </p>
+    </statement>
+  </exercise>
+  <exercise>
+    <statement>
+      <p>
+        Assume carnival spinner has 7 slots. We want to carry out a simulation to estimate the probability that we will win at least 10 times in 60 plays. Repeat 100 trials of the simulation. Assign digits to outcomes. Also, how many total digits will we require to run this simulation?<fn>Note that <m>1/7 = 0.142857...</m> This makes it tricky to assign digits to outcomes. The best approach here would be to exclude some of the digits from the simulation. We can assign <em>0</em> to success and <em>1-6</em> to failure. This corresponds to a <m>1/7</m> chance of getting a success. If we encounter a <em>7</em>, <em>8</em>, or <em>9</em>, we will just skip over it. Because we don't know how many <em>7</em>, <em>8</em>, or <em>9</em>'s we will encounter, we do not know how many total digits we will end up using for the simulation. (If you want a challenge, try to estimate the total number of digits you would need.)</fn>
+      </p>
+    </statement>
+  </exercise>
+  <p>
+    Does anyone perform simulations like this? Sort of. Simulations are used a lot in statistics, and these often require the same principles covered in this section to properly set up those simulations. The difference is in implementation after the setup. Rather than use a random number table, a statistician will write a program that uses a pseudo-random number generator in a computer to run the simulations very quickly <mdash /> often times millions of trials each second, which provides much more accurate estimates than running a couple dozen trials by hand.
+  </p>
+
+  <p>
+    <index><main>simulations</main></index>
+  </p>
+</section>

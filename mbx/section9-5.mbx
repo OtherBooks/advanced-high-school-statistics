@@ -1,0 +1,133 @@
+
+<section>
+  <title>Transformations for nonlinear data</title>
+  <subsection>
+    <title>Untransformed</title>
+    <example>
+      <statement>
+        <p>
+          Consider the scatterplot and residual plot in <xref ref="NeedsTransform-PreTransform">Figure</xref>. The regression output is also provided. Would a linear model be a good model for the data shown?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          First, we can note the <m>R^2</m> value is fairly large. However, this alone does not mean that the model is good. Another model might be much better. When assessing the appropriateness of a linear model, we should look at the residual plot. The U pattern in the residual plot tells us the original data is curved. If we inspect the two plots, we can see that for small and large values of <m>x</m> we systematically underestimate <m>y</m>, whereas for middle values of <m>x</m>, we systematically overestimate <m>y</m>. Because of this, the model is not appropriate, and we should not carry out a linear regression <m>t</m>-test because the conditions for inference are not met. However, we might be able to use a transformation to linearize the data.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="NeedsTransform-PreTransform" >
+      <caption>Variable <m>y</m> is plotted against <m>x</m>. A nonlinear relationship is evident by the <q>U</q> shown in the residual plot. The curvature is also visible in the original plot.</caption>
+      <image width="70%" source="images/NeedsTransform-PreTransform.png" />
+    </figure>
+
+    <aside>
+      <p>
+        <c>The regression equation is</c>
+      </p>
+
+      <p>
+        <c>y = -52.3564 + 2.7842 x</c>
+      </p>
+
+      <p>
+        <c>Predictor       Coef   SE Coef         T          P</c>
+      </p>
+
+      <p>
+        <c>Constant    -52.3564    7.2757    -7.196      3e-08</c>
+      </p>
+
+      <p>
+        <c>x             2.7842    0.1768    15.752    &lt; 2e-16</c>
+      </p>
+
+      <p>
+        <c>S = 13.76<nbsp />   R-Sq = 88.26<percent />    R-Sq(adj) = 87.91<percent /></c>
+      </p>
+    </aside>
+  </subsection>
+
+  <subsection>
+    <title>Transformed</title>
+    <p>
+      Regression analysis is easier to perform on linear data. When data are nonlinear, we sometimes <term>transform</term> the data in a way that makes the resulting relationship linear. The most common <term>transformation</term> is log (or ln) of the <m>y</m> values. Sometimes we also apply a transformation to the <m>x</m> values. We generally use the residuals as a way to evaluate whether the transformed data are more linear. If so, we can say that a better model has been found.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Using the regression output for the transformed data, write the new linear regression equation
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <m>\widehat{log(y)} = 1.723 +0.053 x</m>
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="NeedsTransform-PostTransform" >
+      <caption>A plot of <m>\log(y)</m> against <m>x</m>. The residuals don't show any evident patterns, which suggests the transformed data is well-fit by a linear model.</caption>
+      <image width="70%" source="images/NeedsTransform-PostTransform.png" />
+    </figure>
+
+    <aside>
+      <p>
+        <c>The regression equation is</c>
+      </p>
+
+      <p>
+        <c>log(y) = 1.722540 + 0.052985 x</c>
+      </p>
+
+      <p>
+        <c>Predictor         Coef     SE Coef        T          P</c>
+      </p>
+
+      <p>
+        <c>Constant      1.722540    0.056731    30.36    &lt; 2e-16</c>
+      </p>
+
+      <p>
+        <c>x             0.052985    0.001378    38.45    &lt; 2e-16</c>
+      </p>
+
+      <p>
+        <c>S = 0.1073<nbsp />   R-Sq = 97.82<percent />    R-Sq(adj) = 97.75<percent /></c>
+      </p>
+    </aside>
+    <exercise>
+      <statement>
+        <p>
+          Which of the following statements are true? There may be more than one.<fn>Part<nbsp />(a) is <em>false</em> since there is a nonlinear (curved) trend in the data. Part<nbsp />(b) is true. Since the transformed data shows a stronger linear trend, it is a better fit, i.e. Part<nbsp />(c) is <em>false</em>, and Part<nbsp />(d) is true.</fn>
+          <ol type="a">
+            <li>
+              <p>
+                There is an apparent linear relationship between <m>x</m> and <m>y</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                There is an apparent linear relationship between <m>x</m> and <m>\widehat{log(y)}</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The model provided by Regression I (<m>\hat{y} = -52.3564 + 2.7842 x</m>) yields a better<nbsp />fit.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The model provided by Regression II (<m>\widehat{log(y)} = 1.723 +0.053 x</m>) yields a better<nbsp />fit.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

@@ -1,0 +1,551 @@
+
+<section xml:id="ConfidenceIntervals">
+  <title>Confidence intervals MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      <index><main>confidence interval</main></index>
+    </p>
+
+    <p>
+      A point estimate provides a single plausible value for a parameter. However, a point estimate is rarely perfect; usually there is some error in the estimate. In addition to supplying a point estimate of a parameter, a next logical step would be to provide a plausible <em>range of values</em> for the parameter.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Capturing the population parameter</title>
+    <p>
+      A plausible range of values for the population parameter is called a <term>confidence interval</term>. Using only a point estimate is like fishing in a murky lake with a spear, and using a confidence interval is like fishing with a net. We can throw a spear where we saw a fish, but we will probably miss. On the other hand, if we toss a net in that area, we have a good chance of catching the fish.
+    </p>
+
+    <p>
+      If we report a point estimate, we probably will not hit the exact population parameter. On the other hand, if we report a range of plausible values <mdash /> a confidence interval <mdash /> we have a good shot at capturing the parameter.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          If we want to be very confident we capture the population parameter, should we use a wider interval or a smaller interval?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If we want to be more confident we will capture the fish, we might use a wider net. Likewise, we use a wider confidence interval if we want to be more confident that we capture the parameter.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Constructing a 95<percent /> confidence interval</title>
+    <p>
+      A point estimate is our best guess for the value of the parameter, so it makes sense to build the confidence interval around that value. The standard error, which is a measure of the uncertainty associated with the point estimate, provides a guide for how large we should make the confidence interval.
+    </p>
+
+    <definition>
+      <title>Constructing a 95<percent /> confidence interval</title>
+      <statement>
+        <p>
+          When the sampling distribution of a point estimate can reasonably be modeled as normal, the point estimate we observe will be within 1.96 standard errors of the true value of interest about 95<percent /> of the time. Thus, a <term>95<percent /> confidence interval</term> for such a point estimate can be constructed:
+          <md>
+            <mrow>\text{ point estimate } \ \pm\ 1.96 \times SE\vspace{-2mm}</mrow>
+          </md>
+        </p>
+
+        <p>
+          We can be <term>95<percent /> confident</term><index><main>confident|textbf</main></index> this interval captures the true value.
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          Compute the area between -1.96 and 1.96 for a normal distribution with mean 0 and standard deviation 1.<fn>We will leave it to you to draw a picture. The Z-scores are <m>Z_{left} = -1.96</m> and <m>Z_{right} = 1.96</m>. The<nbsp />area between these two Z-scores is <m>0.9500</m>. This is where <q>1.96</q> comes from in the 95<percent /> confidence interval<nbsp />formula.</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          The point estimate from the smoking example was 15<percent />. In the next chapters we will determine when we can apply a normal model to a point estimate. For now, assume that the normal model is reasonable. The standard error for this point estimate was calculated to be <m>SE = 0.04</m>. Construct a 95<percent /> confidence interval.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        <md>
+          <mrow>\text{ point estimate } \ \amp \pm \ 1.96\times SE</mrow>
+          <mrow>0.15\  \amp \pm \ 1.96\times 0.04</mrow>
+          <mrow>(0.0716\amp \text{ , }  0.2284)</mrow>
+        </md>
+        <p>
+          We are 95<percent /> confident that the true percent of smokers in this population is between 7.16<percent /> and 22.84<percent />.
+        </p>
+
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Based on the confidence interval above, is there evidence that a smaller proportion smoke in this county than in the state as a whole? The proportion that smoke in the state is known to be 0.20.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          While the point estimate of 0.15 is lower than 0.20, this deviation is likely due to random chance. Because the confidence interval <em>includes</em> the value 0.20, 0.20 is a reasonable value for the proportion of smokers in the county. Therefore, based on this confidence interval, we do not have evidence that a smaller proportion smoke in the county than in the state.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      In <xref ref="basicExampleOfStentsAndStrokes">Section</xref> we encountered an experiment that examined whether implanting a stent in the brain of a patient at risk for a stroke helps reduce the risk of a stroke. The results from the first 30 days of this study, which included 451 patients, are summarized in <xref ref="stentStudyResultsCIsection">Table</xref>. These results are surprising! The point estimate suggests that patients who received stents may have a <em>higher</em> risk of stroke: <m>p_{trmt} - p_{ctrl} = 0.090</m>.
+    </p>
+
+    <table xml:id="stentStudyResultsCIsection" >
+      <caption>Descriptive statistics for 30-day results for the stent study.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>stroke</cell>
+          <cell>no event</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>treatment</cell>
+          <cell>33</cell>
+          <cell>191</cell>
+          <cell>224</cell>
+        </row>
+        <row>
+          <cell>control</cell>
+          <cell>13</cell>
+          <cell>214</cell>
+          <cell>227</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>46</cell>
+          <cell>405</cell>
+          <cell>451</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <example xml:id="stentStroke95CI_CIsection">
+      <statement>
+        <p>
+          Consider the stent study and results. The conditions necessary to ensure the point estimate <m>p_{trmt} - p_{ctrl} = 0.090</m> is nearly normal have been verified for you, and the estimate's standard error is <m>SE = 0.028</m>. Construct a 95<percent /> confidence interval for the change in 30-day stroke rates from usage of the stent.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The conditions for applying the normal model have already been verified, so we can proceed to the construction of the confidence interval:
+          <md>
+            <mrow>\text{ point estimate } \ \amp \pm \ 1.96\times SE</mrow>
+            <mrow>0.090\ \amp \pm \ 1.96 \times 0.028</mrow>
+            <mrow>(0.035\amp \text{ , }  0.145)</mrow>
+          </md>
+        </p>
+
+        <p>
+          We are 95<percent /> confident that implanting a stent in a stroke patient's brain. Since the entire interval is greater than 0, it means the data provide statistically significant evidence that the stent used in the study <em>increases</em> the risk of stroke, contrary to what researchers had expected before this study was published!
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      We can be 95<percent /> confident that a 95<percent /> confidence interval contains the true population parameter. However, confidence intervals are imperfect. About 1-in-20 (5<percent />) properly constructed 95<percent /> confidence intervals will fail to capture the parameter of interest. <xref ref="x95PercentConfidenceInterval">Figure</xref> shows 25 confidence intervals for a proportion that were constructed from simulations where the true proportion was <m>p = 0.3</m>. However, 1 of these 25 confidence intervals happened not to include the true value.
+    </p>
+
+    <figure xml:id="x95PercentConfidenceInterval" >
+      <caption>Twenty-five samples of size <m>n=300</m> were simulated when <m>p = 0.30</m>. For each sample, a confidence interval was created to try to capture the true proportion <m>p</m>. However,<nbsp />1<nbsp />of these<nbsp />25 intervals did not capture <m>p = 0.30</m>.</caption>
+      <image width="95%" source="images/95PercentConfidenceInterval.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="x95PercentConfidenceInterval">Figure</xref>, one interval does not contain the true proportion, <m>p = 0.3</m>. Does this imply that there was a problem with the simulations?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          No. Just as some observations occur more than 1.96 standard deviations from the mean, some point estimates will be more than 1.96 standard errors from the parameter. A confidence interval only provides a plausible range of values for a parameter. While we might say other values are implausible based on the data, this does not mean they are impossible.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="changingTheConfidenceLevelSection">
+    <title>Changing the confidence level</title>
+    <p>
+      <index><main>confidence interval</main><sub>confidence level</sub></index>
+    </p>
+
+    <p>
+      Suppose we want to consider confidence intervals where the confidence level is somewhat higher than 95<percent />: perhaps we would like a confidence level of 99<percent />.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Would a 99<percent /> confidence interval be wider or narrower than a 95<percent /> confidence interval?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Using a previous analogy: if we want to be more confident that we will catch a fish, we should use a wider net, not a smaller one. To be 99<percent /> confidence of capturing the true value, we must use a wider interval. On the other hand, if we want an interval with lower confidence, such as 90<percent />, we would use a narrower interval.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      The 95<percent /> confidence interval structure provides guidance in how to make intervals with new confidence levels. Below is a general 95<percent /> confidence interval for a point estimate that comes from a nearly normal distribution:
+      <md>
+        <mrow>\text{ point estimate } \ \pm\ 1.96\times SE</mrow>
+      </md>
+    </p>
+
+    <p>
+      There are three components to this interval: the point estimate, <q>1.96</q>, and the standard error. The choice of <m>1.96\times SE</m> was based on capturing 95<percent /> of the distribution since the estimate is within 1.96 standard deviations of the true value about 95<percent /> of the time. The choice of 1.96 corresponds to a 95<percent /> confidence level.
+    </p>
+    <exercise xml:id="leadInForMakingA99PercentCIExercise">
+      <statement>
+        <p>
+          If <m>X</m> is a normally distributed random variable, how often will <m>X</m> be within 2.58 standard deviations of the mean?<fn>This is equivalent to asking how often the Z-score will be larger than -2.58 but less than 2.58. (For a picture, see <xref ref="choosingZForCI">Figure</xref>.) There is <m>\approx</m> 0.99 probability that the unobserved random variable <m>X</m> will be within 2.58 standard deviations of the mean.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      To create a 99<percent /> confidence interval, change 1.96 in the 95<percent /> confidence interval formula to be <m>2.58</m>. Guided <xref ref="leadInForMakingA99PercentCIExercise">Practice</xref> highlights that 99<percent /> of the time a normal random variable will be within 2.58 standard deviations of its mean. This approach <mdash /> using the Z-scores in the normal model to compute confidence levels <mdash /> is appropriate when the point estimate is associated with a normal distribution and we can properly compute the standard error. Thus, the formula for a 99<percent /> confidence interval is
+      <md>
+        <mrow>\text{ point estimate } \ \pm\ 2.58\times SE</mrow>
+      </md>
+    </p>
+
+    <p>
+      <xref ref="choosingZForCI">Figure</xref> provides a picture of how to identify <m>z^{\star}</m> based on a confidence level.
+    </p>
+
+    <figure xml:id="choosingZForCI" >
+      <caption>The area between -<m>z^{\star}</m> and <m>z^{\star}</m> increases as <m>|z^{\star}|</m> becomes larger. If the confidence level is 99<percent />, we choose <m>z^{\star}</m> such that 99<percent /> of the normal curve is between -<m>z^{\star}</m> and <m>z^{\star}</m>, which corresponds to 0.5<percent /> in the lower tail and 0.5<percent /> in the upper tail: <m>z^{\star}=2.58</m>.</caption>
+      <image width="73%" source="images/choosingZForCI.png" />
+      <index><main>confidence interval</main><sub>confidence level</sub></index>
+    </figure>
+
+    <exercise xml:id="find99CIForRun10AgeExercise">
+      <statement>
+        <p>
+          Create a 99<percent /> confidence interval for the impact of the stent on the risk of stroke using the data from <xref ref="stentStroke95CI_CIsection">Example</xref>. The point estimate is 0.090, and the standard error is <m>SE = 0.028</m>. It has been verified for you that the point estimate can reasonably be modeled by a normal distribution.<fn>Since the necessary conditions for applying the normal model have already been checked for us, we can go straight to the construction of the confidence interval: <m>\text{ point estimate } \ \pm\ 2.58 \times SE \rightarrow (0.018, 0.162)</m>. We are 99<percent /> confident that implanting a stent in the brain of a patient who is at risk of stroke increases the risk of stroke within 30 days by a rate of 0.018 to 0.162 (assuming the patients are representative of the population).</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <definition>
+      <title>Confidence interval for any confidence level</title>
+      <statement>
+        <p>
+          If the point estimate follows the normal model with standard error <m>SE</m>, then a confidence interval for the population parameter is
+          <md>
+            <mrow>\text{ point estimate } \ \pm\ z^{\star} \times SE</mrow>
+          </md>
+          where <m>z^{\star}</m> depends on the confidence level selected.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Finding the value of <m>z^{\star}</m> that corresponds to a particular confidence level is most easily accomplished by using a new table, called the <m>t</m>-table. For now, what is noteworthy about this table is that the bottom row corresponds to confidence levels. The numbers inside the table are the critical values, but which row should we use? Later in this book, we will see that a t curve with infinite degrees of freedom corresponds to the normal curve. For this reason, when finding using the <m>t</m>-table to find the appropriate <m>z^{\star}</m>, always use row <m>\infty</m>.
+    </p>
+
+    <table xml:id="tTableSample" >
+      <caption>An abbreviated look at the <m>t</m>-table. The columns correspond to confidence levels. Row <m>\infty</m> corresponds to the normal curve.</caption>
+      <tabular>
+        <row>
+          <cell>one tail</cell>
+          <cell>\hspace{1.5mm}  0.100</cell>
+          <cell>\hspace{1.5mm} 0.050</cell>
+          <cell>\hspace{1.5mm} 0.025</cell>
+          <cell>\hspace{1.5mm} 0.010</cell>
+          <cell>\hspace{1.5mm} 0.005</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>{<m>df</m>}  1</cell>
+          <cell>{  3.078}</cell>
+          <cell>{  6.314}</cell>
+          <cell>{ 12.71}</cell>
+          <cell>{ 31.82}</cell>
+          <cell>{ 63.66}</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>{  1.886}</cell>
+          <cell>{  2.920}</cell>
+          <cell>{  4.303}</cell>
+          <cell>{  6.965}</cell>
+          <cell>{  9.925}</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>{  1.638}</cell>
+          <cell>{  2.353}</cell>
+          <cell>{  3.182}</cell>
+          <cell>{  4.541}</cell>
+          <cell>{  5.841}</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1000</cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.646}</cell>
+          <cell>{  1.962}</cell>
+          <cell>{  2.330}</cell>
+          <cell>{  2.581}</cell>
+        </row>
+        <row>
+          <cell><m>\infty</m></cell>
+          <cell>{  1.282}</cell>
+          <cell>{  1.645}</cell>
+          <cell>{  1.960}</cell>
+          <cell>{  2.326}</cell>
+          <cell>{  2.576}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Confidence level C</cell>
+          <cell>{  80<percent />}</cell>
+          <cell>{ 90<percent />}</cell>
+          <cell>{ 95<percent />}</cell>
+          <cell>{  98<percent />}</cell>
+          <cell>{  99<percent />}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <aside>
+      <title>Finding $z^{\star}$ for a particular confidence level</title>
+      <p>
+        We select <m>z^{\star}</m> so that the area between -<m>z^{\star}</m> and <m>z^{\star}</m> in the normal model corresponds to the confidence level. Use the <m>t</m>-table at row <m>\infty</m> to find the critical value <m>z^{\star}</m>.
+      </p>
+    </aside>
+    <exercise xml:id="find90CIForRun10AgeExercise">
+      <statement>
+        <p>
+          In <xref ref="stentStroke95CI_CIsection">Example</xref> we found that implanting a stent in the brain of a patient at risk for a stroke <em>increased</em> the risk of a stroke. The study estimated a 9<percent /> increase in the number of patients who had a stroke, and the standard error of this estimate was about <m>SE = 2.8\%</m> or 0.028. Compute a 90<percent /> confidence interval for the effect. Note: the conditions for normality had earlier been confirmed for us.<fn>We must find <m>z^{\star}</m> such that 90<percent /> of the distribution falls between -<m>z^{\star}</m> and <m>z^{\star}</m> in the standard normal model. Using the <m>t</m>-table with a confidence level of 90<percent /> at row <m>\infty</m> gives 1.645. Thus <m>z^{\star}=1.645</m>. The 90<percent /> confidence interval can then be computed as
+          <md>
+            <mrow>\text{ point estimate } \ \amp \pm\ z^{\star}\times SE</mrow>
+            <mrow>0.09 \ \amp \pm \ 1.645\times 0.028</mrow>
+            <mrow>(0.044\amp  \text{ , }  0.136)</mrow>
+          </md>
+          That is, we are 90<percent /> confident that implanting a stent in a stroke patient's brain increased the risk of stroke within 30 days by 4.4<percent /> to 13.6<percent />.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The normal approximation is crucial to the precision of these confidence intervals. The next two chapters provides detailed discussions about when the normal model can safely be applied to a variety of situations. When the normal model is not a good fit, we will use alternate distributions that better characterize the sampling distribution.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Margin of error</title>
+    <p>
+      The confidence intervals we have encountered thus far have taken the form
+      <md>
+        <mrow>\text{ point estimate }  \ \pm \ z^*\times SE</mrow>
+      </md>
+    </p>
+
+    <p>
+      Confidence intervals are also often reported as
+      <md>
+        <mrow>\text{ point estimate }  \ \pm \ \text{ margin of error }</mrow>
+      </md>
+    </p>
+
+    <p>
+      For example, instead of reporting an interval as <m>0.09 \ \pm  \ 1.645\times 0.028</m> or <m>(0.044, 0.136)</m>, it could be reported as <m>0.09 \ \pm \  0.046</m>.
+    </p>
+
+    <p>
+      The <term>margin of error</term> is the distance between the point estimate and the lower or upper bound of a confidence interval.
+    </p>
+
+    <definition xml:id="marginOfErrorTermBox">
+      <title>Margin of error</title>
+      <statement>
+        <p>
+          A confidence interval can be written as point estimate <m>\pm</m> margin of error.
+          For a confidence interval for a proportion, the margin of error is <m>z^{\star}\times SE</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          To have a smaller margin or error, should one use a larger sample or a smaller sample?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Intuitively, a larger sample should tend to yield less error. We can also note that <m>n</m>, the sample size is in the denominator of the SE formula, so a <m>n</m> goes up, the SE and thus the margin of error go down.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What is the margin of error for the confidence interval: (0.035, 0.145)?<fn>Because we both add and subtract the margin of error to get the confidence interval, the margin of error is <em>half</em> of the width of the interval. <m>(0.145 - 0.035)/2=0.055</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="interpretingCIs">
+    <title>Interpreting confidence intervals</title>
+    <p>
+      <index><main>confidence interval</main><sub>interpretation</sub></index>
+    </p>
+
+    <p>
+      A careful eye might have observed the somewhat awkward language used to describe confidence intervals. Correct interpretation:
+    </p>
+
+    <blockquote>
+    We are [XX]<percent /> confident that the population parameter is between...
+    </blockquote>
+
+    <p>
+      <em>Incorrect</em> language might try to describe the confidence interval as capturing the population parameter with a certain probability.<fn>To see that this interpretation is incorrect, imagine taking two random samples and constructing two 95<percent /> confidence intervals for an unknown proportion. If these intervals are disjoint, can we say that there is a 95<percent />+95<percent />=190<percent /> chance that the first or the second interval captures the true value?</fn> This is one of the most common errors: while it might be useful to think of it as a probability, the confidence level only quantifies how plausible it is that the parameter is in the interval.
+    </p>
+
+    <p>
+      As we saw in <xref ref="x95PercentConfidenceInterval">Figure</xref>, the 95<percent /> confidence interval <em>method</em> has a 95<percent /> probability of producing an interval that will contain the population parameter. A correct interpretation of the confidence <em>level</em> is that such intervals will contain the population parameter that percent of the time. However, each individual <em>interval</em> either does or does not contain the population parameter. A correct interpretation of an individual confidence interval cannot involve the vocabulary of probability.
+    </p>
+
+    <p>
+      Another especially important consideration of confidence intervals is that they <em>only try to capture the population parameter</em>. Our intervals say nothing about the confidence of capturing individual observations, a proportion of the observations, or about capturing point estimates. Confidence intervals only attempt to capture population parameters.
+    </p>
+
+    <p>
+      <index><main>confidence interval</main><sub>interpretation</sub></index>
+      <index><main>confidence interval</main></index>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Using confidence intervals: a stepwise approach</title>
+    <p>
+      Follow these six steps when carrying out any confidence interval problem.
+    </p>
+
+    <definition>
+      <title>Steps for using confidence intervals (AP exam tip)</title>
+      <statement>
+        <p>
+          The AP exam is scored in a standardized way, so to ensure full points for a problem, make sure to complete each of the following steps.
+          <ol>
+            <li>
+              <p>
+                State the name of the CI being used.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Verify conditions to ensure the standard error estimate is reasonable and the point estimate is unbiased and follows the expected distribution, often a normal distribution.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Plug in the numbers and write the interval in the form
+                <md>
+                  <mrow>\text{ point estimate }  \pm \text{ critical value } \times \text{ SE of estimate }</mrow>
+                </md>
+                So far, the <term>critical value</term> has taken the form <m>z^\star</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Evaluate the CI and write in the form (<em><nbsp /> <nbsp /> <nbsp /></em>, <em><nbsp /> <nbsp /> <nbsp /></em>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Interpret the interval: ``We are [XX]<percent /> confident that the true [describe the parameter in context] falls between [identify the upper and lower endpoints of the calculated interval].
+              </p>
+            </li>
+
+            <li>
+              <p>
+                State your conclusion to the original question. (Sometimes, as in the case of the examples in this section, no conclusion is necessary.)
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      <index><main>confidence interval</main></index>
+    </p>
+  </subsection>
+</section>

@@ -1,0 +1,75 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="introductionToData">
+  <title>Data collection</title>
+  <introduction>
+    <p>
+      Scientists seek to answer questions using rigorous methods and careful observations. These observations <mdash /> collected from the likes of field notes, surveys, and experiments <mdash /> form the backbone of a statistical investigation and are called <term>data</term>. Statistics is the study of how best to collect, analyze, and draw conclusions from data. It is helpful to put statistics in the context of a general process of investigation:
+      <ol>
+        <li>
+          <p>
+            Identify a question or problem.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Collect relevant data on the topic.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Analyze the data.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Form a conclusion.
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      Statistics as a subject focuses on making stages 2-4 objective, rigorous, and efficient. That<nbsp />is, statistics has three primary components: How best can we collect data? How should it be analyzed? And what can we infer from the analysis?
+    </p>
+
+    <p>
+      Researchers from a wide array of fields have questions or problems that require the collection and analysis of data. Let's consider three examples.
+      <ul>
+        <li>
+          <p>
+            Climate scientists: how will the global temperature change over the next 100 years?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Psychology: can a simple reminder about saving money cause students to spend less?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Political science: what fraction of Americans approve of the job Congress is doing?
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      What questions from current events or from your own life can you think of that could be answered by collecting and analyzing data? While the questions that can be posed are incredibly diverse, many of these investigations can be addressed with a small number of data collection techniques, analytic tools, and fundamental concepts in statistical inference.
+    </p>
+
+    <p>
+      This chapter focuses on collecting data. We'll discuss basic properties of data, common sources of bias that arise during data collection, and several techniques for collecting data through both sampling and experiments. After finishing this chapter, you will have the tools for identifying weaknesses and strengths in data-based conclusions, tools that are essential to be an informed citizen and a savvy consumer of information.
+    </p>
+  </introduction>
+  <xi:include  href="basicExampleOfStentsAndStrokes.mbx" />
+  <xi:include  href="dataBasics.mbx" />
+  <xi:include  href="overviewOfDataCollectionPrinciples.mbx" />
+  <xi:include  href="section2-4.mbx" />
+  <xi:include  href="experimentsSection.mbx" />
+  <xi:include  href="section2-6.mbx" />
+</chapter>

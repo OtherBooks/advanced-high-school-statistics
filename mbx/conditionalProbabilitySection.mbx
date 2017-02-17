@@ -1,0 +1,1168 @@
+
+<section xml:id="conditionalProbabilitySection">
+  <title>Conditional probability</title>
+  <introduction>
+    <p>
+      <index><main>data</main><sub>family_college</sub></index>
+    </p>
+
+    <p>
+      The <c>family_college</c> data set contains a sample of 792 cases with two variables, <c>teen</c> and <c>parents</c>, and is summarized in <xref ref="contTableOfParStCollege">Table</xref>.<fn>A simulated data set based on real population summaries at MISSINGoiRedirect.</fn> The <c>teen</c> variable is either <c>college</c> or <c>not</c>, where the teenager is labeled as <c>college</c> if she went to college immediately after high school. The <c>parents</c> variable takes the value <c>degree</c> if at least one parent of the teenager completed a college degree.
+    </p>
+
+    <table xml:id="contTableOfParStCollege" >
+      <caption>Contingency table summarizing the <c>family_college</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>parents</c>}</cell>
+          <cell>\hspace{1cm}</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>degree</c></cell>
+          <cell><c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>college</c></cell>
+          <cell>231</cell>
+          <cell>214</cell>
+          <cell>445</cell>
+        </row>
+        <row>
+          <cell><c>teen</c></cell>
+          <cell><c>not</c> \hspace{0.5cm}</cell>
+          <cell>49</cell>
+          <cell>298</cell>
+          <cell>347</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>280</cell>
+          <cell>512</cell>
+          <cell>792</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="familyCollegeVenn" >
+      <caption>A Venn diagram using boxes for the <c>family_college</c> data set.</caption>
+      <image width="65%" source="images/familyCollegeVenn.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          If at least one parent completed a college degree, what is the chance their teenager attended college right after high school?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We can estimate this probability using the data. Of the 280 cases in this data set where <c>parents</c> takes value <c>degree</c>, 231 represent cases where the <c>teen</c> variable takes value <c>college</c>:
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college} given \texttt{parents} \texttt{degree}} ) = \frac{231}{280} = 0.825</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+
+    <example xml:id="collegeProbOfParentsGivenStudentNot">
+      <statement>
+        <p>
+          A teenager is randomly selected from the sample and she did not attend college right after high school. What is the probability that at least one of her parents has a college degree?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          If the teenager did not attend, then she is one of the 347 teens in the second row. Of<nbsp />these 347 teens, 49 had at least one parent who got a college degree:
+          <md>
+            <mrow>P(\text{\texttt{parents} \texttt{degree} given \texttt{teen} \texttt{not}} ) = \frac{49}{347} = 0.141</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+  </introduction>
+
+  <subsection xml:id="marginalAndJointProbabilities">
+    <title>Marginal and joint probabilities</title>
+    <p>
+      <index><main>marginal probability</main></index>
+      <index><main>joint probability</main></index>
+    </p>
+
+    <p>
+      <xref ref="contTableOfParStCollege">Table</xref> includes row and column totals for each variable separately in the <c>family_college</c> data set. These totals represent <em>marginal probabilities</em><index><main>marginal probability|textbf</main></index> for the sample, which are the probabilities based on a single variable without conditioning on any other variables. For instance, a probability based solely on the <c>teen</c> variable is a marginal probability:
+      <md>
+        <mrow>P(\text{\texttt{teen} \texttt{college}} ) = \frac{445}{792} = 0.56</mrow>
+      </md>
+    </p>
+
+    <p>
+      A probability of outcomes for two or more variables or processes is called a <em>joint \mbox{probability} </em><index><main>joint probability|textbf</main></index>:
+      <md>
+        <mrow>P(\text{\texttt{teen} \texttt{college} and \texttt{parents} \texttt{not}} ) = \frac{214}{792} = 0.27</mrow>
+      </md>
+    </p>
+
+    <p>
+      It is common to substitute a comma for <q>and</q> in a joint probability, although either is acceptable. That is,
+    </p>
+
+    <m>P(\text{\texttt{teen} \texttt{college}, \texttt{parents} \texttt{not}} )</m> 
+
+    means the same thing as 
+
+    <m>P(\text{\texttt{teen} \texttt{college} and \texttt{parents} \texttt{not}} )</m>
+
+    <definition>
+      <title>Marginal and joint probabilities</title>
+      <statement>
+        <p>
+          If a probability is based on a single variable, it is a <term>marginal probability<index><main>marginal probability|textbf</main></index></term>. The probability of outcomes for two or more variables or processes is called a <term>joint probability<index><main>joint probability|textbf</main></index></term>.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      We use <term>table proportions</term> to summarize joint probabilities for the <c>family_college</c> sample. These proportions are computed by dividing each count in <xref ref="contTableOfParStCollege">Table</xref> by the table's total, 792, to obtain the proportions in <xref ref="familyCollegeProbTable">Table</xref>. The joint probability distribution of the <c>parents</c> and <c>teen</c> variables is shown in <xref ref="familyCollegeDistribution">Table</xref>.
+    </p>
+
+    <table xml:id="familyCollegeProbTable" >
+      <caption>Probability table summarizing whether at least one parent had a college degree and the teenager attended college.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>parents</c>: <c>degree</c></cell>
+          <cell><c>parents</c>: <c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>teen</c>: <c>college</c></cell>
+          <cell>0.29</cell>
+          <cell>0.27</cell>
+          <cell>0.56</cell>
+        </row>
+        <row>
+          <cell><c>teen</c>: <c>not</c> \hspace{0.5cm}</cell>
+          <cell>0.06</cell>
+          <cell>0.38</cell>
+          <cell>0.44</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>0.35</cell>
+          <cell>0.65</cell>
+          <cell>1.00</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="familyCollegeDistribution" >
+      <caption>Joint probability distribution for the <c>family_college</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Joint outcome</cell>
+          <cell>Probability</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>parents</c> <c>degree</c> and <c>teen</c> <c>college</c></cell>
+          <cell>0.29</cell>
+        </row>
+        <row>
+          <cell><c>parents</c> <c>degree</c> and <c>teen</c> <c>not</c></cell>
+          <cell>0.06</cell>
+        </row>
+        <row>
+          <cell><c>parents</c> <c>not</c> and <c>teen</c> <c>college</c></cell>
+          <cell>0.27</cell>
+        </row>
+        <row>
+          <cell><c>parents</c> <c>not</c> and <c>teen</c> <c>not</c></cell>
+          <cell>0.38</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>1.00</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Verify <xref ref="familyCollegeDistribution">Table</xref> represents a probability distribution: events are disjoint, all probabilities are non-negative, and the probabilities sum to<nbsp />1.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Each of the four outcome combination are disjoint, all probabilities are indeed non-negative, and the sum of the probabilities is <m>0.29 + 0.06 + 0.27 + 0.38 = 1.00</m>.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      We can compute marginal probabilities using joint probabilities in simple cases. For example, the probability a random teenager from the study went to college is found by summing the outcomes from <xref ref="familyCollegeDistribution">Table</xref> where <c>teen</c> takes value <c>college</c>:<index><main>marginal probability</main></index><index><main>joint probability</main></index>
+      <md>
+        <mrow>P(\text{\underline{\color{black}\texttt{teen} \texttt{college}}} )
+        \amp =  P(\text{\texttt{parents} \texttt{degree} and \underline{\color{black}\texttt{teen} \texttt{college}}} )</mrow>
+        <mrow>\amp    + P(\text{\texttt{parents} \texttt{not} and \underline{\color{black}\texttt{teen} \texttt{college}}} )</mrow>
+        <mrow>\amp = 0.29 + 0.27</mrow>
+        <mrow>\amp = 0.56</mrow>
+      </md>
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Defining conditional probability</title>
+    <p>
+      <index><main>conditional probability</main></index>
+    </p>
+
+    <p>
+      There is some connection between education level of parents and of the teenager: a college degree by a parent is associated with college attendance of the teenager. In this section, we discuss how to use information about associations between two variables to improve probability estimation.
+    </p>
+
+    <p>
+      The probability that a random teenager from the study attended college is 0.56. Could we update this probability if we knew that one of the teen's parents has a college degree? Absolutely. To do so, we limit our view to only those 280 cases where a parent has a college degree and look at the fraction where the teenager attended college:
+      <md>
+        <mrow>P(\text{\texttt{teen} \texttt{college} given \texttt{parents} \texttt{degree}} ) = \frac{231}{280} = 0.825</mrow>
+      </md>
+    </p>
+
+    <p>
+      We call this a <term>conditional probability</term> because we computed the probability under a condition: a parent has a college degree. There are two parts to a conditional probability, <term>the outcome of interest</term> and the <term>condition</term>. It is useful to think of the condition as information we know to be true, and this information usually can be described as a known outcome or<nbsp />event.
+    </p>
+
+    <p>
+      We separate the text inside our probability notation into the outcome of interest and the condition:
+      <md>
+        <mrow>\amp \amp  P(\text{\texttt{teen} \texttt{college} given \texttt{parents} \texttt{degree}} )</mrow>
+        <mrow>\amp \amp  = P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parents} \texttt{degree}} ) = \frac{231}{280} = 0.825</mrow>
+      </md>
+    </p>
+
+    <p>
+      <fn>
+
+      <m>P(A | B)</m>
+       Probability of
+      outcome <m>A</m>
+      given <m>B</m></fn>The vertical bar <q><m>|</m></q> is read as <em>given</em>.
+    </p>
+
+    <p>
+      In Equation<nbsp /><xref ref="probStudentUsedIfParentsUsedInFormalNotation" />, we computed the probability a teen attended college based on the condition that at least one parent has a college degree as a fraction:
+      <md>
+        <mrow>\amp \amp  P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parents} \texttt{degree}} )</mrow>
+        <mrow>\amp \amp  = \frac{\text{\# cases where \texttt{teen} \texttt{college} and \texttt{parents} \texttt{degree}} }{\text{\# cases where \texttt{parents} \texttt{degree}} }</mrow>
+        <mrow>\amp \amp  = \frac{231}{280} = 0.825</mrow>
+      </md>
+    </p>
+
+    <p>
+      We considered only those cases that met the condition, <c>parents</c> <c>degree</c>, and then we computed the ratio of those cases that satisfied our outcome of interest, the teenager attended college.
+    </p>
+
+    <p>
+      Frequently, marginal and joint probabilities are provided instead of count data. For example, disease rates are commonly listed in percentages rather than in a count format. We would like to be able to compute conditional probabilities even when no counts are available, and we use Equation<nbsp /><xref ref="ratioOfBothToRatioOfConditionalForParentsAndStudent" /> as a template to understand this technique.
+    </p>
+
+    <p>
+      We considered only those cases that satisfied the condition, <c>parents</c> <c>degree</c>. Of these cases, the conditional probability was the fraction who represented the outcome of interest, <c>teen</c> <c>college</c>. Suppose we were provided only the information in <xref ref="familyCollegeProbTable">Table</xref>, i.e. only probability data. Then if we took a sample of 1000 people, we would anticipate about 35<percent /> or <m>0.35\times 1000 = 350</m> would meet the information criterion (<c>parents</c> <c>degree</c>). Similarly, we would expect about 29<percent /> or <m>0.29\times 1000 = 290</m> to meet both the information criteria and represent our outcome of interest. Thus, the conditional probability could be computed:
+      <md>
+        <mrow>\amp P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parents} \texttt{degree}} )</mrow>
+        <mrow>\amp = \frac{\text{\# (\texttt{teen} \texttt{college} and \texttt{parents} \texttt{degree})} }{\text{\# (\texttt{parents} \texttt{degree})} }</mrow>
+        <mrow>\amp = \frac{290}{350}
+            = \frac{0.29}{0.35}
+            = 0.829\text{ (different from 0.825 due to rounding error) }</mrow>
+      </md>
+    </p>
+
+    <p>
+      In Equation<nbsp /><xref ref="stUserPUsedHypSampSize" />, we examine exactly the fraction of two probabilities, 0.29 and 0.35, which we can write as
+      <md>
+        <mrow>P(\text{\texttt{teen} \texttt{college} and \texttt{parents} \texttt{degree}} )
+          \text{ and } 
+          P(\text{\texttt{parents} \texttt{degree}} ).</mrow>
+      </md>
+    </p>
+
+    <p>
+      The fraction of these probabilities is an example of the general formula for conditional probability.
+    </p>
+
+    <definition>
+      <title>Conditional probability</title>
+      <statement>
+        <p>
+          The conditional probability of the outcome of interest <m>A</m> given condition <m>B</m> is computed as the following:
+          <md>
+            <mrow>P(A | B) = \frac{P(A\text{ and } B)}{P(B)}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise xml:id="familyCollegeProbOfParentsEqualNotGivenTeen">
+      <statement>
+        <p>
+          (a) Write out the following statement in conditional probability notation: <q><em>The probability a random case where neither parent has a college degree if it is known that the teenager didn't attend college right after high school</em></q>. Notice that the condition is now based on the {teenager}, not the {parent}.
+        </p>
+
+        <p>
+          (b)<nbsp />Determine the probability from part (a). <xref ref="familyCollegeProbTable">Table</xref> may be helpful.<fn>(a) <m>P(\text{\texttt{parents} \texttt{not}} \ |\ \text{\texttt{teen} \texttt{not}} )</m>. (b)<nbsp />Equation<nbsp /><xref ref="condProbEq" /> for conditional probability indicates we should first find <m>P(\text{\texttt{parents} \texttt{not} and \texttt{teen} \texttt{not}} ) = 0.38</m> and <m>P(\text{\texttt{teen} \texttt{not}} ) = 0.44</m>. Then the ratio represents the conditional probability: <m>0.38 / 0.44 = 0.864</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="whyCondProbSumTo1">
+      <statement>
+        <p>
+          (a)<nbsp />Determine the probability that one of the parents has a college degree if it is known the teenager did not attend college.
+        </p>
+
+        <p>
+          (b)<nbsp />Using the answers from part<nbsp />(a) and Guided <xref ref="familyCollegeProbOfParentsEqualNotGivenTeen">Practice</xref>(b), compute
+          <md>
+            <mrow>\amp P(\text{\texttt{parents} \texttt{degree}} \ |\ \text{\texttt{teen} \texttt{not}} )</mrow>
+            <mrow>\amp + P(\text{\texttt{parents} \texttt{not}} \ |\ \text{\texttt{teen} \texttt{not}} )</mrow>
+          </md>
+        </p>
+
+        <p>
+          (c)<nbsp />Provide an intuitive argument to explain why the sum in (b) is<nbsp />1.<fn>(a)<nbsp />This probability is <m>\frac{P(\text{\texttt{parents} \texttt{degree}, \texttt{teen} \texttt{not}} )}{P(\text{\texttt{teen} \texttt{not}} )} = \frac{0.06}{0.44} = 0.136</m>. (b)<nbsp />The total equals<nbsp />1. (c)<nbsp />Under the condition the teenager didn't attend college, the parents must either have a college degree or not. The complement still works, provided the probabilities condition on the same information.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          The data indicate there is an association between parents having a college degree and their teenager attending college. Does this mean the parents' college degree(s) <em>caused</em> the teenager to go to college?<fn>No. While there is an association, the data are observational. Two potential confounding variables include <c>income</c> and <c>region</c>. Can you think of others?</fn>
+          <index><main>conditional probability</main></index>
+          <index><main>data</main><sub>family_college</sub></index>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Smallpox in Boston, 1721</title>
+    <p>
+      <index><main>data</main><sub>smallpox</sub></index>
+    </p>
+
+    <p>
+      The <c>smallpox</c> data set provides a sample of 6,224 individuals from the year 1721 who were exposed to smallpox in Boston.<fn>Fenner F. 1988. <em>Smallpox and Its Eradication (History of International Public Health, No. 6)</em>. Geneva: World Health Organization. ISBN 92-4-156110-6.</fn> Doctors at the time believed that inoculation, which involves exposing a person to the disease in a controlled form, could reduce the likelihood of death.
+    </p>
+
+    <p>
+      Each case represents one person with two variables: <c>inoculated</c> and <c>result</c>. The variable <c>inoculated</c> takes two levels: <c>yes</c> or <c>no</c>, indicating whether the person was inoculated or not. The variable <c>result</c> has outcomes <c>lived</c> or <c>died</c>. These data are summarized in <xref ref="smallpoxContingencyTable">Tables</xref> and <xref ref="smallpoxProbabilityTable"></xref>.
+    </p>
+
+    <table xml:id="smallpoxContingencyTable" >
+      <caption>Contingency table for the <c>smallpox</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>inoculated</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>yes</c></cell>
+          <cell><c>no</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>lived</c></cell>
+          <cell>238</cell>
+          <cell>5136</cell>
+          <cell>5374</cell>
+        </row>
+        <row>
+          <cell><c>result</c></cell>
+          <cell><c>died</c> \hspace{0.5cm}</cell>
+          <cell>6</cell>
+          <cell>844</cell>
+          <cell>850</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>244</cell>
+          <cell>5980</cell>
+          <cell>6224</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="smallpoxProbabilityTable" >
+      <caption>Table proportions for the <c>smallpox</c> data, computed by dividing each count by the table total, 6224.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>inoculated</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>yes</c></cell>
+          <cell><c>no</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>lived</c></cell>
+          <cell>0.0382</cell>
+          <cell>0.8252</cell>
+          <cell>0.8634</cell>
+        </row>
+        <row>
+          <cell><c>result</c></cell>
+          <cell><c>died</c> \hspace{0.5cm}</cell>
+          <cell>0.0010</cell>
+          <cell>0.1356</cell>
+          <cell>0.1366</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>0.0392</cell>
+          <cell>0.9608</cell>
+          <cell>1.0000</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise xml:id="probDiedIfNotInoculated">
+      <statement>
+        <p>
+          Write out, in formal notation, the probability a randomly selected person who was not inoculated died from smallpox, and find this \mbox{probability.} <fn><m>P(</m><c>result</c> = <c>died</c> <m>|</m> <c>not inoculated</c><m>) = \frac{P(\text{\texttt{result} = \texttt{died} and \texttt{not inoculated}} )}{P(\text{\texttt{not inoculated}} )} = \frac{0.1356}{0.9608} = 0.1411</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Determine the probability that an inoculated person died from smallpox. How does this result compare with the result of Guided <xref ref="probDiedIfNotInoculated">Practice</xref>?<fn><m>P(</m><c>died</c> <m>|</m> <c>inoculated</c><m>) = \frac{P(\text{\texttt{died} and \texttt{inoculated}} )}{P(\text{\texttt{inoculated}} )} = \frac{0.0010}{0.0392} = 0.0255</m>. The death rate for individuals who were inoculated is only about 1<nbsp />in<nbsp />40 while the death rate is about 1<nbsp />in<nbsp />7 for those who were not inoculated.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="SmallpoxInoculationObsExpExercise">
+      <statement>
+        <p>
+          The people of Boston self-selected whether or not to be inoculated. (a) Is this study observational or was this an experiment? (b) Can we infer any causal connection using these data? (c) What are some potential confounding variables that might influence whether someone lived or died and also affect whether that person was inoculated?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Brief answers: (a)<nbsp />Observational. (b)<nbsp />No, we cannot infer causation from this observational study. (c)<nbsp />Accessibility to the latest and best medical care, so income may play a role. There are other valid answers for part<nbsp />(c).
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>General multiplication rule</title>
+    <p>
+      <xref ref="probabilityIndependence">Section</xref> introduced the Multiplication Rule for independent processes. Here we provide the <term>General Multiplication Rule</term> for events that might not be independent.
+    </p>
+
+    <definition>
+      <title>General Multiplication Rule</title>
+      <statement>
+        <p>
+          If <m>A</m> and <m>B</m> represent two outcomes or events, then
+          <md>
+            <mrow>P(A\text{ and } B) = P(A | B)\times P(B)</mrow>
+          </md>
+        </p>
+
+        <p>
+          For the term <m>P(A | B)</m>, it is useful to think of <m>A</m> as the outcome of interest and <m>B</m> as the condition.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      This General Multiplication Rule is simply a rearrangement of the definition for conditional probability in Equation<nbsp /><xref ref="condProbEq" /> on <xref ref="condProbEq">page</xref>.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Consider the <c>smallpox</c> data set. Suppose we are given only two pieces of information: 96.08<percent /> of residents were not inoculated, and 85.88<percent /> of the residents who were not inoculated ended up surviving. How could we compute the probability that a resident was not inoculated and lived?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We will compute our answer using the General Multiplication Rule and then verify it using <xref ref="smallpoxProbabilityTable">Table</xref>. We want to determine
+          <md>
+            <mrow>P(\text{\texttt{lived} and \texttt{not inoculated}} )</mrow>
+          </md>
+          and we are given that
+          <md>
+            <mrow>P(\text{\texttt{lived}} \ |\ \text{\texttt{not inoculated}} )=0.8588</mrow>
+            <mrow>P(\text{\texttt{not inoculated}} )=0.9608</mrow>
+          </md>
+        </p>
+
+        <p>
+          Among the 96.08<percent /> of people who were not inoculated, 85.88<percent /> survived:
+          <md>
+            <mrow>P(\text{\texttt{lived} and \texttt{not inoculated}} ) = 0.8588\times 0.9608 = 0.8251</mrow>
+          </md>
+        </p>
+
+        <p>
+          This is equivalent to the General Multiplication Rule. We can confirm this probability in <xref ref="smallpoxProbabilityTable">Table</xref> at the intersection of <c>no</c> and <c>lived</c> (with a small rounding error).
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Use <m>P(</m><c>inoculated</c><m>) = 0.0392</m> and <m>P(</m><c>lived</c> <m>|</m> <c>inoculated</c><m>) = 0.9754</m> to determine the probability that a person was both inoculated and lived.<fn>The answer is 0.0382, which can be verified using <xref ref="smallpoxProbabilityTable">Table</xref>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          If 97.54<percent /> of the people who were inoculated lived, what proportion of inoculated people must have died?<fn>There were only two possible outcomes: <c>lived</c> or <c>died</c>. This means that 100<percent /> - 97.45<percent /> = 2.55<percent /> of the people who were inoculated died.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Based on the probabilities computed above, does it appear that inoculation is effective at reducing the risk of death from smallpox?<fn>The samples are large relative to the difference in death rates for the <q>inoculated</q> and <q>not inoculated</q> groups, so it seems there is an association between <c>inoculated</c> and <c>outcome</c>. However, as noted in the solution to Guided <xref ref="SmallpoxInoculationObsExpExercise">Practice</xref>, this is an observational study and we cannot be sure if there is a causal connection. (Further research has shown that inoculation is effective at reducing death rates.)</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="smallPop">
+    <title>Sampling from a small population</title>
+    <example>
+      <statement>
+        <p>
+          Professors sometimes select a student at random to answer a question. If each student has an equal chance of being selected and there are 15 people in your class, what is the chance that she will pick you for the next question?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          If there are 15 people to ask and none are skipping class, then the probability is <m>1/15</m>, or about <m>0.067</m>.
+        </p>
+      </solution>
+    </example>
+
+    <example xml:id="x3woRep">
+      <statement>
+        <p>
+          If the professor asks 3 questions, what is the probability that you will not be selected? Assume that she will not pick the same person twice in a given lecture.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          For the first question, she will pick someone else with probability <m>14/15</m>. When she asks the second question, she only has 14 people who have not yet been asked. Thus, if you were not picked on the first question, the probability you are again not picked is <m>13/14</m>. Similarly, the probability you are again not picked on the third question is <m>12/13</m>, and the probability of not being picked for any of the three questions is
+          <md>
+            <mrow>\amp \amp P(\text{ not picked in 3 questions } )</mrow>
+            <mrow>\amp \amp  = P(\text{\texttt{Q1}}  = \text{\texttt{not\_picked}, } \text{\texttt{Q2}}  = \text{\texttt{not\_picked}, } \text{\texttt{Q3}}  = \text{\texttt{not\_picked}.} )</mrow>
+            <mrow>\amp \amp  = \frac{14}{15}\times\frac{13}{14}\times\frac{12}{13} = \frac{12}{15} = 0.80</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          What rule permitted us to multiply the probabilities in <xref ref="x3woRep">Example</xref>?<fn>The three probabilities we computed were actually one marginal probability, <m>P(</m><c>Q1</c><m>=</m><c>not_picked</c><m>)</m>, and two conditional probabilities:
+          <md>
+            <mrow>\amp P(\text{\texttt{Q2}}  =  \text{\texttt{not\_picked}} \ |\ \text{\texttt{Q1}}  = \text{\texttt{not\_picked}} )
+            \amp \amp P(\text{\texttt{Q3}}  =  \text{\texttt{not\_picked}} \ |\ \text{\texttt{Q1}}  = \text{\texttt{not\_picked}, } \text{\texttt{Q2}}  = \text{\texttt{not\_picked}} )</mrow>
+          </md>
+          Using the General Multiplication Rule, the product of these three probabilities is the probability of not being picked in 3 questions.</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <example xml:id="x3wRep">
+      <statement>
+        <p>
+          Suppose the professor randomly picks without regard to who she already selected, i.e. students can be picked more than once. What is the probability that you will not be picked for any of the three questions?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Each pick is independent, and the probability of not being picked for any individual question is <m>14/15</m>. Thus, we can use the Multiplication Rule for independent processes.
+          <md>
+            <mrow>\amp \amp P(\text{ not picked in 3 questions } )</mrow>
+            <mrow>\amp \amp  = P(\text{\texttt{Q1}}  = \text{\texttt{not\_picked}, } \text{\texttt{Q2}}  = \text{\texttt{not\_picked}, } \text{\texttt{Q3}}  = \text{\texttt{not\_picked}.} )</mrow>
+            <mrow>\amp \amp  = \frac{14}{15}\times\frac{14}{15}\times\frac{14}{15} = 0.813</mrow>
+          </md>
+        </p>
+
+        <p>
+          You have a slightly higher chance of not being picked compared to when she picked a new person for each question. However, you now may be picked more than once.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Under the setup of <xref ref="x3wRep">Example</xref>, what is the probability of being picked to answer all three questions?<fn><m>P(</m>being picked to answer all three questions<m>) = \left(\frac{1}{15}\right)^3 = 0.00030</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If we sample from a small population <term>without replacement</term>, we no longer have independence between our observations. In <xref ref="x3woRep">Example</xref>, the probability of not being picked for the second question was conditioned on the event that you were not picked for the first question. In <xref ref="x3wRep">Example</xref>, the professor sampled her students <term>with replacement</term>: she repeatedly sampled the entire class without regard to who she already picked.
+    </p>
+    <exercise xml:id="raffleOf30TicketsWWOReplacement">
+      <statement>
+        <p>
+          Your department is holding a raffle. They sell 30 tickets and offer seven prizes. (a) They place the tickets in a hat and draw one for each prize. The tickets are sampled without replacement, i.e. the selected tickets are not placed back in the hat. What is the probability of winning a prize if you buy one ticket? (b)<nbsp />What if the tickets are sampled with replacement?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a) First determine the probability of not winning. The tickets are sampled without replacement, which means the probability you do not win on the first draw is <m>29/30</m>, <m>28/29</m> for the second, ..., and <m>23/24</m> for the seventh. The probability you win no prize is the product of these separate probabilities: <m>23/30</m>. That is, the probability of winning a prize is <m>1 - 23/30 = 7/30 = 0.233</m>. (b)<nbsp />When the tickets are sampled with replacement, there are seven independent draws. Again we first find the probability of not winning a prize: <m>(29/30)^7 = 0.789</m>. Thus, the probability of winning (at least) one prize when drawing with replacement is 0.211.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="followUpToRaffleOf30TicketsWWOReplacement">
+      <statement>
+        <p>
+          Compare your answers in Guided <xref ref="raffleOf30TicketsWWOReplacement">Practice</xref>. How much influence does the sampling method have on your chances of winning a prize?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There is about a 10<percent /> larger chance of winning a prize when using sampling without replacement. However, at most one prize may be won under this sampling procedure.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      Had we repeated Guided <xref ref="raffleOf30TicketsWWOReplacement">Practice</xref> with 300 tickets instead of 30, we would have found something interesting: the results would be nearly identical. The probability would be 0.0233 without replacement and 0.0231 with replacement. When the sample size is only a small fraction of the population (under 10<percent />), observations are nearly independent even when sampling without replacement.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Independence considerations in conditional probability</title>
+    <p>
+      If two processes are independent, then knowing the outcome of one should provide no information about the other. We can show this is mathematically true using conditional probabilities.
+    </p>
+    <exercise xml:id="condProbOfRollingA1AfterOne1">
+      <statement>
+        <p>
+          Let <m>X</m> and <m>Y</m> represent the outcomes of rolling two dice. (a)<nbsp />What is the probability that the first die, <m>X</m>, is <c>1</c>? (b)<nbsp />What is the probability that both <m>X</m> and <m>Y</m> are <c>1</c>? (c)<nbsp />Use the formula for conditional probability to compute <m>P(Y =</m> <c>1</c> <m>| X =</m> <c>1</c><m>)</m>. (d)<nbsp />What is <m>P(Y=1)</m>? Is this different from the answer from part (c)? Explain.<fn>Brief solutions: (a) <m>1/6</m>. (b) <m>1/36</m>. (c)<nbsp /><m>\frac{P(Y = \text{ \texttt{1} and } X=\text{ \texttt{1}} )}{P(X=\text{ \texttt{1}} )} = \frac{1/36}{1/6} = 1/6</m>. (d)<nbsp />The probability is the same as in part<nbsp />(c): <m>P(Y=1)=1/6</m>. The probability that <m>Y=1</m> was unchanged by knowledge about <m>X</m>, which makes sense as <m>X</m> and <m>Y</m> are independent.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can show in Guided <xref ref="condProbOfRollingA1AfterOne1">Practice</xref>(c) that the conditioning information has no influence by using the Multiplication Rule for independence processes:
+      <md>
+        <mrow>P(Y=\text{\texttt{1}} |X=\text{\texttt{1}} )
+          \amp =\amp  \frac{P(Y=\text{\texttt{1} and} X=\text{\texttt{1}} )}{P(X=\text{\texttt{1}} )}</mrow>
+        <mrow>\amp =\amp  \frac{P(Y=\text{\texttt{1}} )\times \color{oiGB}P(X=\text{\texttt{1}} )}{\color{oiGB}P(X=\text{\texttt{1}} )}</mrow>
+        <mrow>\amp =\amp  P(Y=\text{\texttt{1}} )</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Ron is watching a roulette table in a casino and notices that the last five outcomes were <c>black</c>. He figures that the chances of getting <c>black</c> six times in a row is very small (about <m>1/64</m>) and puts his paycheck on red. What is wrong with his reasoning?<fn>He has forgotten that the next roulette spin is independent of the previous spins. Casinos do employ this practice; they post the last several outcomes of many betting games to trick unsuspecting gamblers into believing the odds are in their favor. This is called the <term>gambler's fallacy</term>.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Checking for independent and mutually exclusive events</title>
+    <p>
+      If <m>A</m> and <m>B</m> are independent events, then the probability of <m>A</m> being true is unchanged if <m>B</m> is true. Mathematically, this is written as
+      <md>
+        <mrow>P(A|B) \amp = P(A)</mrow>
+      </md>
+    </p>
+
+    <p>
+      The General Multiplication Rule states that <m>P(A\text{ and } B)</m> equals <m>P(A | B)\times P(B)</m>. If <m>A</m> and <m>B</m> are independent events, we can replace <m>P(A|B)</m> with <m>P(A)</m> and the following multiplication rule applies:
+      <md>
+        <mrow>P(A\text{ and } B) \amp = P(A)\times P(B)</mrow>
+      </md>
+    </p>
+
+    <aside>
+      <title>Checking whether two events are independent</title>
+      <p>
+        When checking whether two events <m>A</m> and <m>B</m> are independent, verify one of the following equations holds (there is no need to check both equations):
+        <md>
+          <mrow>P(A|B) \amp = P(A)\amp 
+          P(A\text{ and } B) \amp = P(A)\times P(B)</mrow>
+        </md>
+      </p>
+
+      <p>
+        If the equation that is checked holds true (the left and right sides are equal), <m>A</m> and <m>B</m> are independent. If the equation does not hold, then <m>A</m> and <m>B</m> are dependent.
+      </p>
+    </aside>
+    <example xml:id="teenParentCollegeIndependentExample">
+      <statement>
+        <p>
+          Are teenager college attendance and parent college degrees independent or dependent? <xref ref="contTableOfParStCollegeCopy">Table</xref> may be helpful.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We'll use the first equation above to check for independence. If the <c>teen</c> and <c>parents</c> variables are independent, it must be true that
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parent} \texttt{degree}} )
+              \amp = P(\text{\texttt{teen} \texttt{college}} )</mrow>
+          </md>
+        </p>
+
+        <p>
+          Using <xref ref="contTableOfParStCollegeCopy">Table</xref>, we check whether equality holds in this equation.
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}} \ |\ \text{\texttt{parent} \texttt{degree}} )
+              \amp \overset{?}{=} P(\text{\texttt{teen} \texttt{college}} )</mrow>
+            <mrow>0.83 \amp \neq 0.56</mrow>
+          </md>
+        </p>
+
+        <p>
+          The value 0.83 came from a probability calculation using <xref ref="contTableOfParStCollegeCopy">Table</xref>: <m>\frac{231}{280} \approx 0.83</m>. Because the sides are not equal, teenager college attendance and parent degree are dependent. That is, we estimate the probability a teenager attended college to be higher if we know that one of the teen's parents has a college degree.
+        </p>
+      </answer>
+    </example>
+
+    <table xml:id="contTableOfParStCollegeCopy" >
+      <caption>Contingency table summarizing the <c>family_college</c> data set.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell>\multicolumn{2}{c}{<c>parents</c>}</cell>
+          <cell>\hspace{1cm}</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell><c>degree</c></cell>
+          <cell><c>not</c></cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>college</c></cell>
+          <cell>231</cell>
+          <cell>214</cell>
+          <cell>445</cell>
+        </row>
+        <row>
+          <cell><c>teen</c></cell>
+          <cell><c>not</c> \hspace{0.5cm}</cell>
+          <cell>49</cell>
+          <cell>298</cell>
+          <cell>347</cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Total</cell>
+          <cell>280</cell>
+          <cell>512</cell>
+          <cell>792</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Use the second equation in the box above to show that teenager college attendance and parent college degrees are dependent.<fn>We check for equality in the following equation:
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}, \texttt{parent} \texttt{degree}} )\amp \overset{?}{=} P(\text{\texttt{teen} \texttt{college}} )\times P(\text{\texttt{parent} \texttt{degree}} )</mrow>
+            <mrow>\frac{231}{792}=0.292 \amp \neq \frac{445}{792}\times \frac{280}{792}=0.199</mrow>
+          </md>
+          These terms are not equal, which confirms what we learned in <xref ref="teenParentCollegeIndependentExample">Example</xref>: teenager college attendance and parent college degrees are dependent.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      If <m>A</m> and <m>B</m> are mutually exclusive events, then <m>A</m> and <m>B</m> cannot occur at the same time. Mathematically, this is written as
+      <md>
+        <mrow>P(A \text{ and }  B) \amp = 0</mrow>
+      </md>
+    </p>
+
+    <p>
+      The General Addition Rule states that <m>P(A\text{ or } B) \text{ equals } P(A) + P(B) - P(A\text{ and } B)</m>. If <m>A</m> and <m>B</m> are mutually exclusive events, we can replace <m>P(A \text{ and } B)</m> with 0 and the following addition rule applies:
+      <md>
+        <mrow>P(A\text{ or } B) \amp = P(A) + P(B)</mrow>
+      </md>
+    </p>
+
+    <aside>
+      <title>Checking whether two events are mutually exclusive (disjoint)</title>
+      <p>
+        If <m>A</m> and <m>B</m> are mutually exclusive events, then they cannot occur at the same time. If asked to determine if events <m>A</m> and <m>B</m> are mutually exclusive, verify one of the following equations holds (there is no need to check both equations):
+        <md>
+          <mrow>P(A \text{ and } B) \amp = 0\amp 
+          P(A\text{ or } B) \amp = P(A) + P(B)</mrow>
+        </md>
+      </p>
+
+      <p>
+        If the equation that is checked holds true (the left and right sides are equal), <m>A</m> and <m>B</m> are mutually exclusive. If the equation does not hold, then <m>A</m> and <m>B</m> are not mutually exclusive.
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          Are teen college attendance and parent college degrees mutually exclusive?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Looking in the table, we see that there are 231 instances where both the teenager attended college and parents have a degree, indicating the probability of both events occurring is greater than 0. Since we have found an example where both of these events happen together, these two events are not mutually exclusive. We could more formally show this by computing the probability both events occur at the same time:
+          <md>
+            <mrow>P(\text{\texttt{teen} \texttt{college}, \texttt{parent} \texttt{degree}} ) = \frac{231}{792}\neq 0</mrow>
+          </md>
+        </p>
+
+        <p>
+          Since this probability is not zero, teenager college attendance and parent college degrees are not mutually exclusive.
+        </p>
+      </answer>
+    </example>
+
+    <aside>
+      <title>Mutually exclusive and independent are different</title>
+      <p>
+        If two events are mutually exclusive, then if one is true, the other cannot be true. This implies the two events are in some way connected, meaning they must be dependent.
+      </p>
+
+      <p>
+        If two events are independent, then if one occurs, it is still possible for the other to occur, meaning the events are not mutually exclusive.
+      </p>
+    </aside>
+    <warning>
+    <title>Dependent events need not be mutually exclusive.</title>
+    <p>
+      {If two events are dependent, we can<em>not</em> simply conclude they are mutually exclusive. For example, the college attendance of teenagers and a college degree by one of their parents are dependent, but those events are not mutually exclusive.}
+    </p>
+
+    </warning>
+  </subsection>
+
+  <subsection>
+    <title>Tree diagrams</title>
+    <p>
+      <index><main>data</main><sub>smallpox</sub></index>
+      <index><main>tree diagram</main></index>
+    </p>
+
+    <p>
+      <em>Tree diagrams</em><index><main>tree diagram|textbf</main></index> are a tool to organize outcomes and probabilities around the structure of the data. They are most useful when two or more processes occur in a sequence and each process is conditioned on its predecessors.
+    </p>
+
+    <p>
+      The <c>smallpox</c> data fit this description. We see the population as split by <c>inoculation</c>: <c>yes</c> and <c>no</c>. Following this split, survival rates were observed for each group. This structure is reflected in the tree diagram shown in <xref ref="smallpoxTreeDiagram">Figure</xref>. The first branch for <c>inoculation</c> is said to be the <term>primary</term> branch while the other branches are <term>secondary</term>.
+    </p>
+
+    <figure xml:id="smallpoxTreeDiagram" >
+      <caption>A tree diagram of the <c>smallpox</c> data set.</caption>
+      <image width="93%" source="images/smallpoxTreeDiagram.png" />
+    </figure>
+
+    <p>
+      Tree diagrams are annotated with marginal and conditional probabilities, as shown in <xref ref="smallpoxTreeDiagram">Figure</xref>. This tree diagram splits the smallpox data by <c>inoculation</c> into the <c>yes</c> and <c>no</c> groups with respective marginal probabilities 0.0392 and 0.9608. The secondary branches are conditioned on the first, so we assign conditional probabilities to these branches. For example, the top branch in <xref ref="smallpoxTreeDiagram">Figure</xref> is the probability that <c>lived</c> conditioned on the information that <c>inoculated</c>. We may (and usually do) construct joint probabilities at the end of each branch in our tree by multiplying the numbers we come across as we move from left to right. These joint probabilities are computed using the General Multiplication Rule:
+      <md>
+        <mrow>P(\text{\texttt{inoculated} and \texttt{lived}} ) \amp = P(\text{\texttt{inoculated}} )\times P(\text{\texttt{lived}} \ |\ \text{\texttt{inoculated}} )</mrow>
+        <mrow>\amp = 0.0392\times 0.9754</mrow>
+        <mrow>\amp =0.0382</mrow>
+      </md>
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          What is the probability that a randomly selected person who was inoculated died?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          This is equivalent to <m>P(\text{\texttt{died}} \ |\ \text{\texttt{inoculated}} )</m>. This conditional probability can be found in the second branch as 0.0246.
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          What is the probability that a randomly selected person lived?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          There are two ways that a person could have lived: be inoculated <em>and</em> live OR not be inoculated <em>and</em> live. To find this probability, we sum the two disjoint probabilities:
+          <md>
+            <mrow>P(\text{\texttt{lived}} ) = 0.0392 \times 0.9745 + 0.9608 \times 0.8589 = 0.03824 + 0.82523 = 0.86347</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          After an introductory statistics course, 78<percent /> of students can successfully construct tree diagrams. Of those who can construct tree diagrams, 97<percent /> passed, while only 57<percent /> of those students who could not construct tree diagrams passed. (a)<nbsp />Organize this information into a tree diagram. {(b)<nbsp />What is the probability that a student who was able to construct tree diagrams did not pass? (c)<nbsp />What is the probability that a randomly selected student was able to successfully construct tree diagrams and passed? (d)<nbsp />What is the probability that a randomly selected student passed?}\
+          <fn>
+
+          <sidebyside>
+            (a) The tree diagram is shown to the right.
+            (b)<nbsp /><m>P(</m>not pass <m>|</m> able to construct tree diagram<m>) = 0.03</m>.
+            (c)<nbsp /><m>P(</m>able to construct tree diagrams and passed<m>) = P(</m>able to construct tree diagrams<m>) \times P(</m>passed <m>|</m> able to construct tree diagrams<m>) = 0.78 \times 0.97 = 0.7566</m>.
+            (d)<nbsp /> <m>P(</m>passed<m>) = 0.7566 + 0.1254 = 0.8820</m>. \vspace{15mm}
+            <image width="73%" source="images/treeDiagramAndPass.png" />
+            \vspace{-25mm}
+          </sidebyside>
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="bayesTheoremSubsection">
+    <title>Bayes' Theorem</title>
+    <p>
+      <index><main>Bayes' Theorem</main></index>
+    </p>
+
+    <p>
+      In many instances, we are given a conditional probability of the form
+      <md>
+        <mrow>P(\text{ statement about variable 1 } \ |\ \text{ statement about variable 2 } )</mrow>
+      </md>
+      but we would really like to know the inverted conditional probability:
+      <md>
+        <mrow>P(\text{ statement about variable 2 } \ |\ \text{ statement about variable 1 } )</mrow>
+      </md>
+    </p>
+
+    <p>
+      For example, instead of wanting to know <m>P(</m>lived <m>|</m> inoculated<m>)</m>, we might want to know <m>P(</m>inoculated <m>|</m> lived<m>)</m>. This is more challenging because it cannot be read directly from the tree diagram. In these instances we use <term>Bayes' Theorem</term>. Let's begin by looking at a new example.
+    </p>
+
+    <example xml:id="probabilityOfBreastCancerGivenPositiveTestExample">
+      <statement>
+        <p>
+          In Canada, about 0.35<percent /> of women over 40 will develop breast cancer in any given year. A common screening test for cancer is the mammogram, but this test is not perfect. In about 11<percent /> of patients with breast cancer, the test gives a <term>false negative</term>: it indicates a woman does not have breast cancer when she does have breast cancer. Similarly, the test gives a <term>false positive</term> in 7<percent /> of patients who do not have breast cancer: it indicates these patients have breast cancer when they actually do not.<fn>The probabilities reported here were obtained using studies reported at MISSINGoiRedirect and MISSINGoiRedirect.</fn> If we tested a random woman over 40 for breast cancer using a mammogram and the test came back positive <mdash /> that is, the test suggested the patient has cancer <mdash /> what is the probability that the patient actually has breast cancer?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We are given sufficient information to quickly compute the probability of testing positive if a woman has breast cancer (<m>1.00 - 0.11 = 0.89</m>). However, we seek the inverted probability of cancer given a positive test result:
+          <md>
+            <mrow>P(\text{ has BC } \ |\ \text{ mammogram\(^+\) } )</mrow>
+          </md>
+        </p>
+
+        <p>
+          Here, <q>has BC</q> is an abbreviation for the patient actually having breast cancer, and <q>mammogram<m>^+</m></q> means the mammogram screening was positive, which in this case means the test suggests the patient has breast cancer. (Watch out for the non-intuitive medical language: a<nbsp /><em>positive</em> test result suggests the possible presence of cancer in a mammogram screening.) We can use the conditional probability formula from the previous section: <m>P(A|B) = \frac{P(A \text{ and }  B)}{P(B)}</m>. Our conditional probability can be found as follows:
+          <md>
+            <mrow>P(\text{ has BC \(|\) mammogram\(^+\) } ) \amp =  \frac{P(\text{ has BC and mammogram\(^+\) } )}{P(\text{ mammogram\(^+\) } )}</mrow>
+          </md>
+        </p>
+
+        <p>
+          The probability that a mammogram is positive is as follows.
+          <md>
+            <mrow>P(\text{ mammogram\(^+\) } )=P(\text{ has BC and mammogram\(^+\) } ) +  P(\text{ no BC and mammogram\(^+\) } )</mrow>
+          </md>
+        </p>
+
+        <p>
+          A tree diagram is useful for identifying each probability and is shown in <xref ref="BreastCancerTreeDiagram">Figure</xref>. Using the tree diagram, we find that
+          <md>
+            <mrow>P(\amp \text{ has BC \(|\) mammogram\(^+\) } )</mrow>
+            <mrow>\amp = \frac{P(\text{ has BC and mammogram\(^+\) } )}{P(\text{ has BC and mammogram\(^+\) } ) +  P(\text{ no BC and mammogram\(^+\) } )}</mrow>
+            <mrow>\amp = \frac{0.0035(0.89)}{0.0035(0.89)+0.9965(0.07)}</mrow>
+            <mrow>\amp = \frac{0.00312}{0.07288}\approx 0.0428</mrow>
+          </md>
+        </p>
+
+        <p>
+          That is, even if a patient has a positive mammogram screening, there is still only a<nbsp />4<percent /><nbsp />chance that she has breast cancer.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="BreastCancerTreeDiagram" >
+      <caption>Tree diagram for <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref>, computing the probability a random patient who tests positive on a mammogram actually has breast cancer.</caption>
+      <image width="90%" source="images/BreastCancerTreeDiagram.png" />
+    </figure>
+
+    <p>
+      <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref> highlights why doctors often run more tests regardless of a first positive test result. When a medical condition is rare, a single positive test isn't generally definitive.
+    </p>
+
+    <p>
+      Consider again the last equation of <xref ref="probabilityOfBreastCancerGivenPositiveTestExample">Example</xref>.
+      Using the tree diagram, we can see that the numerator (the top of the fraction) is equal to the following product:
+      <md>
+        <mrow>P(\text{ has BC and mammogram\(^+\) } ) = P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )</mrow>
+      </md>
+    </p>
+
+    <p>
+      The denominator <mdash /> the probability the screening was positive <mdash /> is equal to the sum of probabilities for each positive screening scenario:
+      <md>
+        <mrow>P(\text{\underline{\color{black}mammogram\(^+\)}} )
+          \amp = P(\text{\underline{\color{black}mammogram\(^+\)} and no BC} )
+            + P(\text{\underline{\color{black}mammogram\(^+\)} and has BC} )</mrow>
+      </md>
+    </p>
+
+    <p>
+      In the example, each of the probabilities on the right side was broken down into a product of a conditional probability and marginal probability using the tree diagram.
+      <md>
+        <mrow>P(\text{ mammogram\(^+\) } )
+          \amp = P(\text{ mammogram\(^+\) and no BC } ) + P(\text{ mammogram\(^+\) and has BC } )</mrow>
+        <mrow>\amp = P(\text{ mammogram\(^+\) }  | \text{ no BC } )P(\text{ no BC } )</mrow>
+        <mrow>\amp \qquad\qquad + P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )</mrow>
+      </md>
+    </p>
+
+    <p>
+      We can see an application of Bayes' Theorem by substituting the resulting probability expressions into the numerator and denominator of the original conditional probability.
+      <md>
+        <mrow>\amp  P(\text{ has BC }  | \text{ mammogram\(^+\) } )</mrow>
+        <mrow>\amp  \qquad= \frac{P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )}
+          {P(\text{ mammogram\(^+\) }  | \text{ no BC } )P(\text{ no BC } ) + P(\text{ mammogram\(^+\) }  | \text{ has BC } )P(\text{ has BC } )}</mrow>
+      </md>
+    </p>
+
+    <definition>
+      <title>Bayes' Theorem: inverting probabilities</title>
+      <statement>
+        <p>
+          Consider the following conditional probability for variable 1 and variable 2:
+          <md>
+            <mrow>P(\text{ outcome \(A_1\) of variable 1 }  | \text{ outcome \(B\) of variable 2 } )</mrow>
+          </md>
+        </p>
+
+        <p>
+          Bayes' Theorem states that this conditional probability can be identified as the following fraction:
+          <md>
+            <mrow>\frac{P(B | A_1) P(A_1)}
+              {P(B | A_1) P(A_1) + P(B | A_2) P(A_2) + \cdots + P(B | A_k) P(A_k)}</mrow>
+          </md>
+          where <m>A_2</m>, <m>A_3</m>, ..., and <m>A_k</m> represent all other possible outcomes of the first variable.}<index><main></main></index>Bayes' Theorem|textbf
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      Bayes' Theorem is just a generalization of what we have done using tree diagrams. The formula need not be memorized, since it can always be derived using a tree diagram:
+      <ul>
+        <li>
+          <p>
+            The numerator identifies the probability of getting both <m>A_1</m> and <m>B</m>.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The denominator is the overall probability of getting <m>B</m>. Traverse each branch of the tree diagram that ends with event <m>B</m>. Add up the required products.
+          </p>
+        </li>
+      </ul>
+    </p>
+    <exercise xml:id="exerciseForParkingLotOnCampusBeingFullAndWhetherOrNotThereIsASportingEvent">
+      <statement>
+        <p>
+          Jose visits campus every Thursday evening. However, some days the parking garage is full, often due to college events. There are academic events on 35<percent /> of evenings, sporting events on 20<percent /> of evenings, and no events on 45<percent /> of evenings. When there is an academic event, the garage fills up about 25<percent /> of the time, and it fills up 70<percent /> of evenings with sporting events. On evenings when there are no events, it only fills up about 5<percent /> of the time. If Jose comes to campus and finds the garage full, what is the probability that there is a sporting event? Use a tree diagram to solve this problem.<fn>
+
+          <sidebyside>
+            The tree diagram, with three primary branches, is shown to the right. We want
+            <md>
+              <mrow>P(\amp \text{ sporting event }  | \text{ garage full } )</mrow>
+              <mrow>\amp = \frac{P(\text{ sporting event and garage full } )}{P(\text{ garage full } )}</mrow>
+              <mrow>\amp =\frac{0.14}{0.0875 + 0.14 + 0.0225} = 0.56.</mrow>
+            </md>
+            If the garage is full, there is a 56<percent /> probability that there is a sporting event. \vspace{0.1mm}
+            <image width="73%" source="images/treeDiagramGarage.png" />
+            \vspace{-30mm}
+          </sidebyside>
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      The last several exercises offered a way to update our belief about whether there is a sporting event, academic event, or no event going on at the school based on the information that the parking lot was full. This strategy of <em>updating beliefs</em> using Bayes' Theorem is actually the foundation of an entire section of statistics called <term>Bayesian statistics</term>. While Bayesian statistics is very important and useful, we will not have time to cover it in this book.
+    </p>
+
+    <p>
+      <index><main>Bayes' Theorem</main></index>
+      <index><main>tree diagram</main></index>
+      <index><main>conditional probability</main></index>
+      <index><main>probability</main></index>
+    </p>
+  </subsection>
+</section>

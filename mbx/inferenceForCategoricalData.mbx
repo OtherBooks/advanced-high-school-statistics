@@ -1,0 +1,31 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="inferenceForCategoricalData">
+  <title>Inference for categorical data</title>
+  <introduction>
+    <p>
+      <xref ref="foundationsForInference">Chapter</xref> introduced the logic and the steps for constructing confidence intervals and carrying out tests of hypothesis. We use these methods to answer questions like the following:
+      <ul>
+        <li>
+          <p>
+            What proportion of the American public approves of the job the Supreme Court is doing?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            The Pew Research Center conducted a poll about support for the 2010 health care law, and they used two forms of the survey question. Each respondent was randomly given one of the two questions. What is the difference in the support for respondents under the two question orderings?
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      The methods we learned in <xref ref="foundationsForInference">Chapter</xref> are very useful in these settings. In this chapter we will consider the sampling distribution for a proportion and for the difference of two proportions, and we will examine the conditions under which a normal model is appropriate. We will also encounter a new distribution for hypothesis tests on frequency and contingency tables.
+    </p>
+  </introduction>
+  <xi:include  href="singleProportion.mbx" />
+  <xi:include  href="differenceOfTwoProportions.mbx" />
+  <xi:include  href="oneWayChiSquare.mbx" />
+  <xi:include  href="twoWayTablesAndChiSquare.mbx" />
+  <xi:include  href="section7-5.mbx" />
+</chapter>

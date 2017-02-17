@@ -1,0 +1,15 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="modeling">
+  <title>Distributions of random variables</title>
+  <introduction>
+    <p>
+      <index><main>distribution</main><sub>normal</sub></index>
+    </p>
+  </introduction>
+  <xi:include  href="normalDist.mbx" />
+  <xi:include  href="distributionofxbar.mbx" />
+  <xi:include  href="geomDist.mbx" />
+  <xi:include  href="binomialModel.mbx" />
+  <xi:include  href="distributionphat.mbx" />
+  <xi:include  href="section5-6.mbx" />
+</chapter>

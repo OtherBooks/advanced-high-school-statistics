@@ -1,0 +1,1025 @@
+
+<section xml:id="theTDistributionForTheDifferenceOfTwoMeans">
+  <title>Difference of two means using the <m>t</m>-distribution</title>
+  <introduction>
+    <p>
+      It is also useful to be able to compare two means for small samples. For instance, a teacher might like to test the notion that two versions of an exam were equally difficult. She could do so by randomly assigning each version to students. If she found that the average scores on the exams were so different that we cannot write it off as chance, then she may want to award extra points to students who took the more difficult exam.
+    </p>
+
+    <p>
+      In a medical context, we might investigate whether embryonic stem cells can improve heart pumping capacity in individuals who have suffered a heart attack. We could look for evidence of greater heart health in the stem cell group against a control group.
+    </p>
+
+    <p>
+      In this section we use the <m>t</m>-distribution for the difference in sample means. We will again drop the minimum sample size condition and instead impose a strong condition on the distribution of the data.
+    </p>
+  </introduction>
+
+  <subsection xml:id="differenceOfTwoMeans">
+    <title>Sampling distribution for the difference of two means</title>
+    <p>
+      In this section we consider a difference in two population means, <m>\mu_1 - \mu_2</m>, under the condition that the data are not paired. The methods are similar in theory but different in the details. Just as with a single sample, we identify conditions to ensure a point estimate of the difference <m>\bar{x}_1 - \bar{x}_2</m> is nearly normal. Next we introduce a formula for the standard deviation of <m>\bar{x}_1 - \bar{x}_2</m>, which allows us to apply our general tools from <xref ref="foundationsForInference">Section</xref>.
+    </p>
+
+    <p>
+      We apply these methods to two examples: participants in the 2012 Cherry Blossom Run and newborn infants. This section is motivated by questions like <q>Is there convincing evidence that newborns from mothers who smoke have a different average birth weight than newborns from mothers who don't smoke?</q>
+    </p>
+
+    <p>
+      <index><main>data</main><sub>run10Samp</sub></index>
+    </p>
+
+    <p>
+      <index><main>point estimate</main><sub>difference of means</sub></index>
+      We start by looking at the population mean and standard deviation for the run times of men and women participants in the 2009 Cherry Blossom Run. <xref ref="cherryBlossomRun2009SampleOf180SummaryStats">Table</xref> summarizes these values.
+    </p>
+
+    <table xml:id="cherryBlossomRun2009SampleOf180SummaryStats" >
+      <caption>Summary of the run time of participants in the 2009 Cherry Blossom Run.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>men</cell>
+          <cell>women</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>\mu</m></cell>
+          <cell>87.65</cell>
+          <cell>102.13</cell>
+        </row>
+        <row>
+          <cell><m>\sigma</m></cell>
+          <cell>12.5</cell>
+          <cell>15.2</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="cbrRunTimesMenWomen" >
+      <caption>Side-by-side box plots for the sample of 2009 Cherry Blossom Run participants.</caption>
+      <image width="45%" source="images/cbrRunTimesMenWomen.png" />
+    </figure>
+
+    <p>
+      The two populations (men and women) are independent of one-another, so the data are not paired.<fn>Probability theory guarantees that the difference of two independent normal random variables is also normal. Because each sample mean is nearly normal and observations in the samples are independent, we are assured the difference is also nearly normal.</fn> If we take two separate random samples of men and women from this race, what is the expected value for the difference in their average times? Not surprisingly, the expected value of <m>\bar{x}_{w} - \bar{x}_{m}</m> is <m>\mu_1-\mu_2</m>. We can quantify the variability in the point estimate, using the following formula for its standard deviation:
+      <index><main>standard error</main><sub>difference in means</sub></index>
+      <md>
+        <mrow>SD_{\bar{x}_{w} - \bar{x}_{m}}
+            \amp = \sqrt{\left(SD_{\bar{x}_{w}}\right)^2 +\left(SD_{\bar{x}_{m}}\right)^2 }</mrow>
+        <mrow>\amp = \sqrt{\left(\frac{\sigma_{\bar{x}_{w}}}{\sqrt{n_w}}\right)^2 + \left(\frac{\sigma_{\bar{x}_{m}}}{\sqrt{n_m}}\right)^2 }</mrow>
+        <mrow>\amp = \sqrt{\frac{\sigma_{w}^2}{n_{w}} + \frac{\sigma_{m}^2}{n_{m}}}</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Let's say we take a random sample of 55 women and a random sample of 45 men. Use the SD formula for the difference of two means to compute the SD for the difference in the average run time for males and females.<fn><m>\sqrt{\frac{15.2^2}{55} + \frac{12.5^2}{45}} = 2.77</m></fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      <index><main>point estimate</main><sub>difference of means</sub></index>
+    </p>
+
+    <definition>
+      <title>Distribution of a difference of sample means</title>
+      <statement>
+        <p>
+          The sample difference of two means, <m>\bar{x}_1 - \bar{x}_2</m>, is nearly normal with mean <m>\mu_{1}-\mu_{2}</m> and standard deviation
+          <md>
+            <mrow>SD_{\bar{x}_{1} - \bar{x}_{2}} = \sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}</mrow>
+          </md>
+          when each sample mean is nearly normal and all observations are independent. Recall that each sample mean will be nearly normal if the population is normal or if the sample size is at least 30.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>Point estimates and standard errors for differences of means</title>
+    <p>
+      In the example of two exam versions, the teacher would like to evaluate whether there is convincing evidence that the difference in average scores between the two exams is not due to chance.
+    </p>
+
+    <p>
+      It will be useful to extend the <m>t</m>-distribution method from <xref ref="oneSampleMeansWithTDistribution">Section</xref> to apply to a difference of means:
+      <md>
+        <mrow>\bar{x}_1 - \bar{x}_2
+          \qquad \text{ as a point estimate for }  \qquad
+          \mu_1 - \mu_2</mrow>
+      </md>
+    </p>
+
+    <p>
+      First, we verify the small sample conditions (independence and nearly normal data) for each sample separately, then we verify that the samples are also independent. For instance, if the teacher believes students in her class are independent, the exam scores are nearly normal, and the students taking each version of the exam were independent, then we can use the <m>t</m>-distribution for inference on the point estimate <m>\bar{x}_{1} - \bar{x}_{2}</m>.
+    </p>
+
+    <p>
+      The formula for the standard error of <m>\bar{x}_{1} - \bar{x}_{2}</m>, introduced in <xref ref="differenceOfTwoMeans">Section</xref>,
+      also applies to small samples:
+      <md>
+        <mrow>SE_{\bar{x}_1 - \bar{x}_2}
+          = \sqrt{SE_{\bar{x}_1}^2 + SE_{\bar{x}_2}^2}
+           = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}</mrow>
+      </md>
+    </p>
+
+    <p>
+      Because we will use the <m>t</m>-distribution, we will need to identify the appropriate degrees of freedom. This can be done using a calculator or computer software. An alternative technique is to use the smaller of <m>n_1 - 1</m> and <m>n_2 - 1</m>.<nbsp /><fn>This technique for degrees of freedom is conservative with respect to a Type<nbsp />1 Error; it is more difficult to reject the null hypothesis using this <m>df</m> method.</fn>
+    </p>
+
+    <definition>
+      <title>Using the $t$-distribution for a difference in means</title>
+      <statement>
+        <p>
+          The <m>t</m>-distribution can be used for inference when working with the standardized difference of two means if (1) each sample meets the conditions for using the <m>t</m>-distribution and (2) the samples are independent. We estimate the standard error of the difference of two means using Equation<nbsp /><xref ref="seOfDiffOfTwoMeansInTDistSection" />.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>Hypothesis testing for the difference of two means</title>
+    <p>
+      <index><main>data</main><sub>two exam comparison</sub></index>
+    </p>
+
+    <p>
+      Summary statistics for each exam version are shown in <xref ref="summaryStatsForTwoVersionsOfExams">Table</xref>. The teacher would like to evaluate whether this difference is so large that it provides convincing evidence that Version B was more difficult (on average) than Version A.
+    </p>
+
+    <table xml:id="summaryStatsForTwoVersionsOfExams" >
+      <caption>Summary statistics of scores for each exam version.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Version\hspace{2mm}</cell>
+          <cell><m>n</m></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+          <cell>min</cell>
+          <cell>max</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>A</cell>
+          <cell>30</cell>
+          <cell>79.4</cell>
+          <cell>14</cell>
+          <cell>45</cell>
+          <cell>100</cell>
+        </row>
+        <row>
+          <cell>B</cell>
+          <cell>27</cell>
+          <cell>74.1</cell>
+          <cell>20</cell>
+          <cell>32</cell>
+          <cell>100</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise xml:id="htSetupForEvaluatingTwoExamVersions">
+      <statement>
+      </statement>
+      <p>
+        Construct a two-sided hypothesis test to evaluate whether the observed difference in sample means, <m>\bar{x}_A - \bar{x}_B=5.3</m>, might be due to chance.
+      </p>
+      <hint>
+        <p>
+          Because the teacher did not expect one exam to be more difficult prior to examining the test results, she should use a two-sided hypothesis test. <m>H_0</m>: the exams are equally difficult, on average. <m>\mu_A - \mu_B = 0</m>. <m>H_A</m>: one exam was more difficult than the other, on average. <m>\mu_A - \mu_B \neq 0</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="conditionsForTDistForEvaluatingTwoExamVersions">
+      <statement>
+      </statement>
+      <p>
+        To evaluate the hypotheses in Guided <xref ref="htSetupForEvaluatingTwoExamVersions">Practice</xref> using the <m>t</m>-distribution, we must first verify assumptions. (a) Does it seem reasonable that the scores are independent within each group? (b) What about the normality condition for each group? (c) Do you think scores from the two groups would be independent of each other (i.e. the two samples are independent)?
+      </p>
+      <hint>
+        <p>
+          (a) It is probably reasonable to conclude the scores are independent. (b) The summary statistics suggest the data are roughly symmetric about the mean, and it doesn't seem unreasonable to suggest the data might be normal. Note that since these samples are each nearing 30, moderate skew in the data would be acceptable. (c) It seems reasonable to suppose that the samples are independent since the exams were handed out randomly.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      After verifying the conditions for each sample and confirming the samples are independent of each other, we are ready to conduct the test using the <m>t</m>-distribution. In this case, we are estimating the true difference in average test scores using the sample data, so the point estimate is <m>\bar{x}_A - \bar{x}_B = 5.3</m>. The standard error of the estimate can be calculated using Equation<nbsp /><xref ref="seOfDiffOfTwoMeansInTDistSection" />:
+      <md>
+        <mrow>SE = \sqrt{\frac{s_A^2}{n_A} + \frac{s_B^2}{n_B}} = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62</mrow>
+      </md>
+    </p>
+
+    <p>
+      Finally, we construct the test statistic:
+      <md>
+        <mrow>T = \frac{\text{ point estimate }  - \text{ null value } }{SE} = \frac{(79.4-74.1) - 0}{4.62} = 1.15</mrow>
+      </md>
+    </p>
+
+    <p>
+      If we have a calculator or computer handy, we can identify the degrees of freedom as 45.97. Otherwise we use the smaller of <m>n_1-1</m> and <m>n_2-1</m>: <m>df=26</m>.
+    </p>
+
+    <figure xml:id="pValueOfTwoTailAreaOfExamVersionsWhereDFIs26" >
+      <caption>The <m>t</m>-distribution with 26 degrees of freedom. The shaded right tail represents values with <m>T \geq 1.15</m>. Because it is a two-sided test, we also shade the corresponding lower tail.</caption>
+      <image width="78%" source="images/pValueOfTwoTailAreaOfExamVersionsWhereDFIs26.png" />
+    </figure>
+
+    <exercise xml:id="computeTwoTailAreaOfExamVersionsWhereDFIs26">
+      <statement>
+        <p>
+          Identify the p-value, shown in <xref ref="pValueOfTwoTailAreaOfExamVersionsWhereDFIs26">Figure</xref>. Use <m>df=26</m>.<fn>We examine row <m>df=26</m> in the <m>t</m>-table. Because this value is smaller than the value in the left column, the p-value is larger than 0.200 (two tails!). Because the p-value is so large, we do not reject the null hypothesis. That is, the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.</fn>
+        </p>
+
+        <p>
+          <index><main>data</main><sub>two exam comparison</sub></index>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      In Guided <xref ref="computeTwoTailAreaOfExamVersionsWhereDFIs26">Practice</xref>, we could have used <m>df=45.97</m>. However, this value is not listed in the table. In such cases, we use the next lower degrees of freedom (unless the computer also provides the p-value). For example, we could have used <m>df=45</m> but not <m>df=46</m>.
+      As before, we provide a summary of the steps to perform when carrying out such a test.
+    </p>
+
+    <definition>
+      <title>Hypothesis test for the difference of two means</title>
+      <statement>
+        <ol>
+          <li><p>
+          State the name of the test being used.
+          <ul>
+            <li><p>
+                2-sample <m>t</m>-test.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+          Verify conditions.
+          <ul>
+            <li><p>
+                2 independent random samples OR 2 randomly allocated treatments.
+              </p></li>
+
+            <li><p>
+                Both populations known to be normal OR <m>n_1 \ge 30 \text{ and }  n_2\ge 30</m> OR graphs of both samples are approximately symmetric with no outliers, making the assumption that the populations are normal a reasonable one.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+          Write the hypotheses in plain language, then set them up in mathematical notation.
+          <ul>
+            <li><p>
+                H<m>_0: \mu_1 = \mu_2</m> or  <m>\mu_1 - \mu_2 = 0</m>
+              </p></li>
+
+            <li><p>
+                H<m>_0: \mu_1 \ne \text{ or }  \lt  \text{ or }  > \mu_2</m>
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Identify the significance level <m>\alpha</m>.
+            </p></li>
+
+          <li><p>
+          Calculate the test statistic and <m>df</m>: <m>T = \frac{\text{ point estimate }  - \text{ null value } }{\text{ SE of estimate } }</m>
+          <ul>
+            <li><p>
+                The point estimate is <m>\bar{x}_1-\bar{x}_2</m>
+              </p></li>
+
+            <li><p>
+                <m>SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}</m>
+              </p></li>
+
+            <li><p>
+                Find and record the <m>df</m> from a calculator.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p></li>
+
+          <li><p>
+              Write the conclusion in the context of the question.
+            </p></li>
+        </ol>
+      </statement>
+    </definition>
+
+    <p>
+      <index><main>data</main><sub>stem cells, heart function</sub></index>
+    </p>
+
+    <table xml:id="summaryStatsForSheepHeartDataWhoReceivedMiceESCs" >
+      <caption>Summary statistics for the embryonic stem cell data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\hspace{10mm}</cell>
+          <cell><m>n</m></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>ESCs</cell>
+          <cell>9</cell>
+          <cell>3.50</cell>
+          <cell>5.17</cell>
+        </row>
+        <row>
+          <cell>control</cell>
+          <cell>9</cell>
+          <cell>-4.33</cell>
+          <cell>2.76</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="stemCellTherapyForHearts" >
+      <caption>Histograms for both the embryonic stem cell group and the control group. Higher values are associated with greater improvement. We don't see any evidence of skew in these data; however, it is worth noting that skew would be difficult to detect with such a small sample.</caption>
+      <image width="73%" source="images/stemCellTherapyForHearts.png" />
+    </figure>
+
+    <example xml:id="exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep">
+      <statement>
+        <p>
+          Do embryonic stem cells (ESCs) help improve heart function following a heart attack? <xref ref="summaryStatsForSheepHeartDataWhoReceivedMiceESCs">Table</xref> contains summary statistics for an experiment to test ESCs in sheep that had a heart attack. Each of these sheep was randomly assigned to the ESC or control group, and the change in their hearts' pumping capacity was measured. A positive value generally corresponds to increased pumping capacity, which suggests a stronger recovery. The sample data is graphed in <xref ref="stemCellTherapyForHearts">Figure</xref>. Use the given information and an appropriate an appopriate statistical test to answer the research question.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        We will carry out a 2-sample <m>t</m>-test. The first condition is met because it is stated that there were two randomly allocated treatments. For the second condition, we must look at a graphs of the data. The data are very limited, so we can only check for obvious outliers in the raw data in <xref ref="stemCellTherapyForHearts">Figure</xref>. Since the distributions are (very) roughly symmetric, we will assume the populations are approximately normal.
+        <ul>
+          <li>
+            <title>invalidlabel</title>
+            <p>
+              <m>\mu_{esc} - \mu_{control} = 0</m>. The stem cells do not improve heart pumping function.
+            </p></li>
+
+          <li>
+            <title>invalidlabel</title>
+            <p>
+              <m>\mu_{esc} - \mu_{control} > 0</m>. The stem cells do improve heart pumping function.
+            </p></li>
+        </ul>
+        </p>
+
+        <p>
+          Let <m>\alpha=0.05</m>. Now we compute the sample difference, the standard error for that point estimate, and the test statistic:
+          <md>
+            <mrow>\amp  \bar{x}_{esc} - \bar{x}_{control} = 7.83
+            \amp \amp  SE = \sqrt{\frac{5.17^2}{9} + \frac{2.76^2}{9}} = 1.95
+            \amp \amp T = \frac{7.83 - 0}{1.95} = 4.01</mrow>
+          </md>
+        </p>
+
+        <p>
+          Using a calculator, <m>df=12.2</m> and p-value = <m>8.4\text{x} 10^{-4}</m>. The p-value is much less than 0.05, so we reject the null hypothesis. The data provide convincing evidence that embryonic stem cells improve the heart's pumping function in sheep that have suffered a heart attack.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Confidence intervals for <m>\mu_1-\mu_2</m></title>
+    <p>
+      The results from the previous section provided evidence that ESCs actually help improve the pumping function of the heart. But how large is this improvement? To answer this question, we can use a confidence interval.
+    </p>
+
+    <p>
+      Confidence intervals take the form
+      <md>
+        <mrow>\text{ point estimate }  \ \pm \text{ critical value } \times SE</mrow>
+      </md>
+    </p>
+
+    <p>
+      Using the point estimate and the SE calculated in the previous section, we get the general form of a confidence interval for a difference in means, <m>\mu_1-\mu_2</m>.
+      <md>
+        <mrow>(\bar{x}_1-\bar{x}_2) \ \pm \ t^\star\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}</mrow>
+      </md>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          In <xref ref="exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep">Example</xref>, you found that the point estimate, <m>\bar{x}_{esc} - \bar{x}_{control} = 7.83</m>, has a standard error of 1.95. Using <m>df=8</m>, create a 99<percent /> confidence interval for the improvement due to ESCs.<fn>We know the point estimate, 7.83, and the standard error, 1.95. We also verified the conditions for using the <m>t</m>-distribution in <xref ref="exerciseToEvaluteWhetherESCsAreHelpfulInImprovingHeartFunctionInSheep">Example</xref>. Thus, we only need identify <m>t^{\star}_8</m> to create a 99<percent /> confidence interval: <m>t^{\star}_{8} = 3.36</m>. The 99<percent /> confidence interval for the improvement from ESCs is given by
+          <md>
+            <mrow>\text{ point estimate } \ \amp \pm\ t^{\star}SE</mrow>
+            <mrow>7.83\ \amp \pm\ 3.36\times 1.95   df=8</mrow>
+            <mrow>(1.33 \amp \text{ , }  14.43)</mrow>
+          </md>
+          That is, we are 99<percent /> confident that the true improvement in heart pumping function is somewhere between 1.33<percent /> and 14.43<percent />.</fn>
+        </p>
+
+        <p>
+          <index><main>data</main><sub>stem cells, heart function</sub></index>
+        </p>
+      </statement>
+    </exercise>
+
+    <definition>
+      <title>Constructing a confidence interval for the difference of two means</title>
+      <statement>
+        <ol>
+          <li><p>
+          State the name of the CI being used.
+          <ul>
+            <li><p>
+                2-sample <m>t</m>-interval.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+          Verify conditions.
+          <ul>
+            <li><p>
+                2 independent random samples OR 2 randomly allocated treatments.
+              </p></li>
+
+            <li><p>
+                Both populations are known to be normal OR <m>n_1 \text{ and }  n_2\ge 30</m> OR graphs of both samples are approximately symmetric with no outliers, i.e. the assumption that the populations are normal is reasonable.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+          Plug in the numbers and write the interval in the form
+          <me>
+            \text{ point estimate }  \pm t^\star \times \text{ SE of estimate }
+          </me>
+          <ul>
+            <li><p>
+                The point estimate is <m>\bar{x}_1-\bar{x}_2</m>
+              </p></li>
+
+            <li><p>
+                Find and record the <m>df</m> using a calculator
+              </p></li>
+
+            <li><p>
+                Find the critical value <m>t^\star</m> using the <m>t</m>-table at row = <m>df</m> (round down to nearest integer)
+              </p></li>
+
+            <li><p>
+                Use <m>SE = \sqrt{\frac{s^2_1}{n_1}+\frac{s^2_2}{n_2}}</m>
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Evaluate the CI and write in the form ( <m>\_</m> , <m>\_</m> ).
+            </p></li>
+
+          <li><p>
+              Interpret the interval:  ``We are [XX]<percent /> confident that the true difference in the mean of [...] is between [...] and [...]."
+            </p></li>
+
+          <li><p>
+              State the conclusion to the original question.
+            </p></li>
+        </ol>
+      </statement>
+    </definition>
+
+    <p>
+      An instructor decided to run two slight variations of the same exam. Prior to passing out the exams, she shuffled the exams together to ensure each student received a random version. Summary statistics for how students performed on these two exams are shown in <xref ref="summaryStatsForTwoVersionsOfExams2nd">Table</xref>. Anticipating complaints from students who took Version<nbsp />B, she would like to evaluate whether the difference observed in the groups is so large that it provides convincing evidence that Version<nbsp />B was more difficult (on average) than Version<nbsp />A.
+    </p>
+
+    <table xml:id="summaryStatsForTwoVersionsOfExams2nd" >
+      <caption>Summary statistics of scores for each exam version.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Version\hspace{2mm}</cell>
+          <cell><m>n</m></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+          <cell>min</cell>
+          <cell>max</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>A</cell>
+          <cell>30</cell>
+          <cell>79.4</cell>
+          <cell>14</cell>
+          <cell>45</cell>
+          <cell>100</cell>
+        </row>
+        <row>
+          <cell>B</cell>
+          <cell>27</cell>
+          <cell>74.1</cell>
+          <cell>20</cell>
+          <cell>32</cell>
+          <cell>100</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <example>
+      <statement>
+        <p>
+          Construct a 90<percent /> confidence interval for the difference in average scores. At this confidence level, is there evidence that one test was more difficult than the other?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We have two randomly allocated treatments (tests) and the scores for both groups do not show excessive skew, so we can assume that the population distributions are approximately normal. The point estimate is <m>\bar{x}_A - \bar{x}_B = 5.3</m>. The standard error of the estimate can be calculated<nbsp />as
+          <md>
+            <mrow>SE = \sqrt{\frac{14^2}{30} + \frac{20^2}{27}} = 4.62</mrow>
+          </md>
+        </p>
+
+        <p>
+          A calculator gives the degrees of freedom as 45.97.
+          The confidence interval is given by <m>5.3\ \pm \ 1.684(4.62)\to (-2.5, 13.1)</m>. Because the interval contains both positive and negative values the data do not convincingly show that one exam version is more difficult than the other, and the teacher should not be convinced that she should add points to the Version B exam scores.
+          <index><main>data</main><sub>two exam comparison</sub></index>
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: the 2-sample <m>t</m>-test and <m>t</m>-interval</title>
+    <definition>
+      <title>TI-83/84: 2-sample $t$-test</title>
+      <statement>
+        <p>
+        MISSINGVIDEOLINK
+        Use <c>STAT</c>, <c>TESTS</c>, <c>2-SampTTest</c>.
+        <ol>
+          <li><p>
+              Choose <c>STAT</c>.
+            </p></li>
+
+          <li><p>
+              Right arrow to <c>TESTS</c>.
+            </p></li>
+
+          <li><p>
+              Choose <c>4:2-SampTTest</c>.
+            </p></li>
+
+          <li><p>
+          Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the means and standard deviations.
+          <ul>
+            <li><p>
+                If you choose <c>Data</c>, let <c>List1</c> be <c>L1</c> or the list that contains sample 1 and let <c>List2</c> be <c>L2</c> or the list that contains sample 2 (don't forget to enter the data!). Let <c>Freq1</c> and <c>Freq2</c> be <c>1</c>.
+              </p></li>
+
+            <li><p>
+                If you choose <c>Stats</c>, enter the mean, SD, and sample size for sample 1 and for sample 2
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>, or <m>\textttmath{>}</m> to correspond to H<m>_A</m>.
+            </p></li>
+
+          <li><p>
+              Let <c>Pooled</c> be <c>NO</c>.
+            </p></li>
+
+          <li><p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+              <tabular>
+                <row>
+                  <cell><c>t</c></cell>
+                  <cell>t statistic</cell>
+                  <cell><nbsp /><nbsp /></cell>
+                  <cell><c>Sx1</c></cell>
+                  <cell>SD of sample 1</cell>
+                </row>
+                <row>
+                  <cell><c>p</c></cell>
+                  <cell>p-value</cell>
+                  <cell></cell>
+                  <cell><c>Sx2</c></cell>
+                  <cell>SD of sample 2</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom</cell>
+                  <cell></cell>
+                  <cell><c>n1</c></cell>
+                  <cell>size of sample 1</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}_1}</m></cell>
+                  <cell>mean of sample 1</cell>
+                  <cell></cell>
+                  <cell>n2</cell>
+                  <cell>size of sample 2</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}_2}</m></cell>
+                  <cell>mean of sample 2</cell>
+                </row>
+              </tabular>
+            </p></li>
+        </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: 2-sample $t$-test</title>
+      <statement>
+        <p>
+        MISSINGVIDEOLINK
+        <ol>
+          <li><p>
+              Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+            </p></li>
+
+          <li><p>
+              If necessary, enter the data into a list.
+            </p></li>
+
+          <li><p>
+              Choose the <c>TEST</c> option (<c>F3</c> button).
+            </p></li>
+
+          <li><p>
+              Choose the <c>t</c> option (<c>F2</c> button).
+            </p></li>
+
+          <li><p>
+              Choose the <c>2-S</c> option (<c>F2</c> button).
+            </p></li>
+
+          <li><p>
+              Choose either the <c>Var</c> option (<c>F2</c>) or enter the data in using the <c>List</c> option.
+            </p></li>
+
+          <li><p>
+          Specify the test details:
+          <ul>
+            <li><p>
+                Specify the sidedness of the test using the <c>F1</c>, <c>F2</c>, and <c>F3</c> keys.
+              </p></li>
+
+            <li><p>
+                If using the <c>Var</c> option, enter the summary statistics for each group. If using <c>List</c>, specify the lists and leave <c>Freq</c> values at <c>1</c>.
+              </p></li>
+
+            <li><p>
+                Choose whether to pool the data or not.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Hit the <c>EXE</c> button, which returns
+              <tabular>
+                <row>
+                  <cell><m>\textttmath{\mu1}\ \_\_\ \textttmath{\mu2}</m></cell>
+                  <cell>alt. hypothesis</cell>
+                  <cell></cell>
+                  <cell><m>\textttmath{\bar{x}1}</m>, <m>\textttmath{\bar{x}2}</m></cell>
+                  <cell>sample means</cell>
+                </row>
+                <row>
+                  <cell><c>t</c></cell>
+                  <cell>t statistic</cell>
+                  <cell></cell>
+                  <cell><c>sx1</c>, <c>sx2</c></cell>
+                  <cell>sample standard deviations</cell>
+                </row>
+                <row>
+                  <cell><c>p</c></cell>
+                  <cell>p-value</cell>
+                  <cell></cell>
+                  <cell><c>n1</c>, <c>n2</c></cell>
+                  <cell>sample sizes</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom</cell>
+                </row>
+              </tabular>
+            </p></li>
+        </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>TI-83/84: 2-sample $t$-interval</title>
+      <statement>
+        <p>
+        MISSINGVIDEOLINK
+        Use <c>STAT</c>, <c>TESTS</c>, <c>2-SampTInt</c>.
+        <ol>
+          <li><p>
+              Choose <c>STAT</c>.
+            </p></li>
+
+          <li><p>
+              Right arrow to <c>TESTS</c>.
+            </p></li>
+
+          <li><p>
+              Down arrow and choose <c>0:2-SampTTInt</c>.
+            </p></li>
+
+          <li><p>
+          Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the means and standard deviations.
+          <ul>
+            <li><p>
+                If you choose Data, let <c>List1</c> be <c>L1</c> or the list that contains sample 1 and let <c>List2</c> be <c>L2</c> or the list that contains sample 2 (don't forget to enter the data!). Let <c>Freq1</c> and <c>Freq2</c> be <c>1</c>.
+              </p></li>
+
+            <li><p>
+                If you choose <c>Stats</c>, enter the mean, SD, and sample size for sample 1 and for sample 2.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Let <c>C-Level</c> be the desired confidence level and let <c>Pooled</c> be <c>No</c>.
+            </p></li>
+
+          <li><p>
+              Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+              <tabular>
+                <row>
+                  <cell><c>(<em><nbsp /><nbsp /></em>,<em><nbsp /><nbsp /></em>)</c></cell>
+                  <cell>the confidence interval</cell>
+                  <cell><nbsp /><nbsp /></cell>
+                  <cell><c>Sx1</c></cell>
+                  <cell>SD of sample 1</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom</cell>
+                  <cell></cell>
+                  <cell><c>Sx2</c></cell>
+                  <cell>SD of sample 2</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}_1}</m></cell>
+                  <cell>mean of sample 1</cell>
+                  <cell></cell>
+                  <cell><c>n1</c></cell>
+                  <cell>size of sample 1</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}_2}</m></cell>
+                  <cell>mean of sample 2</cell>
+                  <cell></cell>
+                  <cell><c>n2</c></cell>
+                  <cell>size of sample 2</cell>
+                </row>
+              </tabular>
+            </p></li>
+        </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: 2-sample $t$-interval</title>
+      <statement>
+        <p>
+        MISSINGVIDEOLINK
+        <ol>
+          <li><p>
+              Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+            </p></li>
+
+          <li><p>
+              If necessary, enter the data into a list.
+            </p></li>
+
+          <li><p>
+              Choose the <c>INTR</c> option (<c>F4</c> button).
+            </p></li>
+
+          <li><p>
+              Choose the <c>t</c> option (<c>F2</c> button).
+            </p></li>
+
+          <li><p>
+              Choose the <c>2-S</c> option (<c>F2</c> button).
+            </p></li>
+
+          <li><p>
+              Choose either the <c>Var</c> option (<c>F2</c>) or enter the data in using the <c>List</c> option.
+            </p></li>
+
+          <li><p>
+          Specify the test details:
+          <ul>
+            <li><p>
+                Confidence level of interest for <c>C-Level</c>.
+              </p></li>
+
+            <li><p>
+                If using the <c>Var</c> option, enter the summary statistics for each group. If using <c>List</c>, specify the lists and leave <c>Freq</c> values at <c>1</c>.
+              </p></li>
+
+            <li><p>
+                Choose whether to pool the data or not.
+              </p></li>
+          </ul>
+          </p></li>
+
+          <li><p>
+              Hit the <c>EXE</c> button, which returns
+              <tabular>
+                <row>
+                  <cell><c>Left</c>, <c>Right</c></cell>
+                  <cell>ends of the confidence interval</cell>
+                </row>
+                <row>
+                  <cell><c>df</c></cell>
+                  <cell>degrees of freedom</cell>
+                </row>
+                <row>
+                  <cell><m>\textttmath{\bar{x}1}</m>, <m>\textttmath{\bar{x}2}</m></cell>
+                  <cell>sample means</cell>
+                </row>
+                <row>
+                  <cell><c>sx1</c>, <c>sx2</c></cell>
+                  <cell>sample standard deviations</cell>
+                </row>
+                <row>
+                  <cell><c>n1</c>, <c>n2</c></cell>
+                  <cell>sample sizes</cell>
+                </row>
+              </tabular>
+            </p></li>
+        </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+      </statement>
+      <p>
+        Use the data from the ESC experiment shown in <xref ref="summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection">Table</xref> and a calculator to find the appropriate degrees of freedom and construct a 90<percent /> confidence interval.
+      </p>
+      <hint>
+        <p>
+          The interval is <m>(4.3543, 11.307)</m> with <m>df=12.2</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <table xml:id="summaryStatsForSheepHeartDataWhoReceivedMiceESCsForCalcSubsection" >
+      <caption>Summary statistics for the embryonic stem cell data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\hspace{10mm}</cell>
+          <cell><m>n</m></cell>
+          <cell><m>\bar{x}</m></cell>
+          <cell><m>s</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>ESCs</cell>
+          <cell>9</cell>
+          <cell>3.50</cell>
+          <cell>5.17</cell>
+        </row>
+        <row>
+          <cell>control</cell>
+          <cell>9</cell>
+          <cell>-4.33</cell>
+          <cell>2.76</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+      </statement>
+      <p>
+        Use the data from the ESC example and a calculator to find an appropriate statistic, degrees of freedom, and p-value for a two-sided hypothesis test.
+      </p>
+      <hint>
+        <p>
+          <m>T=4.008</m>, <m>df=12.2</m>, and p-value<m>=0.00168</m>.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+</section>

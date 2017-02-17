@@ -1,0 +1,1270 @@
+
+<section xml:id="twoWayTablesAndChiSquare">
+  <title>Homogeneity and independence in two-way tables</title>
+  <introduction>
+    <p>
+      <index><main>data</main><sub>search algorithm</sub></index>
+    </p>
+
+    <p>
+      Google is constantly running experiments to test new search algorithms. For example, Google might test three algorithms using a sample of 10,000 google.com search queries. <xref ref="googleSearchAlgorithmByAlgorithmOnly">Table</xref> shows an example of 10,000 queries split into three algorithm groups.<fn>Google regularly runs experiments in this manner to help improve their search engine. It is entirely possible that if you perform a search and so does your friend, that you will have different search results. While the data presented in this section resemble what might be encountered in a real experiment, these data are simulated.</fn> The group sizes were specified before the start of the experiment to be 5000 for the current algorithm and 2500 for each test algorithm.
+    </p>
+
+    <table xml:id="googleSearchAlgorithmByAlgorithmOnly" >
+      <caption>Google experiment breakdown of test subjects into three search groups.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Search algorithm</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>current</cell>
+          <cell>test 1</cell>
+          <cell>test 2</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell>Counts</cell>
+          <cell></cell>
+          <cell>5000</cell>
+          <cell>2500</cell>
+          <cell>2500</cell>
+          <cell></cell>
+          <cell>10000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <example>
+      <statement>
+        <p>
+          What is the ultimate goal of the Google experiment? What are the null and alternative hypotheses, in regular words?
+        </p>
+      </statement>
+      <answer>
+        <p>
+        The ultimate goal is to see whether there is a difference in the performance of the algorithms. The hypotheses can be described as the following:
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          The algorithms each perform equally well.
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+            The algorithms do not perform equally well.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      In this experiment, the explanatory variable is the search algorithm. However, an outcome variable is also needed. This outcome variable should somehow reflect whether the search results align with the user's interests. One possible way to quantify this is to determine whether (1)<nbsp />there was no new, related search, and the user clicked one of the links provided, or (2)<nbsp />there was a new, related search performed by the user. Under scenario<nbsp />(1), we might think that the user was satisfied with the search results. Under scenario<nbsp />(2), the search results probably were not relevant, so the user tried a second search.
+    </p>
+
+    <p>
+      <xref ref="googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals">Table</xref> provides the results from the experiment. These data are very similar to the count data in <xref ref="oneWayChiSquare">Section</xref>. However, now the different combinations of two variables are binned in a <em>two-way</em> table. In examining these data, we want to evaluate whether there is strong evidence that at least one algorithm is performing better than the others. To do so, we apply a chi-square test to this two-way table. The ideas of this test are similar to those ideas in the one-way table case. However, degrees of freedom and expected counts are computed a little differently than before.
+    </p>
+
+    <table xml:id="googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals" >
+      <caption>Results of the Google search algorithm experiment.</caption>
+      Search algorithm
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>current</cell>
+          <cell>test 1</cell>
+          <cell>test 2</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>No new search</cell>
+          <cell></cell>
+          <cell>3511</cell>
+          <cell>1749</cell>
+          <cell>1818</cell>
+          <cell></cell>
+          <cell>7078</cell>
+        </row>
+        <row>
+          <cell>New search</cell>
+          <cell></cell>
+          <cell>1489</cell>
+          <cell>751</cell>
+          <cell>682</cell>
+          <cell></cell>
+          <cell>2922</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell></cell>
+          <cell>5000</cell>
+          <cell>2500</cell>
+          <cell>2500</cell>
+          <cell></cell>
+          <cell>10000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <aside>
+      <title>What is so different about one-way tables and two-way tables?</title>
+      <p>
+        A one-way table describes counts for each outcome in a single variable. A two-way table describes counts for <em>combinations</em> of outcomes for two variables. When we consider a two-way table, we often would like to know, are these variables related in any way?
+      </p>
+    </aside>
+    <p>
+      The hypothesis test for this Google experiment is really about assessing whether there is statistically significant evidence that the choice of the algorithm affects whether a user performs a second search. In other words, the goal is to check whether the three search algorithms perform differently.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Expected counts in two-way tables</title>
+    <example xml:id="googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch">
+      <statement>
+        <p>
+          From the experiment, we estimate the proportion of users who were satisfied with their initial search (no new search) as <m>7078/10000 = 0.7078</m>. If there really is no difference among the algorithms and 70.78<percent /> of people are satisfied with the search results, how many of the 5000 people in the <q>current algorithm</q> group would be expected to not perform a new search?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          About 70.78<percent /> of the 5000 would be satisfied with the initial search:
+          <me>
+            0.7078\times 5000 = 3539\text{ users }
+          </me>
+        </p>
+
+        <p>
+          That is, if there was no difference between the three groups, then we would expect 3539 of the current algorithm users not to perform a new search.
+        </p>
+      </answer>
+    </example>
+
+    <exercise xml:id="googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch">
+      <statement>
+        <p>
+          Using the same rationale described in <xref ref="googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch">Example</xref>, about how many users in each test group would not perform a new search if the algorithms were equally helpful?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          We would expect <m>0.7078*2500 = 1769.5</m>. It is okay that this is a fraction.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      We can compute the expected number of users who would perform a new search for each group using the same strategy employed in <xref ref="googleExampleComputingTheExpectedNumberOfCurrentGroupWithNoNewSearch">Example</xref> and Guided <xref ref="googleExampleComputingTheExpectedNumberOfNewAlgGroupWithNoNewSearch">Practice</xref>. These expected counts were used to construct <xref ref="googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts">Table</xref>, which is the same as <xref ref="googleSearchAlgorithmByAlgorithmAndPerformanceWithTotals">Table</xref>, except now the expected counts have been added in parentheses.
+    </p>
+
+    <table xml:id="googleSearchAlgorithmByAlgorithmAndPerformanceWithExpectedCounts" >
+      <caption>The observed counts and the <em>(expected counts)</em>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Search algorithm\hspace{2mm}</cell>
+          <cell>current</cell>
+          <cell></cell>
+          <cell>test 1</cell>
+          <cell></cell>
+          <cell>test 2</cell>
+          <cell>\hspace{0mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>No new search</cell>
+          <cell>3511</cell>
+          <cell><em>(3539)</em></cell>
+          <cell></cell>
+          <cell>1749</cell>
+          <cell><em>(1769.5)</em></cell>
+          <cell></cell>
+          <cell>1818</cell>
+          <cell><em>(1769.5)</em></cell>
+          <cell></cell>
+          <cell>7078</cell>
+        </row>
+        <row>
+          <cell>New search</cell>
+          <cell>1489</cell>
+          <cell><em>(1461)</em></cell>
+          <cell></cell>
+          <cell>751</cell>
+          <cell><em>(730.5)</em></cell>
+          <cell></cell>
+          <cell>682</cell>
+          <cell><em>(730.5)</em></cell>
+          <cell></cell>
+          <cell>2922</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell>5000</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>2500</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>2500</cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>10000</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      The examples and exercises above provided some help in computing expected counts. In general, expected counts for a two-way table may be computed using the row totals, column totals, and the table total. For instance, if there was no difference between the groups, then about 70.78<percent /> of each column should be in the first row:
+      <md>
+        <mrow>0.7078\times (\text{ column 1 total } ) \amp = 3539</mrow>
+        <mrow>0.7078\times (\text{ column 2 total } ) \amp = 1769.5</mrow>
+        <mrow>0.7078\times (\text{ column 3 total } ) \amp = 1769.5</mrow>
+      </md>
+    </p>
+
+    <p>
+      Looking back to how the fraction 0.7078 was computed <mdash /> as the fraction of users who did not perform a new search (<m>7078/10000</m>) <mdash /> these three expected counts could have been computed as
+      <md>
+        <mrow>\left(\frac{\text{ row 1 total } }{\text{ table total } }\right)\text{ (column 1 total) }  \amp = 3539</mrow>
+        <mrow>\left(\frac{\text{ row 1 total } }{\text{ table total } }\right)\text{ (column 2 total) }  \amp = 1769.5</mrow>
+        <mrow>\left(\frac{\text{ row 1 total } }{\text{ table total } }\right)\text{ (column 3 total) }  \amp = 1769.5</mrow>
+      </md>
+    </p>
+
+    <p>
+      This leads us to a general formula for computing expected counts in a two-way table when we would like to test whether there is strong evidence of an association between the column variable and row variable.
+    </p>
+
+    <definition>
+      <title>Computing expected counts in a two-way table</title>
+      <statement>
+        <p>
+          To identify the expected count for the <m>i^{th}</m> row and <m>j^{th}</m> column, compute
+          <me>
+            \text{ Expected Count } _{\text{ row } i,\text{ col } j} = \frac{(\text{ row \(i\) total } ) \times  (\text{ column \(j\) total } )}{\text{ table total } }\vspace{2mm}
+          </me>
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>The chi-square test of homogeneity for two-way tables</title>
+    <p>
+      The chi-square test statistic for a two-way table is found the same way it is found for a one-way table. For each table count, compute
+      <md>
+        <mrow>\amp \text{ General formula } \amp  \amp \frac{(\text{ observed count }  - \text{ expected count } )^2}{\text{ expected count } }</mrow>
+        <mrow>\amp \text{ Row 1, Col 1 } \amp  \amp \frac{(3511 - 3539)^2}{3539} = 0.222</mrow>
+        <mrow>\amp \text{ Row 1, Col 2 } \amp  \amp \frac{(1749 - 1769.5)^2}{1769.5} = 0.237</mrow>
+        <mrow>\amp  \hspace{9mm}\vdots \amp  \amp \hspace{13mm}\vdots</mrow>
+        <mrow>\amp \text{ Row 2, Col 3 } \amp  \amp \frac{(682 - 730.5)^2}{730.5} = 3.220</mrow>
+      </md>
+    </p>
+
+    <p>
+      Adding the computed value for each cell gives the chi-square test statistic <m>X^2</m>:
+      <me>
+        X^2 = 0.222 + 0.237 + \dots + 3.220 = 6.120
+      </me>
+    </p>
+
+    <p>
+      Just like before, this test statistic follows a chi-square distribution. However, the degrees of freedom are computed a little differently for a two-way table.<fn>Recall: in the one-way table, the degrees of freedom was the number of groups minus 1.</fn> For two way tables, the degrees of freedom is equal to
+      <md>
+        <mrow>df = \text{ (number of rows - 1) } \times \text{ (number of columns - 1) }</mrow>
+      </md>
+    </p>
+
+    <p>
+      In our example, the degrees of freedom parameter is
+      <md>
+        <mrow>df = (2-1)\times (3-1) = 2</mrow>
+      </md>
+    </p>
+
+    <p>
+      If the null hypothesis is true (i.e. the algorithms are equally useful), then the test statistic <m>X^2 = 6.12</m> closely follows a chi-square distribution with 2 degrees of freedom. Using this information, we can compute the p-value for the test, which is depicted in <xref ref="googleHTForDiffAlgPerformancePValue">Figure</xref>.
+    </p>
+
+    <definition>
+      <title>Computing degrees of freedom for a two-way table</title>
+      <statement>
+        <p>
+          When applying the chi-square test to a two-way table, we use
+          <me>
+            df = (R-1)\times (C-1)
+          </me>
+          where <m>R</m> is the number of rows in the table and <m>C</m> is the number of columns.
+        </p>
+      </statement>
+    </definition>
+
+    <aside>
+      <title>Use two-proportion methods for 2-by-2 contingency tables</title>
+      <p>
+        When analyzing 2-by-2 contingency tables, use the two-proportion methods introduced in <xref ref="differenceOfTwoProportions">Section</xref>.
+      </p>
+    </aside>
+    <figure xml:id="googleHTForDiffAlgPerformancePValue" >
+      <caption>Computing the p-value for the Google hypothesis test.</caption>
+      <image width="70%" source="images/googleHTForDiffAlgPerformancePValue.png" />
+    </figure>
+
+    <aside>
+      <title>Conditions for the chi-square test of homeneity</title>
+      <p>
+      There are two conditions that must be checked before performing a chi-square test of homogeneity. If these conditions are not met, this test should not be used.
+      <ul>
+        <li>
+        <title>Mutliple random samples or randomly allocated treatments.</title>
+        <p>
+        Data collected by multiple independent random samples or multiple randomlly allocated treatments. Data can then be organized into a two-way table.
+          </p>
+        </li>
+
+        <li>
+        <title>All Expected Counts at least 5.</title>
+        <p>
+          All of the expected counts must be at least<nbsp />5.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          Compute the p-value and draw a conclusion about whether the search algorithms have different performances.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Looking in <xref ref="chiSquareProbabilityTable">Appendix</xref> on <xref ref="chiSquareProbabilityTable">page</xref>, we examine the row corresponding to 2 degrees of freedom. The test statistic, <m>X^2=6.120</m>, falls between the fourth and fifth columns, which means the p-value is between 0.02 and 0.05. Because we typically test at a significance level of <m>\alpha=0.05</m> and the p-value is less than 0.05, the null hypothesis is rejected. That is, the data provide convincing evidence that there is some difference in performance among the algorithms.
+          <index><main>data</main><sub>search algorithm</sub></index>
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>The chi-square test of independence for two-way tables</title>
+    <p>
+      The chi-square test of Independence proceeds exactly like the chi-square test of homogeneity, except that it applies when there is only one random sample (versus multiple random samples or an experiment with multiple randomly allocated treatments). The null claim is always that two variables are independent, while the alternate claim is that the variables are dependent.
+    </p>
+
+    <example xml:id="hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection">
+      <statement>
+        <p>
+          <index><main>data</main><sub>approval ratings</sub></index><xref ref="pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises">Table</xref> summarizes the results of a Pew Research poll.<fn>See the Pew Research website: {\scriptsizeMISSINGoiRedirect}. The counts in <xref ref="pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises">Table</xref> are approximate.</fn> We would like to determine if three groups and approval ratings are associated. What are appropriate hypotheses for such a test?
+        </p>
+      </statement>
+      <answer>
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          The ratings are independent of the group. (There is no difference in approval ratings between the three groups.)
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          The ratings are dependent on the group. (There is some difference in approval ratings between the three groups, e.g. perhaps Obama's approval differs from Democrats in Congress.)
+            </p>
+          </li>
+        </ul>
+      </answer>
+    </example>
+
+    <table xml:id="pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercises" >
+      <caption>Pew Research poll results of a March 2012 poll.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>Congress</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Obama</cell>
+          <cell>Democrats</cell>
+          <cell>Republicans</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Approve</cell>
+          <cell></cell>
+          <cell>842</cell>
+          <cell>736</cell>
+          <cell>541</cell>
+          <cell></cell>
+          <cell>2119</cell>
+        </row>
+        <row>
+          <cell>Disapprove</cell>
+          <cell></cell>
+          <cell>616</cell>
+          <cell>646</cell>
+          <cell>842</cell>
+          <cell></cell>
+          <cell>2104</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell></cell>
+          <cell>1458</cell>
+          <cell>1382</cell>
+          <cell>1383</cell>
+          <cell></cell>
+          <cell>4223</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          A chi-square test for a two-way table may be used to test the hypotheses in <xref ref="hypothesisTestSetupForPewResearchPollOnApprovalRatingsForChiSquareSection">Example</xref>. As a first step, compute the expected values for each of the six table cells.<fn>The expected count for row one / column one is found by multiplying the row one total (2119) and column one total (1458), then dividing by the table total (4223): <m>\frac{2119\times 1458}{4223} = 731.6</m>. Similarly for the first column and the second row: <m>\frac{2104\times 1458}{4223} = 726.4</m>. Column 2: 693.5 and 688.5. Column 3: 694.0 and 689.0</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Compute the chi-square test statistic.<fn>For each cell, compute <m>\frac{(\text{ obs }  - \text{ exp } )^2}{exp}</m>. For instance, the first row and first column: <m>\frac{(842-731.6)^2}{731.6} = 16.7</m>. Adding the results of each cell gives the chi-square test statistic: {\scriptsize<m>X^2 = 16.7 + \cdots + 34.0 = 106.4</m>}.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Because there are 2 rows and 3 columns, the degrees of freedom for the test is <m>df=(2-1)\times (3-1) = 2</m>. Use <m>X^2=106.4</m>, <m>df=2</m>, and the chi-square table on <xref ref="chiSquareProbabilityTable">page</xref> to evaluate whether to reject the null hypothesis.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The test statistic is larger than the right-most column of the <m>df=2</m> row of the chi-square table, meaning the p-value is less than 0.001. That is, we reject the null hypothesis because the p-value is less than 0.05, and we conclude that Americans' approval has differences among Democrats in Congress, Republicans in Congress, and the president.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      <index><main>data</main><sub>approval ratings</sub></index>
+    </p>
+
+    <aside>
+      <title>Conditions for the chi-square test of independence</title>
+      <p>
+      There are two conditions that must be checked before performing a chi-square test of independence. If these conditions are not met, this test should not be used.
+      <ul>
+        <li>
+        <title>One simple random sample with two variables/questions.</title>
+        <p>
+        The data must be arrived at by taking a simple random sample. After the data is collected, it is separated and categorized according to two variables and can be organized into a two-way table.
+          </p>
+        </li>
+
+        <li>
+        <title>All Expected Counts at least 5</title>
+        <p>
+          All of the expected counts must be at least 5.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </aside>
+  </subsection>
+
+  <subsection>
+    <title>Summarizing the chi-square tests for two-way tables</title>
+    <definition>
+      <title>$X^2$ test of homogeneity</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    <m>X^2</m> test of homogeneity
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    Multiple random samples or treatments.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    All expected counts <m>\ge 5</m> (calculate and record expected counts).
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language. No mathematical notation is needed for this test.
+              <ul>
+                <li>
+                  <p>
+                    H<m>_0</m>: distribution of [variable 1] matches the distribution of [variable 2].
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    H<m>_A</m>: distribution of [variable 1] does not match the distribution of [variable 2].
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic and degrees of freedom.{
+              <md>
+                <mrow>X^2 \amp = \sum{\frac{\text{ (observed counts - expected counts) } ^2}{\text{ expected counts } }}</mrow>
+                <mrow>df \amp = (\# \text{ of rows }  - 1) \times (\# \text{ of columns }  - 1)</mrow>
+              </md>
+              }
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>$X^2$ test of independence</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    <m>X^2</m> test of independence
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    A simple random sample.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    All expected counts <m>\ge 5</m> (calculate and record expected counts).
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language. No mathematical notation is needed for this test.
+              <ul>
+                <li>
+                  <p>
+                    H<m>_0</m>: [variable 1] and [variable 2] are independent.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    H<m>_A</m>: [variable 1] and [variable 2] are dependent.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic and degrees of freedom.{
+              <md>
+                <mrow>X^2 \amp = \sum{\frac{\text{ (observed counts - expected counts) } ^2}{\text{ expected counts } }}</mrow>
+                <mrow>df \amp = (\# \text{ of rows }  - 1) \times (\# \text{ of columns }  - 1)</mrow>
+              </md>
+              }
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <example xml:id="facebookprivacy">
+      <statement>
+        <p>
+          A 2011 survey asked 806 randomly sampled adult Facebook users about their Facebook privacy settings. One of the questions on the survey was, ``Do you know how to adjust your Facebook privacy settings to control what people can and cannot see?" The responses are cross-tabulated based on gender. \footfullcite{data:facebookPrivacy}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Gender</em>}</cell>
+            <cell></cell>
+            <cell>\hspace{10mm}<nbsp /></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Male</cell>
+            <cell>Female</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Yes</cell>
+            <cell>288</cell>
+            <cell>378</cell>
+            <cell>666</cell>
+          </row>
+          <row>
+            <cell><em>Response</em></cell>
+            <cell>No</cell>
+            <cell>61</cell>
+            <cell>62</cell>
+            <cell>123</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Not sure</cell>
+            <cell>10</cell>
+            <cell>7</cell>
+            <cell>17</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>359</cell>
+            <cell>447</cell>
+            <cell>806</cell>
+          </row>
+        </tabular>
+        <p>
+          Carry out an appropriate test at the 0.10 significance level to see if there is an association between gender and knowing how to adjust Facebook privacy settings to control what people can and cannot see.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          According to the problem, there was one random sample taken. Two variables were recorded on the respondents: gender and response to the question regarding privacy settings. Because there was one random sample rather than two independent random samples, we carry out a <m>X^2</m> test of independence.
+          H<m>_0</m>: Gender and knowing how to adjust Facebook privacy settings are independent.
+          H<m>_A</m>: Gender and knowing how to adjust Facebook privacy settings are dependent.
+          <m>\alpha=0.1</m>
+        </p>
+
+        <p>
+          Table of expected counts:
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Gender</em>}</cell>
+            <cell>\hspace{17mm}<nbsp /></cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Male</cell>
+            <cell>Female</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Yes</cell>
+            <cell>296.64</cell>
+            <cell>369.36</cell>
+          </row>
+          <row>
+            <cell><em>Response</em></cell>
+            <cell>No</cell>
+            <cell>54.785</cell>
+            <cell>68.215</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Not sure</cell>
+            <cell>7.572</cell>
+            <cell>9.428</cell>
+          </row>
+          <row>
+            <cell></cell>
+          </row>
+        </tabular>
+        <p>
+          All expected counts are <m>\ge 5</m>.
+          <m>X^2 = 3.13</m>; <m>df = 2</m>
+          p-value<m>= 0.209 > \alpha</m>
+          We do not reject H<m>_0</m>. We do not have evidence that gender and knowing how to adjust Facebook privacy settings are dependent.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: chi-square test for two-way tables</title>
+    <definition>
+      <title>TI-83/84: Entering data into a two-way table</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Hit <c>2ND</c> <m>\textttmath{x^{-1}}</m> (i.e. <c>MATRIX</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>EDIT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>1</c> or <c>ENTER</c> to select matrix <c>A</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the dimensions by typing <hash />rows, <c>ENTER</c>, <hash />columns, <c>ENTER</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the data from the two-way table.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>TI-83/84: Chi-square test of homogeneity and independence</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>STAT</c>, <c>TESTS</c>, <m>\textttmath{X^2}</m><c>-Test</c>.
+          <ol>
+            <li>
+              <p>
+                First enter two-way table data as described in the previous box.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>C:</c><m>\textttmath{X^2}</m><c>-Test</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow, choose <c>Calculate</c>, and hit <c>ENTER</c>, which returns
+                <tabular>
+                  <row>
+                    <cell><m>\textttmath{X^2}</m></cell>
+                    <cell>chi-square test statistic</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>TI-83/84: Finding the expected counts</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              First enter two-way table data as described previously.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Carry out the chi-square test of homogeneity or independence as described in previous box.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Hit <c>2ND</c> <m>\textttmath{x^{-1}}</m> (i.e. <c>MATRIX</c>).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Right arrow to <c>EDIT</c>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Hit <c>2</c> to see matrix <c>B</c>.
+              <ul>
+                <li class="custom-list-style-type" label="" ><p>
+                This matrix contains the expected counts.
+              </p>
+            </li>
+          </ul>
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Chi-square test of homogeneity and independence</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>TEST</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>CHI</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>2WAY</c> option (<c>F2</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the data into a matrix:
+                <ul>
+                  <li>
+                    <p>
+                      Hit <m>\textttmath{\triangleright}</m><c>MAT</c> (<c>F2</c> button).
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Navigate to a matrix you would like to use (e.g. <c>Mat C</c>) and hit <c>EXE</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Specify the matrix dimensions: <c>m</c> is for rows, <c>n</c> is for columns.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Enter the data.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Return to the test page by hitting <c>EXIT</c> twice.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the <c>Observed</c> matrix that was used by hitting <c>MAT</c> (<c>F1</c> button) and the matrix letter (e.g.<nbsp /><c>C</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the <c>Expected</c> matrix where the expected values will be stored (e.g.<nbsp /><c>D</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit the <c>EXE</c> button, which returns
+                <tabular>
+                  <row>
+                    <cell><m>\textttmath{x^2}</m></cell>
+                    <cell>chi-square test statistic</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                To see the expected values of the matrix, go to <m>\textttmath{\triangleright}</m><c>MAT</c> (<c>F6</c> button) and select the corresponding matrix.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <table xml:id="pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercisesAgain" >
+      <caption>Pew Research poll results of a March 2012 poll.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>Congress</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Obama</cell>
+          <cell>Democrats</cell>
+          <cell>Republicans</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Approve</cell>
+          <cell></cell>
+          <cell>842</cell>
+          <cell>736</cell>
+          <cell>541</cell>
+          <cell></cell>
+          <cell>2119</cell>
+        </row>
+        <row>
+          <cell>Disapprove</cell>
+          <cell></cell>
+          <cell>616</cell>
+          <cell>646</cell>
+          <cell>842</cell>
+          <cell></cell>
+          <cell>2104</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Total</cell>
+          <cell></cell>
+          <cell>1458</cell>
+          <cell>1382</cell>
+          <cell>1383</cell>
+          <cell></cell>
+          <cell>4223</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Use <xref ref="pewResearchPollOnApprovalRatingsForChiSquareSectionExampleAndExercisesAgain">Table</xref> and a calculator to find the expected values and the <m>X^2</m> statistic, <m>df</m>, and p-value for the corresponding chi-square test.<fn>First create a <m>2\times 3</m> matrix ith the data. The final summaries should be <m>X^2=106.4</m>, <m>\text{\mbox{p-value}}  = 8.06 \times 10^{-24}\approx 0</m>, and <m>df=2</m>. Below is the matrix of expected values:
+          <tabular>
+            <row>
+              <cell></cell>
+              <cell>Obama</cell>
+              <cell>Congr. Dem.</cell>
+              <cell>Congr. Rep.</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+            <row>
+              <cell>Approve</cell>
+              <cell>731.59</cell>
+              <cell>693.45</cell>
+              <cell>693.96</cell>
+            </row>
+            <row>
+              <cell>Disapprove</cell>
+              <cell>726.41</cell>
+              <cell>688.55</cell>
+              <cell>689.04</cell>
+            </row>
+            <row bottom="minor">
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+              <cell></cell>
+            </row>
+          </tabular>
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

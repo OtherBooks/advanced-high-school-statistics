@@ -1,0 +1,1017 @@
+
+<section>
+  <title>Exercises</title>
+  <subsection>
+    <title>Estimating unknown parameters</title>
+    <exercise>
+      <title>Identify the parameter, Part I</title>
+      <statement>
+        <p>
+          For each of the following situations, state whether the parameter of interest is a mean or a proportion. It may be helpful to examine whether individual responses are numerical or categorical.
+          <ol>
+            <li>
+              <p>
+                In a survey, one hundred college students are asked how many hours per week they spend on the Internet.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, one hundred college students are asked: ``What percentage of the time you spend on the Internet is part of your course work?"
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, one hundred college students are asked whether or not they cited information from Wikipedia in their papers.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, one hundred college students are asked what percentage of their total weekly spending is on alcoholic beverages.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a sample of one hundred recent college graduates, it is found that 85 percent expect to get a job within one year of their graduation date.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Identify the parameter, Part II</title>
+      <statement>
+        <p>
+          For each of the following situations, state whether the parameter of interest is a mean or a proportion.
+          <ol>
+            <li>
+              <p>
+                A poll shows that 64<percent /> of Americans personally worry a great deal about federal spending and the budget deficit.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A survey reports that local TV news has shown a 17<percent /> increase in revenue between 2009 and 2011 while newspaper revenues decreased by 6.4<percent /> during this time period.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, high school and college students are asked whether or not they use geolocation services on their smart phones.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, internet users are asked whether or not they purchased any Groupon coupons.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In a survey, internet users are asked how many Groupon coupons they purchased over the last year.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="credits">
+      <title>College credits</title>
+      <statement>
+        <p>
+          A college counselor is interested in estimating how many credits a student typically enrolls in each semester. The counselor decides to randomly sample 100 students by using the registrar's database of students. The histogram below shows the distribution of the number of credits taken by these students. Sample statistics for this distribution are also provided.
+        </p>
+
+        <sidebyside>
+          <image width="73%" source="images/credits.png" />
+          <tabular>
+            <row>
+              <cell>Min</cell>
+              <cell>8</cell>
+            </row>
+            <row>
+              <cell>Q1</cell>
+              <cell>13</cell>
+            </row>
+            <row>
+              <cell>Median</cell>
+              <cell>14</cell>
+            </row>
+            <row>
+              <cell>Mean</cell>
+              <cell>13.65</cell>
+            </row>
+            <row>
+              <cell>SD</cell>
+              <cell>1.91</cell>
+            </row>
+            <row>
+              <cell>Q3</cell>
+              <cell>15</cell>
+            </row>
+            <row>
+              <cell>Max</cell>
+              <cell>18</cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              What is the point estimate for the average number of credits taken per semester by students at this college? What about the median?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              What is the point estimate for the standard deviation of the number of credits taken per semester by students at this college? What about the IQR? <em>(See the next page for parts<nbsp />(c)-(e).)</em>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Is a load of 16 credits unusually high for this college? What about 18 credits? Explain your reasoning. <em>Hint:</em> Observations farther than two standard deviations from the mean are usually considered to be unusual.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The college counselor takes another random sample of 100 students and this time finds a sample mean of 14.02 units. Should she be surprised that this sample statistic is slightly different than the one from the original sample? Explain your reasoning.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The sample means given above are point estimates for the mean number of credits taken by all students at that college. What measures do we use to quantify the variability of this estimate (Hint: recall that <m>SD_{\bar{x}}=\frac{\sigma}{\sqrt{n}}</m>)? Compute this quantity using the data from the original sample.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="heights">
+      <title>Heights of adults</title>
+      <statement>
+        <p>
+          Researchers studying anthropometry collected body girth measurements and skeletal diameter measurements, as well as age, weight, height and gender, for 507 physically active individuals. The histogram below shows the sample distribution of heights in centimeters. \footfullcite{Heinz:2003}
+        </p>
+
+        <sidebyside>
+          <image width="73%" source="images/bdims_heights.png" />
+          <tabular>
+            <row>
+              <cell>Min</cell>
+              <cell>147.2</cell>
+            </row>
+            <row>
+              <cell>Q1</cell>
+              <cell>163.8</cell>
+            </row>
+            <row>
+              <cell>Median</cell>
+              <cell>170.3</cell>
+            </row>
+            <row>
+              <cell>Mean</cell>
+              <cell>171.1</cell>
+            </row>
+            <row>
+              <cell>SD</cell>
+              <cell>9.4</cell>
+            </row>
+            <row>
+              <cell>Q3</cell>
+              <cell>177.8</cell>
+            </row>
+            <row>
+              <cell>Max</cell>
+              <cell>198.1</cell>
+            </row>
+          </tabular>
+        </sidebyside>
+        <ol>
+          <li>
+            <p>
+              What is the point estimate for the average height of active individuals? What about the median?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              What is the point estimate for the standard deviation of the heights of active individuals? What about the IQR?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Is a person who is 1m 80cm (180 cm) tall considered unusually tall? And is a person who is 1m 55cm (155cm) considered unusually short? Explain your reasoning.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The researchers take another random sample of physically active individuals. Would you expect the mean and the standard deviation of this new sample to be the ones given above? Explain your reasoning.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The sample means obtained are point estimates for the mean height of all active individuals, if the sample of individuals is equivalent to a simple random sample. What measure do we use to quantify the variability of such an estimate (Hint: recall that <m>SD_{\bar{x}}=\frac{\sigma}{\sqrt{n}}</m>)? Compute this quantity using the data from the original sample under the condition that the data are a simple random sample.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Hen eggs</title>
+      <statement>
+        <p>
+          The distribution of the number of eggs laid by a certain species of hen during their breeding period is 35 eggs with a standard deviation of 18.2. Suppose a group of researchers randomly samples 45 hens of this species, counts the number of eggs laid during their breeding period, and records the sample mean. They repeat this 1,000 times, and build a distribution of sample means.
+          <ol>
+            <li>
+              <p>
+                What is this distribution called?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Would you expect the shape of this distribution to be symmetric, right skewed, or left skewed? Explain your reasoning.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Calculate the variability of this distribution and state the appropriate term used to refer to this value.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose the researchers' budget is reduced and they are only able to collect random samples of 10 hens. The sample mean of the number of eggs is recorded, and we repeat this 1,000 times, and build a new distribution of sample means. How will the variability of this new distribution compare to the variability of the original distribution?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Art after school</title>
+      <statement>
+        <p>
+          Elijah and Tyler, two high school juniors, conducted a survey on 15 students at their school, asking the students whether they would like the school to offer an after-school art program, counted the number of <q>yes</q> answers, and recorded the sample proportion. 14 out of the 15 students responded <q>yes</q>. They repeated this 100 times and built a distribution of sample means.
+          <ol>
+            <li>
+              <p>
+                What is this distribution called?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Would you expect the shape of this distribution to be symmetric, right skewed, or left skewed? Explain your reasoning.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Calculate the variability of this distribution and state the appropriate term used to refer to this value.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose that the students were able to recruit a few more friends to help them with sampling, and are now able to collect data from random samples of 25 students. Once again, they record the number of <q>yes</q> answers, and record the sample proportion, and repeat this 100 times to build a new distribution of sample proportions. How will the variability of this new distribution compare to the variability of the original distribution?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Confidence intervals</title>
+    <exercise xml:id="ChronicIllnessP1">
+      <title>Chronic illness, Part I</title>
+      <statement>
+        <p>
+          In 2013, the Pew Research Foundation reported that <q>45<percent /> of U.S. adults report that they live with one or more chronic conditions</q>.\footfullcite{data:pewdiagnosis:2013} However, this value was based on a sample, so it may not be a perfect estimate for the population parameter of interest on its own. The study reported a standard error of about 1.2<percent />, and a normal model may reasonably be used in this setting. Create a 95<percent /> confidence interval for the proportion of U.S. adults who live with one or more chronic conditions. Also interpret the confidence interval in the context of the study.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Twitter users and news, Part I</title>
+      <statement>
+        <p>
+          A poll conducted in 2013 found that 52<percent /> of U.S. adult Twitter users get at least some news on Twitter.\footfullcite{data:pewtwitternews:2013}. The standard error for this estimate was 2.4<percent />, and a normal distribution may be used to model the sample proportion. Construct a 99<percent /> confidence interval for the fraction of U.S. adult Twitter users who get some news on Twitter, and interpret the confidence interval in context.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Chronic illness, Part II</title>
+      <statement>
+        <p>
+          In 2013, the Pew Research Foundation reported that <q>45<percent /> of U.S. adults report that they live with one or more chronic conditions</q>, and the standard error for this estimate is 1.2<percent />.
+          Identify each of the following statements as true or false. Provide an explanation to justify each of your answers.
+          <ol>
+            <li>
+              <p>
+                We can say with certainty that the confidence interval from <xref ref="ChronicIllnessP1">Exerise</xref> contains the true percentage of U.S. adults who suffer from a chronic illness.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If we repeated this study 1,000 times and constructed a 95<percent /> confidence interval for each study, then approximately 950 of those confidence intervals would contain the true fraction of U.S. adults who suffer from chronic illnesses.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The poll provides statistically significant evidence (at the <m>\alpha = 0.05</m> level) that the percentage of U.S. adults who suffer from chronic illnesses is below 50<percent />.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Since the standard error is 1.2<percent />, only 1.2<percent /> of people in the study communicated uncertainty about their answer.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Twitter users and news, Part II</title>
+      <statement>
+        <p>
+          A poll conducted in 2013 found that 52<percent /> of U.S. adult Twitter users get at least some news on Twitter, and the standard error for this estimate was 2.4<percent />. Identify each of the following statements as true or false. Provide an explanation to justify each of your answers.
+          <ol>
+            <li>
+              <p>
+                The data provide statistically significant evidence that more than half of U.S. adult Twitter users get some news through Twitter. Use a significance level of <m>\alpha = 0.01</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Since the standard error is 2.4<percent />, we can conclude that 97.6<percent /> of all U.S. adult Twitter users were included in the study.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If we want to reduce the standard error of the estimate, we should collect less data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If we construct a 90<percent /> confidence interval for the percentage of U.S. adults Twitter users who get some news through Twitter, this confidence interval will be wider than a corresponding 99<percent /> confidence interval.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Relaxing after work</title>
+      <statement>
+        <p>
+          The 2010 General Social Survey asked the question: ``After an average work day, about how many hours do you have to relax or pursue activities that you enjoy?" to a random sample of 1,155 Americans.\footfullcite{data:gss:2010} A 95<percent /> confidence interval for the mean number of hours spent relaxing or pursuing activities they enjoy was (1.38, 1.92).
+          <ol>
+            <li>
+              <p>
+                Interpret this interval in context of the data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose another set of researchers reported a confidence interval with a larger margin of error based on the same sample of 1,155 Americans. How does their confidence level compare to the confidence level of the interval stated above?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose next year a new survey asking the same question is conducted, and this time the sample size is 2,500. Assuming that the population characteristics, with respect to how much time people spend relaxing after work, have not changed much within a year. How will the margin of error of the 95<percent /> confidence interval constructed based on data from the new survey compare to the margin of error of the interval stated above?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Take a walk</title>
+      <statement>
+        <p>
+          The Centers for Disease Control monitors the physical activity level of Americans. A recent survey on a random sample of 23,129 Americans yielded a 95<percent /> confidence interval of 61.1<percent /> to 62.9<percent /> for the proportion of Americans who walk for at least 10 minutes per day.
+          <ol>
+            <li>
+              <p>
+                Interpret this interval in context of the data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose another set of researchers reported a confidence interval with a larger margin of error based on the same sample of 23,129 Americans. How does their confidence level compare to the confidence level of the interval stated above?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose next year a new survey asking the same question is conducted, and this time the sample size is 10,000. Assuming that the population characteristics, with respect to walking habits, have not changed much within a year, how will the width of the confidence interval constructed based on data from the new survey compare to the width of the interval stated above?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="womenLeaders">
+      <title>Women leaders, Part I</title>
+      <statement>
+        <p>
+          A November 2014 Pew Research poll on women and leadership asked respondents what they believed is holding women back from top jobs. 43<percent /> of the respondents said that women are held to higher standards than men when being considered for top executive business positions. This result is based on 1,835 randomly sampled national adults. \footfullcite{data:pewwomenleaders:2014}
+          <ol>
+            <li>
+              <p>
+                Construct a 95<percent /> confidence interval for the proportion of Americans who believe women are held to higher standards than men when being considered for top executive business positions.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                How would you expect the width of a 90<percent /> confidence interval to compare to the interval you calculated in part (a)? Explain your reasoning.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Now construct the 90<percent /> confidence interval, and comment on whether your answer to part (b) is confirmed.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Women leaders, Part II</title>
+      <statement>
+        <p>
+          The poll introduced in <xref ref="womenLeaders">Exercise</xref> also asked whether respondents expected to see a female president in their lifetime. 78<percent /> of the 1,835 respondents said <q>yes</q>.
+          <ol>
+            <li>
+              <p>
+                Construct a 90<percent /> confidence interval for the proportion of Americans who expect to see a female president in their lifetime, and interpret this interval in context of the data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                How would you expect the width of a 98<percent /> confidence interval to compare to the interval you calculated in part (a)? Explain your reasoning.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Now construct the 98<percent /> confidence interval, and comment on whether your answer to part (b) is confirmed.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Introducing hypothesis testing</title>
+    <exercise xml:id="socExpP1">
+      <title>Social experiment, Part I</title>
+      <statement>
+        <p>
+          A <q>social experiment</q> conducted by a TV program questioned what people do when they see a very obviously bruised woman getting picked on by her boyfriend. On two different occasions at the same restaurant, the same couple was depicted. In one scenario the woman was dressed <q>provocatively</q> and in the other scenario the woman was dressed <q>conservatively</q>. The table below shows how many restaurant diners were present under each scenario, and whether or not they intervened.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Scenario</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Provocative</cell>
+            <cell>Conservative</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Intervene</em>}</cell>
+            <cell>Yes</cell>
+            <cell>5</cell>
+            <cell>15</cell>
+            <cell>20</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>No</cell>
+            <cell>15</cell>
+            <cell>10</cell>
+            <cell>25</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>20</cell>
+            <cell>25</cell>
+            <cell>45</cell>
+          </row>
+        </tabular>
+        <p>
+          A simulation was conducted to test if people react differently under the two scenarios. 10,000 simulated differences were generated to construct the null distribution shown. The value <m>\hat{p}_{pr, sim}</m> represents the proportion of diners who intervened in the simulation for the provocatively dressed woman, and <m>\hat{p}_{con, sim}</m> is the proportion for the conservatively dressed woman.
+        </p>
+        <image width="90%" source="images/socExp.png" />
+        <ol>
+          <li>
+            <p>
+              What are the hypotheses? For the purposes of this exercise, you may assume that each observed person at the restaurant behaved independently, though we would want to evaluate this assumption more rigorously if we were reporting these results.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the observed difference between the rates of intervention under the provocative and conservative scenarios: <m>\hat{p}_{pr} - \hat{p}_{con}</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Estimate the p-value using the figure above and determine the conclusion of the hypothesis test.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise xml:id="yawningContageousP1">
+      <title>Is yawning contagious, Part I</title>
+      <statement>
+        <p>
+          An experiment conducted by the <em>MythBusters</em>, a science entertainment TV program on the Discovery Channel, tested if a person can be subconsciously influenced into yawning if another person near them yawns. 50 people were randomly assigned to two groups: 34 to a group where a person near them yawned (treatment) and 16 to a group where there wasn't a person yawning near them (control). The following table shows the results of this experiment. \footfullcite{data:yawn}
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>\multicolumn{2}{c}{<em>Group</em>}</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell></cell>
+            <cell>Treatment</cell>
+            <cell>Control</cell>
+            <cell>Total</cell>
+          </row>
+          <row>
+            <cell>\multirow{2}{*}{<em>Result</em>}</cell>
+            <cell>Yawn</cell>
+            <cell>10</cell>
+            <cell>4</cell>
+            <cell>14</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Not Yawn</cell>
+            <cell>24</cell>
+            <cell>12</cell>
+            <cell>36</cell>
+          </row>
+          <row>
+            <cell></cell>
+            <cell>Total</cell>
+            <cell>34</cell>
+            <cell>16</cell>
+            <cell>50</cell>
+          </row>
+        </tabular>
+        <p>
+          A simulation was conducted to understand the distribution of the test statistic under the assumption of independence: having someone yawn near another person has no influence on if the other person will yawn. In order to conduct the simulation, a researcher wrote yawn on 14 index cards and not yawn on 36 index cards to indicate whether or not a person yawned. Then he shuffled the cards and dealt them into two groups of size 34 and 16 for treatment and control, respectively. He counted how many participants in each simulated group yawned in an apparent response to a nearby yawning person, and calculated the difference between the simulated proportions of yawning as <m>\hat{p}_{trtmt,sim} - \hat{p}_{ctrl,sim}</m>. This simulation was repeated 10,000 times using software to obtain 10,000 differences that are due to chance alone. The histogram shows the distribution of the simulated differences.
+        </p>
+        <image width="90%" source="images/yawn.png" />
+        <ol>
+          <li>
+            <p>
+              What are the hypotheses?
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the observed difference between the yawning rates under the two scenarios.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Estimate the p-value using the figure above and determine the conclusion of the hypothesis test.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Social experiment, Part II</title>
+      <statement>
+        <p>
+          In <xref ref="socExpP1">Exercise</xref>, we encountered a scenario where researchers were evaluating the impact of the way someone is dressed against the actions of people around them. In that exercise, researchers may have believed that dressing provocatively may reduce the chance of bystander intervention. One might be tempted to use a one-sided hypothesis test for this study. Discuss the drawbacks of doing so in 1-3 sentences.
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Is yawning contagious, Part II</title>
+      <statement>
+        <p>
+          <xref ref="yawningContageousP1">Exercise</xref> describes an experiment by Myth Busters, where they examined whether a person yawning would affect whether others to yawn. The traditional belief is that yawning is contagious <mdash /> one yawn can lead to another yawn, which might lead to another, and so on. In that exercise, there was the option of selecting a one-sided or two-sided test. Which would you recommend (or which did you choose)? Justify your answer in 1-3 sentences.
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="EgyptianRevolutionEOCE">
+      <title>The Egyptian Revolution</title>
+      <statement>
+        <p>
+          A popular uprising that started on January 25, 2011 in Egypt led to the 2011 Egyptian Revolution. Polls show that about 69<percent /> of American adults followed the news about the political crisis and demonstrations in Egypt closely during the first couple weeks following the start of the uprising. Among a random sample of 30 high school students, it was found that only 17 of them followed the news about Egypt closely during this time. \footfullcite{data:egypt}
+          <ol>
+            <li>
+              <p>
+                Write the hypotheses for testing if the proportion of high school students who followed the news about Egypt is different than the proportion of American adults who did.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Calculate the proportion of high schoolers in this sample who followed the news about Egypt closely during this time.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Describe how to perform a simulation and, once you had results, how to estimate the p-value.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Below is a histogram showing the distribution of <m>\hat{p}_{sim}</m> in 10,000 simulations under the null hypothesis. Estimate the p-value using the plot and determine the conclusion of the hypothesis test.
+                <image width="85%" source="images/egypt.png" />
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="AssistedReproductionEOCE">
+      <title>Assisted Reproduction</title>
+      <statement>
+        <p>
+          Assisted Reproductive Technology (ART) is a collection of techniques that help facilitate pregnancy (e.g. in vitro fertilization). A 2008 report by the Centers for Disease Control and Prevention estimated that ART has been successful in leading to a live birth in 31<percent /> of cases \footfullcite{web:art}. A new fertility clinic claims that their success rate is higher than average. A random sample of 30 of their patients yielded a success rate of 40<percent />. A consumer watchdog group would like to determine if this provides strong evidence to support the company's claim.
+          <ol>
+            <li>
+              <p>
+                Write the hypotheses to test if the success rate for ART at this clinic is significantly higher than the success rate reported by the CDC.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Describe a setup for a simulation that would be appropriate in this situation and how the p-value can be calculated using the simulation results.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Below is a histogram showing the distribution of <m>\hat{p}_{sim}</m> in 10,000 simulations under the null hypothesis. Estimate the p-value using the plot and use it to evaluate the hypotheses.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                After performing this analysis, the consumer group releases the following news headline: ``Infertility clinic falsely advertises better success rates". Comment on the appropriateness of this statement.
+                <image width="85%" source="images/art.png" />
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="spam">
+      <title>Spam mail, Part I</title>
+      <statement>
+        <p>
+          The 2004 National Technology Readiness Survey sponsored by the Smith School of Business at the University of Maryland surveyed 418 randomly sampled Americans, asking them how many spam emails they receive per day. The survey was repeated on a new random sample of 499 Americans in 2009.\footfullcite{webpage:spam}
+          <ol>
+            <li>
+              <p>
+                What are the hypotheses for evaluating if the average spam emails per day has changed from 2004 to 2009.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                In 2004 the mean was 18.5 spam emails per day, and in 2009 this value was 14.9 emails per day. What is the point estimate for the difference between the two population means?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A report on the survey states that the observed difference between the sample means is not statistically significant. Explain what this means in context of the hypothesis test and data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Would you expect a confidence interval for the difference between the two population means to contain 0? Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Nearsightedness</title>
+      <statement>
+        <p>
+          It is believed that nearsightedness affects about 8<percent /> of all children. In a random sample of 194 children, 21 are nearsighted.
+          <ol>
+            <li>
+              <p>
+                Construct hypotheses appropriate for the following question: do these data provide evidence that the 8<percent /> value is inaccurate?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What proportion of children in this sample are nearsighted?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Given that the standard error of the sample proportion is 0.0195 and the point estimate follows a nearly normal distribution, calculate the test statistic (the Z-statistic).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is the p-value for this hypothesis test?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is the conclusion of the hypothesis test?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Spam mail, Part II</title>
+      <statement>
+        <p>
+          The National Technology Readiness Survey from <xref ref="spam">Exercise</xref> also asked Americans how often they delete spam emails. 23<percent /> of the respondents in 2004 said they delete their spam mail once a month or less, and in 2009 this value was 16<percent />.
+          <ol>
+            <li>
+              <p>
+                What are the hypotheses for evaluating if the proportion of those who delete their email once a month or less has changed from 2004 to 2009?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is the point estimate for the difference between the two population proportions?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                A report on the survey states that the observed decrease from 2004 to 2009 is statistically significant. Explain what this means in context of the hypothesis test and the data.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Would you expect a confidence interval for the difference between the two population proportions to contain 0? Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Unemployment and relationship problems</title>
+      <statement>
+        <p>
+          A USA Today/Gallup poll conducted between 2010 and 2011 asked a group of unemployed and underemployed Americans if they have had major problems in their relationships with their spouse or another close family member as a result of not having a job (if unemployed) or not having a full-time job (if underemployed). 27<percent /> of the 1,145 unemployed respondents and 25<percent /> of the 675 underemployed respondents said they had major problems in relationships as a result of their employment status.
+          <ol>
+            <li>
+              <p>
+                What are the hypotheses for evaluating if the proportions of unemployed and underemployed people who had relationship problems were different?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The p-value for this hypothesis test is approximately 0.35. Explain what this means in context of the hypothesis test and the data.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Testing for Fibromyalgia</title>
+      <statement>
+        <p>
+          A patient named Diana was diagnosed with Fibromyalgia, a long-term syndrome of body pain, and was prescribed anti-depressants. Being the skeptic that she is, Diana didn't initially believe that anti-depressants would help her symptoms. However after a couple months of being on the medication she decides that the anti-depressants are working, because she feels like her symptoms are in fact getting better.
+          <ol>
+            <li>
+              <p>
+                Write the hypotheses in words for Diana's skeptical position when she started taking the anti-depressants.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is a Type<nbsp />1 Error in this context?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is a Type<nbsp />2 Error in this context?
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Testing for food safety</title>
+      <statement>
+        <p>
+          A food safety inspector is called upon to investigate a restaurant with a few customer reports of poor sanitation practices. The food safety inspector uses a hypothesis testing framework to evaluate whether regulations are not being met. If he decides the restaurant is in gross violation, its license to serve food will be revoked.
+          <ol>
+            <li>
+              <p>
+                Write the hypotheses in words.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is a Type<nbsp />1 Error in this context?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                What is a Type<nbsp />2 Error in this context?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Which error is more problematic for the restaurant owner? Why?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Which error is more problematic for the diners? Why?
+              </p>
+            </li>
+
+            <li>
+              <p>
+                As a diner, would you prefer that the food safety inspector requires strong evidence or very strong evidence of health concerns before revoking a restaurant's license? Explain your reasoning.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>True / False</title>
+      <statement>
+        <p>
+          Determine whether the following statement is true or false, and explain your reasoning: ``A cutoff of <m>\alpha</m> = 0.05 is the ideal value for all hypothesis tests."
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>True / False</title>
+      <statement>
+        <p>
+          Determine whether the following statement is true or false, and explain your reasoning: ``Power of a test and the probability of making a Type<nbsp />1 Error are complements."
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          <em>Which is higher?</em> In each part below, there is a value of interest and two scenarios (I and II). For each part, report if the value of interest is larger under scenario I, scenario II, or whether the value is equal under the scenarios.
+          <ol>
+            <li>
+              <p>
+                The standard error of <m>\bar{x}</m> when <m>s = 120</m> and (I) n = 25 or (II) n = 125.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The margin of error of a confidence interval when the confidence level is (I) 90<percent /> or (II) 80<percent />.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The p-value for a Z-statistic of 2.5 when (I) n = 500 or (II) n = 1000.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                The probability of making a Type<nbsp />2 Error when the alternative hypothesis is true and the significance level is (I) 0.05 or (II) 0.10.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>True or false</title>
+      <statement>
+        <p>
+          Determine if the following statements are true or false, and explain your reasoning. If false, state how it could be corrected.
+          <ol>
+            <li>
+              <p>
+                If a given value (for example, the null hypothesized value of a parameter) is within a 95<percent /> confidence interval, it will also be within a 99<percent /> confidence interval.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Decreasing the significance level (<m>\alpha</m>) will increase the probability of making a Type<nbsp />1 Error.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Suppose the null hypothesis is <m>\mu = 5</m> and we fail to reject <m>H_0</m>. Under this scenario, the true population mean is 5.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If the alternative hypothesis is true, then the probability of making a Type<nbsp />2 Error and the power of a test add up to 1.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                With large sample sizes, even small differences between the null value and the true value of the parameter, a difference often called the effect size<index><main>effect size</main></index>, will be identified as statistically significant.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Does it make sense?</title>
+    <exercise>
+      <title>True / False</title>
+      <statement>
+        <p>
+          Determine whether the following statement is true or false, and explain your reasoning: ``With large sample sizes, even small differences between the null value and the point estimate can be statistically significant."
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <title>Same observation, different sample size</title>
+      <statement>
+        <p>
+          Suppose you conduct a hypothesis test based on a sample where the sample size is <m>n = 50</m>, and arrive at a p-value of 0.08. You then refer back to your notes and discover that you made a careless mistake, the sample size should have been <m>n = 500</m>. How, if at all, will your p-value change (increase or decrease)? Explain.
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

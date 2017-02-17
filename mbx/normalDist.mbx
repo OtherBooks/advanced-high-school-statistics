@@ -1,0 +1,1158 @@
+
+<section xml:id="normalDist">
+  <title>Normal distribution</title>
+  <introduction>
+    <p>
+      Among all the distributions we see in practice, one is overwhelmingly the most common. The symmetric, unimodal, bell curve is ubiquitous throughout statistics. Indeed it is so common, that people often know it as the <term>normal curve</term> or <em>normal distribution</em><index><main>distribution</main><sub>normal|textbf</sub></index>,<fn>It is also introduced as the Gaussian distribution after Frederic Gauss, the first person to formalize its mathematical expression.</fn> shown in <xref ref="simpleNormal">Figure</xref>. Variables such as SAT scores and heights of US adult males closely follow the normal distribution.
+    </p>
+
+    <figure xml:id="simpleNormal" >
+      <caption>A normal curve.</caption>
+      <image width="60%" source="images/simpleNormal.png" />
+    </figure>
+
+    <definition>
+      <title>Normal distribution facts</title>
+      <statement>
+        <p>
+          Many variables are nearly normal, but none are exactly normal. The normal distribution, while never perfect, provides very close approximations for a variety of scenarios. We will use it in data exploration and to solve important problems in statistics.
+        </p>
+      </statement>
+    </definition>
+  </introduction>
+
+  <subsection>
+    <title>Normal distribution model</title>
+    <p>
+      The normal distribution model always describes a symmetric, unimodal, bell-shaped curve. However, these curves can look different depending on the details of the model. Specifically, the normal distribution model can be adjusted using two parameters: mean and standard deviation. As you can probably guess, changing the mean shifts the bell curve to the left or right, while changing the standard deviation stretches or constricts the curve. <xref ref="twoSampleNormals">Figure</xref> shows the normal distribution with mean <m>0</m> and standard deviation <m>1</m> in the left panel and the normal distributions with mean <m>19</m> and standard deviation <m>4</m> in the right panel. <xref ref="twoSampleNormalsStacked">Figure</xref> shows these distributions on the same axis.
+    </p>
+
+    <figure xml:id="twoSampleNormals" >
+      <caption>Both curves represent the normal distribution, however, they differ in their center and spread. The normal distribution with mean 0 and standard deviation 1 is called the <term>standard normal distribution</term>.</caption>
+      <image width="95%" source="images/twoSampleNormals.png" />
+    </figure>
+
+    <figure xml:id="twoSampleNormalsStacked" >
+      <caption>The normal models shown in <xref ref="twoSampleNormals">Figure</xref> but plotted together and on the same scale.</caption>
+      <image width="67%" source="images/twoSampleNormalsStacked.png" />
+    </figure>
+
+    <p>
+      Because the mean and standard deviation describe a normal distribution exactly, they are called the distribution's <em>parameters</em><index><main>parameter|textbf</main></index>.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Standardizing with Z-scores</title>
+    <example xml:id="actSAT">
+      <statement>
+        <p>
+          <xref ref="satACTstats">Table</xref> shows the mean and standard deviation for total scores on the SAT and ACT. The distribution of SAT and ACT scores are both nearly normal. Suppose Ann scored 1800 on her SAT and Tom scored 24 on his ACT. Who performed better?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Since the two distributions are on different scales, we use the standard deviation as a guide. Ann is 1 standard deviation above average on the SAT: <m>1500 + 300=1800</m>. Tom is 0.6 standard deviations above the mean on the ACT: <m>21+0.6\times 5=24</m>. In <xref ref="satActNormals">Figure</xref>, we can see that Ann tends to do better with respect to everyone else than Tom did, so her score was better.
+        </p>
+      </answer>
+    </example>
+
+    <table xml:id="satACTstats" >
+      <caption>Mean and standard deviation for the SAT and ACT.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>SAT</cell>
+          <cell>ACT</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Mean \hspace{0.3cm}</cell>
+          <cell>1500</cell>
+          <cell>21</cell>
+        </row>
+        <row>
+          <cell>SD</cell>
+          <cell>300</cell>
+          <cell>5</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="satActNormals" >
+      <caption>Ann's and Tom's scores shown with the distributions of SAT and ACT scores.</caption>
+      <image width="6500%" source="images/satActNormals.png" />
+    </figure>
+
+    <p>
+      <xref ref="actSAT">Example</xref> used a standardization technique called a Z-score, a method most commonly employed for nearly normal observations but that may be used with any distribution. The <term>Z-score</term><fn>
+
+      <m>Z</m>
+       Z-score, the
+      standardized
+      observation</fn><index><main>Z@<m>Z</m></main></index> of an observation is defined as the number of standard deviations it falls above or below the mean. If the observation is one standard deviation above the mean, its Z-score is 1. If it is 1.5 standard deviations <em>below</em> the mean, then its Z-score is -1.5. If <m>x</m> is an observation from a distribution with mean <m>\mu</m> and standard deviation <m>\sigma</m>, we define the Z-score mathematically as
+      <md>
+        <mrow>Z = \frac{x-\mu}{\sigma}</mrow>
+      </md>
+    </p>
+
+    <p>
+      Using <m>\mu_{SAT}=1500</m>, <m>\sigma_{SAT}=300</m>, and <m>x_{Ann}=1800</m>, we find Ann's Z-score:
+      <md>
+        <mrow>Z_{Ann} = \frac{x_{Ann} - \mu_{SAT}}{\sigma_{SAT}} = \frac{1800-1500}{300} = 1</mrow>
+      </md>
+    </p>
+
+    <definition>
+      <title>The Z-score</title>
+      <statement>
+        <p>
+          The Z-score of an observation is the number of standard deviations it falls above or below the mean. We compute the Z-score for an observation <m>x</m> that follows a distribution with mean <m>\mu</m> and standard deviation <m>\sigma</m> using
+          <md>
+            <mrow>Z = \frac{x-\mu}{\sigma}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          Use Tom's ACT score, 24, along with the ACT mean of 21 and standard deviation of 5 to compute his Z-score.<fn><m>Z_{Tom} = \frac{x_{Tom} - \mu_{ACT}}{\sigma_{ACT}} = \frac{24 - 21}{5} = 0.6</m></fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      Observations above the mean always have positive Z-scores while those below the mean have negative Z-scores. If an observation is equal to the mean (e.g. SAT score of 1500), then the Z-score is <m>0</m>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Let <m>X</m> represent a random variable from a distribution with <m>\mu = 3</m> and <m>\sigma = 2</m>, and suppose we observe <m>x=5.19</m>. (a) Find the Z-score of <m>x</m>. (b) Use the Z-score to determine how many standard deviations above or below the mean <m>x</m><nbsp />falls.<fn>(a) Its Z-score is given by <m>Z = \frac{x-\mu}{\sigma} = \frac{5.19 - 3}{2} = 2.19/2 = 1.095</m>. (b) The observation <m>x</m> is 1.095 standard deviations <em>above</em> the mean. We know it must be above the mean since <m>Z</m> is positive.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise xml:id="headLZScore">
+      <statement>
+        <p>
+          Head lengths of brushtail possums follow a nearly normal distribution with mean 92.6 mm and standard deviation 3.6 mm. Compute the Z-scores for possums with head lengths of 95.4 mm and 85.8 mm.<fn>For <m>x_1=95.4</m> mm: <m>Z_1 = \frac{x_1 - \mu}{\sigma} = \frac{95.4 - 92.6}{3.6} = 0.78</m>. For <m>x_2=85.8</m> mm: <m>Z_2 = \frac{85.8 - 92.6}{3.6} = -1.89</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can use Z-scores to roughly identify which observations are more unusual than others. One observation <m>x_1</m> is said to be more unusual than another observation <m>x_2</m> if the absolute value of its Z-score is larger than the absolute value of the other observation's Z-score: <m>|Z_1| > |Z_2|</m>. This technique is especially insightful when a distribution is symmetric.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Which of the observations in Guided <xref ref="headLZScore">Practice</xref> is more unusual?<fn>Because the <em>absolute value</em> of Z-score for the second observation is larger than that of the first, the second observation has a more unusual head length.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Normal probability table</title>
+    <example>
+      <statement>
+        <p>
+          Ann from <xref ref="actSAT">Example</xref> earned a score of 1800 on her SAT with a corresponding <m>Z=1</m>. She would like to know what percentile she falls in among all SAT test-takers.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Ann's <term>percentile</term> is the percentage of people who earned a lower SAT score than Ann. We shade the area representing those individuals in <xref ref="satBelow1800">Figure</xref>. The total area under the normal curve is always equal to 1, and the proportion of people who scored below Ann on the SAT is equal to the <em>area</em> shaded in <xref ref="satBelow1800">Figure</xref>: 0.8413. In other words, Ann is in the <m>84^{th}</m> percentile of SAT takers.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="satBelow1800" >
+      <caption>The normal model for SAT scores, shading the area of those individuals who scored below Ann.</caption>
+      <image width="73%" source="images/satBelow1800.png" />
+    </figure>
+
+    <p>
+      We can use the normal model to find percentiles. A <term>normal probability table</term>, which lists Z-scores and corresponding percentiles, can be used to identify a percentile based on the Z-score (and vice versa). Statistical software can also be used.
+    </p>
+
+    <p>
+      A normal probability table is given in <xref ref="normalProbabilityTable">Appendix</xref> and abbreviated in <xref ref="zTableShort">Table</xref>. We use this table to identify the percentile corresponding to any particular Z-score. For instance, the percentile of <m>Z=0.43</m> is shown in row <m>0.4</m> and column <m>0.03</m> in <xref ref="zTableShort">Table</xref>: 0.6664, or the <m>66.64^{th}</m> percentile. Generally, we round <m>Z</m> to two decimals, identify the proper row in the normal probability table up through the first decimal, and then determine the column representing the second decimal value. The intersection of this row and column is the percentile of the observation.
+    </p>
+
+    <figure xml:id="normalTails" >
+      <caption>The area to the left of <m>Z</m> represents the percentile of the observation.</caption>
+      <image width="90%" source="images/normalTails.png" />
+    </figure>
+
+    <table xml:id="zTableShort" >
+      <caption>A section of the normal probability table. The percentile for a normal random variable with <m>Z=0.43</m> has been <em>highlighted</em>, and the percentile closest to 0.8000 has also been <em>highlighted</em>.</caption>
+      <tabular>
+        <row>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell>Second decimal place of <m>Z</m></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>Z</m></cell>
+          <cell>0.00</cell>
+          <cell>0.01</cell>
+          <cell>0.02</cell>
+          <cell><em>0.03</em></cell>
+          <cell><em>0.04</em></cell>
+          <cell>0.05</cell>
+          <cell>0.06</cell>
+          <cell>0.07</cell>
+          <cell>0.08</cell>
+          <cell>0.09</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >0.0</cell>
+          <cell>{0.5000}</cell>
+          <cell>{0.5040}</cell>
+          <cell>{0.5080}</cell>
+          <cell>{0.5120}</cell>
+          <cell>{0.5160}</cell>
+          <cell>{0.5199}</cell>
+          <cell>{0.5239}</cell>
+          <cell>{0.5279}</cell>
+          <cell>{0.5319}</cell>
+          <cell>{0.5359}</cell>
+        </row>
+        <row>
+          <cell>0.1</cell>
+          <cell>{0.5398}</cell>
+          <cell>{0.5438}</cell>
+          <cell>{0.5478}</cell>
+          <cell>{0.5517}</cell>
+          <cell>{0.5557}</cell>
+          <cell>{0.5596}</cell>
+          <cell>{0.5636}</cell>
+          <cell>{0.5675}</cell>
+          <cell>{0.5714}</cell>
+          <cell>{0.5753}</cell>
+        </row>
+        <row>
+          <cell>0.2</cell>
+          <cell>{0.5793}</cell>
+          <cell>{0.5832}</cell>
+          <cell>{0.5871}</cell>
+          <cell>{0.5910}</cell>
+          <cell>{0.5948}</cell>
+          <cell>{0.5987}</cell>
+          <cell>{0.6026}</cell>
+          <cell>{0.6064}</cell>
+          <cell>{0.6103}</cell>
+          <cell>{0.6141}</cell>
+        </row>
+        <row>
+          <cell>0.3</cell>
+          <cell>{0.6179}</cell>
+          <cell>{0.6217}</cell>
+          <cell>{0.6255}</cell>
+          <cell>{0.6293}</cell>
+          <cell>{0.6331}</cell>
+          <cell>{0.6368}</cell>
+          <cell>{0.6406}</cell>
+          <cell>{0.6443}</cell>
+          <cell>{0.6480}</cell>
+          <cell>{0.6517}</cell>
+        </row>
+        <row>
+          <cell><em>0.4</em></cell>
+          <cell>{0.6554}</cell>
+          <cell>{0.6591}</cell>
+          <cell>{0.6628}</cell>
+          <cell><em>{0.6664}</em></cell>
+          <cell>{0.6700}</cell>
+          <cell>{0.6736}</cell>
+          <cell>{0.6772}</cell>
+          <cell>{0.6808}</cell>
+          <cell>{0.6844}</cell>
+          <cell>{0.6879}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0.5</cell>
+          <cell>{0.6915}</cell>
+          <cell>{0.6950}</cell>
+          <cell>{0.6985}</cell>
+          <cell>{0.7019}</cell>
+          <cell>{0.7054}</cell>
+          <cell>{0.7088}</cell>
+          <cell>{0.7123}</cell>
+          <cell>{0.7157}</cell>
+          <cell>{0.7190}</cell>
+          <cell>{0.7224}</cell>
+        </row>
+        <row>
+          <cell>0.6</cell>
+          <cell>{0.7257}</cell>
+          <cell>{0.7291}</cell>
+          <cell>{0.7324}</cell>
+          <cell>{0.7357}</cell>
+          <cell>{0.7389}</cell>
+          <cell>{0.7422}</cell>
+          <cell>{0.7454}</cell>
+          <cell>{0.7486}</cell>
+          <cell>{0.7517}</cell>
+          <cell>{0.7549}</cell>
+        </row>
+        <row>
+          <cell>0.7</cell>
+          <cell>{0.7580}</cell>
+          <cell>{0.7611}</cell>
+          <cell>{0.7642}</cell>
+          <cell>{0.7673}</cell>
+          <cell>{0.7704}</cell>
+          <cell>{0.7734}</cell>
+          <cell>{0.7764}</cell>
+          <cell>{0.7794}</cell>
+          <cell>{0.7823}</cell>
+          <cell>{0.7852}</cell>
+        </row>
+        <row>
+          <cell><em>0.8</em></cell>
+          <cell>{0.7881}</cell>
+          <cell>{0.7910}</cell>
+          <cell>{0.7939}</cell>
+          <cell>{0.7967}</cell>
+          <cell><em>{0.7995}</em></cell>
+          <cell>{0.8023}</cell>
+          <cell>{0.8051}</cell>
+          <cell>{0.8078}</cell>
+          <cell>{0.8106}</cell>
+          <cell>{0.8133}</cell>
+        </row>
+        <row>
+          <cell>0.9</cell>
+          <cell>{0.8159}</cell>
+          <cell>{0.8186}</cell>
+          <cell>{0.8212}</cell>
+          <cell>{0.8238}</cell>
+          <cell>{0.8264}</cell>
+          <cell>{0.8289}</cell>
+          <cell>{0.8315}</cell>
+          <cell>{0.8340}</cell>
+          <cell>{0.8365}</cell>
+          <cell>{0.8389}</cell>
+        </row>
+        <row bottom="medium">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell  >1.0</cell>
+          <cell>{0.8413}</cell>
+          <cell>{0.8438}</cell>
+          <cell>{0.8461}</cell>
+          <cell>{0.8485}</cell>
+          <cell>{0.8508}</cell>
+          <cell>{0.8531}</cell>
+          <cell>{0.8554}</cell>
+          <cell>{0.8577}</cell>
+          <cell>{0.8599}</cell>
+          <cell>{0.8621}</cell>
+        </row>
+        <row>
+          <cell>1.1</cell>
+          <cell>{0.8643}</cell>
+          <cell>{0.8665}</cell>
+          <cell>{0.8686}</cell>
+          <cell>{0.8708}</cell>
+          <cell>{0.8729}</cell>
+          <cell>{0.8749}</cell>
+          <cell>{0.8770}</cell>
+          <cell>{0.8790}</cell>
+          <cell>{0.8810}</cell>
+          <cell>{0.8830}</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      We can also find the Z-score associated with a percentile. For example, to identify Z for the <m>80^{th}</m> percentile, we look for the value closest to 0.8000 in the middle portion of the table: 0.7995. We determine the Z-score for the <m>80^{th}</m> percentile by combining the row and column Z values: 0.84.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Determine the proportion of SAT test takers who scored better than Ann on the SAT.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If 84<percent /> had lower scores than Ann, the proportion of people who had better scores must be 16<percent />. (Generally ties are ignored when the normal model, or any other continuous distribution, is used.)
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Normal probability examples</title>
+    <p>
+      Cumulative SAT scores are approximated well by a normal model with mean 1500 and standard deviation 300.
+    </p>
+
+    <example xml:id="satAbove1630Exam">
+      <statement>
+        <p>
+          What is the probability that a randomly selected SAT taker scores at least 1630 on the SAT?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The probability that a randomly selected SAT taker scores at least 1630 on the SAT is equivalent to the proportion of all SAT takers that score at least 1630 on the SAT. First, always draw and label a picture of the normal distribution. (Drawings need not be exact to be useful.) We are interested in the probability that a randomly selected score will be above 1630, so we shade this upper tail:
+        </p>
+        <image width="73%" source="images/satAbove1630.png" />
+        <p>
+          The picture shows the mean and the values at 2 standard deviations above and below the mean. The simplest way to find the shaded area under the curve makes use of the Z-score of the cutoff value. With <m>\mu=1500</m>, <m>\sigma=300</m>, and the cutoff value <m>x=1630</m>, the Z-score is computed as
+          <md>
+            <mrow>Z = \frac{x - \mu}{\sigma} = \frac{1630 - 1500}{300} = \frac{130}{300} = 0.43</mrow>
+          </md>
+        </p>
+
+        <p>
+          We look up the percentile of <m>Z=0.43</m> in the normal probability table shown in <xref ref="zTableShort">Table</xref> or in <xref ref="normalProbabilityTable">Appendix</xref>, which yields 0.6664. However, the percentile describes those who had a Z-score <em>lower</em> than 0.43. To find the area <em>above</em> <m>Z=0.43</m>, we compute one minus the area of the lower tail:
+        </p>
+        <image width="73%" source="images/subtractingArea.png" />
+        <p>
+          The probability that a randomly selected score is at least 1630 on the SAT is 0.3336.
+        </p>
+      </answer>
+    </example>
+
+    <aside>
+      <title>Always draw a picture first, and find the Z-score second</title>
+      <p>
+        For any normal probability situation, <em>always always always</em> draw and label the normal curve and shade the area of interest first. The picture will provide an estimate of the probability.
+      </p>
+
+      <p>
+        After drawing a figure to represent the situation, identify the Z-score for the observation of interest.
+      </p>
+    </aside>
+    <exercise>
+      <statement>
+        <p>
+          If the probability that a randomly selected score is at least 1630 is 0.3336, what is the probability that the score is less than 1630? Draw the normal curve representing this exercise, shading the lower region instead of the upper one.<fn>We found the probability in <xref ref="satAbove1630Exam">Example</xref>: 0.6664. A picture for this exercise is represented by the shaded area below <q>0.6664</q> in <xref ref="satAbove1630Exam">Example</xref>.</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <example xml:id="edwardSatBelow1400">
+      <statement>
+        <p>
+          Edward earned a 1400 on his SAT. What is his percentile?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          First, a picture is needed. Edward's percentile is the proportion of people who do not get as high as a 1400. These are the scores to the left of 1400.
+        </p>
+        <image width="73%" source="images/satBelow1400.png" />
+        <p>
+          Identifying the mean <m>\mu=1500</m>, the standard deviation <m>\sigma=300</m>, and the cutoff for the tail area <m>x=1400</m> makes it easy to compute the Z-score:
+          <md>
+            <mrow>Z = \frac{x - \mu}{\sigma} = \frac{1400 - 1500}{300} = -0.33</mrow>
+          </md>
+        </p>
+
+        <p>
+          Using the normal probability table, identify the row of <m>-0.3</m> and column of <m>0.03</m>, which corresponds to the probability <m>0.3707</m>. Edward is at the <m>37^{th}</m> percentile.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Use the results of <xref ref="edwardSatBelow1400">Example</xref> to compute the proportion of SAT takers who did better than Edward. Also draw a new picture.<fn>If Edward did better than 37<percent /> of SAT takers, then about 63<percent /> must have done better than him.
+          <image width="73%" source="images/satAbove1400.png" />
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <aside>
+      <title>Areas to the right</title>
+      <p>
+        The normal probability table in most books gives the area to the left. If you would like the area to the right, first find the area to the left and then subtract this amount from<nbsp />one.
+      </p>
+    </aside>
+    <p>
+      The last several problems have focused on finding the probability or percentile for a particular observation. It is also possible to identify the value corresponding to a particular percentile.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Carlos believes he can get into his preferred college if he scores at least in the 80th percentile on the SAT. What score should he aim for?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Here, we are given a percentile rather than a Z-score, so we work backwards. As always, first draw the picture.
+        </p>
+        <image width="73%" source="images/sat80thPercentile.png" />
+        <p>
+          We want to find the observation that corresponds to the 80th percentile. First, we find the Z-score associated with the 80th percentile using the normal probability table. Looking at <xref ref="zTableShort">Table</xref>., we look for the number closest to 0.80 <em>inside</em> the table. The closest number we find is 0.7995 (highlighted). 0.7995 falls on row 0.8 and column 0.04, therefore it corresponds to a Z-score of 0.84. In any normal distribution, a value with a Z-score of 0.84 will be at the 80th percentile. Once we have the Z-score, we work backwards to find x.
+          <md>
+            <mrow>Z \amp = \frac{x-\mu}{\sigma}</mrow>
+            <mrow>0.84 \amp = \frac{x-1500}{300}</mrow>
+            <mrow>0.84 \times 300+1500 \amp = x</mrow>
+            <mrow>x\amp  = 1752</mrow>
+          </md>
+        </p>
+
+        <p>
+          The 80th percentile on the SAT corresponds to a score of 1752.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Imani scored at the 72nd percentile on the SAT. What was her SAT score?<fn>First, draw a picture! The closest percentile in the table to 0.72 is 0.7190, which corresponds to <m>Z = 0.58</m>. Next, set up the Z-score formula and solve for <m>x</m>: <m>0.58 = \frac{x-1500}{300} \rightarrow x = 1674</m>. Imani scored 1674.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <warning>
+    <title>If the data are not nearly normal, don't use a normal table</title>
+    <p>
+      {Before using the normal table, verify that the data or distribution is approximately normal. If it is not, the normal table will give incorrect results. Also, all answers based on normal approximations are approximations and are not exact.}
+    </p>
+
+    </warning>
+  </subsection>
+
+  <subsection xml:id="TInormal">
+    <title>Calculator: finding normal probabilities</title>
+    <definition>
+      <title>TI-84: Finding area under the normal curve</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>2ND</c> <c>VARS</c>, <c>normalcdf</c> to find an area/proportion/probability to the left or right of a Z-score or between two Z-scores.
+          <ol>
+            <li>
+              <p>
+                Choose <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>2:normalcdf</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the Z-scores that correspond to the lower (left) and upper (right) bounds.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Leave <m>\textttmath{\mu}</m> as <c>0</c> and <m>\textttmath{\sigma}</m> as <c>1</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow, choose <c>Paste</c>, and hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Do steps 1-2, then enter the lower bound and upper bound separated by a comma, e.g. <c>normalcdf(2, 5)</c>, and hit <c>ENTER</c>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Finding area under the normal curve</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c>, then hit <c>2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>DIST</c> (<c>F5</c>), then <c>NORM</c> (<c>F1</c>), and then <c>Ncd</c> (<c>F2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If needed, set <c>Data</c> to <c>Variable</c> (<c>Var</c> option, which is <c>F2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the <c>Lower</c> Z-score and the <c>Upper</c> Z-score. Set <m>\textttmath{\sigma}</m> to <c>1</c> and <m>\textttmath{\mu}</m> to <c>0</c>.
+                <ul>
+                  <li>
+                    <p>
+                      If finding just a lower tail area, set <c>Lower</c> to <c>-12</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      For an upper tail area, set <c>Upper</c> to <c>12</c>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>EXE</c>, which will return the area probability (<c>p</c>) along with the Z-scores for the lower and upper bounds.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          Use a calculator to determine what percentile corresponds to a Z-score of 1.5.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Always first sketch a graph:<fn>normalcdf gives the result without drawing the graph. To draw the graph, do 2nd VARS, DRAW, 1:ShadeNorm. However, beware of errors caused by other plots that might interfere with this plot.</fn>
+        </p>
+        <image width="56%" source="images/zscoreleftof1point5.png" />
+        \vspace{-2mm}
+
+        <p>
+          To find an area under the normal curve using a calculator, first identify a lower bound and an upper bound. Theoretically, we want all of the area to the left of 1.5, so the left endpoint should be -<m>\infty</m>. However, the area under the curve is nearly negligible when <m>Z</m> is smaller than -4, so we will use -5 as the lower bound when not given a lower bound (any other negative number smaller than -5 will also work). Using a lower bound of -5 and an upper bound of 1.5, we get <m>P(Z \lt  1.5) = 0.933</m>.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the area under the normal curve to right of <m>Z=2</m>.<nbsp />
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Now we want to shade to the right. Therefore our lower bound will be 2 and the upper bound will be +5 (or a number bigger than 5) to get <m>P(Z > 2) = 0.023</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Find the area under the normal curve between -1.5 and<nbsp />1.5.<nbsp />
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Here we are given both the lower and the upper bound. Lower bound is -1.5 and upper bound is 1.5. The area under the normal curve between -1.5 and 1.5 = <m>P(-1.5 \lt  Z \lt  1.5) = 0.866</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <definition>
+      <title>TI-84: Find a Z-score that corresponds to a percentile</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>2ND</c> <c>VARS</c>, <c>invNorm</c> to find the Z-score that corresponds to a given percentile.
+          <ol>
+            <li>
+              <p>
+                Choose <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>3:invNorm</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>Area</c> be the percentile as a decimal (the area to the left of desired Z-score).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Leave <m>\textttmath{\mu}</m> as <c>0</c> and <m>\textttmath{\sigma}</m> as <c>1</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow, choose <c>Paste</c>, and hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Do steps 1-2, then enter the percentile as a decimal, e.g.<nbsp />\mbox{\texttt{invNorm(.40)},} then hit <c>ENTER</c>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Find a Z-score that corresponds to a percentile</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c>, then hit <c>2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>DIST</c> (<c>F5</c>), then <c>NORM</c> (<c>F1</c>), and then <c>InvN</c> (<c>F3</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If needed, set <c>Data</c> to <c>Variable</c> (<c>Var</c> option, which is <c>F2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Decide which tail area to use (<c>Tail</c>), the tail area (<c>Area</c>), and then enter the <m>\textttmath{\sigma}</m> and <m>\textttmath{\mu}</m> values.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>EXE</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          Use a calculator to find the Z-score that corresponds to the 40th percentile.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Letting Area be 0.40, a calculator gives -0.253. This means that <m>Z = -0.253</m> corresponds to the 40th percentile, that<nbsp />is, <m>P(Z \lt  -0.253) = 0.40</m>.
+        </p>
+      </solution>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the Z-score such that 20 percent of the area is to the right of that Z-score.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          If 20<percent /> of the area is the right, then 80<percent /> of the area is to the left. Letting area be 0.80, we get <m>Z = 0.841</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          In a large study of birth weight of newborns, the weights of 23,419 newborn boys were recorded.<fn>MISSINGoiRedirect</fn> The distribution of weights was approximately normal with a mean of 7.44 lbs (3376 grams) and a standard deviation of 1.33 lbs (603 grams). The government classifies a newborn as having low birth weight if the weight is less than 5.5 pounds. What percent of these newborns had a low birth weight?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We find an area under the normal curve between -5 (or a number smaller than -5, e.g. -10) and a Z-score that we will calculate. There is no need to write calculator commands in a solution. Instead, continue to use standard statistical notation.
+          <md>
+            <mrow>Z\amp =\frac{5.5-7.44}{1.33}</mrow>
+            <mrow>\amp =-1.49</mrow>
+            <mrow>P(Z \lt  -1.49) \amp = 0.068</mrow>
+          </md>
+        </p>
+
+        <p>
+          Approximately 6.8<percent /> of the newborns were of low birth weight.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Approximately what percent of these babies weighed greater than 10 pounds?<fn><m>Z=\frac{10-7.44}{1.33}=1.925</m>. Using a lower bound of 2 and an upper bound of 5, we get <m>P(Z > 1.925) = 0.027</m>. Approximately 2.7<percent /> of the newborns weighed over 10 pounds.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Approximately <em>how many</em> of these newborns weighed greater than 10 pounds?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Approximately 2.7<percent /> of the newborns weighed over 10 pounds. Because there were 23,419 of them, about <m>0.027 \times 23419 \approx 632</m> weighed greater than 10 pounds.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          How much would a newborn have to weigh in order to be at the 90th percentile among this group?<fn>Because we have the percentile, this is the inverse problem. To get the Z-score, use the inverse normal option with 0.90 to get <m>Z = 1.28</m>. Then solve for <m>x</m> in <m>1.28 = \frac{x - 7.44}{1.33}</m> to get <m>x = 9.15</m>. To be at the 90th percentile among this group, a newborn would have to weigh 9.15 pounds.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>68-95-99.7 rule</title>
+    <p>
+      Here, we present a useful rule of thumb for the probability of falling within 1, 2, and 3 standard deviations of the mean in the normal distribution. This will be useful in a wide range of practical settings, especially when trying to make a quick estimate without a calculator or Z table.
+    </p>
+
+    <figure xml:id="x6895997" >
+      <caption>Probabilities for falling within 1, 2, and 3 standard deviations of the mean in a normal distribution.</caption>
+      <image width="78%" source="images/6895997.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          Use the Z table to confirm that about 68<percent />, 95<percent />, and 99.7<percent /> of observations fall within 1, 2, and 3, standard deviations of the mean in the normal distribution, respectively. For instance, first find the area that falls between <m>Z=-1</m> and <m>Z=1</m>, which should have an area of about 0.68. Similarly there should be an area of about 0.95 between <m>Z=-2</m> and <m>Z=2</m>.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          First draw the pictures. To find the area between <m>Z=-1</m> and <m>Z=1</m>, use the normal probability table to determine the areas below <m>Z=-1</m> and above <m>Z=1</m>. Next verify the area between <m>Z=-1</m> and <m>Z=1</m> is about 0.68. Repeat this for <m>Z=-2</m> to <m>Z=2</m> and also for <m>Z=-3</m> to <m>Z=3</m>.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      It is possible for a normal random variable to fall 4,<nbsp />5, or<nbsp />even more standard deviations from the mean. However, these occurrences are very rare if the data are nearly normal. The probability of being further than 4 standard deviations from the mean is about 1-in-15,000. For 5 and 6 standard deviations, it is about 1-in-2 million and 1-in-500 million, respectively.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          SAT scores closely follow the normal model with mean <m>\mu = 1500</m> and standard deviation <m>\sigma = 300</m>. (a) About what percent of test takers score 900 to 2100? (b) What percent score between 1500 and 2100?<fn>(a) 900 and 2100 represent two standard deviations above and below the mean, which means about 95<percent /> of test takers will score between 900 and 2100. (b)<nbsp />Since the normal model is symmetric, then half of the test takers from part<nbsp />(a) (<m>\frac{95\%}{2} = 47.5\%</m> of all test takers) will score 900 to 1500 while 47.5<percent /> score between 1500 and 2100.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="assessingNormal">
+    <title>Evaluating the normal approximation</title>
+    <p>
+      It is important to remember normality is always an approximation. Testing the appropriateness of the normal assumption is a key step in many data analyses.
+    </p>
+
+    <p>
+      <index><main>normal probability plot</main></index>
+    </p>
+
+    <p>
+      The distribution of heights of US males is well approximated by the normal model. We are interested in proceeding under the assumption that the data are normally distributed, but first we must check to see if this is reasonable.
+    </p>
+
+    <p>
+      There are two visual methods for checking the assumption of normality that can be implemented and interpreted quickly. The first is a simple histogram with the best fitting normal curve overlaid on the plot, as shown in the left panel of <xref ref="fcidMHeights">Figure</xref>. The sample mean <m>\bar{x}</m> and standard deviation <m>s</m> are used as the parameters of the best fitting normal curve. The closer this curve fits the histogram, the more reasonable the normal model assumption. Another more common method is examining a <term>normal probability plot</term>,<fn>Also commonly called a <term>quantile-quantile plot</term>.</fn> shown in the right panel of <xref ref="fcidMHeights">Figure</xref>. The closer the points are to a perfect straight line, the more confident we can be that the data follow the normal model.
+    </p>
+
+    <figure xml:id="fcidMHeights" >
+      <caption>A sample of 100 male heights. The observations are rounded to the nearest whole inch, explaining why the points appear to jump in increments in the normal probability plot.</caption>
+      <image width="78%" source="images/fcidMHeights.png" />
+    </figure>
+
+    <example xml:id="normalExamplesExample">
+      <statement>
+        <p>
+          Three data sets of 40, 100, and 400 samples were simulated from a normal distribution, and the histograms and normal probability plots of the data sets are shown in <xref ref="normalExamples">Figure</xref>. These will provide a benchmark for what to look for in plots of real data.
+        </p>
+      </statement>
+      <answer>
+        <figure>
+          <caption>Histograms and normal probability plots for three simulated normal data sets; <m>n=40</m> (left), <m>n=100</m> (middle), <m>n=400</m> (right).</caption>
+          <image width="73%" source="images/normalExamples.png" />
+        </figure>
+
+        <p>
+          The left panels show the histogram (top) and normal probability plot (bottom) for the simulated data set with 40 observations. The data set is too small to really see clear structure in the histogram. The normal probability plot also reflects this, where there are some deviations from the line. However, these deviations are not strong.
+        </p>
+
+        <p>
+          The middle panels show diagnostic plots for the data set with 100 simulated observations. The histogram shows more normality and the normal probability plot shows a better fit. While there is one observation that deviates noticeably from the line, it is not particularly extreme.
+        </p>
+
+        <p>
+          The data set with 400 observations has a histogram that greatly resembles the normal distribution, while the normal probability plot is nearly a perfect straight line. Again in the normal probability plot there is one observation (the largest) that deviates slightly from the line. If that observation had deviated 3 times further from the line, it would be of much greater concern in a real data set. Apparent outliers can occur in normally distributed data but they are rare.
+        </p>
+
+        <p>
+          Notice the histograms look more normal as the sample size increases, and the normal probability plot becomes straighter and more stable.
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Are NBA player heights normally distributed? Consider all 435 NBA players from the 2008-9 season presented in <xref ref="nbaNormal">Figure</xref>.<fn>These data were collected from MISSINGoiRedirect.</fn>
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We first create a histogram and normal probability plot of the NBA player heights. The histogram in the left panel is slightly left skewed, which contrasts with the symmetric normal distribution. The points in the normal probability plot do not appear to closely follow a straight line but show what appears to be a <q>wave</q>. We can compare these characteristics to the sample of 400 normally distributed observations in <xref ref="normalExamplesExample">Example</xref> and see that they represent much stronger deviations from the normal model. NBA player heights do not appear to come from a normal distribution.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="nbaNormal" >
+      <caption>Histogram and normal probability plot for the NBA heights from the 2008-9 season.</caption>
+      <image width="73%" source="images/nbaNormal.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          Can we approximate poker winnings by a normal distribution? We consider the poker winnings of an individual over 50 days. A histogram and normal probability plot of these data are shown in <xref ref="pokerNormal">Figure</xref>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The data are very strongly right skewed<index><main>skew</main><sub>example: very strong</sub></index> in the histogram, which corresponds to the very strong deviations on the upper right component of the normal probability plot. If we compare these results to the sample of 40 normal observations in <xref ref="normalExamplesExample">Example</xref>, it is apparent that these data show very strong deviations from the normal model.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="pokerNormal" >
+      <caption>A histogram of poker data with the best fitting normal plot and a normal probability plot.</caption>
+      <image width="73%" source="images/pokerNormal.png" />
+    </figure>
+
+    <exercise xml:id="normalQuantileExercise">
+      <statement>
+        <p>
+          Determine which data sets represented in <xref ref="normalQuantileExer">Figure</xref> plausibly come from a nearly normal distribution. Are you confident in all of your conclusions? There are 100 (top left), 50 (top right), 500 (bottom left), and 15 points (bottom right) in the four plots.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Answers may vary a little. The top-left plot shows some deviations in the smallest values in the data set; specifically, the left tail of the data set has some outliers we should be wary of. The top-right and bottom-left plots do not show any obvious or extreme deviations from the lines for their respective sample sizes, so a normal model would be reasonable for these data sets. The bottom-right plot has a consistent curvature that suggests it is not from the normal distribution. If we examine just the vertical coordinates of these observations, we see that there is a lot of data between -20 and 0, and then about five observations scattered between 0 and 70. This describes a distribution that has a strong right skew.
+        </p>
+      </hint>
+    </exercise>
+
+    <figure xml:id="normalQuantileExer" >
+      <caption>Four normal probability plots for Guided <xref ref="normalQuantileExercise">Practice</xref>.</caption>
+      <image width="90%" source="images/normalQuantileExer.png" />
+    </figure>
+
+    <exercise xml:id="normalQuantileExerciseAdditional">
+      <statement>
+        <p>
+          <xref ref="normalQuantileExerAdditional">Figure</xref> shows normal probability plots for two distributions that are skewed. One distribution is skewed to the low end (left skewed) and the other to the high end (right skewed). Which is which?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Examine where the points fall along the vertical axis. In the first plot, most points are near the low end with fewer observations scattered along the high end; this describes a distribution that is skewed to the high end. The second plot shows the opposite features, and this distribution is skewed to the low end.
+        </p>
+      </hint>
+    </exercise>
+
+    <figure xml:id="normalQuantileExerAdditional" >
+      <caption>Normal probability plots for Guided <xref ref="normalQuantileExerciseAdditional">Practice</xref>.</caption>
+      <image width="90%" source="images/normalQuantileExerAdditional.png" />
+    </figure>
+  </subsection>
+
+  <subsection xml:id="normapproxsumrv">
+    <title>Normal approximation for sums of random variables</title>
+    <p>
+      We have seen that many distributions are approximately normal. The sum and the difference of normally distributed variables is also normal. While we cannot prove this here, the usefulness of it is seen in the following example.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Three friends are playing a cooperative video game in which they have to complete a puzzle as fast as possible. Assume that the individual times of the 3 friends are independent of each other. The individual times of the friends in similar puzzles are approximately normally distributed with the following means and standard deviations.
+        </p>
+        <tabular>
+          <row>
+            <cell></cell>
+            <cell>Mean</cell>
+            <cell>SD</cell>
+          </row>
+          <row>
+            <cell>Friend 1</cell>
+            <cell>5.6</cell>
+            <cell>0.11</cell>
+          </row>
+          <row>
+            <cell>Friend 2</cell>
+            <cell>5.8</cell>
+            <cell>0.13</cell>
+          </row>
+          <row>
+            <cell>Friend 3</cell>
+            <cell>6.1</cell>
+            <cell>0.12</cell>
+          </row>
+        </tabular>
+        <p>
+          To advance to the next level of the game, the friends' total time must not exceed 17.1 minutes. What is the probability that they will advance to the next level?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because each friend's time is approximately normally distributed, <em>the sum of their times is also approximately normally distributed</em>. We will do a normal approximation, but first we need to find the mean and standard deviation of the <em>sum</em>. We learned how to do this in <xref ref="randomVariablesSection">Section</xref>.
+        </p>
+
+        <p>
+          Let the three friends be labeled <m>X</m>, <m>Y</m>, <m>Z</m>. We want <m>P(X + Y + Z \lt  17.1)</m>. The mean and standard deviation of the sum of <m>X</m>, <m>Y</m>, and <m>Z</m> is given by:
+          <md>
+            <mrow>\mu_{sum} \amp = E(X+Y+Z)
+              \amp  \sigma_{sum}\amp = \sqrt{(SD_X)^2+(SD_Y)^2 + (SD_Z)^2}</mrow>
+            <mrow>\amp = E(X) + E(Y) + E(Z)
+              \amp  \amp = \sqrt{(0.11)^2+(0.13)^2+(0.12)^2}</mrow>
+            <mrow>\amp =4.6+4.8+4.5
+              \amp  \amp = 0.208</mrow>
+            <mrow>\amp =17.5</mrow>
+          </md>
+        </p>
+
+        <p>
+          Now we can find the Z-score.
+          <md>
+            <mrow>Z \amp = \frac{x_{sum}-\mu_{sum}}{\sigma_{sum}}</mrow>
+            <mrow>\amp =\frac{17.1-17.5}{0.208}</mrow>
+            <mrow>\amp =-1.92</mrow>
+          </md>
+        </p>
+
+        <p>
+          Finally, we want the probability that the sum is less than 17.5, so we shade the area to the left of <m>Z = -1.92</m>. Using the normal table or a calculator, we get
+          <md>
+            <mrow>P(Z \lt  -1.92) = 0.027</mrow>
+          </md>
+        </p>
+
+        <p>
+          There is a 2.7<percent /> chance that the friends will advance to the next level.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          What is the probability that Friend 2 will complete the puzzle with a faster time than Friend 1? Hint: find <m>P(Y \lt  X)</m>, or <m>P(Y - X \lt  0)</m>.<fn>First find the mean and standard deviation of <m>Y - X</m>. The mean of <m>Y - X</m> is <m>\mu_{Y-X} = 5.8 - 5.6 =  0.2</m>. The standard deviation is  <m>SD_{Y-X}=\sqrt{(0.13)^2+(0.11)^2}=0.170</m>. Then <m>Z=\frac{0-0.2}{0.170}=-1.18</m> and <m>P(Z \lt  -1.18)= .119</m>. There is an 11.9<percent /> chance that Friend 2 will complete the puzzle with a faster time than Friend 1.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

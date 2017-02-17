@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<mathbook xmlns:xi="http://www.w3.org/2001/XInclude" xml:lang="en-US">
+<docinfo>
+<macros>
+\newcommand{\versiondate}{March 5th, 2016}
+\renewcommand{\thepage}{}
+\newcommand{\textA}[1]{#1}
+\renewcommand{\thepage}{\arabic{page}}
+\newcommand{\APVersion}[2]{#2}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\MultipleRegression}[2]{#1}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\MultipleRegressionChapter}[2]{#1}
+\renewcommand{\arraystretch}{1.25}
+\newcommand{\SimulationAndRandomization}[1]{#1}
+\newcommand{\ANOVASection}[2]{#1}
+\newcommand{\GLMSection}[2]{#1}
+\renewcommand{\theeoce}{\arabic{chapter}.\arabic{eoce}}
+\newcommand{\Add}[1]{\footnote{\Huge\color{oiR}$\bullet$}{\color{oiB}#1}}
+\newcommand{\Cut}[1]{\footnote{\Huge\color{oiR}$\bullet$}{\color{oiGC}#1}}
+\newcommand{\Comment}[1]{\footnote{\Huge\color{oiR}$\bullet$} {\color{oiG}{[#1]}}}
+\newcommand{\note}[1]{\Comment{#1}}
+\newcommand{\degree}{^\circ}
+\newcommand{\terminology}[1]{\textbf{#1}\index{#1|textbf}}
+\newcommand{\termsub}[2]{\textbf{#1}\index{#2|textbf}}
+\newcommand{\termni}[1]{\textbf{#1}}
+\newcommand{\hiddenterm}[1]{#1\index{#1|textbf}}
+\newcommand{\indexthis}[2]{#1\index{#2}}
+\newcommand{\termO}[1]{\textbf{\color{termOColor}#1}}
+\newcommand{\textbf}[1]{\textbf{\color{oiB}#1}}
+\newcommand{\textbf}[1]{\emph{\color{oiR}#1}}
+\newcommand{\urlwofont}[1]{\urlstyle{same}\url{#1}}
+\newcommand{\videohref}[2][4.5mm]{MISSINGoiRedirect}
+\newcommand{\sectionvideohref}[2][6mm]{MISSINGoiRedirect}
+\newcommand{\excolor}[1]{{\color{excolor}#1}}
+\newcommand{\theexercise}{\thechapter.\arabic{equation}}
+\newcommand{\theexample}{\thechapter.\arabic{equation}}
+\newcommand{\eocesolch}[1]{
+\textbf{\color{oiB}\arabic{eocesolch}\hspace{2mm}#1}
+
+\addvspace{2mm}
+
+}
+\newcommand{\eocesol}[1]{\textbf{\color{oiB}\arabic{eocesolch}.\arabic{eocesol}}\hspace{2mm}{\small#1}
+
+\addvspace{1mm}
+
+}
+\newcommand{\qt}[1]{\textcolor{oiB}{\textbf{#1.}}}
+\newcommand{\qtq}[1]{\textcolor{oiB}{\textbf{#1?}}}
+\newcommand{\ec}[1]{\textcolor{oiB}{{~(#1)}}}
+\newcommand{\tBoxTitleBuffer}{\\[1.5mm]}
+</macros>
+
+<latex-image-preamble>
+
+\usepackage{tikz}
+\usetikzlibrary{positioning,matrix,arrows}
+\usetikzlibrary{shapes,decorations,shadows,fadings}
+
+\usepackage{pgfplots}
+
+</latex-image-preamble>
+
+</docinfo>
+
+
+<book>
+<title>\huge Advanced High School Statistics \\ \Large First Edition</title>
+<frontmatter>
+<titlepage>
+<author>
+<personname>David M Diez</personname>
+</author>
+</titlepage>
+</frontmatter>
+
+
+<xi:include href="./chapter1.mbx" />
+
+<xi:include href="./introductionToData.mbx" />
+
+<xi:include href="./summarizingData.mbx" />
+
+<xi:include href="./probability.mbx" />
+
+<xi:include href="./modeling.mbx" />
+
+<xi:include href="./foundationsForInference.mbx" />
+
+<xi:include href="./inferenceForCategoricalData.mbx" />
+
+<xi:include href="./inferenceForNumericalData.mbx" />
+
+<xi:include href="./linRegrForTwoVar.mbx" />
+
+<xi:include href="../mbx_supplement/chapter1.mbx" />
+<backmatter>
+<index-part>
+<title>Index</title>
+<index-list />
+</index-part>
+
+</backmatter>
+</book>
+</mathbook>

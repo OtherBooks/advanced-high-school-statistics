@@ -1,0 +1,847 @@
+
+<section xml:id="pairedData">
+  <title>Inference for paired data</title>
+  <introduction>
+    <p>
+      <index><main>paired data</main></index>
+      <index><main>data</main><sub>textbooks</sub></index>
+    </p>
+
+    <p>
+      Are textbooks actually cheaper online? Here we compare the price of textbooks at UCLA's bookstore and prices at Amazon.com. Seventy-three UCLA courses were randomly sampled in Spring 2010, representing less than 10<percent /> of all UCLA courses.<fn>When a class had multiple books, only the most expensive text was considered.</fn> A portion of this data set is shown in <xref ref="textbooksDF">Table</xref>.
+    </p>
+
+    <table xml:id="textbooksDF" >
+      <caption>Six cases of the <c>textbooks</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>dept</cell>
+          <cell>course</cell>
+          <cell>ucla</cell>
+          <cell>amazon</cell>
+          <cell>diff</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>Am Ind</cell>
+          <cell>C170</cell>
+          <cell>27.67</cell>
+          <cell>27.95</cell>
+          <cell>-0.28</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>Anthro</cell>
+          <cell>9</cell>
+          <cell>40.59</cell>
+          <cell>31.14</cell>
+          <cell>9.45</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>Anthro</cell>
+          <cell>135T</cell>
+          <cell>31.68</cell>
+          <cell>32.00</cell>
+          <cell>-0.32</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>Anthro</cell>
+          <cell>191HB</cell>
+          <cell>16.00</cell>
+          <cell>11.52</cell>
+          <cell>4.48</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>72</cell>
+          <cell>Wom Std</cell>
+          <cell>M144</cell>
+          <cell>23.76</cell>
+          <cell>18.72</cell>
+          <cell>5.04</cell>
+        </row>
+        <row>
+          <cell>73</cell>
+          <cell>Wom Std</cell>
+          <cell>285</cell>
+          <cell>27.70</cell>
+          <cell>18.22</cell>
+          <cell>9.48</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+  </introduction>
+
+  <subsection>
+    <title>Paired observations and samples</title>
+    <p>
+      Each textbook has two corresponding prices in the data set: one for the UCLA bookstore and one for Amazon. Therefore, each textbook price from the UCLA bookstore has a natural correspondence with a textbook price from Amazon. When two sets of observations have this special correspondence, they are said to be <term>paired</term>.
+    </p>
+
+    <definition>
+      <title>Paired data</title>
+      <statement>
+        <p>
+          Two sets of observations are <term>paired</term> if each observation in one set has a special correspondence or connection with exactly one observation in the other data set.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      To analyze paired data, it is often useful to look at the difference in outcomes of each pair of observations. In the <c>textbook</c> data set, we look at the difference in prices, which is represented as the <c>diff</c> variable in the <c>textbooks</c> data. Here the differences are taken as
+      <md>
+        <mrow>\text{ UCLA price }  - \text{ Amazon price }</mrow>
+      </md>
+      for each book. It is important that we always subtract using a consistent order; here Amazon prices are always subtracted from UCLA prices. If this difference is positive, the UCLA price is higher. If ths difference is negative, the Amazon price is higher. If this difference is zero, the two prices are equal. A histogram of these differences is shown in <xref ref="diffInTextbookPricesS10">Figure</xref>. Using differences between paired observations is a common and useful way to analyze paired data.
+    </p>
+
+    <figure xml:id="diffInTextbookPricesS10" >
+      <caption>Histogram of the difference in price for each of the 73 books sampled. These data are strongly skewed.<index><main>skew</main><sub>example: strong</sub></index></caption>
+      <image width="83%" source="images/diffInTextbookPricesS10.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          The first difference shown in <xref ref="textbooksDF">Table</xref> is computed as <m>27.67-27.95=-0.28</m>. Based on the table and on the histogram of differences in <xref ref="diffInTextbookPricesS10">Figure</xref>, which store tends to have the higher prices in the sample?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Because the most of the differences are positive, UCLA prices tend to be higher than Amazon. Note that it is important to identify the order in which the differences are taken.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Hypothesis testing for paired data</title>
+    <p>
+      To analyze a paired data set, we use the exact same tools that we developed in the previous section. Now we apply them to the differences in the paired observations.
+    </p>
+
+    <table xml:id="textbooksSummaryStats" >
+      <caption>Summary statistics for the price differences. There were 73 books, so there are 73 differences.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>n_{_{diff}}</m></cell>
+          <cell>\hspace{3mm}</cell>
+          <cell><m>\bar{x}_{_{diff}}</m></cell>
+          <cell>\hspace{3mm}</cell>
+          <cell><m>s_{_{diff}}</m> \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>73</cell>
+          <cell></cell>
+          <cell>12.76</cell>
+          <cell></cell>
+          <cell>14.26</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <example xml:id="htForDiffInUCLAAndAmazonTextbookPrices">
+      <statement>
+        <p>
+          Set up and implement a hypothesis test to determine whether, on average, there is a difference between Amazon's price for a book and the UCLA bookstore's price.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        There are two scenarios: there is no difference or there is some difference in average prices. The <em>no difference</em> scenario is always the null hypothesis:
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          <m>\mu_{diff}=0</m>. There is no difference in the average textbook price.
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+            <m>\mu_{diff} \neq 0</m>. There is a difference in average prices.
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          The standard deviation of all of the differences in unknown, so we will use the standard deviation of the sample differences. The observations are based on a simple random sample from less than 10<percent /> of all books sold at the bookstore, so independence is reasonable; the distribution of differences, shown in <xref ref="diffInTextbookPricesS10">Figure</xref>, is strongly skewed, but the sample size <m>n=73</m> is well over 30. Because all three conditions are reasonably satisfied, we can conclude the <m>t</m>-test is reasonable.
+        </p>
+
+        <p>
+          We compute the standard error associated with <m>\bar{x}_{diff}</m> using the standard deviation of the differences (<m>s_{_{diff}}=14.26</m>) and the number of differences (<m>n_{_{diff}}=73</m>):
+          <me>
+            SE_{\bar{x}_{diff}} = \frac{s_{diff}}{\sqrt{n_{diff}}} = \frac{14.26}{\sqrt{73}} = 1.67
+          </me>
+        </p>
+
+        <p>
+          To visualize the p-value, the sampling distribution of <m>\bar{x}_{diff}</m> is drawn as though <m>H_0</m> is true, which is shown in <xref ref="textbooksS10HTTails">Figure</xref>. The p-value is represented by the two (very) small tails.
+        </p>
+
+        <figure>
+          <caption>Sampling distribution for the mean difference in book prices, if the true average difference is zero.</caption>
+          <image width="65%" source="images/textbooksS10HTTails.png" />
+        </figure>
+
+        <p>
+          To find the tail areas, we compute the test statistic, which is the <m>T</m> score of <m>\bar{x}_{diff}</m> under the null condition that the actual mean difference is 0:
+          <me>
+            t = \frac{\bar{x}_{diff} - 0}{SE_{x_{diff}}} = \frac{12.76 - 0}{1.67} = 7.65     df=72
+          </me>
+        </p>
+
+        <p>
+          This <m>T</m> score is so large it isn't even in the table, which ensures the single tail area will be 0.0002 or smaller. A calculator gives a tail area as <m>4.5\times 10^{-11}</m>. Since the p-value corresponds to both tails in this case and the <m>t</m>-distribution is symmetric, the p-value can be estimated as twice the one-tail area:
+          <me>
+            \text{ p-value }  = 2\times (\text{ one tail area } ) \approx 2\times 4.5\times 10^{-11} = 9\times 10^{-11}\approx 0
+          </me>
+        </p>
+
+        <p>
+          Because the p-value is less than 0.05, we reject the null hypothesis. We have found convincing evidence that Amazon is, on average, cheaper than the UCLA bookstore for UCLA course textbooks.
+        </p>
+      </answer>
+    </example>
+
+    <definition>
+      <title>Hypothesis test for paired data</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    Matched pairs <m>t</m>-test.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    Paired data from a random sample or experiment.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Population of differences is known to be normal OR <m>n_{diff}\ge 30</m> OR graph of sample differences is approximately symmetric with no outliers, making the assumption that population of differences is normal a reasonable one.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language, then set them up in mathematical notation.
+              <ul>
+                <li>
+                  <p>
+                    H<m>_0: \mu_{diff}=0</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    H<m>_0: \mu_{diff} \ne \text{ or }  \lt  \text{ or }  > 0</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic and <m>df</m>: <m>\text{t}  = \frac{\text{ point estimate }  - \text{ null value } }{\text{ SE of estimate } }</m>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate is <m>\bar{x}_{diff}</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Use <m>SE = \frac{s_{diff}}{\sqrt{n_{diff}}}</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>df=n_{diff}-1</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <figure xml:id="satImprovementHTDataHistogram" >
+      <caption>Sample distribution of:  SAT score after course - SAT score before course. The distribution is approximately symmetric.</caption>
+      <image width="54%" source="images/satImprovementHTDataHistogram.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          An SAT preparation company claims that its students' scores improve by over 100 points on average after their course. A consumer group would like to evaluate this claim, and they collect data on a random sample of 30 students who took the class. Each of these students took the SAT before and after taking the company's course, and so we have a difference in scores for each student. We will examine these differences <m>x_1=57</m>, <m>x_2=133</m>, ..., <m>x_{30}=140</m> as a sample to evaluate the company's claim. The distribution of the differences, shown in <xref ref="satImprovementHTDataHistogram">Figure</xref>, has mean 135.9 and standard deviation 82.2. Do these data provide convincing evidence to back up the company's claim?
+          <fn>These are <em>paired data</em>, so we analyze the score differences with a matched pairs <m>t</m>-test. Conditions: This is a random sample from less than 10<percent /> of the company's students (assuming they have more than 300 former students), so the independence condition is reasonable. <m>n=30\ge 30</m>.
+          This is a one-sided test. <m>H_0</m>: student scores do not improve by more than 100 after taking the company's course. <m>\mu_{_{diff}} = 100</m>  <m>H_A</m>: students scores improve by more than 100 points on average after taking the company's course. <m>\mu_{_{diff}} > 100</m>.
+          Let
+          <md>
+            <mrow>\alpha\amp =0.05
+            \amp \amp SE_diff = \frac{82.2}{\sqrt{30}} = 15.0
+            \amp \amp T = \frac{135.9-100}{15.0}=2.4
+            \amp \amp \text{ with } df=29</mrow>
+          </md>
+          p-value<m>=0.012\lt \alpha</m> so we reject the null hypothesis. The data provide convincing evidence to support the company's claim that student scores improve by more than 100 points following the class.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Because we rejected the null hypothesis, does this mean that taking the company's class improves student scores by more than 100 points on average?<fn>This is an observational study, so we cannot make this causal conclusion. For instance, maybe SAT test takers tend to improve their score over time even if they don't take a special SAT class, or perhaps only the most motivated students take such SAT courses.</fn>
+        </p>
+
+        <p>
+          <index><main>data</main><sub>SAT prep company</sub></index>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Confidence intervals for the mean of a difference <m>\mu_{diff}</m></title>
+    <p>
+      In the previous examples, we carried out a matched pairs <m>t</m>-test, where the null hypothesis was that the true average of the paired differences is zero. Sometimes we want to estimate the true average of paired differences with a confidence interval, and we use a <em>matched pairs <m>t</m>-interval</em><index><main>confidence interval</main><sub>matched pairs|textbf</sub></index>. Consider again the table of data on the difference in price between UCLA and Amazon for each of the 73 books sampled.
+    </p>
+
+    <table xml:id="textbooksSummaryStatsAgain" >
+      <caption>Summary statistics for the price differences. There were 73 books, so there are 73 differences.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>n_{_{diff}}</m></cell>
+          <cell>\hspace{3mm}</cell>
+          <cell><m>\bar{x}_{_{diff}}</m></cell>
+          <cell>\hspace{3mm}</cell>
+          <cell><m>s_{_{diff}}</m> \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>73</cell>
+          <cell></cell>
+          <cell>12.76</cell>
+          <cell></cell>
+          <cell>14.26</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      We we construct a 95<percent /> confidence interval for the average price difference between books at the UCLA bookstore and books on Amazon. Conditions have already verified and the standard error computed in <xref ref="htForDiffInUCLAAndAmazonTextbookPrices">Example</xref>. To find the interval, identify <m>t
+      ^{\star}</m>. Since <m>df = 72</m> is not on the <m>t</m>-table, round the <m>df</m> down to 60 to get a <m>t^{\star}</m> of 2.00 for 95<percent /> confidence. Plugging in the <m>t^{\star}</m>, the point estimate, and the standard error into the confidence interval formula we get:
+      <md>
+        <mrow>\text{ point estimate }  \ \amp \pm\ t^{\star}SE
+          \amp df\amp =n-1</mrow>
+        <mrow>12.76 \ \amp \pm\ 2.00\times 1.67
+          \amp df\amp =72</mrow>
+        <mrow>(9.42 \amp , 16.10)</mrow>
+      </md>
+    </p>
+
+    <p>
+      We are 95<percent /> confident that the UCLA bookstore is, on average, between <dollar />9.42 and <dollar />16.10 more expensive than Amazon for UCLA course books. This interval does not contain zero, so it is consistent with the fact that our earlier hypothesis test <em>rejected</em> the null hypothesis that the average difference was 0. Because our interval is entirely above 0, we have evidence that the true average difference is not 0. Unlike the test of hypothesis, though, the confidence interval tells us about how much more expensive the UCLA bookstore is.
+    </p>
+
+    <p>
+      <index><main>data</main><sub>textbooks</sub></index>
+      <index><main>paired data</main></index>
+    </p>
+
+    <definition>
+      <title>Constructing a confidence interval for paired data</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the CI being used.
+              <ul>
+                <li>
+                  <p>
+                    Matched pairs <m>t</m>-interval
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    Paired data from a random sample or experiment.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Population of diferrences is known to be normal OR <m>n_{diff}\ge 30</m> OR graph of sample differences is approximately symmetric with no outliers, making the assumption that the population of differences is normal a reasonable one.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Plug in the numbers and write the interval in the form
+              <me>
+                \text{ point estimate }  \pm t^\star \times \text{ SE of estimate }
+              </me>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate of <m>\bar{x}_{diff}</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>df=n_{diff}-1</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Plug in the critical value <m>t^\star</m> using the <m>t</m>-table at row <m>n_{diff}-1</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Use <m>SE = \frac{s_{diff}}{\sqrt{n_{diff}}}</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Evaluate the CI and write in the form ( <m>\_</m> , <m>\_</m> ).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Interpret the interval: ``We are [XX]<percent /> confident that the true mean of the differences in [...] is between [...] and [...]."
+            </p>
+          </li>
+
+          <li>
+            <p>
+              State the conclusion to the original question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          In the SAT preparation company example, we saw that <m>\bar{x}_{diff}</m> was 135.9 and <m>s_{diff}</m> was 82.2. That<nbsp />is, the average change in students' scores after the class was a 135.9 point increase and the SD of the change or difference in their scores was 82.2 points. Construct a 95<percent /> confidence interval to estimate the true average change in score after taking the class. Is there evidence for the company's claim that students score an average of 100 points higher after the class?<fn>Because this is a before and after scenario, we use a matched pairs <m>t</m>-interval. The conditions were verified in the previous section. The confidence interval is : <m>135.9\ \pm 2.045(15.0) \to (105.2, 166.6)</m>. We can be 95<percent /> confident that the true <em>average</em> increase in scores after the prep class is between 105.2 and 166.6. Because the entire interval is above 100, there is evidence that on average students score more than 100 points higher after the course. Recall that this does not prove that the increase is <em>due to</em>  the course.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          The 95<percent /> confidence interval in the previous exercise was calculated as (105.2, 166.6). True or false: about 95<percent /> of the students that take the class saw an increase of at least 105.2 points.<fn>False. This confidence interval estimates the <em>average</em> increase - not the increase of individuals. As can be seen in <xref ref="satImprovementHTDataHistogram">Figure</xref>, much greater than 5<percent /> saw an increase of less than 105.2 points. Some individuals even saw a <em>decrease</em> in their score as indicated by the negative differences.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: the matched pairs <m>t</m>-test and <m>t</m>-interval</title>
+    <p>
+      The matched pairs <m>t</m>-test and CI proceed the same way as the 1-sample <m>t</m>-test and confidence interval. Instead of using the data or the summary statistics from the single sample, make sure to use the data of <em>differences</em> or the summary statistics for the <em>differences</em>.
+    </p>
+
+    <definition>
+      <title>TI-83/84: matched pairs $t$-test</title>
+      <statement>
+        <p>
+          Use <c>STAT</c>, <c>TESTS</c>, <c>T-Test</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>2:T-Test</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the mean and standard deviation.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <m>\textttmath{\mu_0}</m> be the null or hypothesized value of <m>\mu_{diff}</m>.
+                <ul>
+                  <li>
+                    <p>
+                      If you choose <c>Data</c>, let <c>List</c> be <c>L3</c> or the list in which you entered the differences (don't forget to enter the differences!) and let <c>Freq</c> be <c>1</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      If you choose <c>Stats</c>, enter the mean, SD, and sample size of the differences.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <m>\textttmath{\ne}</m>, <m>\texttt{\lt }</m>, or <m>\texttt{>}</m> to correspond to H<m>_A</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>t</c></cell>
+                    <cell>t statistic</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\bar{x}}</m></cell>
+                    <cell>the sample mean of the differences</cell>
+                  </row>
+                  <row>
+                    <cell><c>Sx</c></cell>
+                    <cell>the sample SD of the differences</cell>
+                  </row>
+                  <row>
+                    <cell><c>n</c></cell>
+                    <cell>the sample size of the differences</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>TI-83/84: matched pairs $t$-interval</title>
+      <statement>
+        <p>
+          Use <c>STAT</c>, <c>TESTS</c>, <c>TInterval</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>8:TInterval</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Data</c> if you have all the data or <c>Stats</c> if you have the mean and standard deviation.
+                <ul>
+                  <li>
+                    <p>
+                      If you choose <c>Data</c>, let <c>List</c> be <c>L3</c> or the list in which you entered the differences (don't forget to enter the differences!) and let <c>Freq</c> be <c>1</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      If you choose <c>Stats</c>, enter the mean, SD, and sample size of the differences.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>C-Level</c> be the desired confidence level.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>(<em><nbsp /><nbsp /></em>,<em><nbsp /><nbsp /></em>)</c></cell>
+                    <cell>the confidence interval for the mean of the differences</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\bar{x}}</m></cell>
+                    <cell>the sample mean of the differences</cell>
+                  </row>
+                  <row>
+                    <cell><c>Sx</c></cell>
+                    <cell>the sample SD of the differences</cell>
+                  </row>
+                  <row>
+                    <cell><c>n</c></cell>
+                    <cell>the number of differences in the sample</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: matched pairs $t$-test or confidence interval</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              Compute the paired differences of the observations.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Using the computed differences, follow the instructions for a 1-sample <m>t</m>-test or confidence interval.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <table xml:id="textbooksDFPartial" >
+      <caption>A partial table of the <c>textbooks</c> data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>dept</cell>
+          <cell>ucla</cell>
+          <cell>amazon</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>Am Ind</cell>
+          <cell>27.67</cell>
+          <cell>27.95</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>Anthro</cell>
+          <cell>40.59</cell>
+          <cell>31.14</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>Anthro</cell>
+          <cell>31.68</cell>
+          <cell>32.00</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>Anthro</cell>
+          <cell>16.00</cell>
+          <cell>11.52</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>Art His</cell>
+          <cell>18.95</cell>
+          <cell>14.21</cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>Art His</cell>
+          <cell>14.95</cell>
+          <cell>10.17</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>Asia Am</cell>
+          <cell>24.7</cell>
+          <cell>20.06</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Use the first 7 values of <xref ref="textbooksDF">the</xref> data set produced above and calculate the <m>T</m> score and p-value to test whether, on average, Amazon's textbook price is cheaper that UCLA's price.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Create a list of the differences, and use the data or list option to perform the test. Let <m>\mu_0</m> be 0, and select the appropriate list. Freq should be 1, and the test sidedness should be <m>></m>. <m>T=3.076</m> and p-value<m>=0.0109</m>.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Use the data from <xref ref="textbooksDFPartial">Table</xref> to calculate a 95<percent /> confidence interval for the average difference in textbook price between Amazon and UCLA.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Choose a C-Level of 0.95, and the final result should be (0.80354, 7.0507).
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+</section>

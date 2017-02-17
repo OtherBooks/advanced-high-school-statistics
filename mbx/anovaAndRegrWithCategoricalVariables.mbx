@@ -1,0 +1,887 @@
+
+<section xml:id="anovaAndRegrWithCategoricalVariables">
+  <title>Comparing many means with ANOVA
+  (special topic)</title>
+  <introduction>
+    <p>
+      <index><main>analysis of variance (ANOVA)</main></index>
+    </p>
+
+    <p>
+      Sometimes we want to compare means across many groups. We might initially think to do pairwise comparisons; for example, if there were three groups, we might be tempted to compare the first mean with the second, then with the third, and then finally compare the second and third means for a total of three comparisons. However, this strategy can be treacherous. If we have many groups and do many comparisons, it is likely that we will eventually find a difference just by chance, even if there is no difference in the populations.
+    </p>
+
+    <p>
+    In this section, we will learn a new method called <term>analysis of variance (ANOVA)</term> and a new test statistic called <m>F</m>. ANOVA uses a single hypothesis test to check whether the means across many groups are equal:
+    <ul>
+      <li>
+      <title>invalidlabel</title>
+      <p>
+      The mean outcome is the same across all groups. In statistical notation, <m>\mu_1 = \mu_2 = \cdots = \mu_k</m> where <m>\mu_i</m> represents the mean of the outcome for observations in category <m>i</m>.
+        </p>
+      </li>
+
+      <li>
+      <title>invalidlabel</title>
+      <p>
+        At least one mean is different.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Generally we must check three conditions on the data before performing ANOVA:
+      <ul>
+        <li>
+          <p>
+            the observations are independent within and across groups,
+          </p>
+        </li>
+
+        <li>
+          <p>
+            the data within each group are nearly normal, and
+          </p>
+        </li>
+
+        <li>
+          <p>
+            the variability across the groups is about equal.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      When these three conditions are met, we may perform an ANOVA to determine whether the data provide strong evidence against the null hypothesis that all the <m>\mu_i</m> are equal.
+    </p>
+
+    <example xml:id="firstExampleForThreeStatisticsClassesAndANOVA">
+      <statement>
+        <p>
+          College departments commonly run multiple lectures of the same introductory course each semester because of high demand. Consider a statistics department that runs three lectures of an introductory statistics course. We might like to determine whether there are statistically significant differences in first exam scores in these three classes (<m>A</m>, <m>B</m>, and <m>C</m>). Describe appropriate hypotheses to determine whether there are any differences between the three classes.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        The hypotheses may be written in the following form:
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          The average score is identical in all lectures. Any observed difference is due to chance. Notationally, we write <m>\mu_A=\mu_B=\mu_C</m>.
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+            The average score varies by class. We would reject the null hypothesis in favor of the alternative hypothesis if there were larger differences among the class averages than what we might expect from chance alone.
+              </p>
+            </li>
+          </ul>
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Strong evidence favoring the alternative hypothesis in ANOVA is described by unusually large differences among the group means. We will soon learn that assessing the variability of the group means relative to the variability among individual observations within each group is key to ANOVA's success.
+    </p>
+
+    <example xml:id="toyANOVA">
+      <statement>
+        <p>
+          Examine <xref ref="toyANOVA">Figure</xref>. Compare groups I, II, and III. Can you visually determine if the differences in the group centers is due to chance or not? Now compare groups IV, V, and VI. Do these differences appear to be due to chance?
+        </p>
+      </statement>
+      <answer>
+        <figure>
+          <caption>Side-by-side dot plot for the outcomes for six groups.</caption>
+          <image width="65%" source="images/toyANOVA.png" />
+        </figure>
+
+        <p>
+          Any real difference in the means of groups I, II, and III is difficult to discern, because the data within each group are very volatile relative to any differences in the average outcome. On the other hand, it appears there are differences in the centers of groups IV, V, and VI. For instance, group V appears to have a higher mean than that of the other two groups. Investigating groups IV, V, and VI, we see the differences in the groups' centers are noticeable because those differences are large <em>relative to the variability in the individual observations within each group</em>.
+        </p>
+      </answer>
+    </example>
+  </introduction>
+
+  <subsection>
+    <title>Is batting performance related to player position in MLB?</title>
+    <p>
+      <index><main>data</main><sub>MLB batting</sub></index>
+    </p>
+
+    <p>
+      We would like to discern whether there are real differences between the batting performance of baseball players according to their position: outfielder (<c>OF</c>), infielder (<c>IF</c>), designated hitter (<c>DH</c>), and catcher (<c>C</c>). We will use a data set called <c>bat10</c>, which includes batting records of 327 Major League Baseball (MLB) players from the 2010 season. Six of the 327 cases represented in <c>bat10</c> are shown in <xref ref="mlbBat10DataMatrix">Table</xref>, and descriptions for each variable are provided in <xref ref="mlbBat10Variables">Table</xref>. The measure we will use for the player batting performance (the outcome variable) is on-base percentage (<c>OBP</c>). The on-base percentage roughly represents the fraction of the time a player successfully gets on base or hits a home run.
+    </p>
+
+    <table xml:id="mlbBat10DataMatrix" >
+      <caption>Six cases from the <c>bat10</c> data matrix.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>name</cell>
+          <cell>team</cell>
+          <cell>position</cell>
+          <cell>AB</cell>
+          <cell>H</cell>
+          <cell>HR</cell>
+          <cell>RBI</cell>
+          <cell>AVG</cell>
+          <cell>OBP</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>I Suzuki</cell>
+          <cell>SEA</cell>
+          <cell>OF</cell>
+          <cell>680</cell>
+          <cell>214</cell>
+          <cell>6</cell>
+          <cell>43</cell>
+          <cell>0.315</cell>
+          <cell>0.359</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>D Jeter</cell>
+          <cell>NYY</cell>
+          <cell>IF</cell>
+          <cell>663</cell>
+          <cell>179</cell>
+          <cell>10</cell>
+          <cell>67</cell>
+          <cell>0.270</cell>
+          <cell>0.340</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>M Young</cell>
+          <cell>TEX</cell>
+          <cell>IF</cell>
+          <cell>656</cell>
+          <cell>186</cell>
+          <cell>21</cell>
+          <cell>91</cell>
+          <cell>0.284</cell>
+          <cell>0.330</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>325</cell>
+          <cell>B Molina</cell>
+          <cell>SF</cell>
+          <cell>C</cell>
+          <cell>202</cell>
+          <cell>52</cell>
+          <cell>3</cell>
+          <cell>17</cell>
+          <cell>0.257</cell>
+          <cell>0.312</cell>
+        </row>
+        <row>
+          <cell>326</cell>
+          <cell>J Thole</cell>
+          <cell>NYM</cell>
+          <cell>C</cell>
+          <cell>202</cell>
+          <cell>56</cell>
+          <cell>3</cell>
+          <cell>17</cell>
+          <cell>0.277</cell>
+          <cell>0.357</cell>
+        </row>
+        <row>
+          <cell>327</cell>
+          <cell>C Heisey</cell>
+          <cell>CIN</cell>
+          <cell>OF</cell>
+          <cell>201</cell>
+          <cell>51</cell>
+          <cell>8</cell>
+          <cell>21</cell>
+          <cell>0.254</cell>
+          <cell>0.324</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="mlbBat10Variables" >
+      <caption>Variables and their descriptions for the <c>bat10</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><em>variable</em></cell>
+          <cell><em>description</em></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>name</c></cell>
+          <cell>Player name</cell>
+        </row>
+        <row>
+          <cell><c>team</c></cell>
+          <cell>The abbreviated name of the player's team</cell>
+        </row>
+        <row>
+          <cell><c>position</c></cell>
+          <cell>The player's primary field position (<c>OF</c>, <c>IF</c>, <c>DH</c>, <c>C</c>)</cell>
+        </row>
+        <row>
+          <cell><c>AB</c></cell>
+          <cell>Number of opportunities at bat</cell>
+        </row>
+        <row>
+          <cell><c>H</c></cell>
+          <cell>Number of hits</cell>
+        </row>
+        <row>
+          <cell><c>HR</c></cell>
+          <cell>Number of home runs</cell>
+        </row>
+        <row>
+          <cell><c>RBI</c></cell>
+          <cell>Number of runs batted in</cell>
+        </row>
+        <row>
+          <cell><c>AVG</c></cell>
+          <cell>Batting average, which is equal to <m>\texttt{H}/\texttt{AB}</m></cell>
+        </row>
+        <row>
+          <cell><c>OBP</c></cell>
+          <cell>On-base percentage, which is roughly equal to the fraction of times a player gets on base or hits a home run</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise xml:id="nullHypForOBPAgainstPosition">
+      <statement>
+        <p>
+          The null hypothesis under consideration is the following: <m>\mu_{\texttt{OF}} = \mu_{\texttt{IF}} = \mu_{\texttt{DH}} = \mu_{\texttt{C}}</m>.
+          Write the null and corresponding alternative hypotheses in plain language.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>H_0</m>: The average on-base percentage is equal across the four positions.
+        </p>
+
+        <p>
+          <m>H_A</m>: The average on-base percentage varies across some (or all) groups.
+        </p>
+      </hint>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          The player positions have been divided into four groups: outfield (<c>OF</c>), infield (<c>IF</c>), designated hitter (<c>DH</c>), and catcher (<c>C</c>). What would be an appropriate point estimate of the on-base percentage by outfielders, <m>\mu_{\texttt{OF}}</m>?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          A good estimate of the on-base percentage by outfielders would be the sample average of <c>OBP</c> for just those players whose position is outfield: <m>\bar{x}_{OF} = 0.334</m>.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      <xref ref="mlbHRPerABSummaryTable">Table</xref> provides summary statistics for each group. A side-by-side box plot for the on-base percentage is shown in <xref ref="mlbANOVABoxPlot">Figure</xref>. Notice that the variability appears to be approximately constant across groups; nearly constant variance across groups is an important assumption that must be satisfied before we consider the ANOVA approach.
+    </p>
+
+    <table xml:id="mlbHRPerABSummaryTable" >
+      <caption>Summary statistics of on-base percentage, split by player position.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>OF</c></cell>
+          <cell><c>IF</c></cell>
+          <cell><c>DH</c></cell>
+          <cell><c>C</c></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Sample size (<m>n_i</m>)</cell>
+          <cell>120</cell>
+          <cell>154</cell>
+          <cell>14</cell>
+          <cell>39</cell>
+        </row>
+        <row>
+          <cell>Sample mean (<m>\bar{x}_i</m>)</cell>
+          <cell>0.334</cell>
+          <cell>0.332</cell>
+          <cell>0.348</cell>
+          <cell>0.323</cell>
+        </row>
+        <row>
+          <cell>Sample SD (<m>s_i</m>)</cell>
+          <cell>0.029</cell>
+          <cell>0.037</cell>
+          <cell>0.036</cell>
+          <cell>0.045</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="mlbANOVABoxPlot" >
+      <caption>Side-by-side box plot of the on-base percentage for 327 players across four groups. There is one prominent outlier visible in the infield group, but with 154 observations in the infield group, this outlier is not a concern.</caption>
+      <image width="85%" source="images/mlbANOVABoxPlot.png" />
+    </figure>
+
+    <example xml:id="multipleComparisonExampleThatIncludesDiscussionOfClassrooms">
+      <statement>
+        <p>
+        The largest difference between the sample means is between the designated hitter and the catcher positions. Consider again the original hypotheses:
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          <m>\mu_{\texttt{OF}} = \mu_{\texttt{IF}} = \mu_{\texttt{DH}} = \mu_{\texttt{C}}</m>
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+            The average on-base percentage (<m>\mu_i</m>) varies across some (or all) groups.
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          Why might it be inappropriate to run the test by simply estimating whether the difference of <m>\mu_{\texttt{DH}}</m> and <m>\mu_{\texttt{C}}</m> is statistically significant at a 0.05 significance level?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The primary issue here is that we are inspecting the data before picking the groups that will be compared. It is inappropriate to examine all data by eye (informal testing) and only afterwards decide which parts to formally test. This is called <term>data snooping</term> or <term>data fishing</term>. Naturally we would pick the groups with the large differences for the formal test, leading to an inflation in the Type<nbsp />1 Error rate. To understand this better, let's consider a slightly different problem.
+        </p>
+
+        <p>
+          Suppose we are to measure the aptitude for students in 20 classes in a large elementary school at the beginning of the year. In this school, all students are randomly assigned to classrooms, so any differences we observe between the classes at the start of the year are completely due to chance. However, with so many groups, we will probably observe a few groups that look rather different from each other. If we select only these classes that look so different, we will probably make the wrong conclusion that the assignment wasn't random. While we might only formally test differences for a few pairs of classes, we informally evaluated the other classes by eye before choosing the most extreme cases for a comparison.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      For additional information on the ideas expressed in <xref ref="multipleComparisonExampleThatIncludesDiscussionOfClassrooms">Example</xref>, we recommend reading about the <term>prosecutor's fallacy</term>.<fn>See, for example, MISSINGoiRedirect.</fn>
+    </p>
+
+    <p>
+      In the next section we will learn how to use the <m>F</m> statistic and ANOVA to test whether observed differences in sample means could have happened just by chance even if there was no difference in the respective population means.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Analysis of variance (ANOVA) and the F test</title>
+    <p>
+      The method of analysis of variance in this context focuses on answering one question: is the variability in the sample means so large that it seems unlikely to be from chance alone? This question is different from earlier testing procedures since we will <em>simultaneously</em> consider many groups, and evaluate whether their sample means differ more than we would expect from natural variation. We call this variability the <term>mean square between groups (<m>MSG</m>)</term>, and it has an associated degrees of freedom, <m>df_{G}=k-1</m> when there are <m>k</m> groups. The <m>MSG</m> can be thought of as a scaled variance formula for means. If the null hypothesis is true, any variation in the sample means is due to chance and shouldn't be too large. Details of <m>MSG</m> calculations are provided in the footnote,<fn>Let <m>\bar{x}</m> represent the mean of outcomes across all groups. Then the mean square between groups is computed as
+      <md>
+        <mrow>MSG = \frac{1}{df_{G}}SSG = \frac{1}{k-1}\sum_{i=1}^{k} n_{i}\left(\bar{x}_{i} - \bar{x}\right)^2</mrow>
+      </md>
+      where <m>SSG</m> is called the <term>sum of squares between groups</term> and <m>n_{i}</m> is the sample size of group <m>i</m>.</fn> however, we typically use software for these computations.
+    </p>
+
+    <p>
+      The mean square between the groups is, on its own, quite useless in a hypothesis test. We need a benchmark value for how much variability should be expected among the sample means if the null hypothesis is true. To this end, we compute a pooled variance estimate, often abbreviated as the <term>mean square error (<m>MSE</m>)</term>, which has an associated degrees of freedom value <m>df_E=n-k</m>. It is helpful to think of <m>MSE</m> as a measure of the variability within the groups. Details of the computations of the <m>MSE</m> are provided in the footnote<fn>Let <m>\bar{x}</m> represent the mean of outcomes across all groups. Then the <term>sum of squares total (<m>SST</m>)</term> is computed as
+      <md>
+        <mrow>SST = \sum_{i=1}^{n} \left(x_{i} - \bar{x}\right)^2</mrow>
+      </md>
+      where the sum is over all observations in the data set. Then we compute the <term>sum of squared errors (<m>SSE</m>)</term> in one of two equivalent ways:
+      <md>
+        <mrow>SSE \amp = SST - SSG</mrow>
+        <mrow>\amp = (n_1-1)s_1^2 + (n_2-1)s_2^2 + \cdots + (n_k-1)s_k^2</mrow>
+      </md>
+      where <m>s_i^2</m> is the sample variance (square of the standard deviation) of the residuals in group <m>i</m>. Then the <m>MSE</m> is the standardized form of <m>SSE</m>: <m>MSE = \frac{1}{df_{E}}SSE</m>.</fn> for interested readers.
+    </p>
+
+    <p>
+      When the null hypothesis is true, any differences among the sample means are only due to chance, and the <m>MSG</m> and <m>MSE</m> should be about equal. As a test statistic for ANOVA, we examine the fraction of <m>MSG</m> and <m>MSE</m>:
+      <md>
+        <mrow>F = \frac{MSG}{MSE}</mrow>
+      </md>
+    </p>
+
+    <p>
+      The <m>MSG</m> represents a measure of the between-group variability, and <m>MSE</m> measures the variability within each of the groups.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          For the baseball data, <m>MSG = 0.00252</m> and <m>MSE=0.00127</m>. Identify the degrees of freedom associated with MSG and MSE and verify the <m>F</m> statistic is approximately 1.994.<fn>There are <m>k=4</m> groups, so <m>df_{G} = k-1 = 3</m>. There are <m>n = n_1 + n_2 + n_3 + n_4 = 327</m> total observations, so <m>df_{E} = n - k = 323</m>. Then the <m>F</m> statistic is computed as the ratio of <m>MSG</m> and <m>MSE</m>: <m>F = \frac{MSG}{MSE} = \frac{0.00252}{0.00127} = 1.984 \approx 1.994</m>. (<m>F=1.994</m> was computed by using values for <m>MSG</m> and <m>MSE</m> that were not rounded.)</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      We can use the <m>F</m> statistic to evaluate the hypotheses in what is called an <term>F test</term>. A p-value can be computed from the <m>F</m> statistic using an <m>F</m> distribution, which has two associated parameters: <m>df_{1}</m> and <m>df_{2}</m>. For the <m>F</m> statistic in ANOVA, <m>df_{1} = df_{G}</m> and <m>df_{2}= df_{E}</m>. An <m>F</m> distribution with 3 and 323 degrees of freedom, corresponding to the <m>F</m> statistic for the baseball hypothesis test, is shown in <xref ref="fDist3And323">Figure</xref>.
+    </p>
+
+    <figure xml:id="fDist3And323" >
+      <caption>An <m>F</m> distribution with <m>df_1=3</m> and <m>df_2=323</m>.</caption>
+      <image width="62%" source="images/fDist3And323.png" />
+    </figure>
+
+    <p>
+      The larger the observed variability in the sample means (<m>MSG</m>) relative to the within-group observations (<m>MSE</m>), the larger <m>F</m> will be and the stronger the evidence against the null hypothesis. Because larger values of <m>F</m> represent stronger evidence against the null hypothesis, we use the upper tail of the distribution to compute a p-value.
+    </p>
+
+    <definition>
+      <title>The $F$ statistic and the $F$ test</title>
+      <statement>
+        <p>
+          Analysis of variance (ANOVA) is used to test whether the mean outcome differs across 2 or more groups. ANOVA uses a test statistic <m>F</m>, which represents a standardized ratio of variability in the sample means relative to the variability within the groups. If <m>H_0</m> is true and the model assumptions are satisfied, the statistic <m>F</m> follows an <m>F</m> distribution with parameters <m>df_{1}=k-1</m> and <m>df_{2}=n-k</m>. The upper tail of the <m>F</m> distribution is used to represent the p-value.
+        </p>
+      </statement>
+    </definition>
+
+    <exercise xml:id="describePValueAreaForFDistributionInMLBOBPExample">
+      <statement>
+        <p>
+          The test statistic for the baseball example is <m>F=1.994</m>. Shade the area corresponding to the p-value in <xref ref="fDist3And323">Figure</xref>. <fn>
+          <image width="73%" source="images/fDist3And323Shaded.png" />
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          The p-value corresponding to the shaded area in the solution of Guided <xref ref="describePValueAreaForFDistributionInMLBOBPExample">Practice</xref> is equal to about 0.115. Does this provide strong evidence against the null hypothesis?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The p-value is larger than 0.05, indicating the evidence is not strong enough to reject the null hypothesis at a significance level of 0.05. That is, the data do not provide strong evidence that the average on-base percentage varies by player's primary field position.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Reading an ANOVA table from software</title>
+    <p>
+      The calculations required to perform an ANOVA by hand are tedious and prone to human error. For these reasons, it is common to use statistical software to calculate the <m>F</m> statistic and p-value.
+    </p>
+
+    <p>
+      An ANOVA can be summarized in a table very similar to that of a regression summary, which we will see in <xref ref="linRegrForTwoVar">Chapter</xref>. <xref ref="anovaSummaryTableForOBPAgainstPosition">Table</xref> shows an ANOVA summary to test whether the mean of on-base percentage varies by player positions in the MLB. Many of these values should look familiar; in particular, the <m>F</m> test statistic and p-value can be retrieved from the last columns.
+    </p>
+
+    <table xml:id="anovaSummaryTableForOBPAgainstPosition" >
+      <caption>ANOVA summary for testing whether the average on-base percentage differs across player positions.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Df</cell>
+          <cell>Sum Sq</cell>
+          <cell>Mean Sq</cell>
+          <cell>F value</cell>
+          <cell>Pr(<m>></m>F)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>position</cell>
+          <cell>3</cell>
+          <cell>0.0076</cell>
+          <cell>0.0025</cell>
+          <cell>1.9943</cell>
+          <cell>0.1147</cell>
+        </row>
+        <row>
+          <cell>Residuals</cell>
+          <cell>323</cell>
+          <cell>0.4080</cell>
+          <cell>0.0013</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\multicolumn{6}{r}{<m>s_{pooled} = 0.036</m> on <m>df=323</m>}</cell>
+        </row>
+      </tabular>
+    </table>
+  </subsection>
+
+  <subsection>
+    <title>Graphical diagnostics for an ANOVA analysis</title>
+    <p>
+    There are three conditions we must check for an ANOVA analysis: all observations must be independent, the data in each group must be nearly normal, and the variance within each group must be approximately equal.
+    <ul>
+      <li>
+      <title>Independence.</title>
+      <p>
+      If the data are a simple random sample from less than 10<percent /> of the population, this condition is satisfied. For processes and experiments, carefully consider whether the data may be independent (e.g. no pairing). For example, in the MLB data, the data were not sampled. However, there are not obvious reasons why independence would not hold for most or all observations.
+        </p>
+      </li>
+
+      <li>
+      <title>Approximately normal.</title>
+      <p>
+      As with one- and two-sample testing for means, the normality assumption is especially important when the sample size is quite small. The normal probability plots for each group of the MLB data are shown in <xref ref="mlbANOVADiagNormalityGroups">Figure</xref>; there is some deviation from normality for infielders, but this isn't a substantial concern since there are about 150 observations in that group and the outliers are not extreme. Sometimes in ANOVA there are so many groups or so few observations per group that checking normality for each group isn't reasonable. See the footnote<fn>First calculate the \termsub{residuals}{residual} of the baseball data, which are calculated by taking the observed values and subtracting the corresponding group means. For example, an outfielder with OBP of 0.405 would have a residual of <m>0.405 - \bar{x}_{OF} = 0.071</m>. Then to check the normality condition, create a normal probability plot using all the residuals simultaneously.</fn> for guidance on how to handle such instances.
+
+      <figure xml:id="mlbANOVADiagNormalityGroups" >
+        <caption>Normal probability plot of OBP for each field position.</caption>
+        <image width="73%" source="images/mlbANOVADiagNormalityGroups.png" />
+      </figure>
+
+        </p>
+      </li>
+
+      <li>
+      <title>Constant variance.</title>
+      <p>
+        The last assumption is that the variance in the groups is about equal from one group to the next. This assumption can be checked by examining a side-by-side box plot of the outcomes across the groups, as in <xref ref="mlbANOVABoxPlot">Figure</xref>. In this case, the variability is similar in the four groups but not identical. We see in <xref ref="mlbHRPerABSummaryTable">Table</xref> that the standard deviation varies a bit from one group to the next. Whether these differences are from natural variation is unclear, so we should report this uncertainty with the final results.
+
+        <index><main>data</main><sub>MLB batting</sub></index>
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <warning>
+    <title>Diagnostics for an ANOVA analysis</title>
+    <p>
+      {Independence is always important to an ANOVA analysis. The normality condition is very important when the sample sizes for each group are relatively small. The constant variance condition is especially important when the sample sizes differ between groups.}
+    </p>
+
+    </warning>
+  </subsection>
+
+  <subsection xml:id="multipleComparisonsAndControllingTheType1ErrorRate">
+    <title>Multiple comparisons and controlling Type<nbsp />1 Error rate</title>
+    <p>
+      <index><main>significance level</main><sub>multiple comparisons</sub></index>
+    </p>
+
+    <p>
+      When we reject the null hypothesis in an ANOVA analysis, we might wonder, which of these groups have different means? To answer this question, we compare the means of each possible pair of groups. For instance, if there are three groups and there is strong evidence that there are some differences in the group means, there are three comparisons to make: group 1 to group 2, group 1 to group 3, and group 2 to group 3. These comparisons can be accomplished using a two-sample <m>t</m>-test, but we use a modified significance level and a pooled estimate of the standard deviation across groups. Usually this pooled standard deviation can be found in the ANOVA table, e.g. along the bottom of <xref ref="anovaSummaryTableForOBPAgainstPosition">Table</xref>.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          <xref ref="firstExampleForThreeStatisticsClassesAndANOVA">Example</xref> discussed three statistics lectures, all taught during the same semester. <xref ref="summaryStatisticsForClassTestData">Table</xref> shows summary statistics for these three courses, and a side-by-side box plot of the data is shown in <xref ref="classDataSBSBoxPlot">Figure</xref>. We would like to conduct an ANOVA for these data. Do you see any deviations from the three conditions for ANOVA?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          In this case (like many others) it is difficult to check independence in a rigorous way. Instead, the best we can do is use common sense to consider reasons the assumption of independence may not hold. For instance, the independence assumption may not be reasonable if there is a star teaching assistant that only half of the students may access; such a scenario would divide a class into two subgroups. No such situations were evident for these particular data, and we believe that independence is acceptable.
+        </p>
+
+        <p>
+          The distributions in the side-by-side box plot appear to be roughly symmetric and show no noticeable outliers.
+        </p>
+
+        <p>
+          The box plots show approximately equal variability, which can be verified in <xref ref="summaryStatisticsForClassTestData">Table</xref>, supporting the constant variance assumption.
+        </p>
+      </answer>
+    </example>
+
+    <table xml:id="summaryStatisticsForClassTestData" >
+      <caption>Summary statistics for the first midterm scores in three different lectures of the same course.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Class <m>i</m></cell>
+          <cell>A</cell>
+          <cell>B</cell>
+          <cell>C</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><m>n_i</m></cell>
+          <cell>58</cell>
+          <cell>55</cell>
+          <cell>51</cell>
+        </row>
+        <row>
+          <cell><m>\bar{x}_i</m></cell>
+          <cell>75.1</cell>
+          <cell>72.0</cell>
+          <cell>78.9</cell>
+        </row>
+        <row>
+          <cell><m>s_i</m></cell>
+          <cell>13.9</cell>
+          <cell>13.8</cell>
+          <cell>13.1</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="classDataSBSBoxPlot" >
+      <caption>Side-by-side box plot for the first midterm scores in three different  lectures of the same course.\textA{\vspace{-3mm}}</caption>
+      <image width="60%" source="images/classDataSBSBoxPlot.png" />
+    </figure>
+
+    <exercise xml:id="exerExaminingAnovaSummaryTableForMidtermData">
+      <statement>
+        <p>
+          An ANOVA was conducted for the midterm data, and summary results are shown in <xref ref="anovaSummaryTableForMidtermData">Table</xref>. What should we conclude?<fn>The p-value of the test is 0.0330, less than the default significance level of 0.05. Therefore, we reject the null hypothesis and conclude that the difference in the average midterm scores are not due to chance.</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <table xml:id="anovaSummaryTableForMidtermData" >
+      <caption>ANOVA summary table for the midterm data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>Df</cell>
+          <cell>Sum Sq</cell>
+          <cell>Mean Sq</cell>
+          <cell>F value</cell>
+          <cell>Pr(<m>></m>F)</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>lecture</cell>
+          <cell>2</cell>
+          <cell>1290.11</cell>
+          <cell>645.06</cell>
+          <cell>3.48</cell>
+          <cell>0.0330</cell>
+        </row>
+        <row>
+          <cell>Residuals</cell>
+          <cell>161</cell>
+          <cell>29810.13</cell>
+          <cell>185.16</cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>\multicolumn{6}{r}{<m>s_{pooled}=13.61</m> on <m>df=161</m>}</cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      There is strong evidence that the different means in each of the three classes is not simply due to chance. We might wonder, which of the classes are actually different? As discussed in earlier chapters, a two-sample <m>t</m>-test could be used to test for differences in each possible pair of groups. However, one pitfall was discussed in <xref ref="multipleComparisonExampleThatIncludesDiscussionOfClassrooms">Example</xref>: when we run so many tests, the Type<nbsp />1 Error rate increases. This issue is resolved by using a modified significance level.
+    </p>
+
+    <definition>
+      <title>Multiple comparisons and the Bonferroni correction for $\alpha$</title>
+      <statement>
+        <p>
+          The scenario of testing many pairs of groups is called <term>multiple comparisons</term>. The <term>Bonferroni correction</term> suggests that a more stringent significance level is more appropriate for these tests:
+          <md>
+            <mrow>\alpha^* = \alpha / K</mrow>
+          </md>
+          where <m>K</m> is the number of comparisons being considered (formally or informally). If there are <m>k</m> groups, then usually all possible pairs are compared and <m>K=\frac{k(k-1)}{2}</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <example xml:id="multipleComparisonsOfThreeStatClasses">
+      <statement>
+        <p>
+          In Guided <xref ref="exerExaminingAnovaSummaryTableForMidtermData">Practice</xref>, you found strong evidence of differences in the average midterm grades between the three lectures. Complete the three possible pairwise comparisons using the Bonferroni correction and report any differences.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We use a modified significance level of <m>\alpha^* = 0.05/3 = 0.0167</m>. Additionally, we use the pooled estimate of the standard deviation: <m>s_{pooled}=13.61</m> on <m>df=161</m>, which is provided in the ANOVA summary table.
+        </p>
+
+        <p>
+          Lecture A versus Lecture B: The estimated difference and standard error are, respectively,
+          <md>
+            <mrow>\bar{x}_A - \bar{x}_{B} \amp = 75.1 - 72 = 3.1
+              \amp SE = \sqrt{\frac{13.61^2}{58} + \frac{13.61^2}{55}} \amp = 2.56</mrow>
+          </md>
+        </p>
+
+        <p>
+          This results in a <m>T</m> score of 1.21 on <m>df = 161</m> (we use the <m>df</m> associated with <m>s_{pooled}</m>). Statistical software was used to precisely identify the two-tailed p-value since the modified significance of 0.0167 is not found in the <m>t</m>-table. The p-value (0.228) is larger than <m>\alpha^*=0.0167</m>, so there is not strong evidence of a difference in the means of lectures A and B.
+        </p>
+
+        <p>
+          Lecture A versus Lecture C: The estimated difference and standard error are 3.8 and 2.61, respectively. This results in a <m>T</m> score of 1.46 on <m>df = 161</m> and a two-tailed p-value of 0.1462. This p-value is larger than <m>\alpha^*</m>, so there is not strong evidence of a difference in the means of lectures A and C.
+        </p>
+
+        <p>
+          Lecture B versus Lecture C: The estimated difference and standard error are 6.9 and 2.65, respectively. This results in a <m>T</m> score of 2.60 on <m>df = 161</m> and a two-tailed p-value of 0.0102. This p-value is smaller than <m>\alpha^*</m>. Here we find strong evidence of a difference in the means of lectures B and C.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      We might summarize the findings of the analysis from <xref ref="multipleComparisonsOfThreeStatClasses">Example</xref> using the following notation:
+      <md>
+        <mrow>\mu_A \amp \stackrel{?}{=} \mu_B
+          \amp \mu_A \amp \stackrel{?}{=} \mu_C
+          \amp \mu_B \amp \neq \mu_C</mrow>
+      </md>
+    </p>
+
+    <p>
+      The midterm mean in lecture A is not statistically distinguishable from those of lectures B or C. However, there is strong evidence that lectures B and C are different. In the first two pairwise comparisons, we did not have sufficient evidence to reject the null hypothesis. Recall that failing to reject <m>H_0</m> does not imply <m>H_0</m> is true.
+    </p>
+
+    <warning>
+    <title>Sometimes an ANOVA will reject the null but no groups will have statistically significant differences</title>
+    <p>
+      {It is possible to reject the null hypothesis using ANOVA and then to not subsequently identify differences in the pairwise comparisons. However, <em>this does not invalidate the ANOVA conclusion</em>. It only means we have not been able to successfully identify which groups differ in their means.}
+    </p>
+
+    </warning>
+
+    <p>
+      The ANOVA procedure examines the big picture: it considers all groups simultaneously to decipher whether there is evidence that some difference exists. Even if the test indicates that there is strong evidence of differences in group means, identifying with high confidence a specific difference as statistically significant is more difficult.
+    </p>
+
+    <p>
+      Consider the following analogy: we observe a Wall Street firm that makes large quantities of money based on predicting mergers. Mergers are generally difficult to predict, and if the prediction success rate is extremely high, that may be considered sufficiently strong evidence to warrant investigation by the Securities and Exchange Commission (SEC). While the SEC may be quite certain that there is insider trading taking place at the firm, the evidence against any single trader may not be very strong. It is only when the SEC considers all the data that they identify the pattern. This is effectively the strategy of ANOVA: stand back and consider all the groups simultaneously.
+    </p>
+
+    <p>
+      <index><main>significance level</main><sub>multiple comparisons</sub></index>
+      <index><main>analysis of variance (ANOVA)</main></index>
+    </p>
+  </subsection>
+</section>

@@ -1,0 +1,46 @@
+
+<section>
+  <title>Does it make sense?</title>
+  <subsection xml:id="whenToRetreat">
+    <title>When to retreat</title>
+    <p>
+      Statistical tools rely on conditions. When the conditions are not met, these tools are unreliable and drawing conclusions from them is treacherous. The conditions for these tools typically come in two forms.
+      <ul>
+        <li>
+          <p>
+            <em>The individual observations must be independent.</em> A random sample from less than 10<percent /> of the population ensures the observations are independent. In experiments, we generally require that subjects are randomized into groups. If independence fails, then advanced techniques must be used, and in some such cases, inference may not be possible.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            <em>Other conditions focus on sample size and skew.</em> For example, if the sample size is too small, the skew too strong, or extreme outliers are present, then the normal model for the sample mean will fail.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Verification of conditions for statistical tools is always necessary. Whenever conditions are not satisfied for a statistical technique, there are three options. The first is to learn new methods that are appropriate for the data. The second route is to consult a statistician.<fn>If you work at a university, then there may be campus consulting services to assist you. Alternatively, there are many private consulting firms that are also available for hire.</fn> The third route is to ignore the failure of conditions. This last option effectively invalidates any analysis and may discredit novel and interesting findings.
+    </p>
+
+    <p>
+      Finally, we caution that there may be no inference tools helpful when considering data that include unknown biases, such as convenience samples. For this reason, there are books, courses, and researchers devoted to the techniques of sampling and experimental design. See <xref ref="overviewOfDataCollectionPrinciples">Sections</xref>- <xref ref="experimentsSection"></xref> for basic principles of data collection.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Statistical significance versus practical significance</title>
+    <p>
+      When the sample size becomes larger, point estimates become more precise and any real differences in the mean and null value become easier to detect and recognize. Even a very small difference would likely be detected if we took a large enough sample. Sometimes researchers will take such large samples that even the slightest difference is detected. While we still say that difference is <term>statistically significant</term>, it might not be <term>practically significant</term>.
+    </p>
+
+    <p>
+      Statistically significant differences are sometimes so minor that they are not practically relevant. This is especially important to research: if we conduct a study, we want to focus on finding a meaningful result. We don't want to spend lots of money finding results that hold no practical value.
+    </p>
+
+    <p>
+      The role of a statistician in conducting a study often includes planning the size of the study. The statistician might first consult experts or scientific literature to learn what would be the smallest meaningful difference from the null value. She also would obtain some reasonable estimate for the standard deviation. With these important pieces of information, she would choose a sufficiently large sample size so that the power for the meaningful difference is perhaps 80<percent /> or 90<percent />. While larger sample sizes may still be used, she might advise against using them in some cases, especially in sensitive areas of research.
+    </p>
+  </subsection>
+</section>

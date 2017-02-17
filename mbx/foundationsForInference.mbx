@@ -1,0 +1,39 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="foundationsForInference">
+  <title>Foundation for inference</title>
+  <introduction>
+    <p>
+      In the last chapter we encountered a probability problem in which we calculated the chance of getting less than 15<percent /> smokers in a sample, if we <em>knew</em> the true proportion of smokers in the population was 0.20. This chapter introduces the topic of inference, that<nbsp />is, the methods of drawing conclusions when the population value is <em>unknown</em>.
+    </p>
+
+    <definition>
+      <title>Probability versus inference</title>
+      <statement>
+        <ul>
+          <li>
+          <title>Probability</title>
+          <p>
+          Probability involves using a known population value (parameter) to make a prediction about the likelihood of a particular sample value (statistic).
+            </p>
+          </li>
+
+          <li>
+          <title>Inference</title>
+          <p>
+          Inference involves using a calculated sample value (statistic) to estimate or better understand an unknown population value (parameter).
+            </p>
+          </li>
+        </ul>
+      </statement>
+    </definition>
+
+    <p>
+      Statistical inference is concerned primarily with understanding the quality of parameter estimates. In this chapter, we will focus on the case of estimating a proportion from a random sample. While the equations and details change depending on the setting, the foundations for inference are the same throughout all of statistics. We introduce these common themes in this chapter, setting the stage for inference on other parameters. Understanding this chapter will make the rest of this book, and indeed the rest of statistics, seem much more familiar.
+    </p>
+  </introduction>
+  <xi:include  href="section6-1.mbx" />
+  <xi:include  href="ConfidenceIntervals.mbx" />
+  <xi:include  href="section6-3.mbx" />
+  <xi:include  href="section6-4.mbx" />
+  <xi:include  href="section6-5.mbx" />
+</chapter>

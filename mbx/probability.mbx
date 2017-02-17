@@ -1,0 +1,20 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="probability">
+  <title>Probability</title>
+  <introduction>
+    <p>
+      <index><main>probability</main></index>
+    </p>
+
+    <p>
+      Probability forms a foundation for statistics. You might already be familiar with many aspects of probability, however, formalization of the concepts is new for most. This chapter aims to introduce probability on familiar terms using processes most people have seen before.
+    </p>
+  </introduction>
+  <xi:include  href="basicsOfProbability.mbx" />
+  <xi:include  href="conditionalProbabilitySection.mbx" />
+  <xi:include  href="section4-3.mbx" />
+  <xi:include  href="section4-4.mbx" />
+  <xi:include  href="randomVariablesSection.mbx" />
+  <xi:include  href="contDist.mbx" />
+  <xi:include  href="section4-7.mbx" />
+</chapter>

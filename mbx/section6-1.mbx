@@ -1,0 +1,151 @@
+
+<section>
+  <title>Estimating unknown parameters MISSINGVIDEOLINK</title>
+  <subsection xml:id="pointEstimates">
+    <title>Point estimates</title>
+    <p>
+      <index><main>point estimate</main><sub>single proportion</sub></index>
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          We take a sample of size <m>n=80</m> from a particular county and find that 12 of the 80 people smoke. Estimate the <term>population proportion</term> based on the sample. Note that this example differs from <xref ref="smokers">Example</xref> of the previous chapter in that we are not trying to predict what will happen in a sample. Instead, we have a sample, and we are trying to infer something about the true proportion.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The most intuitive way to go about doing this is to simply take the <term>sample proportion</term>. That is,
+          <m>\hat{p} = \frac{12}{80} = 0.15</m> is our best estimate for <m>p</m>, the population proportion.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      The sample proportion <m>\hat{p} = 0.15</m> is called a <term>point estimate</term> of the population proportion: if we can only choose one value to estimate the population proportion, this is our best guess. Suppose we take a new sample of 80 people and recompute the proportion of smokers in the sample; we will probably not get the exact same answer that we got the first time. Estimates generally vary from one sample to another, and this <term>sampling variation</term> tells us how close we expect our estimate to be to the true parameter.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          In <xref ref="summarizingData">Chapter</xref>, we found the summary statistics for the number of characters in a set of 50 email data. These values are summarized below.
+        </p>
+        <tabular>
+          <row>
+            <cell><m>\bar{x}</m></cell>
+            <cell>11,160</cell>
+          </row>
+          <row>
+            <cell>median</cell>
+            <cell>6,890</cell>
+          </row>
+          <row>
+            <cell><m>s_x</m></cell>
+            <cell>13,130</cell>
+          </row>
+        </tabular>
+        <p>
+          Estimate the <term>population mean</term> based on the sample.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The best estimate for the population mean is the <term>sample mean</term>. That is,
+          <m>\bar{x} = 11,160</m> is our best estimate for <m>\mu</m>.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Using the email data, what quantity should we use as a point estimate for the population standard deviation <m>\sigma</m>?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Again, intuitively we would use the sample standard deviation <m>s = 13,130</m> as our best estimate for <m>\sigma</m>.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection>
+    <title>Introducing the standard error</title>
+    <p>
+      Point estimates only approximate the population parameter, and they vary from one sample to another. It will be useful to quantify how variable an estimate is from one sample to another. For a random sample, when this variability is small we can have greater confidence that our estimate is close to the true value.
+    </p>
+
+    <p>
+      How can we quantify the expected variability in a point estimate <m>\hat{p}</m>? The discussion in <xref ref="distributionphat">Section</xref> tells us how. The variability in the distribution of <m>\hat{p}</m> is given by its standard deviation.
+      <md>
+        <mrow>SD_{\hat{p}}\amp =\sqrt{\frac{p(1-p)}{n}}</mrow>
+      </md>
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Calculate the standard deviation of <m>\hat{p}</m> for smoking example, where <m>\hat{p}</m> = 0.15 is the proportion in a sample of size 80 that smoke.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          It may seem easy to calculate the SD at first glance, but there is a serious problem: <m>p</m> is <em>unknown</em>. In fact, when doing inference, <m>p</m> must be unknown, otherwise it is illogical to try to estimate it. We cannot calculate the SD, but we can estimate it using, you might have guessed, the sample proportion <m>\hat{p}</m>.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      This estimate of the standard deviation is known as the <em>standard error</em><index><main>standard error (SE)|textbf</main></index>, or <term>SE</term> for short.
+      <md>
+        <mrow>SE_{\hat{p}}\amp =\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}</mrow>
+      </md>
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Calculate and interpret the SE of <m>\hat{p}</m> for the previous example.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        <md>
+          <mrow>SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{80}}=0.04</mrow>
+        </md>
+        <p>
+          The average or expected error in our estimate is 4<percent />.
+        </p>
+
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          If we quadruple the sample size from 80 to 320, what will happen to the SE?
+        </p>
+      </statement>
+      <answer>
+        <p>
+        <md>
+          <mrow>SE_{\hat{p}}=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}} =\sqrt{\frac{0.15(1-0.15)}{320}}=0.02</mrow>
+        </md>
+        <p>
+          The larger the sample size, the smaller our standard error. This is consistent with intuition: the more data we have, the more reliable an estimate will tend to be. However, quadrupling the sample size does not reduce the error by a factor of 4. Because of the square root, the effect is to reduce the error by a factor <m>\sqrt{4}</m>, or 2.
+        </p>
+
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Basic properties of point estimates</title>
+    <p>
+      We achieved three goals in this section. First, we determined that point estimates from a sample may be used to estimate population parameters. We also determined that these point estimates are not exact: they vary from one sample to another. Lastly, we quantified the uncertainty of the sample proportion using what we call the standard error. We will learn how to calculate the standard error for other point estimates such as a mean, a difference in means, or a difference in proportions in the chapters that follow.
+    </p>
+  </subsection>
+</section>

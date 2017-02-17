@@ -1,0 +1,683 @@
+
+<section xml:id="inferenceForLinearRegression">
+  <title>Inference for the slope of a regression line MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      In this section we discuss uncertainty in the estimates of the slope and y-intercept for a regression line. Just as we identified standard errors for point estimates in previous chapters, we first discuss standard errors for these new estimates. However, in the case of regression, we will identify standard errors using statistical software.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Midterm elections and unemployment</title>
+    <p>
+      <index><main>data</main><sub>midterm elections</sub></index>
+    </p>
+
+    <p>
+      Elections for members of the United States House of Representatives occur every two years, coinciding every four years with the U.S. Presidential election. The set of House elections occurring during the middle of a Presidential term are called midterm elections<index><main>midterm election</main></index>. In America's two-party system, one political theory suggests the higher the unemployment rate, the worse the President's party will do in the midterm elections.
+    </p>
+
+    <p>
+      To assess the validity of this claim, we can compile historical data and look for a connection. We consider every midterm election from 1898 to 2010, with the exception of those elections during the Great Depression. <xref ref="unemploymentAndChangeInHouse">Figure</xref> shows these data and the least-squares regression line:
+      <md>
+        <mrow>\amp \text{ \% change in House seats for President's party }</mrow>
+        <mrow>\amp \qquad\qquad= -6.71 - 1.00\times \text{ (unemployment rate) }</mrow>
+      </md>
+    </p>
+
+    <p>
+      We consider the percent change in the number of seats of the President's party (e.g. percent change in the number of seats for Democrats in 2010) against the unemployment rate.
+    </p>
+
+    <p>
+      Examining the data, there are no clear deviations from linearity, the constant variance condition, or in the normality of residuals (though we don't examine a normal probability plot here). While the data are collected sequentially, a separate analysis was used to check for any apparent correlation between successive observations; no such correlation was found.
+    </p>
+
+    <figure xml:id="unemploymentAndChangeInHouse" >
+      <caption>The percent change in House seats for the President's party in each election from 1898 to 2010 plotted against the unemployment rate. The two points for the Great Depression have been removed, and a least squares regression line has been fit to the data.</caption>
+      <image width="73%" source="images/unemploymentAndChangeInHouse.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          The data for the Great Depression (1934 and 1938) were removed because the unemployment rate was 21<percent /> and 18<percent />, respectively. Do you agree that they should be removed for this investigation? Why or why not?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          We will provide two considerations. Each of these points would have very high leverage on any least-squares regression line, and years with such high unemployment may not help us understand what would happen in other years where the unemployment is only modestly high. On the other hand, these are exceptional cases, and we would be discarding important information if we exclude them from a final analysis.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+    There is a negative slope in the line shown in <xref ref="unemploymentAndChangeInHouse">Figure</xref>. However, this slope (and the y-intercept) are only estimates of the parameter values. We might wonder, is this convincing evidence that the <q>true</q> linear model has a negative slope? That is, do the data provide strong evidence that the political theory is accurate? We can frame this investigation into a one-sided statistical hypothesis test:
+    <ul>
+      <li>
+      <title>invalidlabel</title>
+      <p>
+      <m>\beta_1 = 0</m>. The true linear model has slope zero.
+        </p>
+      </li>
+
+      <li>
+      <title>invalidlabel</title>
+      <p>
+        <m>\beta_1 \lt  0</m>. The true linear model has a slope less than zero. The higher the unemployment, the greater the loss for the President's party in the House of Representatives.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      We would reject <m>H_0</m> in favor of <m>H_A</m> if the data provide strong evidence that the true slope parameter is less than zero. To assess the hypotheses, we identify a standard error for the estimate, compute an appropriate test statistic, and identify the p-value.
+    </p>
+  </subsection>
+
+  <subsection xml:id="testStatisticForTheSlope">
+    <title>Understanding regression output from software</title>
+    <p>
+      Just like other point estimates we have seen before, we can compute a standard error and test statistic for <m>b_1</m>. We will generally label the test statistic using a <m>T</m>, since it follows the <m>t</m>-distribution.
+    </p>
+
+    <aside>
+      <title>Hypothesis tests on the slope of the regression line</title>
+      <p>
+        Use a <m>t</m>-test with <m>n - 2</m> degrees of freedom when performing a hypothesis test on the slope of a regression line.
+      </p>
+    </aside>
+    <p>
+      We will rely on statistical software to compute the standard error and leave the explanation of how this standard error is determined to a second or third statistics course. The table below shows software output for the least squares regression line in <xref ref="unemploymentAndChangeInHouse">Figure</xref>. The row labeled <em>unemp</em> represents the information for the slope, which is the coefficient of the unemployment variable.
+    </p>
+
+    <aside>
+      <p>
+        <c>The regression equation is</c>
+      </p>
+
+      <p>
+        <c>Change = -6.7142 - 1.0010 unemp</c>
+      </p>
+
+      <p>
+        <c>Predictor      Coef   SE Coef       T        P</c>
+      </p>
+
+      <p>
+        <c>Constant    -6.7142    5.4567   -1.23   0.2300</c>
+      </p>
+
+      <p>
+        <c>unemp       -1.0010    0.8717   -1.15   0.2617</c>
+      </p>
+
+      <p>
+        <c>S = 9.624<nbsp />   R-Sq = 0.03<percent />    R-Sq(adj) = -3.7<percent /></c>
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          What do the first and second columns of numbers in the regression summary represent?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The entries in the first column represent the least squares estimates, <m>b_0</m> and <m>b_1</m>, and the values in the second column correspond to the standard errors of each estimate.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      We previously used a <m>T</m> test statistic for hypothesis testing in the context of numerical data. Regression is very similar. In the hypotheses we consider, the null value for the slope is 0, so we can compute the test statistic using the <m>T</m> score formula:
+      <md>
+        <mrow>T = \frac{\text{ estimate }  - \text{ null value } }{\text{ SE } } = \frac{-1.0010 - 0}{0.8717} = -1.15</mrow>
+      </md>
+    </p>
+
+    <p>
+      We can look for the one-sided p-value <mdash /> shown in <xref ref="oneSidedTailForMidtermUnemploymentHT">Figure</xref> <mdash /> using the probability table for the <m>t</m>-distribution in <xref ref="tDistributionTable">Appendix</xref> on <xref ref="tDistributionTable">page</xref>.
+    </p>
+
+    <figure xml:id="oneSidedTailForMidtermUnemploymentHT" >
+      <caption>The distribution shown here is the sampling distribution for <m>b_1</m>, if the null hypothesis was true. The shaded tail represents the p-value for the hypothesis test evaluating whether there is convincing evidence that higher unemployment corresponds to a greater loss of House seats for the President's party during a midterm election.</caption>
+      <image width="82%" source="images/oneSidedTailForMidtermUnemploymentHT.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          In this example, the sample size <m>n=27</m>. Identify the degrees of freedom and p-value for the hypothesis test.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The degrees of freedom for this test is <m>n-2</m>, or <m>df = 27-2 = 25</m>. Looking in the 25 degrees of freedom row in <xref ref="tDistributionTable">Appendix</xref>, we see that the absolute value of the test statistic is smaller than any value listed, which means the tail area and therefore also the p-value is larger than 0.100 (one tail!). Because the p-value is so large, we fail to reject the null hypothesis. That is, the data do not provide convincing evidence that a higher unemployment rate has any correspondence with smaller or larger losses for the President's party in the House of Representatives in midterm elections.
+          <index><main>data</main><sub>midterm elections</sub></index>
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      We could have identified the <m>T</m> test statistic from the software output of the regression model, shown in the <c>unemp</c> row and third column (t value). The entry in the <c>unemp</c> row and last column represents the p-value for the two-sided hypothesis test where the null value is zero. The corresponding one-sided test would have a p-value half of the listed value.
+    </p>
+
+    <definition>
+      <title>Inference for regression</title>
+      <statement>
+        <p>
+          We usually rely on statistical software to identify point estimates and standard errors for parameters of a regression line. After verifying conditions hold for fitting a line, we can use the methods learned in <xref ref="oneSampleMeansWithTDistribution">Section</xref> for the <m>t</m>-distribution to create confidence intervals for regression parameters or to evaluate hypothesis tests.
+        </p>
+      </statement>
+    </definition>
+
+    <warning>
+    <title>Don't carelessly use the p-value from regression output</title>
+    <p>
+      {The last column in regression output often lists p-values for one particular hypothesis: a two-sided test where the null value is zero. If your test is one-sided and the point estimate is in the direction of <m>H_A</m>, then you can halve the software's p-value to get the one-tail area. If neither of these scenarios match your hypothesis test, be cautious about using the software output to obtain the p-value.}
+    </p>
+
+    </warning>
+
+    <example xml:id="overallAidIncomeInformalAssessmentOfRegressionLineSlope">
+      <statement>
+        <p>
+          Examine <xref ref="elmhurstScatterWLSROnly">Figure</xref>, which relates the Elmhurst College aid and student family income. How sure are you that the slope is statistically significantly different from zero? That is, do you think a formal hypothesis test would reject the claim that the true slope of the line should be zero?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          While the relationship between the variables is not perfect, there is an evident decreasing trend in the data. This suggests the hypothesis test will reject the null claim that the slope is zero.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Recall that <m>b_1=r\frac{s_y}{s_x}</m>. If the slope of the true regression line is zero, the population correlation coefficient must also be zero. The linear regression test for <m>\beta_1=0</m> is equivalent, then, to a test for the population correlation coefficient <m>\rho=0</m>.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          The regression summary below shows statistical software output from fitting the least squares regression line shown in <xref ref="elmhurstScatterWLSROnly">Figure</xref>. Use this output to formally evaluate the following hypotheses. <m>H_0</m>: The true slope of the regression line is zero. <m>H_A</m>: The true slope of the regression line is not zero.<fn>We look in the second row corresponding to the family income variable. We see the point estimate of the slope of the line is -0.0431, the standard error of this estimate is 0.0108, and the <m>T</m> test statistic is -3.98. The p-value corresponds exactly to the two-sided test we are interested in: 0.0002. The p-value is so small that we reject the null hypothesis and conclude that family income and financial aid at Elmhurst College for freshman entering in the year 2011 are negatively correlated and the true slope parameter is indeed less than 0, just as we believed in <xref ref="overallAidIncomeInformalAssessmentOfRegressionLineSlope">Example</xref>.</fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <aside>
+      <p>
+        <c>The regression equation is</c>
+      </p>
+
+      <p>
+        <c>aid = 24.31933 - 0.04307 family_income</c>
+      </p>
+
+      <p>
+        <c>Predictor        Coef        SE Coef   T        P</c>
+      </p>
+
+      <p>
+        <c>Constant         24.31933    1.29145   18.831   &lt; 2e-16</c>
+      </p>
+
+      <p>
+        <c>family_income<nbsp />   -0.04307    0.01081   -3.985   0.000229</c>
+      </p>
+
+      <p>
+        <c>S = 4.783<nbsp />   R-Sq = 24.86<percent />    R-Sq(adj) = 23.29<percent /></c>
+      </p>
+    </aside>
+    <aside>
+      <title>Always check assumptions</title>
+      <p>
+        If conditions for fitting the regression line do not hold, then the methods presented here should not be applied. The standard error or distribution assumption of the point estimate <mdash /> assumed to be normal when applying the <m>T</m> test statistic <mdash /> may not be valid.
+      </p>
+    </aside>
+  </subsection>
+
+  <subsection>
+    <title>Summarizing inference procedures for linear regression</title>
+    <definition>
+      <title>Hypothesis test for the slope of regression line</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    Linear regression <m>t</m>-test
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    The residual plot has no pattern.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language.  No mathematical notation is needed for this test.
+              <ul>
+                <li>
+                  <p>
+                    H<m>_0</m>: <m>\beta_1=0</m>, There is no significant linear relationship between [x] and<nbsp />[y].
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    H<m>_A</m>: <m>\beta_1 \ne,\text{ or } \lt , \text{ or } >0</m>, There is a significant or significant negative or significant positive linear relationship between [x] and [y].
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic and <m>df</m>: <m>T = \frac{\text{ point estimate }  - \text{ null value } }{\text{ SE of estimate } }</m>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate is <m>b_1</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>SE</m> can be located on regression summary table next to value of <m>b_1</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>df = n-2</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value, compare it to <m>\alpha</m>, and state whether to reject or not reject the null hypothesis.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Constructing a confidence interval for the slope of regression line</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the CI being used.
+              <ul>
+                <li>
+                  <p>
+                    <m>t</m>-interval for slope of regression line
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    The residual plot has no pattern.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Plug in the numbers and write the interval in the form
+              <me>
+                \text{ point estimate }  \pm t^\star \times \text{ SE of estimate }
+              </me>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate is <m>b_1</m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>df = n-2</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    The critical value <m>t^*</m> can be found on the <m>t</m>-table at row <m>df = n-2</m>
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>SE</m> can be located on regression summary table next to value of <m>b_1</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Evaluate the CI and write in the form ( <m>\_</m> , <m>\_</m> ).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Interpret the interval:  ``We are [XX]<percent /> confident that this interval contains the true average increase in [y] for each additional [unit] of [x].
+            </p>
+          </li>
+
+          <li>
+            <p>
+              State the conclusion to the original question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: the linear regression <m>t</m>-test and <m>t</m>-interval</title>
+    <p>
+      When doing this type of inference, we generally make use of computer output that provides us with the necessary quantities: <m>b</m> and <m>s_b</m>. The calculator functions below require knowing all of the data and are, therefore, rarely used. We describe them here for the sake of completion.
+    </p>
+
+    <definition>
+      <title>TI-83/84: Linear regression $t$-test on $\beta_1$</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>STAT</c>, <c>TESTS</c>, <c>LinRegTTest</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>F:LinRegTest</c>. (On TI-83 it is <c>E:LinRegTTest</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>Xlist</c> be <c>L1</c> and <c>Ylist</c> be <c>L2</c>. (Don't forget to enter the <m>x</m> and <m>y</m> values in <c>L1</c> and <c>L2</c> before doing this test.)
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>Freq</c> be <c>1</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>, or <m>\textttmath{>}</m> to correspond to H<m>_A</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Leave <c>RegEQ</c> blank.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>t</c></cell>
+                    <cell>t statistic</cell>
+                    <cell><nbsp /><nbsp /></cell>
+                    <cell><c>b</c></cell>
+                    <cell><m>b_1</m>, slope of the line</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                    <cell></cell>
+                    <cell><c>s</c></cell>
+                    <cell>st.<nbsp />dev.<nbsp />of the residuals</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom for the test</cell>
+                    <cell></cell>
+                    <cell><m>\textttmath{r^2}</m></cell>
+                    <cell><m>R^2</m>, explained variance</cell>
+                  </row>
+                  <row>
+                    <cell><c>a</c></cell>
+                    <cell><m>b_0</m>, y-intercept of the line</cell>
+                    <cell></cell>
+                    <cell><c>r</c></cell>
+                    <cell><m>r</m>, correlation coefficient</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Linear regression $t$-test on $\beta_1$</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter your data into 2 lists.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>TEST</c> (<c>F3</c>), <c>t</c> (<c>F2</c>), and <c>REG</c> (<c>F3</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If needed, update the sidedness of the test and the <c>XList</c> and <c>YList</c> lists. The <c>Freq</c> should be set to <c>1</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>EXE</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>t</c></cell>
+                    <cell>t statistic</cell>
+                    <cell><nbsp /><nbsp /></cell>
+                    <cell><c>b</c></cell>
+                    <cell><m>b_1</m>, slope of the line</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                    <cell></cell>
+                    <cell><c>s</c></cell>
+                    <cell>st.<nbsp />dev.<nbsp />of the residuals</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom for the test</cell>
+                    <cell></cell>
+                    <cell><c>r</c></cell>
+                    <cell><m>r</m>, correlation coefficient</cell>
+                  </row>
+                  <row>
+                    <cell><c>a</c></cell>
+                    <cell><m>b_0</m>, y-intercept of the line</cell>
+                    <cell></cell>
+                    <cell><m>\textttmath{r^2}</m></cell>
+                    <cell><m>R^2</m>, explained variance</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>TI-84: $t$-interval for $\beta_1$</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>STAT</c>, <c>TESTS</c>, <c>LinRegTInt</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>G:</c> <c>LinRegTest</c>.
+                <ul>
+                  <li>
+                    <p>
+                      This test is not built into the TI-83.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>Xlist</c> be <c>L1</c> and <c>Ylist</c> be <c>L2</c>. (Don't forget to enter the <m>x</m> and <m>y</m> values in <c>L1</c> and <c>L2</c> before doing this interval.)
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>Freq</c> be <c>1</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the desired confidence level.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Leave <c>RegEQ</c> blank.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>(<em><nbsp /><nbsp /></em>,<em><nbsp /><nbsp /></em>)</c></cell>
+                    <cell>the confidence interval</cell>
+                  </row>
+                  <row>
+                    <cell><c>b</c></cell>
+                    <cell><m>b_1</m>, the slope of best fit line of the sample data</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom associated with this confidence interval</cell>
+                  </row>
+                  <row>
+                    <cell><c>s</c></cell>
+                    <cell>standard deviation of the residuals</cell>
+                  </row>
+                  <row>
+                    <cell><c>a</c></cell>
+                    <cell><m>b_0</m>, the y-intercept of the best fit line of the sample data</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{r^2}</m></cell>
+                    <cell><m>R^2</m>, the explained variance</cell>
+                  </row>
+                  <row>
+                    <cell><c>r</c></cell>
+                    <cell><m>r</m>, the correlation coefficient</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+</section>

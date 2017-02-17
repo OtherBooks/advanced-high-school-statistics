@@ -1,0 +1,554 @@
+
+<section>
+  <title>The binomial formula</title>
+  <introduction>
+    <example xml:id="oneRefuser">
+      <statement>
+        <p>
+          Suppose we randomly selected four individuals to participate in the <q>shock</q> study. What is the chance exactly one of them will be a success? Let's call the four people Allen (<m>A</m>), Brittany (<m>B</m>), Caroline (<m>C</m>), and Damian (<m>D</m>) for convenience. Also, suppose 35<percent /> of people are successes as in the previous version of this example.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Let's consider a scenario where one person refuses:
+          <md>
+            <mrow>\amp \amp P(A=\text{\texttt{refuse}} ,\text{ } B=\text{\texttt{shock}} ,\text{ } C=\text{\texttt{shock}} ,\text{ } D=\text{\texttt{shock}} )</mrow>
+            <mrow>\amp \amp  =  P(A=\text{\texttt{refuse}} )\ P(B=\text{\texttt{shock}} )\ P(C=\text{\texttt{shock}} )\ P(D=\text{\texttt{shock}} )</mrow>
+            <mrow>\amp \amp  =  (0.35)  (0.65)  (0.65)  (0.65) = (0.35)^1 (0.65)^3 = 0.096</mrow>
+          </md>
+        </p>
+
+        <p>
+          But there are three other scenarios: Brittany, Caroline, or Damian could have been the one to refuse. In each of these cases, the probability is again <m>(0.35)^1(0.65)^3</m>. These four scenarios exhaust all the possible ways that exactly one of these four people could refuse to administer the most severe shock, so the total probability is <m>4\times(0.35)^1(0.65)^3 = 0.38</m>.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Verify that the scenario where Brittany is the only one to refuse to give the most severe shock has probability <m>(0.35)^1(0.65)^3</m>. <fn><m>P(A=\text{\texttt{shock}} ,\text{ } B=\text{\texttt{refuse}} ,\text{ } C=\text{\texttt{shock}} ,\text{ } D=\text{\texttt{shock}} ) = (0.65)(0.35)(0.65)(0.65) = (0.35)^1(0.65)^3</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </introduction>
+
+  <subsection xml:id="factorialDefinitionInTheBinomialSection">
+    <title>Understanding the formula</title>
+    <p>
+      To solve the scenario outlined in <xref ref="oneRefuser">Example</xref> we use what is called the <term>Binomal Formula</term>. The binomal formula gives the probability of having <m>k</m> successes in <m>n</m> independent trials where probability of an individual success in one trial is <m>p</m> (in <xref ref="oneRefuser">Example</xref>, <m>n=4</m>, <m>k=1</m>, <m>p=0.35</m>). In order to develop this formula, we reexamine each part of the example.
+    </p>
+
+    <p>
+      There were four individuals who could have been the one to refuse, and each of these four scenarios had the same probability. Thus, we could identify the final probability as
+      <md>
+        <mrow>\times P(\text{ single scenario } )</mrow>
+      </md>
+    </p>
+
+    <p>
+      The first component of this equation is the number of ways to arrange the <m>k=1</m> successes among the <m>n=4</m> trials. The second component is the probability of any of the four (equally probable) scenarios.
+    </p>
+
+    <p>
+      Consider <m>P(</m>single scenario<m>)</m> under the general case of <m>k</m> successes and <m>n-k</m> failures in the <m>n</m> trials. In any such scenario, we apply the Multiplication Rule for independent events:
+      <md>
+        <mrow>p^k(1-p)^{n-k}</mrow>
+      </md>
+    </p>
+
+    <p>
+      This is our general formula for <m>P(</m>single scenario<m>)</m>.
+    </p>
+
+    <p>
+      Secondly, we introduce a general formula for the number of ways to choose <m>k</m> successes in <m>n</m> trials, i.e. arrange <m>k</m> successes and <m>n-k</m> failures:
+      <md>
+        <mrow>{n\choose k} = \frac{n!}{k!(n-k)!}</mrow>
+      </md>
+    </p>
+
+    <p>
+      The quantity <m>{n\choose k}</m> is read <term>n choose k</term>.<fn>Other notation for <m>n</m> choose <m>k</m> includes <m>_nC_k</m>, <m>C_n^k</m>, and <m>C(n,k)</m>.</fn> The exclamation point notation (e.g. <m>k!</m>) denotes a <term>factorial</term> expression.
+      <md>
+        <mrow>\amp \amp  0! = 1</mrow>
+        <mrow>\amp \amp  1! = 1</mrow>
+        <mrow>\amp \amp  2! = 2\times1 = 2</mrow>
+        <mrow>\amp \amp  3! = 3\times2\times1 = 6</mrow>
+        <mrow>\amp \amp  4! = 4\times3\times2\times1 = 24</mrow>
+        <mrow>\amp \amp  \vdots</mrow>
+        <mrow>\amp \amp  n! = n\times(n-1)\times...\times3\times2\times1</mrow>
+      </md>
+    </p>
+
+    <p>
+      Using the formula, we can compute the number of ways to choose <m>k=1</m> successes in <m>n=4</m> trials:
+      <md>
+        <mrow>{4 \choose 1} = \frac{4!}{1!(4-1)!} =  \frac{4!}{1!3!} 
+          = \frac{4\times3\times2\times1}{(1)(3\times2\times1)} = 4</mrow>
+      </md>
+    </p>
+
+    <p>
+      This result is exactly what we found by carefully thinking of each possible scenario in <xref ref="oneRefuser">Example</xref>.
+    </p>
+
+    <p>
+      Substituting <m>n</m> choose <m>k</m> for the number of scenarios and <m>p^k(1-p)^{n-k}</m> for the single scenario probability in Equation<nbsp /><xref ref="genBinomialFormula" /> yields the general binomial formula.
+    </p>
+
+    <definition>
+      <title>Binomial formula</title>
+      <statement>
+        <p>
+          Suppose the probability of a single trial being a success is <m>p</m>. Then the probability of observing exactly <m>k</m> successes in <m>n</m> independent trials is given by
+          <md>
+            <mrow>{n\choose k}p^k(1-p)^{n-k} = \frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>When and how to apply the formula</title>
+    <aside>
+      <title>Is it binomial? Four conditions to check.\label{isItBinomialTipBox}</title>
+      <p>
+        (1) The trials are independent.
+      </p>
+
+      <p>
+        (2) The number of trials, <m>n</m>, is fixed.
+      </p>
+
+      <p>
+        (3) Each trial outcome can be classified as a <em>success</em> or <em>failure</em>.
+      </p>
+
+      <p>
+        (4) The probability of a success, <m>p</m>, is the same for each trial.
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          What is the probability that 3 of 8 randomly selected students will refuse to administer the worst shock, i.e. 5 of 8 will?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We would like to apply the binomial model, so we check our conditions. The number of trials is fixed (<m>n=8</m>) (condition 2) and each trial outcome can be classified as a success or failure (condition 3). Because the sample is random, the trials are independent (condition<nbsp />1) and the probability of a success is the same for each trial (condition<nbsp />4).
+        </p>
+
+        <p>
+          In the outcome of interest, there are <m>k=3</m> successes in <m>n=8</m> trials, and the probability of a success is <m>p=0.35</m>. So the probability that 3 of 8 will refuse is given by
+          <md>
+            <mrow>{ 8 \choose 3}(0.35)^3(1-0.35)^{8-3}
+              \amp =\amp  \frac{8!}{3!(8-3)!}(0.35)^3(1-0.35)^{8-3}</mrow>
+            <mrow>\amp =\amp  \frac{8!}{3!5!}(0.35)^3(0.65)^5</mrow>
+          </md>
+        </p>
+
+        <p>
+          Dealing with the factorial part:
+          <md>
+            <mrow>\frac{8!}{3!5!} = \frac{8\times7\times6\times5\times4\times3\times2\times1}{(3\times2\times1)(5\times4\times3\times2\times1)} = \frac{8\times7\times6}{3\times2\times1} = 56</mrow>
+          </md>
+        </p>
+
+        <p>
+          Using <m>(0.35)^3(0.65)^5 \approx 0.005</m>, the final probability is about <m>56*0.005 = 0.28</m>.
+        </p>
+      </answer>
+    </example>
+
+    <aside>
+      <title>computing binomial probabilities</title>
+      <p>
+        The first step in using the binomial model is to check that the model is appropriate. If it is, the next step is to identify <m>n</m>, <m>p</m>, and <m>k</m>. The final step is to apply the formulas and interpret the results.
+      </p>
+    </aside>
+    <exercise>
+      <statement>
+        <p>
+          The probability that a random smoker will develop a severe lung condition in his or her lifetime is about <m>0.3</m>. If you have 4 friends who smoke, are the conditions for the binomial model satisfied?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          One possible answer: if the friends know each other, then the independence assumption is probably not satisfied. For example, acquaintances may have similar smoking habits.
+        </p>
+      </hint>
+    </exercise>
+    <exercise xml:id="noMoreThanOneFriendWSevereLungCondition">
+      <statement>
+        <p>
+          Suppose these four friends do not know each other and we can treat them as if they were a random sample from the population. Is the binomial model appropriate? What is the probability that (a) none of them will develop a severe lung condition? (b) One will develop a severe lung condition? (c) That no more than one will develop a severe lung condition?<fn>To check if the binomial model is appropriate, we must verify the conditions. (i) Since we are supposing we can treat the friends as a random sample, they are independent. (ii) We have a fixed number of trials (<m>n=4</m>). (iii) Each outcome is a success or failure. (iv) The probability of a success is the same for each trials since the individuals are like a random sample (<m>p=0.3</m> if we say a <q>success</q> is someone getting a lung condition, a morbid choice). Compute parts (a) and (b) from the binomial formula in Equation<nbsp /><xref ref="binomialFormula" />: <m>P(0) =  {4 \choose 0} (0.3)^0 (0.7)^4 = 1\times1\times0.7^4 = 0.2401</m>, <m>P(1) = {4 \choose 1} (0.3)^1(0.7)^{3} = 0.4116</m>. Note: <m>0!=1</m>, as shown on <xref ref="zeroFactorial">page</xref>. Part (c) can be computed as the sum of parts (a) and (b): <m>P(0) + P(1) = 0.2401 + 0.4116 = 0.6517</m>. That is, there is about a 65<percent /> chance that no more than one of your four smoking friends will develop a severe lung condition.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What is the probability that at least 2 of your 4 smoking friends will develop a severe lung condition in their lifetimes?<fn>The complement (no more than one will develop a severe lung condition) as computed in Guided <xref ref="noMoreThanOneFriendWSevereLungCondition">Practice</xref> as 0.6517, so we compute one minus this value: 0.3483.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Suppose you have 7 friends who are smokers and they can be treated as a random sample of smokers. What is the probability that at most 2 of your 7 friends will develop a severe lung condition.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          <m>P(</m>0, 1, or 2 develop severe lung condition<m>) = P(k=0) + P(k=1)+P(k=2) = 0.6471</m>.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      Below we consider the first term in the binomial probability, <m>n</m> choose <m>k</m> under some special scenarios.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Why is it true that <m>{n \choose 0}=1</m> and <m>{n \choose n}=1</m> for any \mbox{number~<m>n</m>} ?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Frame these expressions into words. How many different ways are there to arrange 0 successes and <m>n</m> failures in <m>n</m> trials? (1 way.) How many different ways are there to arrange <m>n</m> successes and 0 failures in <m>n</m> trials? (1 way.)
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          How many ways can you arrange one success and <m>n-1</m> failures in <m>n</m> trials? How many ways can you arrange <m>n-1</m> successes and one failure in <m>n</m> trials?<fn>One success and <m>n-1</m> failures: there are exactly <m>n</m> unique places we can put the success, so there are <m>n</m> ways to arrange one success and <m>n-1</m> failures. A similar argument is used for the second question. Mathematically, we show these results by verifying the following two equations:
+          <md>
+            <mrow>{n \choose 1} = n, \qquad {n \choose n-1} = n</mrow>
+          </md>
+          </fn>
+        </p>
+      </statement>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles <em>without replacement</em>. Find the probability you get exactly 3 blue marbles.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because the probability of success <m>p</m> is not the same for each trial, we cannot use the binomial formula. However, we can use the same logic to arrive at the following answer.
+          <md>
+            <mrow>P(x = 3) \amp = (\text{ \# of combinations with 3 blue } )\times P(\text{3 blue and 2 red in a \emph{specific} order} )</mrow>
+            <mrow>\amp ={5\choose 3}\times P(\text{ RRRBB } )</mrow>
+            <mrow>\amp = {5\choose 3}\left(\frac{4}{13}\times \frac{3}{12}\times \frac{2}{11} \times \frac{9}{10} \times \frac{8}{9}\right)</mrow>
+            <mrow>\amp = 0.1112</mrow>
+          </md>
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection xml:id="calculatorBinomial">
+    <title>Calculator: binomial probabilities</title>
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK TI-83/84: Computing the binomial coefficient, <m>{n\choose k}</m>}
+          Use <c>MATH</c>, <c>PRB</c>, <c>nCr</c> to evaluate <m>n</m> choose <m>r</m>. Here <m>r</m> and <m>k</m> are different letters for the same quantity.
+          <ol>
+            <li>
+              <p>
+                Type the value of n.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>MATH</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>PRB</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>3:nCr</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Type the value of k.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          Example: <c>5 nCr 3</c> means <term>5 choose 3</term>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK Casio fx-9750GII: Computing the binomial coefficient, <m>{n\choose k}</m>}
+          <ol>
+            <li>
+              <p>
+                Navigate to the <c>RUN-MAT</c> section (hit <c>MENU</c>, then hit <c>1</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter a value for <m>n</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Go to <c>CATALOG</c> (hit buttons <c>SHIFT</c> and then <c>7</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Type <c>C</c> (hit the <c>ln</c> button), then navigate down to the bolded <c><em>C</em></c> and hit <c>EXE</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the value of <m>k</m>. Example of what it should look like: <c>7<em>C</em>3</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>EXE</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK TI-84: Computing the binomial formula, <m>P(X = k)={n\choose k}p^k(1-p)^{n-k}</m>}
+          Use <c>2ND</c> <c>VARS</c>, <c>binompdf</c> to evaluate the probability of <term>exactly</term> <m>k</m> occurrences out of <m>n</m> independent trials of an event with probability <m>p</m>.
+          <ol>
+            <li>
+              <p>
+                Select <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>)
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>A:binompdf</c> (use the down arrow to scroll down).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>trials</c> be <m>n</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>p</c> be <m>p</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x</c> value be <m>k</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>Paste</c> and hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Do step 1, choose <c>0:binompdf</c>, then enter <m>n</m>, <m>p</m>, and <m>k</m> separated by commas:
+        </p>
+
+        <p>
+          <c>binompdf(n,<nbsp />p,<nbsp />k)</c>. Then hit <c>ENTER</c>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK TI-84: Computing <m>P(X \le k)= {n\choose 0}p^0(1-p)^{n-0} + ... + {n\choose k}p^k(1-p)^{n-k}</m>}
+          Use <c>2ND</c> <c>VARS</c>, <c>binomcdf</c> to evaluate the cumulative probability of <term>at most</term> <m>k</m> occurrences out of <m>n</m> independent trials of an event with probability <m>p</m>.
+          <ol>
+            <li>
+              <p>
+                Select <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>)
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>B:binomcdf</c> (use the down arrow).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>trials</c> be <m>n</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>p</c> be <m>p</m>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x</c> value be <m>k</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>Paste</c> and hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Do steps 1-2, then enter the values for <m>n</m>, <m>p</m>, and <m>k</m> separated by commas as follows: <c>binomcdf(n,<nbsp />p,<nbsp />k)</c>. Then hit <c>ENTER</c>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Binomial calculations</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c>, then hit <c>2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Select <c>DIST</c> (<c>F5</c>), and then <c>BINM</c> (<c>F5</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose whether to calculate the binomial distribution for a specific number of successes, <m>P(X = k)</m>, or for a range <m>P(X \leq k)</m> of values (0<nbsp />successes, 1<nbsp />success, ..., <m>k</m><nbsp />successes).
+                <ul>
+                  <li>
+                    <p>
+                      For a specific number of successes, choose <c>Bpd</c> (<c>F1</c>).
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      To consider the range 0, 1, ..., <m>k</m> successes, choose <c>Bcd</c>(<c>F1</c>).
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If needed, set <c>Data</c> to <c>Variable</c> (<c>Var</c> option, which is <c>F2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the value for <c>x</c> (<m>k</m>), <c>Numtrial</c> (<m>n</m>), and <c>p</c> (probability of a success).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit <c>EXE</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          Find the number of ways of arranging 3 blue marbles and 2 red marbles.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use <m>n</m> = 5 and <m>k</m> = 3 to get 10.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles <em>with replacement</em>. Find the probability you get exactly 3 blue marbles.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use <m>n</m> = 5, <m>p</m> = 4/13, and <m>x</m> (<m>k</m>) = 3 to get 0.1396.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          There are 13 marbles in a bag. 4 are blue and 9 are red. Randomly draw 5 marbles <em>with replacement</em>. Find the probability you get <em>at most</em> 3 blue marbles (i.e. less than or equal to 3 blue marbles).
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Use <m>n = 5</m>, <m>p = 4/13</m>, and <m>x = 3</m> to get 0.9662.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+</section>

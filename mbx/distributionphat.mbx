@@ -1,0 +1,199 @@
+
+<section xml:id="distributionphat">
+  <title>Sampling distribution of a sample proportion</title>
+  <introduction>
+    <p>
+      The binomial distribution shows us the distribution of number of successes in <m>n</m> trials. Often, we are interested in the <em>proportion</em> of successes rather than the number of successes. We would like to answer questions such as the following:
+      <ol>
+        <li>
+          <p>
+            Approximately 20<percent /> of the US population smokes cigarettes. A random sample of size 400 from a particular county found that 15<percent /> of the sample smoked. If the smoking rate in this county really is 20<percent />, what is the probability that the sample would contain 15<percent /> or fewer smokers?
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Given a population that is 50<percent /> male, what is the probability that a sample of size of 200 people would consist of more than 55<percent /> males?
+          </p>
+        </li>
+      </ol>
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>The mean and standard deviation of <m>\hat{p}</m></title>
+    <p>
+      To answer these questions, we investigate the distribution of the sample proportion <m>\hat{p}</m>. In the last section we saw that the <em>number</em> of smokers in a sample of size 400 follows a binomial distribution with <m>p=0.2</m> and <m>n=400</m> that is centered on 80 and has standard deviation 8. What does the distribution of the <em>proportion</em> of smokers in a sample of size 400 look like? To convert from a count to a proportion, we divide the count (i.e.<nbsp />number of<nbsp />yeses) by the sample size, <m>n = 400</m>. For example, 60 becomes <m>60/400 = 0.15</m> as a proportion and 61 becomes <m>61/400 = 0.1525</m>.
+    </p>
+
+    <p>
+      We can find the general formula for the mean (expected value) and standard deviation of a sample proportion <m>\hat{p}</m> using our tools that we've learned so far. To get the sample mean for <m>\hat{p}</m>, we divide the binomial mean <m>\mu_{binomial} = np</m> by <m>n</m>:
+      <md>
+        <mrow>\mu_{\hat{p}} = \frac{\mu_{binomial}}{n} = \frac{np}{n} = p</mrow>
+      </md>
+    </p>
+
+    <p>
+      As one might expect, the sample proportion <m>\hat{p}</m> is centered on the true proportion <m>p</m>. Likewise, the standard deviation of <m>\hat{p}</m> is equal to the standard deviation of the binomial distribution divided by <m>n</m>:
+      <md>
+        <mrow>\sigma_{\hat{p}}
+          = \frac{\sigma_{binomial}}{n}
+          = \frac{\sqrt{np(1-p)}}{n}
+          = \sqrt{\frac{p(1-p)}{n}}</mrow>
+      </md>
+    </p>
+
+    <definition>
+      <title>Mean and standard deviation of a sample proportion</title>
+      <statement>
+        <p>
+          The mean and standard deviation of the sample proportion describe the center and spread of the distribution of all possible sample proportions <m>\hat{p}</m> from a random sample of size <m>n</m> with true population proportion <m>p</m>.
+          <md>
+            <mrow>\mu_{\hat{p}} \amp = p
+              \amp  \sigma_{\hat{p}}\amp = \sqrt{\frac{p(1-p)}{n}}
+              \vspace{1mm}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      In analyses, we think of the formula for the standard deviation of a sample proportion, <m>\sigma_{\hat{p}}</m>, as describing the uncertainty associated with the estimate <m>\hat{p}</m>. That is, <m>\sigma_{\hat{p}}</m> can be thought of as a way to quantify the typical error<index><main>error|textbf</main></index> in our sample estimate <m>\hat{p}</m> of the true proportion <m>p</m>. Understanding the variability of statistics such as <m>\hat{p}</m> is a central component in the study of statistics.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          If the rate of smoking in the county is really 20<percent />, find and interpret the mean and standard deviation of the sample proportion for a sample of size 400.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The mean of the sample proportion is the population proportion: 0.20. That is, if we took many, many samples and calculated <m>\hat{p}</m>, these values would average out to <m>p = 0.20</m>.
+        </p>
+
+        <p>
+          The standard deviation of <m>\hat{p}</m> is described by the standard deviation for the proportion:
+          <md>
+            <mrow>\sigma_{\hat{p}}
+              = \sqrt{\frac{p(1-p)}{n}}
+              = \sqrt{\frac{0.2 \times 0.8}{400}}
+              = .02</mrow>
+          </md>
+        </p>
+
+        <p>
+          The sample proportion will typically be about 0.02 or 2<percent /> away from the true proportion of <m>p = 0.20</m>. We'll become more rigorous about quantifying how close <m>\hat{p}</m> will tend to be to <m>p</m> in <xref ref="foundationsForInference">Chapter</xref>.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>The Central Limit Theorem revisited</title>
+    <p>
+      In <xref ref="distributionofxbar">section</xref>, we saw the Central Limit Theorem, which states that for large enough <m>n</m>, the sample mean <m>\bar{x}</m> is normally distributed.
+    </p>
+
+    <p>
+      A natural question is, what does this have to do with sample proportions? In<nbsp />fact, a<nbsp />lot! A sample proportion can be written down as a sample mean. For example, suppose we have 3 successes in 10 trials. If we label each of the 3 success as a 1 and each of the 7 failures as a 0, then the sample proportion is the same as the sample mean:
+      <md>
+        <mrow>\hat{p}
+          = \frac{1 + 0 + 0 + 1 + 1 + 0 + 0 + 0 + 0 + 0}{10}
+          = \frac{3}{10}
+          = 0.3</mrow>
+      </md>
+    </p>
+
+    <p>
+      That is, the distribution of the sample proportion is governed by the Central Limit Theorem, and the Central Limit Theorem is what ties much of the statistical theory we will see together.
+    </p>
+
+    <aside>
+      <title>Three important facts about the distribution of a sample proportion $\hat{p}$</title>
+      <p>
+        Consider taking a simple random sample from a large population.
+        <ol>
+          <li>
+            <p>
+              The mean of a sample proportion is <m>p</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              The SD of a sample proportion is <m>\sqrt{\frac{p(1-p)}{n}}</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              When <m>np \geq 10</m> and <m>n(1-p) \geq 10</m>, the sample proportion closely follows a normal distribution.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </aside>
+    <p>
+      Using these facts, we can now answer the two questions posed at the beginning of this section.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>Normal approximation for the distribution of <m>\hat{p}</m></title>
+    <example xml:id="smokers">
+      <statement>
+        <p>
+          Find the probability that less than 15<percent /> of the sample of 400 people will be smokers if the true proportion is 20<percent />.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          In the previous section we verified that <m>np</m> and <m>n(1-p)</m> are at least 10. The mean of the sample proportion is 0.20 and the standard deviation for the sample proportion is given by <m>\sqrt{\frac{0.2(1-0.2)}{400}}=0.02</m>. We can find a Z-score and use our calculator to find the probability:
+          <md>
+            <mrow>Z \amp = \frac{\hat{p} - \mu_{\hat{p}}}{\sigma_{\hat{p}}} = \frac{0.15 - 0.20}{0.02} = -2.5</mrow>
+            <mrow>P(\amp Z \lt  2.5) = 0.0062</mrow>
+          </md>
+        </p>
+
+        <p>
+          We leave it to the reader to construct a figure for this example.
+        </p>
+      </answer>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          The probability 0.0062 is the same probability we calculated when we found the probability of getting 60 or fewer smokers out of 400! Why is this?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Notice that <m>60/400=0.15</m>. Using the binomial distribution to find the probability of 60 or fewer smokers in the sample is equivalent to using the probability that <m>\hat{p}</m> will be less than or equal to 15<percent />.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Given a population that is 50<percent /> male, what is the probability that a sample of size 200 would have greater than 55<percent /> males? Remember to verify that conditions for normal approximation are met.<fn>First, verify the conditions: <m>np = 200 \times 0.5 = 100 \ge 10</m> and <m>n(1-p) = 200 \times 0.5 = 100 \ge 10</m>, so the normal approximation is reasonable. Next we find the mean and standard deviation of <m>\hat{p}</m>:
+          <md>
+            <mrow>\mu_{\hat{p}} \amp = p = 0.50
+              \amp  \sigma_{\hat{p}} \amp = \sqrt{\frac{p(1-p)}{n}}
+                = \sqrt{\frac{0.5 \times 0.5}{200}}
+                = 0.0354</mrow>
+          </md>
+          Then we find a Z-score and find the upper tail of the normal distribution:
+          <md>
+            <mrow>Z = \frac{\hat{p} - \mu_{\hat{p}}}{\sigma_{\hat{p}}} = \frac{0.55 - 0.5}{0.0354} = 1.412
+            \qquad \rightarrow \qquad
+            P(Z > 1.412) = 0.07</mrow>
+          </md>
+          The probability of getting a sample proportion of 55<percent /> or greater is about 0.07.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

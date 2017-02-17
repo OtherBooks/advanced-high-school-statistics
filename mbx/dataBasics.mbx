@@ -1,0 +1,577 @@
+
+<section xml:id="dataBasics">
+  <title>Data basics MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      Effective presentation and description of data is a first step in most analyses. This section introduces one structure for organizing data as well as some terminology that will be used throughout this book.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Observations, variables, and data matrices</title>
+    <p>
+      <index><main>data</main><sub>email50</sub></index>
+    </p>
+
+    <p>
+      <xref ref="email50DF">Table</xref> displays rows 1, 2, 3, and 50 of a data set concerning 50 emails received during early 2012. These observations will be referred to as the <c>email50</c> data set, and they are a random sample from a larger data set that we will see in <xref ref="categoricalData">Section</xref>.
+    </p>
+
+    <p>
+      Each row in the table represents a single email or <term>case</term>.<fn>A case is also sometimes called a <term>unit of observation</term> or an <term>observational unit</term>.</fn> The columns represent characteristics, called <em>variables</em><index><main>variable|textbf</main></index>, for each of the emails. For example, the first row represents email 1, which is not spam, contains 21,705 characters, 551 line breaks, is written in HTML format, and contains only small numbers.
+    </p>
+
+    <p>
+      In practice, it is especially important to ask clarifying questions to ensure important aspects of the data are understood. For instance, it is always important to be sure we know what each variable means and the units of measurement. Descriptions of all five email variables are given in <xref ref="email50Variables">Table</xref>.
+    </p>
+
+    <table xml:id="email50DF" >
+      <caption>Four rows from the <c>email50</c> data matrix.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>spam</c></cell>
+          <cell><c>num_char</c></cell>
+          <cell><c>line_breaks</c></cell>
+          <cell><c>format</c></cell>
+          <cell><c>number</c></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>no</cell>
+          <cell>21,705</cell>
+          <cell>551</cell>
+          <cell>html</cell>
+          <cell>small</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>no</cell>
+          <cell>7,011</cell>
+          <cell>183</cell>
+          <cell>html</cell>
+          <cell>big</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>yes</cell>
+          <cell>631</cell>
+          <cell>28</cell>
+          <cell>text</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>50</cell>
+          <cell>no</cell>
+          <cell>15,829</cell>
+          <cell>242</cell>
+          <cell>html</cell>
+          <cell>small</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="email50Variables" >
+      <caption>Variables and their descriptions for the <c>email50</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><em>variable</em></cell>
+          <cell><em>description</em></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>spam</c></cell>
+          <cell>Specifies whether the message was spam</cell>
+        </row>
+        <row>
+          <cell><c>num_char</c></cell>
+          <cell>The number of characters in the email</cell>
+        </row>
+        <row>
+          <cell><c>line_breaks</c></cell>
+          <cell>The number of line breaks in the email (not including text wrapping)</cell>
+        </row>
+        <row>
+          <cell><c>format</c></cell>
+          <cell>Indicates if the email contained special formatting, such as bolding, tables, or links, which would indicate the message is in HTML format</cell>
+        </row>
+        <row>
+          <cell><c>number</c></cell>
+          <cell>Indicates whether the email contained no number, a small number (under 1 million), or a large number</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      <index><main>data</main><sub>email50</sub></index>
+    </p>
+
+    <p>
+      The data in <xref ref="email50DF">Table</xref> represent a <term>data matrix</term>, which is a common way to organize data. Each row of a data matrix corresponds to a unique case, and each column corresponds to a variable. A data matrix for the stroke study introduced in <xref ref="basicExampleOfStentsAndStrokes">Section</xref> is shown in <xref ref="stentStudyResultsDF">Table</xref>, where the cases were patients and there were three variables recorded for each patient.
+    </p>
+
+    <p>
+      Data matrices are a convenient way to record and store data. If another individual or case is added to the data set, an additional row can be easily added. Similarly, another column can be added for a new variable.
+    </p>
+
+    <p>
+      <index><main>data</main><sub>county</sub></index>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          We consider a publicly available data set that summarizes information about the 3,143 counties in the United States, and we call this the <c>county</c> data set. This data set includes information about each county: its name, the state where it resides, its population in 2000 and 2010, per capita federal spending, poverty rate, and five additional characteristics. How might these data be organized in a data matrix? Reminder: look in the footnotes for answers to in-text exercises.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Each county may be viewed as a case, and there are eleven pieces of information recorded for each case. A table with 3,143 rows and 11 columns could hold these data, where each row represents a county and each column represents a particular piece of information.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      Seven rows of the <c>county</c> data set are shown in <xref ref="countyDF">Table</xref>, and the variables are summarized in <xref ref="countyVariables">Table</xref>. These data were collected from the US Census website.<fn>MISSINGoiRedirect</fn>
+    </p>
+  </subsection>
+
+  <subsection xml:id="variableTypes">
+    <title>Types of variables</title>
+    <p>
+      Examine the <c>fed_spend</c>, <c>pop2010</c>, <c>state</c>, and <c>smoking_ban</c> variables in the <c>county</c> data set. Each of these variables is inherently different from the other three yet many of them share certain characteristics.
+    </p>
+
+    <p>
+      First consider <c>fed_spend</c>, which is said to be a <term>numerical</term> variable since it can take a wide range of numerical values, and it is sensible to add, subtract, or take averages with those values. On the other hand, we would not classify a variable reporting telephone area codes as numerical since their average, sum, and difference have no clear meaning.
+    </p>
+
+    <p>
+      The <c>pop2010</c> variable is also numerical, although it seems to be a little different than <c>fed_spend</c>. This variable of the population count can only take whole non-negative numbers (<c>0</c>, <c>1</c>, <c>2</c>, ...). For this reason, the population variable is said to be <term>discrete</term> since it can only take numerical values with jumps. On the other hand, the federal spending variable is said to be <term>continuous</term>.
+    </p>
+
+    <p>
+      The variable <c>state</c> can take up to 51 values after accounting for Washington, DC: <c>AL</c>, ..., and <c>WY</c>. Because the responses themselves are categories, <c>state</c> is called a <term>categorical</term> variable,<fn>Sometimes also called a <term>nominal</term> variable.</fn> and the possible values are called the variable's <term>levels</term>.
+    </p>
+
+    <figure xml:id="variables" >
+      <caption>Breakdown of variables into their respective types.</caption>
+      <image width="56%" source="images/variables.png" />
+    </figure>
+
+    <p>
+      Finally, consider the <c>smoking_ban</c> variable, which describes the type of county-wide smoking ban and takes values <c>none</c>, <c>partial</c>, or <c>comprehensive</c> in each county. This variable seems to be a hybrid: it is a categorical variable but the levels have a natural ordering. A variable with these properties is called an <term>ordinal</term> variable. To simplify analyses, any ordinal variables in this book will be treated as categorical variables.
+    </p>
+
+    <p>
+      \begin{landscape}
+    </p>
+
+    <table xml:id="countyDF" >
+      <caption>Seven rows from the <c>county</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell><c>name</c></cell>
+          <cell><c>state</c></cell>
+          <cell><c>pop2000</c></cell>
+          <cell><c>pop2010</c></cell>
+          <cell><c>fed_spend</c></cell>
+          <cell><c>poverty</c></cell>
+          <cell><c>homeownership</c></cell>
+          <cell><c>multiunit</c></cell>
+          <cell><c>income</c></cell>
+          <cell><c>med_income</c></cell>
+          <cell><c>smoking_ban</c></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>Autauga</cell>
+          <cell>AL</cell>
+          <cell>43671</cell>
+          <cell>54571</cell>
+          <cell>6.068</cell>
+          <cell>10.6</cell>
+          <cell>77.5</cell>
+          <cell>7.2</cell>
+          <cell>24568</cell>
+          <cell>53255</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>Baldwin</cell>
+          <cell>AL</cell>
+          <cell>140415</cell>
+          <cell>182265</cell>
+          <cell>6.140</cell>
+          <cell>12.2</cell>
+          <cell>76.7</cell>
+          <cell>22.6</cell>
+          <cell>26469</cell>
+          <cell>50147</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell>Barbour</cell>
+          <cell>AL</cell>
+          <cell>29038</cell>
+          <cell>27457</cell>
+          <cell>8.752</cell>
+          <cell>25.0</cell>
+          <cell>68.0</cell>
+          <cell>11.1</cell>
+          <cell>15875</cell>
+          <cell>33219</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>Bibb</cell>
+          <cell>AL</cell>
+          <cell>20826</cell>
+          <cell>22915</cell>
+          <cell>7.122</cell>
+          <cell>12.6</cell>
+          <cell>82.9</cell>
+          <cell>6.6</cell>
+          <cell>19918</cell>
+          <cell>41770</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>Blount</cell>
+          <cell>AL</cell>
+          <cell>51024</cell>
+          <cell>57322</cell>
+          <cell>5.131</cell>
+          <cell>13.4</cell>
+          <cell>82.0</cell>
+          <cell>3.7</cell>
+          <cell>21070</cell>
+          <cell>45549</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+          <cell><m>\vdots</m></cell>
+        </row>
+        <row>
+          <cell>3142</cell>
+          <cell>Washakie</cell>
+          <cell>WY</cell>
+          <cell>8289</cell>
+          <cell>8533</cell>
+          <cell>8.714</cell>
+          <cell>5.6</cell>
+          <cell>70.9</cell>
+          <cell>10.0</cell>
+          <cell>28557</cell>
+          <cell>48379</cell>
+          <cell>none</cell>
+        </row>
+        <row>
+          <cell>3143</cell>
+          <cell>Weston</cell>
+          <cell>WY</cell>
+          <cell>6644</cell>
+          <cell>7208</cell>
+          <cell>6.695</cell>
+          <cell>7.9</cell>
+          <cell>77.9</cell>
+          <cell>6.5</cell>
+          <cell>28463</cell>
+          <cell>53853</cell>
+          <cell>none</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <table xml:id="countyVariables" >
+      <caption>Variables and their descriptions for the <c>county</c> data set.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><em>variable</em></cell>
+          <cell><em>description</em></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell><c>name</c></cell>
+          <cell>County name</cell>
+        </row>
+        <row>
+          <cell><c>state</c></cell>
+          <cell>State where the county resides (also including the District of Columbia)</cell>
+        </row>
+        <row>
+          <cell><c>pop2000</c></cell>
+          <cell>Population in 2000</cell>
+        </row>
+        <row>
+          <cell><c>pop2010</c></cell>
+          <cell>Population in 2010</cell>
+        </row>
+        <row>
+          <cell><c>fed_spend</c></cell>
+          <cell>Federal spending per capita</cell>
+        </row>
+        <row>
+          <cell><c>poverty</c></cell>
+          <cell>Percent of the population in poverty</cell>
+        </row>
+        <row>
+          <cell><c>homeownership</c></cell>
+          <cell>Percent of the population that lives in their own home or lives with the owner (e.g. children living with parents who own the home)</cell>
+        </row>
+        <row>
+          <cell><c>multiunit</c></cell>
+          <cell>Percent of living units that are in multi-unit structures (e.g. apartments)</cell>
+        </row>
+        <row>
+          <cell><c>income</c></cell>
+          <cell>Income per capita</cell>
+        </row>
+        <row>
+          <cell><c>med_income</c></cell>
+          <cell>Median household income for the county, where a household's income equals the total income of its occupants who are 15 years or older</cell>
+        </row>
+        <row>
+          <cell><c>smoking_ban</c></cell>
+          <cell>Type of county-wide smoking ban in place at the end of 2011, which takes
+                one of three values: <c>none</c>, <c>partial</c>, or <c>comprehensive</c>,
+                where a <c>comprehensive</c> ban means smoking
+                was not permitted in restaurants, bars, or workplaces, and <c>partial</c>
+                means smoking was banned in at least one of those three locations</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      \end{landscape}
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Data were collected about students in a statistics course. Three variables were recorded for each student: number of siblings, student height, and whether the student had previously taken a statistics course. Classify each of the variables as continuous numerical, discrete numerical, or categorical.
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The number of siblings and student height represent numerical variables. Because the number of siblings is a count, it is discrete. Height varies continuously, so it is a continuous numerical variable. The last variable classifies students into two categories <mdash /> those who have and those who have not taken a statistics course <mdash /> which makes this variable categorical.
+        </p>
+      </solution>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          <index><main>data</main><sub>stroke</sub></index>
+          Consider the variables <c>group</c> and <c>outcome</c> (at 30 days) from the stent study in <xref ref="basicExampleOfStentsAndStrokes">Section</xref>. Are these numerical or categorical variables?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There are only two possible values for each variable, and in both cases they describe categories. Thus, each is a categorical variable.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="variableRelations">
+    <title>Relationships between variables</title>
+    <p>
+    Many analyses are motivated by a researcher looking for a relationship between two or more variables. A social scientist may like to answer some of the following questions:
+    <ol>
+      <li class="custom-list-style-type" label="(1)" xml:id="fedSpendingPovertyQuestion"  ><p>
+      Is federal spending, on average, higher or lower in counties with high rates of poverty?
+        </p>
+      </li>
+
+      <li class="custom-list-style-type" label="(2)" xml:id="ownershipMultiUnitQuestion"  ><p>
+      If homeownership is lower than the national average in one county, will the percent of multi-unit structures in that county likely be above or below the national average?
+        </p>
+      </li>
+
+      <li class="custom-list-style-type" label="(3)" xml:id="isAverageIncomeAssociatedWithSmokingBans"  ><p>
+        Which counties have a higher average income: those that enact one or more smoking bans or those that do not?
+          </p>
+        </li>
+      </ol>
+    </p>
+
+    <p>
+      To answer these questions, data must be collected, such as the <c>county</c> data set shown in <xref ref="countyDF">Table</xref>. Examining summary statistics <index><main>summary statistic</main></index> could provide insights for each of the three questions about counties. Additionally, graphs can be used to visually summarize data and are useful for answering such questions as well.
+    </p>
+
+    <p>
+      Scatterplots<index><main>scatterplot</main></index> are one type of graph used to study the relationship between two numerical variables. <xref ref="county_fed_spendVsPoverty">Figure</xref> compares the variables <c>fed_spend</c> and <c>poverty</c>. Each point on the plot represents a single county. For instance, the highlighted dot corresponds to County<nbsp />1088 in the <c>county</c> data set: Owsley County, Kentucky, which had a poverty rate of 41.5<percent /> and federal spending of <dollar />21.50 per capita. The scatterplot suggests a relationship between the two variables: counties with a high poverty rate also tend to have slightly more federal spending. We might brainstorm as to why this relationship exists and investigate each idea to determine which is the most reasonable explanation.
+    </p>
+
+    <figure xml:id="county_fed_spendVsPoverty" >
+      <caption>A scatterplot showing <c>fed_spend</c> against <c>poverty</c>. Owsley County of Kentucky, with a poverty rate of 41.5<percent /> and federal spending of <dollar />21.50 per capita, is highlighted.</caption>
+      <image width="84%" source="images/county_fed_spendVsPoverty.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          Examine the variables in the <c>email50</c> data set, which are described in <xref ref="email50Variables">Table</xref>. Create two questions about the relationships between these variables that are of interest to you.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Two sample questions: (1) Intuition suggests that if there are many line breaks in an email then there would also tend to be many characters: does this hold true? (2)<nbsp />Is there a connection between whether an email format is plain text (versus HTML) and whether it is a spam message?
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      The <c>fed_spend</c> and <c>poverty</c> variables are said to be associated because the plot shows a discernible pattern. When two variables show some connection with one another, they are called <term>associated</term> variables. Associated variables can also be called <term>dependent</term> variables and vice-versa.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          The relationship between the homeownership rate and the percent of units in multi-unit structures (e.g. apartments, condos) is visualized using a scatterplot in <xref ref="multiunitsVsOwnership">Figure</xref>. Are these variables associated?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          It appears that the larger the fraction of units in multi-unit structures, the lower the homeownership rate. Since there is some relationship between the variables, they are associated.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="multiunitsVsOwnership" >
+      <caption>A scatterplot of homeownership versus the percent of units that are in multi-unit structures for all 3,143 counties. Interested readers may find an image of this plot with an additional third variable, county population, presented at MISSINGoiRedirect.</caption>
+      <image width="72%" source="images/multiunitsVsOwnership.png" />
+    </figure>
+
+    <p>
+      Because there is a downward trend in <xref ref="multiunitsVsOwnership">Figure</xref> <mdash /> counties with more units in multi-unit structures are associated with lower homeownership <mdash /> these variables are said to be <em>negatively associated</em><index><main>negative association|textbf</main></index>. A <term>positive association</term> is shown in the relationship between the <c>poverty</c> and <c>fed_spend</c> variables represented in <xref ref="county_fed_spendVsPoverty">Figure</xref>, where counties with higher poverty rates tend to receive more federal spending per capita.
+    </p>
+
+    <p>
+      If two variables are not associated, then they are said to be <term>independent</term>. That is, two variables are independent if there is no evident relationship between the two.
+    </p>
+
+    <definition>
+      <title>Associated or independent, not both</title>
+      <statement>
+        <p>
+          A pair of variables are either related in some way (associated) or not (independent). No pair of variables is both associated and independent.
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      <index><main>data</main><sub>county</sub></index>
+    </p>
+  </subsection>
+</section>

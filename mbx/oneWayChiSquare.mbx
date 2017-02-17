@@ -1,0 +1,1420 @@
+
+<section xml:id="oneWayChiSquare">
+  <title>Testing for goodness of fit using chi-square</title>
+  <introduction>
+    <p>
+      In this section, we develop a method for assessing a null model when the data are binned.
+      This technique is commonly used in two circumstances:
+      <ul>
+        <li>
+          <p>
+            Given a sample of cases that can be classified into several groups, determine if the sample is representative of the general population.
+          </p>
+        </li>
+
+        <li>
+          <p>
+            Evaluate whether data resemble a particular distribution, such as a normal distribution or a geometric distribution.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      Each of these scenarios can be addressed using the same statistical test: a chi-square test.
+    </p>
+
+    <p>
+      <index><main>data</main><sub>racial make-up of jury</sub></index>
+    </p>
+
+    <p>
+      In the first case, we consider data from a random sample of 275 jurors in a small county. Jurors identified their racial group, as shown in <xref ref="juryRepresentationAndCityRepresentationForRace">Table</xref>, and we would like to determine if these jurors are racially representative of the population. If the jury is representative of the population, then the proportions in the sample should roughly reflect the population of eligible jurors, i.e. registered voters.
+    </p>
+
+    <table xml:id="juryRepresentationAndCityRepresentationForRace" >
+      <caption>Representation by race in a city's juries and population.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Race</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>White</cell>
+          <cell>Black</cell>
+          <cell>Hispanic</cell>
+          <cell>Other</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Representation in juries</cell>
+          <cell></cell>
+          <cell>205</cell>
+          <cell>26</cell>
+          <cell>25</cell>
+          <cell>19</cell>
+          <cell></cell>
+          <cell>275</cell>
+        </row>
+        <row>
+          <cell>Registered voters</cell>
+          <cell></cell>
+          <cell>0.72</cell>
+          <cell>0.07</cell>
+          <cell>0.12</cell>
+          <cell>0.09</cell>
+          <cell></cell>
+          <cell>1.00</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      While the proportions in the juries do not precisely represent the population proportions, it is unclear whether these data provide convincing evidence that the sample is not representative. If the jurors really were randomly sampled from the registered voters, we might expect small differences due to chance. However, unusually large differences may provide convincing evidence that the juries were not representative.
+    </p>
+
+    <p>
+      A second application, assessing the fit of a distribution, is presented at the end of this section. Daily stock returns from the S<ampersand />P500 for the years 1990-2011 are used to assess whether stock activity each day is independent of the stock's behavior on previous days.
+    </p>
+
+    <p>
+      In these problems, we would like to examine all bins simultaneously, not simply compare one or two bins at a time, which will require us to develop a new test statistic.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Creating a test statistic for one-way tables</title>
+    <example>
+      <statement>
+        <p>
+          Of the people in the city, 275 served on a jury. If the individuals are randomly selected to serve on a jury, about how many of the 275 people would we expect to be white? How many would we expect to be black?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          About 72<percent /> of the population is white, so we would expect about 72<percent /> of the jurors to be white: <m>0.72\times 275 = 198</m>.
+        </p>
+
+        <p>
+          Similarly, we would expect about 7<percent /> of the jurors to be black, which would correspond to about <m>0.07\times 275 = 19.25</m> black jurors.
+        </p>
+      </solution>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          Twelve percent of the population is Hispanic and 9<percent /> represent other races. How many of the 275 jurors would we expect to be Hispanic or from another race? Answers can be found in <xref ref="expectedJuryRepresentationIfNoBias">Table</xref>.
+        </p>
+      </statement>
+    </exercise>
+
+    <table xml:id="expectedJuryRepresentationIfNoBias" >
+      <caption>Actual and expected make-up of the jurors.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Race</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>White</cell>
+          <cell>Black</cell>
+          <cell>Hispanic</cell>
+          <cell>Other</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Observed data</cell>
+          <cell></cell>
+          <cell>205</cell>
+          <cell>26</cell>
+          <cell>25</cell>
+          <cell>19</cell>
+          <cell></cell>
+          <cell>275</cell>
+        </row>
+        <row>
+          <cell>Expected counts</cell>
+          <cell></cell>
+          <cell>198</cell>
+          <cell>19.25</cell>
+          <cell>33</cell>
+          <cell>24.75</cell>
+          <cell></cell>
+          <cell>275</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+    The sample proportion represented from each race among the 275 jurors was not a precise match for any ethnic group. While some sampling variation is expected, we would expect the sample proportions to be fairly similar to the population proportions if there is no bias on juries. We need to test whether the differences are strong enough to provide convincing evidence that the jurors are not a random sample. These ideas can be organized into hypotheses:
+    <ul>
+      <li>
+      <title>invalidlabel</title>
+      <p>
+      The jurors are a random sample, i.e. there is no racial bias in who serves on a jury, and the observed counts reflect natural sampling fluctuation.
+        </p>
+      </li>
+
+      <li>
+      <title>invalidlabel</title>
+      <p>
+        The jurors are not randomly sampled, i.e. there is racial bias in juror selection.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      To evaluate these hypotheses, we quantify how different the observed counts are from the expected counts. Strong evidence for the alternative hypothesis would come in the form of unusually large deviations in the groups from what would be expected based on sampling variation alone.
+    </p>
+  </subsection>
+
+  <subsection xml:id="chiSquareTestStatistic">
+    <title>The chi-square test statistic</title>
+    <p>
+      In previous hypothesis tests, we constructed a test statistic of the following form:
+      <me>
+        Z = \frac{\text{ point estimate }  - \text{ null value } }{\text{ SE of point estimate } }
+      </me>
+    </p>
+
+    <p>
+      This construction was based on (1) identifying the difference between a point estimate and an expected value if the null hypothesis was true, and (2) standardizing that difference using the standard error of the point estimate. These two ideas will help in the construction of an appropriate test statistic for count data.
+    </p>
+
+    <p>
+      In this example we have four categories: white, black, hispanic, and other. Because we have four values rather than just one or two, we need a new tool to analyze the data. Our strategy will be to find a test statistic that measures the overall deviation between the observed and the expected counts. We first find the difference between the observed and expected counts for the four groups:
+      <md>
+        <mrow>\amp \amp \text{ White }  \amp \amp  \text{ Black }  \amp \amp  \text{ Hispanic }  \amp \amp  \text{ Other }</mrow>
+        <mrow>\text{ observed - expected } \amp \amp  205-198 \amp \amp  26-19.25
+          \amp \amp  25-33
+          \amp \amp  19-24.75</mrow>
+      </md>
+    </p>
+
+    <p>
+      Next, we square the differences:
+      <md>
+        <mrow>\amp \amp \text{ White }  \amp \amp  \text{ Black }  \amp \amp  \text{ Hispanic }  \amp \amp  \text{ Other }</mrow>
+        <mrow>\text{ (observed - expected) } ^2 \amp \amp  (205-198)^2 \amp \amp  (26-19.25)^2
+          \amp \amp  (25-33)^2
+          \amp \amp  (19-24.75)^2</mrow>
+      </md>
+    </p>
+
+    <p>
+      We must standardize each term. To know whether the squared difference is large, we compare it to what was expected. If the expected count was 5, a squared difference of 25 is very large. However, if the expected count was 1,000, a squared difference of 25 is very small. We will divide each of the squared differences by the corresponding expected count.
+      <md>
+        <mrow>\amp \amp \text{ White }  \amp \amp  \text{ Black }  \amp \amp  \text{ Hispanic }  \amp \amp  \text{ Other }</mrow>
+        <mrow>\frac{\text{ (observed - expected) } ^2}{\text{ expected } } \amp \amp  \frac{(205-198)^2}{198} \amp \amp  \frac{(26-19.25)^2 }{19.25}
+          \amp \amp  \frac{(25-33)^2}{33}
+          \amp \amp  \frac{(19-24.75)^2}{24.75}</mrow>
+      </md>
+    </p>
+
+    <p>
+      Finally, to arrive at the overall measure of deviation between the observed counts and the expected counts, we add up the terms.
+      <md>
+        <mrow>X^2 \amp = \sum{\frac{\text{ (observed - expected) } ^2}{\text{ expected } }}</mrow>
+        <mrow>\amp = \frac{(205-198)^2}{198}
+            + \frac{(26-19.25)^2 }{19.25}
+            + \frac{(25-33)^2}{33}
+            + \frac{(19-24.75)^2}{24.75}</mrow>
+      </md>
+    </p>
+
+    <p>
+      We can write an equation for <m>X^2</m><fn>
+
+      <m>X^2</m>
+       chi-square
+      test statistic</fn> using the observed counts and expected counts:
+      <index><main>data</main><sub>racial make-up of jury</sub></index>
+      {
+      <md>
+        <mrow>X^2 \amp =
+          \frac
+          {\text{\((\text{ observed count }_1 - \text{ expected count }_1)^2\)} }
+          {\text{\(\text{ expected count }_1\)} }
+          + \dots + \frac
+          {\text{\((\text{ observed count }_4 - \text{ expected count }_4)^2\)} }
+          {\text{\(\text{ expected count }_4\)} }</mrow>
+      </md>
+    </p>
+
+    <p>
+      }The final number <m>X^2</m> summarizes how strongly the observed counts tend to deviate from the null counts.
+    </p>
+
+    <p>
+      In <xref ref="pValueForAChiSquareTest">Section</xref>, we will see that if the null hypothesis is true, then <m>X^2</m> follows a new distribution called a <em>chi-square distribution</em>. Using this distribution, we will be able to obtain a p-value to evaluate whether there appears to be racial bias in the juries for the city we are considering.
+    </p>
+  </subsection>
+
+  <subsection>
+    <title>The chi-square distribution and finding areas</title>
+    <p>
+      The <term>chi-square distribution</term> is sometimes used to characterize data sets and statistics that are always positive and typically right skewed. Recall the normal distribution had two parameters <mdash /> mean and standard deviation <mdash /> that could be used to describe its exact characteristics. The chi-square distribution has just one parameter called <em>degrees of freedom (df)</em><index><main>degrees of freedom (df)</main><sub>chi-square|textbf</sub></index>, which influences the shape, center, and spread of the distribution.
+    </p>
+    <exercise xml:id="exerChiSquareDistributionDescriptionWithMoreDOF">
+      <statement>
+        <p>
+          <xref ref="chiSquareDistributionWithInceasingDF">Figure</xref> shows three chi-square distributions. (a) How does the center of the distribution change when the degrees of freedom is larger? (b) What about the variability (spread)? (c) How does the shape change?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          (a)<nbsp />The center becomes larger. If we look carefully, we can see that the center of each distribution is equal to the distribution's degrees of freedom. (b)<nbsp />The variability increases as the degrees of freedom increases. (c)<nbsp />The distribution is very strongly skewed for <m>df=2</m>, and then the distributions become more symmetric for the larger degrees of freedom <m>df=4</m> and <m>df=9</m>. In fact, as the degrees of freedom increase, the <m>X^2</m> distribution approaches a normal distribution.
+        </p>
+      </hint>
+    </exercise>
+
+    <figure xml:id="chiSquareDistributionWithInceasingDF" >
+      <caption>Three chi-square distributions with varying degrees of freedom.</caption>
+      <image width="75%" source="images/chiSquareDistributionWithInceasingDF.png" />
+    </figure>
+
+    <p>
+      <xref ref="chiSquareDistributionWithInceasingDF">Figure</xref> and Guided <xref ref="exerChiSquareDistributionDescriptionWithMoreDOF">Practice</xref> demonstrate three general properties of chi-square distributions as the degrees of freedom increases: the distribution becomes more symmetric, the center moves to the right, and the variability inflates.
+    </p>
+
+    <p>
+      Our principal interest in the chi-square distribution is the calculation of p-values, which (as we have seen before) is related to finding the relevant area in the tail of a distribution. To do so, a new table is needed: the <term>chi-square table</term>, partially shown in <xref ref="chiSquareProbabilityTableShort">Table</xref>. A more complete table is presented in <xref ref="chiSquareProbabilityTable">Appendix</xref>. This table is very similar to the <m>t</m>-table from <xref ref="oneSampleMeansWithTDistribution">Sections</xref> and <xref ref="theTDistributionForTheDifferenceOfTwoMeans"></xref>: we identify a range for the area, and we examine a particular row for distributions with different degrees of freedom. One important difference from the <m>t</m>-table is that the chi-square table only provides upper tail values.
+    </p>
+
+    <table xml:id="chiSquareProbabilityTableShort" >
+      <caption>A section of the chi-square table. A complete table is in <xref ref="chiSquareProbabilityTable">Appendix</xref>.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Upper tail</cell>
+          <cell>0.3</cell>
+          <cell>0.2</cell>
+          <cell>0.1</cell>
+          <cell>0.05</cell>
+          <cell>0.02</cell>
+          <cell>0.01</cell>
+          <cell>0.005</cell>
+          <cell>0.001</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>df  1</cell>
+          <cell>1.07</cell>
+          <cell>1.64</cell>
+          <cell>2.71</cell>
+          <cell>3.84</cell>
+          <cell>5.41</cell>
+          <cell>6.63</cell>
+          <cell>7.88</cell>
+          <cell>10.83</cell>
+        </row>
+        <row>
+          <cell>df  2</cell>
+          <cell>2.41</cell>
+          <cell><em>3.22</em></cell>
+          <cell><em>4.61</em></cell>
+          <cell>5.99</cell>
+          <cell>7.82</cell>
+          <cell>9.21</cell>
+          <cell>10.60</cell>
+          <cell>13.82</cell>
+        </row>
+        <row>
+          <cell>\em3</cell>
+          <cell>\em 3.66</cell>
+          <cell>\em 4.64</cell>
+          <cell>\em <em>6.25</em></cell>
+          <cell>\em 7.81</cell>
+          <cell>\em 9.84</cell>
+          <cell>\em 11.34</cell>
+          <cell>\em 12.84</cell>
+          <cell>\em 16.27</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell>4.88</cell>
+          <cell>5.99</cell>
+          <cell>7.78</cell>
+          <cell>9.49</cell>
+          <cell>11.67</cell>
+          <cell>13.28</cell>
+          <cell>14.86</cell>
+          <cell>18.47</cell>
+        </row>
+        <row>
+          <cell>5</cell>
+          <cell>6.06</cell>
+          <cell>7.29</cell>
+          <cell>9.24</cell>
+          <cell>11.07</cell>
+          <cell>13.39</cell>
+          <cell>15.09</cell>
+          <cell>16.75</cell>
+          <cell>20.52</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>6</cell>
+          <cell>7.23</cell>
+          <cell>8.56</cell>
+          <cell>10.64</cell>
+          <cell>12.59</cell>
+          <cell>15.03</cell>
+          <cell>16.81</cell>
+          <cell>18.55</cell>
+          <cell>22.46</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>8.38</cell>
+          <cell>9.80</cell>
+          <cell>12.02</cell>
+          <cell>14.07</cell>
+          <cell>16.62</cell>
+          <cell>18.48</cell>
+          <cell>20.28</cell>
+          <cell>24.32</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <example>
+      <statement>
+        <p>
+          <xref ref="chiSquareAreaAbove6Point25WithDF3">Figure</xref> shows a chi-square distribution with 3 degrees of freedom and an upper shaded tail starting at 6.25. Use <xref ref="chiSquareProbabilityTableShort">Table</xref> to estimate the shaded area.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          This distribution has three degrees of freedom, so only the row with 3 degrees of freedom (df) is relevant. This row has been italicized in the table. Next, we see that the value <mdash /> 6.25 <mdash /> falls in the column with upper tail area 0.1. That is, the shaded upper tail of <xref ref="chiSquareAreaAbove6Point25WithDF3">Figure</xref> has area 0.1.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="chiSquareAreaAbove4Point3WithDF2" >
+      <caption><em>\subref{chiSquareAreaAbove6Point25WithDF3}</em> Six chi-square distributions with different right tail areas shaded.</caption>
+      <div class="subcaption">Chi-square with 2 df, area above 4.3 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove4Point3WithDF2.png" />
+      }
+      <div class="subcaption">Chi-square with 3 df, area above 6.25 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove6Point25WithDF3.png" />
+      }
+      <div class="subcaption">Chi-square with 3 df, area above 9.21 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove9Point21WithDF3.png" />
+      }
+      <div class="subcaption">Chi-square with 4 df, area above 10 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove10WithDF4.png" />
+      }
+      <div class="subcaption">Chi-square with 5 df, area above 5.1 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove5Point1WithDF5.png" />
+      }
+      <div class="subcaption">Chi-square with 7 df, area above 11.7 shaded.</div>
+      <image width="47%" source="images/chiSquareAreaAbove11Point7WithDF7.png" />
+      }
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          We rarely observe the <em>exact</em> value in the table. For instance, <xref ref="chiSquareAreaAbove4Point3WithDF2">Figure</xref> shows the upper tail of a chi-square distribution with 2 degrees of freedom. The lower bound for this upper tail is at 4.3, which does not fall in <xref ref="chiSquareProbabilityTableShort">Table</xref>. Find the approximate tail area.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The cutoff 4.3 falls between the second and third columns in the 2 degrees of freedom row. Because these columns correspond to tail areas of 0.2 and 0.1, we can be certain that the area shaded in <xref ref="chiSquareAreaAbove4Point3WithDF2">Figure</xref> is between 0.1 and 0.2.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Using a calculator or statistical software allows us to get more precise areas under the chi-square curve than we can get from the table alone.
+    </p>
+
+    <definition>
+      <title>TI-84: Finding an upper tail area under the chi-square curve</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use the <m>\textttmath{X^2}</m><c>cdf</c> command to find areas under the chi-square curve.
+          <ol>
+            <li>
+              <p>
+                Hit <c>2ND</c> <c>VARS</c> (i.e. <c>DISTR</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>8:</c><m>\textttmath{X^2}</m><c>cdf</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the lower bound, which is generally the chi-square value.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the upper bound. Use a large number, such as 1000.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the degrees of freedom.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Paste</c> and hit <c>ENTER</c>.
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Do steps<nbsp />1-2, then type the lower bound, upper bound, and degrees of freedom separated by commas. e.g. <m>\textttmath{X^2}</m><c>cdf(5, 1000, 3)</c>, and hit <c>ENTER</c>.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: Finding an upper tail area under the chi-sq.<nbsp />curve</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>DIST</c> option (<c>F5</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>CHI</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>Ccd</c> option (<c>F2</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                If necessary, select the <c>Var</c> option (<c>F2</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the <c>Lower</c> bound (generally the chi-square value).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the <c>Upper</c> bound (use a large number, such as 1000).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the degrees of freedom, <c>df</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit the <c>EXE</c> button.
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="chiSquareAreaAbove5Point1WithDF5">Figure</xref> shows an upper tail for a chi-square distribution with 5 degrees of freedom and a cutoff of 5.1. Find the tail area using a calculator.<fn>Using <m>df = 5</m> and a <em>lower</em> bound of <m>5.1</m> for the tail, the upper tail area is 0.4038.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="chiSquareAreaAbove11Point7WithDF7">Figure</xref> shows a cutoff of 11.7 on a chi-square distribution with 7 degrees of freedom. Find the area of the upper tail.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The area is 0.1109.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="chiSquareAreaAbove10WithDF4">Figure</xref> shows a cutoff of 10 on a chi-square distribution with 4 degrees of freedom. Find the area of the upper tail.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The area is 0.4043.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="chiSquareAreaAbove9Point21WithDF3">Figure</xref> shows a cutoff of 9.21 with a chi-square distribution with 3 df. Find the area of the upper tail.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The area is 0.0266.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="pValueForAChiSquareTest">
+    <title>Finding a p-value for a chi-square distribution</title>
+    <p>
+      <index><main>data</main><sub>racial make-up of jury</sub></index>
+      In <xref ref="chiSquareTestStatistic">Section</xref>, we identified a new test statistic (<m>X^2</m>) within the context of assessing whether there was evidence of racial bias in how jurors were sampled. The null hypothesis represented the claim that jurors were randomly sampled and there was no racial bias. The alternative hypothesis was that there was racial bias in how the jurors were sampled.
+    </p>
+
+    <p>
+      We determined that a large <m>X^2</m> value would suggest strong evidence favoring the alternative hypothesis: that there was racial bias. However, we could not quantify what the chance was of observing such a large test statistic (<m>X^2=5.89</m>) if the null hypothesis actually was true. This is where the chi-square distribution becomes useful. If the null hypothesis was true and there was no racial bias, then <m>X^2</m> would follow a chi-square distribution, with three degrees of freedom in this case. Under certain conditions, the statistic <m>X^2</m> follows a chi-square distribution with <m>k-1</m> degrees of freedom, where <m>k</m> is the number of bins or categories of the variable.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          How many categories were there in the juror example? How many degrees of freedom should be associated with the chi-square distribution used for <m>X^2</m>?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          In the jurors example, there were <m>k=4</m> categories: white, black, Hispanic, and other. According to the rule above, the test statistic <m>X^2</m> should then follow a chi-square distribution with <m>k-1 = 3</m> degrees of freedom if <m>H_0</m> is true.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Just like we checked sample size conditions to use the normal model in earlier sections, we must also check a sample size condition to safely apply the chi-square distribution for <m>X^2</m>. Each expected count must be at least 5. In the juror example, the expected counts were 198, 19.25, 33, and 24.75, all easily above<nbsp />5, so we can apply the chi-square model to the test statistic, <m>X^2=5.89</m>.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          If the null hypothesis is true, the test statistic <m>X^2=5.89</m> would be closely associated with a chi-square distribution with three degrees of freedom. Using this distribution and test statistic, identify the p-value and state whether or not there is evidence of racial bias in the juror selection.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The chi-square distribution and p-value are shown in <xref ref="jurorHTPValueShown">Figure</xref>. Because larger chi-square values correspond to stronger evidence against the null hypothesis, we shade the upper tail to represent the p-value. Using the chi-square table in <xref ref="chiSquareProbabilityTable">Appendix</xref> or the short table on <xref ref="chiSquareProbabilityTableShort">page</xref>, we can determine that the area is between 0.1 and 0.2. That is, the p-value is larger than 0.1 but smaller than 0.2. Generally we do not reject the null hypothesis with such a large p-value. In other words, the data do not provide convincing evidence of racial bias in the juror selection.
+          <index><main>data</main><sub>racial make-up of jury</sub></index>
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="jurorHTPValueShown" >
+      <caption>The p-value for the juror hypothesis test is shaded in the chi-square distribution with <m>df=3</m>.</caption>
+      <image width="61%" source="images/jurorHTPValueShown.png" />
+    </figure>
+
+    <p>
+      The test that we just carried out regarding jury selection is known as the <term><m>X^2</m> goodness of fit test</term>. It is called <q>goodness of fit</q> because we test whether or not the proposed or expected distribution is a good fit for the observed data.
+    </p>
+
+    <definition>
+      <title>Chi-square goodness of fit test for one-way table</title>
+      <statement>
+        <p>
+          Suppose we are to evaluate whether there is convincing evidence that a set of observed counts <m>O_1</m>, <m>O_2</m>, ..., <m>O_k</m> in <m>k</m> categories are unusually different from what might be expected under a null hypothesis. Call the <term>expected counts</term> that are based on the null hypothesis <m>E_1</m>, <m>E_2</m>, ..., <m>E_k</m>. If each expected count is at least 5 and the null hypothesis is true, then the test statistic below follows a chi-square distribution with <m>k-1</m> degrees of freedom:
+          <md>
+            <mrow>X^2 = \frac{(O_1 - E_1)^2}{E_1} + \frac{(O_2 - E_2)^2}{E_2} + \cdots + \frac{(O_k - E_k)^2}{E_k}</mrow>
+          </md>
+        </p>
+
+        <p>
+          The p-value for this test statistic is found by looking at the upper tail of this chi-square distribution. We consider the upper tail because larger values of <m>X^2</m> would provide greater evidence against the null hypothesis.
+        </p>
+      </statement>
+    </definition>
+
+    <aside>
+      <title>Conditions for the chi-square goodness of fit test</title>
+      <p>
+      There are two conditions that must be checked before performing a chi-square goodness of fit test. If these conditions are not met, this test should not be used.
+      <ul>
+        <li>
+        <title>Simple random sample.</title>
+        <p>
+        The data must be arrived at by taking a simple random sample from the population of interest. The observed counts can then be organized into a list or one-way table.
+          </p>
+        </li>
+
+        <li>
+        <title>All Expected Counts at least 5</title>
+        <p>
+          Each particular scenario (i.e. cell count) must have at least 5<nbsp />expected cases.
+            </p>
+          </li>
+        </ul>
+      </p>
+    </aside>
+  </subsection>
+
+  <subsection>
+    <title>Evaluating goodness of fit for a distribution</title>
+    <definition>
+      <title>Goodness of fit test for a one-way table</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    <m>X^2</m> goodness of fit test.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    A simple random sample.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    All expected counts <m>\ge 5</m> (calculate and record expected counts).
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language. No mathematical notation is needed for this test.
+              <ul>
+                <li>
+                  <p>
+                    H<m>_0</m>: The distribution of [...] matches [the expected distribution].
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    H<m>_A</m>: The distribution of [....] does not match [the expected distribution]
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic and degrees of freedom.
+              <md>
+                <mrow>X^2 \amp = \sum{\frac{\text{ (observed counts - expected counts) } ^2}{\text{ expected counts } }}</mrow>
+                <mrow>df \amp = (\# \text{ of categories }  - 1)</mrow>
+              </md>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <p>
+      <xref ref="geomDist">Section</xref> would be useful background reading for this example, but it is not a prerequisite.
+    </p>
+
+    <p>
+      <index><main>data</main><sub>S<ampersand />P500 stock data</sub></index>
+    </p>
+
+    <p>
+      We can apply our new chi-square testing framework to the second problem in this section: evaluating whether a certain statistical model fits a data set. Daily stock returns from the S<ampersand />P500 for 1990-2011 can be used to assess whether stock activity each day is independent of the stock's behavior on previous days. This sounds like a very complex question, and it is, but a chi-square test can be used to study the problem. We will label each day as <c>Up</c> or <c>Down</c> (<c>D</c>) depending on whether the market was up or down that day. For example, consider the following changes in price, their new labels of up and down, and then the number of days that must be observed before each <c>Up</c> day:
+    </p>
+    <tabular>
+      <row>
+        <cell>Change in price</cell>
+        <cell>\hspace{-1mm}</cell>
+        <cell>{2}.52</cell>
+        <cell>-1.46</cell>
+        <cell>0.51</cell>
+        <cell>-4.07</cell>
+        <cell>{3}.36</cell>
+        <cell>{1}.10</cell>
+        <cell>-5.46</cell>
+        <cell>-1.03</cell>
+        <cell>-2.99</cell>
+        <cell>{1}.71</cell>
+      </row>
+      <row>
+        <cell>Outcome</cell>
+        <cell>\hspace{-1mm}</cell>
+        <cell>Up</cell>
+        <cell>D</cell>
+        <cell>Up</cell>
+        <cell>D</cell>
+        <cell>Up</cell>
+        <cell>Up</cell>
+        <cell>D</cell>
+        <cell>D</cell>
+        <cell>D</cell>
+        <cell>Up</cell>
+      </row>
+      <row>
+        <cell>Days to Up</cell>
+        <cell>\hspace{-1mm}</cell>
+        <cell>1</cell>
+        <cell>-</cell>
+        <cell>2</cell>
+        <cell>-</cell>
+        <cell>2</cell>
+        <cell>1</cell>
+        <cell>-</cell>
+        <cell>-</cell>
+        <cell>-</cell>
+        <cell>4</cell>
+      </row>
+    </tabular>
+    <p>
+      If the days really are independent, then the number of days until a positive trading day should follow a geometric distribution. The geometric distribution describes the probability of waiting for the <m>k^{th}</m> trial to observe the first success. Here each up day (Up) represents a success, and down (D) days represent failures. In the data above, it took only one day until the market was up, so the first wait time was 1 day. It took two more days before we observed our next <c>Up</c> trading day, and two more for the third <c>Up</c> day. We would like to determine if these counts (1, 2, 2, 1, 4, and so on) follow the geometric distribution. <xref ref="sAndP500For1990To2011TimeToPosTrade">Table</xref> shows the number of waiting days for a positive trading day during 1990-2011 for the S<ampersand />P500.
+    </p>
+
+    <table xml:id="sAndP500For1990To2011TimeToPosTrade" >
+      <caption>Observed distribution of the waiting time until a positive trading day for the S<ampersand />P500, 1990-2011.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Days</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+          <cell>7+</cell>
+          <cell>\hspace{2mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row>
+          <cell>Observed</cell>
+          <cell></cell>
+          <cell>1532</cell>
+          <cell>760</cell>
+          <cell>338</cell>
+          <cell>194</cell>
+          <cell>74</cell>
+          <cell>33</cell>
+          <cell>17</cell>
+          <cell></cell>
+          <cell>2948</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+    We consider how many days one must wait until observing an <c>Up</c> day on the S<ampersand />P500 stock index. If the stock activity was independent from one day to the next and the probability of a positive trading day was constant, then we would expect this waiting time to follow a <em>geometric distribution</em>. We can organize this into a hypothesis framework:
+    <ul>
+      <li>
+      <title>invalidlabel</title>
+      <p>
+      The stock market being up or down on a given day is independent from all other days. We will consider the number of days that pass until an <c>Up</c> day is observed. Under this hypothesis, the number of days until an <c>Up</c> day should follow a geometric distribution.
+        </p>
+      </li>
+
+      <li>
+      <title>invalidlabel</title>
+      <p>
+        The stock market being up or down on a given day is not independent from all other days. Since we know the number of days until an <c>Up</c> day would follow a geometric distribution under the null, we look for deviations from the geometric distribution, which would support the alternative hypothesis.
+          </p>
+        </li>
+      </ul>
+    </p>
+
+    <p>
+      There are important implications in our result for stock traders: if information from past trading days is useful in telling what will happen today, that information may provide an advantage over other traders.
+    </p>
+
+    <p>
+      We consider data for the S<ampersand />P500 from 1990 to 2011 and summarize the waiting times in <xref ref="sAndP500For1990To2011TimeToPosTrade2">Table</xref> and <xref ref="geomFitEvaluationForSP500For1990To2011">Figure</xref>. The S<ampersand />P500 was positive on 53.2<percent /> of those days.
+    </p>
+
+    <table xml:id="sAndP500For1990To2011TimeToPosTrade2" >
+      <caption>Distribution of the waiting time until a positive trading day. The expected counts based on the geometric model are shown in the last row. To find each expected count, we identify the probability of waiting <m>D</m> days based on the geometric model (<m>P(D) = (1-0.532)^{D-1}(0.532)</m>) and multiply by the total number of streaks, 2948. For example, waiting for three days occurs under the geometric model about <m>0.468^2\times 0.532 = 11.65<percent /></m> of the time, which corresponds to <m>0.1165\times 2948 = 343</m> streaks.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Days</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+          <cell>7+</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Observed</cell>
+          <cell></cell>
+          <cell>1532</cell>
+          <cell>760</cell>
+          <cell>338</cell>
+          <cell>194</cell>
+          <cell>74</cell>
+          <cell>33</cell>
+          <cell>17</cell>
+          <cell></cell>
+          <cell>2948</cell>
+        </row>
+        <row>
+          <cell>Geometric Model</cell>
+          <cell></cell>
+          <cell>1569</cell>
+          <cell>734</cell>
+          <cell>343</cell>
+          <cell>161</cell>
+          <cell>75</cell>
+          <cell>35</cell>
+          <cell>31</cell>
+          <cell></cell>
+          <cell>2948</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="geomFitEvaluationForSP500For1990To2011" >
+      <caption>Side-by-side bar plot of the observed and expected counts for each waiting time.</caption>
+      <image width="98%" source="images/geomFitEvaluationForSP500For1990To2011.png" />
+    </figure>
+
+    <p>
+      Because applying the chi-square framework requires expected counts to be at least<nbsp />5, we have <em>binned</em> together all the cases where the waiting time was at least 7 days to ensure each expected count is well above this minimum. The actual data, shown in the <em>Observed</em> row in <xref ref="sAndP500For1990To2011TimeToPosTrade2">Table</xref>, can be compared to the expected counts from the <em>Geometric Model</em> row. The method for computing expected counts is discussed in <xref ref="sAndP500For1990To2011TimeToPosTrade2">Table</xref>. In general, the expected counts are determined by (1) identifying the null proportion associated with each bin, then (2) multiplying each null proportion by the total count to obtain the expected counts. That is, this strategy identifies what proportion of the total count we would expect to be in each bin.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Do you notice any unusually large deviations in the graph? Can you tell if these deviations are due to chance just by looking?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          It is not obvious whether differences in the observed counts and the expected counts from the geometric distribution are significantly different. That is, it is not clear whether these deviations might be due to chance or whether they are so strong that the data provide convincing evidence against the null hypothesis. However, we can perform a chi-square test using the counts in <xref ref="sAndP500For1990To2011TimeToPosTrade2">Table</xref>.
+        </p>
+      </answer>
+    </example>
+
+    <exercise>
+      <statement>
+        <p>
+          <xref ref="sAndP500For1990To2011TimeToPosTrade2">Table</xref> provides a set of count data for waiting times (<m>O_1=1532</m>, <m>O_2=760</m>, ...) and expected counts under the geometric distribution (<m>E_1=1569</m>, <m>E_2=734</m>, ...). Compute the chi-square test statistic, <m>X^2</m>.<fn><m>X^2=\frac{(1532-1569)^2}{1569} + \frac{(760-734)^2}{734} + \cdots + \frac{(17-31)^2}{31} = 15.08</m></fn>
+        </p>
+      </statement>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Because the expected counts are all at least<nbsp />5, we can safely apply the chi-square distribution to <m>X^2</m>. However, how many degrees of freedom should we<nbsp />use?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There are <m>k=7</m> groups, so we use <m>df=k-1=6</m>.
+        </p>
+      </hint>
+    </exercise>
+
+    <example xml:id="RejectGeomModelForSP500StockDataFor1990To2011">
+      <statement>
+        <p>
+          If the observed counts follow the geometric model, then the chi-square test statistic <m>X^2=15.08</m> would closely follow a chi-square distribution with <m>df=6</m>. Using this information, compute a p-value.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          <xref ref="geomFitPValueForSP500For1990To2011">Figure</xref> shows the chi-square distribution, cutoff, and the shaded p-value. If we look up the statistic <m>X^2=15.08</m> in <xref ref="chiSquareProbabilityTable">Appendix</xref>, we find that the p-value is between 0.01 and 0.02. In other words, we have sufficient evidence to reject the notion that the wait times follow a geometric distribution, i.e. trading days are not independent and past days may help predict what the stock market will do today.
+        </p>
+      </answer>
+    </example>
+
+    <figure xml:id="geomFitPValueForSP500For1990To2011" >
+      <caption>Chi-square distribution with 6 degrees of freedom. The p-value for the stock analysis is shaded.</caption>
+      <image width="90%" source="images/geomFitPValueForSP500For1990To2011.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          In <xref ref="RejectGeomModelForSP500StockDataFor1990To2011">Example</xref>, we rejected the null hypothesis that the trading days are independent. Why is this so important?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Because the data provided strong evidence that the geometric distribution is not appropriate, we reject the claim that trading days are independent. While it is not obvious how to exploit this information, it suggests there are some hidden patterns in the data that could be interesting and possibly useful to a stock trader.
+          <index><main>data</main><sub>S<ampersand />P500 stock data</sub></index>
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: chi-square goodness of fit test</title>
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK TI-84: Chi-square goodness of fit test}
+          Use <c>STAT</c>, <c>TESTS</c>, <m>\textttmath{X^2}</m><c>GOF-Test</c>.
+          <ol>
+            <li>
+              <p>
+                Enter the observed counts into list <c>L1</c> and the expected counts into list <c>L2</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>D:</c><m>\textttmath{X^2}</m><c>GOF-Test</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Leave <c>Observed:<nbsp />L1</c> and <c>Expected:<nbsp />L2</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the degrees of freedom after <c>df</c>:
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><m>\textttmath{X^2}</m></cell>
+                    <cell>chi-square test statistic</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+
+        <p>
+          TI-83: Unfortunately the TI-83 does not have this test built in. To carry out the test manually, make list <c>L3 = (L1 - L2)</c><m>\textttmath{^2}</m><c> / L2</c> and do <c>1-Var-Stats</c> on <c>L3</c>. The sum of <c>L3</c> will correspond to the value of <m>X^2</m> for this test.
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{MISSINGVIDEOLINK Casio fx-9750GII: Chi-square goodness of fit test}
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the observed counts into a list (e.g. <c>List 1</c>) and the expected counts into list (e.g. <c>List 2</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>TEST</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>CHI</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>GOF</c> option (<c>F1</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Adjust the <c>Observed</c> and <c>Expected</c> lists to the corresponding list numbers from Step<nbsp />2.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Enter the degrees of freedom, <c>df</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Specify a list where the contributions to the test statistic will be reported using<nbsp /><c>CNTRB</c>. This list number should be different from the others.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit the <c>EXE</c> button, which returns
+                <tabular>
+                  <row>
+                    <cell><m>\textttmath{x^2}</m></cell>
+                    <cell>chi-square test statistic</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><c>df</c></cell>
+                    <cell>degrees of freedom</cell>
+                  </row>
+                  <row>
+                    <cell><c>CNTRB</c></cell>
+                    <cell>list showing the test statistic contributions</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <table>
+      <caption>Distribution of the waiting time until a positive trading day. The expected counts based on the geometric model are shown in the last row.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Days</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>1</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>4</cell>
+          <cell>5</cell>
+          <cell>6</cell>
+          <cell>7+</cell>
+          <cell>\hspace{1mm}</cell>
+          <cell>Total</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Observed</cell>
+          <cell></cell>
+          <cell>1532</cell>
+          <cell>760</cell>
+          <cell>338</cell>
+          <cell>194</cell>
+          <cell>74</cell>
+          <cell>33</cell>
+          <cell>17</cell>
+          <cell></cell>
+          <cell>2948</cell>
+        </row>
+        <row>
+          <cell>Geometric Model</cell>
+          <cell></cell>
+          <cell>1569</cell>
+          <cell>734</cell>
+          <cell>343</cell>
+          <cell>161</cell>
+          <cell>75</cell>
+          <cell>35</cell>
+          <cell>31</cell>
+          <cell></cell>
+          <cell>2948</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Use the data above and a calculator to find the <m>X^2</m> statistic, df, and p-value for chi-square goodness of fit test.<fn>You should find that <m>X^2=15.08</m>, <m>df=6</m>, and <m>\text{ p-value } =0.0196</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

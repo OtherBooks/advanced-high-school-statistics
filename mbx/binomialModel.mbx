@@ -1,0 +1,273 @@
+
+<section xml:id="binomialModel">
+  <title>Binomial distribution</title>
+  <introduction>
+    <p>
+      <index><main>distribution</main><sub>binomial</sub></index>
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>An example of a binomial distribution</title>
+    <p>
+      Take a second look at Guided <xref ref="noMoreThanOneFriendWSevereLungCondition">Practice</xref> on <xref ref="noMoreThanOneFriendWSevereLungCondition">page</xref>. We asked many probability questions regarding this scenario that could be solved using the binomial formula. Instead of looking at it piecewise, we could describe the entire <em>distribution</em> of possible values and their corresponding probabilities. Since there are 4 smoking friends, there are several possible outcomes for the number who might develop a severe lung condition in their lifetime: 0, 1, 2, 3, 4. We can make a distribution table as we did previously. Recall that the probability that a random smoker will develop a severe lung condition in her lifetime is about <m>0.3</m>.
+    </p>
+
+    <table xml:id="binomDistrSmokers" >
+      <caption>Probability distribution for the number of 4 smoking friends who will develop a severe lung condition in their lifetime. This is a binomial distribution. Correcting for rounding error, the probabilities add up to<nbsp />1, as they must for any probability distribution.</caption>
+      <tabular>
+        <row>
+          <cell><m>x_i</m></cell>
+          <cell><m>p_i</m></cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>0</cell>
+          <cell><m>{4\choose 0}(0.3)^0(0.7)^{4} = 0.240</m> \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell><m>{4\choose 1}(0.3)^1(0.7)^{3} = 0.412</m>  \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell><m>{4\choose 2}(0.3)^2(0.7)^{2} = 0.265</m>  \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>3</cell>
+          <cell><m>{4\choose 3}(0.3)^3(0.7)^{1} = 0.076</m>  \vspace{1mm}</cell>
+        </row>
+        <row>
+          <cell>4</cell>
+          <cell><m>{4\choose 4}(0.3)^4(0.7)^{0} = 0.008</m>  \vspace{1mm}</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="smokingFriends4" >
+      <caption>Distribution for the number of 4 smoking friends who will develop a severe lung condition.</caption>
+      <image width="90%" source="images/smokingFriends4.png" />
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>The mean and standard deviation of a binomial distribution</title>
+    <p>
+      Since this is a probability distribution we could find the mean and standard deviation of it using the formulas from <xref ref="probability">Chapter</xref>. Those formulas require a lot of calculations, so it is fortunate that there are shortcuts for the mean and the standard deviation of a binomial random variable.
+    </p>
+
+    <definition>
+      <title>Mean and standard deviation of the binomial distribution</title>
+      <statement>
+        <p>
+          For a binomial distribution with parameters <m>n</m> and <m>p</m>, where <m>n</m> is the number of trials and <m>p</m> is the probability of a success, the mean and standard deviation of the number of observed successes are
+          <md>
+            <mrow>\mu_x \amp = np
+              \amp \sigma_x \amp = \sqrt{np(1-p)}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          If the probability that a random smoker will develop a severe lung condition in his or her lifetime is <m>0.3</m> and you have 40 smoking friends, about how many would you expect to develop such a condition? What is the standard deviation of the number of people who would develop such a condition? Equation<nbsp /><xref ref="binomialStats" /> may be useful.\begin{answer}
+          We are asked to determine the expected number (the mean) and the standard deviation, both of which can be directly computed from the formulas in Equation<nbsp /><xref ref="binomialStats" />, as shown below. The exact distribution is shown in <xref ref="smokingFriends40">Figure</xref>.
+          <md>
+            <mrow>\mu\amp =np = 40\times 0.3 = 12</mrow>
+            <mrow>\sigma \amp = \sqrt{np(1-p)} = \sqrt{40\times 0.3\times 0.7} = 2.9</mrow>
+          </md>
+        </p>
+      </statement>
+    </example>
+
+    <figure xml:id="smokingFriends40" >
+      <caption>Distribution for the number of 40 smoking friends who will develop a severe lung condition, which looks very much like a normal distribution!</caption>
+      <image width="90%" source="images/smokingFriends40.png" />
+    </figure>
+  </subsection>
+
+  <subsection>
+    <title>Normal approximation to the binomial distribution</title>
+    <p>
+      <index><main>distribution</main><sub>binomial!normal approximation</sub></index>
+    </p>
+
+    <p>
+      The binomial formula is cumbersome when the sample size (<m>n</m>) is large, particularly when we consider a range of observations. Suppose we wanted to find the probability that at least 25 of 40 smoking friends will develop a severe lung condition. We would need to use the binomial formula with <m>k=25</m>, <m>k=26</m>, <m>k=27</m>, ..., <m>k=40</m>. That's a lot of work! In some cases we may use the normal distribution as an easier and faster way to estimate binomial probabilities. While a normal approximation for the distribution in <xref ref="smokingFriends4">Figure</xref> would not be appropriate, it would not be too bad for the distribution in <xref ref="smokingFriends40">Figure</xref>.
+    </p>
+
+    <example xml:id="exactBinomialForN400P20SmokerExample">
+      <statement>
+        <p>
+          Approximately 20<percent /> of the US population smokes cigarettes. A local government believed their community had a lower smoker rate and commissioned a survey of 400 randomly selected individuals. The survey found that only 60 of the 400 participants smoke cigarettes. If the true proportion of smokers in the community was really 20<percent />, what is the probability of observing 60 or fewer smokers in a sample of 400 people?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We leave the usual verification that the four conditions for the binomial model are valid as an exercise.
+        </p>
+
+        <p>
+          The question posed is equivalent to asking, what is the probability of observing <m>k=0</m>, 1, ..., 59, or 60 smokers in a sample of <m>n=400</m> when <m>p=0.20</m>? We can compute these 61 different probabilities and add them together to find the answer:
+          <md>
+            <mrow>\amp P(k=0\text{ or } k=1\text{ or }  \cdots \text{ or }  k=60)</mrow>
+            <mrow>\amp \qquad= P(k=0) + P(k=1) + \cdots + P(k=60)</mrow>
+            <mrow>\amp \qquad=0.0061</mrow>
+          </md>
+        </p>
+
+        <p>
+          If the true proportion of smokers in the community is <m>p=0.20</m>, then the probability of observing 60 or fewer smokers in a sample of <m>n=400</m> is less than 0.0061.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      The computations in <xref ref="exactBinomialForN400P20SmokerExample">Example</xref> are tedious and long. In general, we should avoid such work if an alternative method exists that is faster, easier, and still accurate. Recall that calculating probabilities of a range of values is much easier in the normal model. We might wonder, is it reasonable to use the normal model in place of the binomial distribution? Surprisingly, yes, if certain conditions are met.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Here we consider the binomial model when the probability of a success is <m>p=0.10</m>. <xref ref="fourBinomialModelsShowingApproxToNormal">Figure</xref> shows four hollow histograms for simulated samples from the binomial distribution using four different sample sizes: <m>n=10</m>, 30, 100, 300. What happens to the shape of the distributions as the sample size increases? What distribution does the last hollow histogram resemble?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The distribution is transformed from a blocky and skewed distribution into one that rather resembles the normal distribution in last hollow histogram
+        </p>
+      </hint>
+    </exercise>
+
+    <figure xml:id="fourBinomialModelsShowingApproxToNormal" >
+      <caption>Hollow histograms of samples from the binomial model when <m>p=0.10</m>. The sample sizes for the four plots are <m>n=10</m>, 30, 100, and 300, respectively.</caption>
+      <image width="95%" source="images/fourBinomialModelsShowingApproxToNormal.png" />
+    </figure>
+
+    <definition>
+      <title>Normal approximation of the binomial distribution</title>
+      <statement>
+        <p>
+          The binomial distribution with probability of success <m>p</m> is nearly normal when the sample size <m>n</m> is sufficiently large that <m>np\ge 10</m> and <m>n(1-p)\ge 10</m>. The approximate normal distribution has parameters corresponding to the mean and standard deviation of the binomial distribution:
+          <md>
+            <mrow>\mu \amp = np
+            \amp \amp \sigma= \sqrt{np(1-p)}</mrow>
+          </md>
+        </p>
+      </statement>
+    </definition>
+
+    <p>
+      The normal approximation may be used when computing the range of many possible successes. For instance, we may apply the normal distribution to the setting described in <xref ref="exactBinomialForN400P20SmokerExample">Example</xref>.
+    </p>
+
+    <example xml:id="approxBinomialForN400P20SmokerExample">
+      <statement>
+        <p>
+          Use the normal approximation to estimate the probability of observing 60 or fewer smokers in a sample of 400, if the true proportion of smokers is <m>p=0.20</m>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          As in <xref ref="exactBinomialForN400P20SmokerExample">Example</xref>, we leave it to the reader to show that the binomial model is reasonable for this context. However, we will verify that both <m>np</m> and <m>n(1-p)</m> are at least 10 so we can apply the normal model:
+          <md>
+            <mrow>np\amp =400(0.20)=80\ge 10
+            \amp 
+            n(1-p)\amp =400(0.8)=320\ge 10</mrow>
+          </md>
+        </p>
+
+        <p>
+          With these conditions checked, we may use the normal approximation in place of the binomial distribution with the following mean and standard deviation:
+          <md>
+            <mrow>\mu \amp = np = 400(0.2)=80
+            \amp 
+            \sigma \amp = \sqrt{np(1-p)} = \sqrt{400(0.2)(0.8)}= 8</mrow>
+          </md>
+        </p>
+
+        <p>
+          We want to find the probability of observing 60 or fewer smokers using this model. We know that this probability will be small because 60 is more than 2 standard deviations below the mean:
+        </p>
+        <image width="50%" source="images/smallTownSmokers.png" />
+        <p>
+          Next, we compute the Z-score as <m>Z=\frac{60 - 80}{8} = -2.5</m> to find the shaded area in the picture: <m>P(Z \lt  -2.5) = 0.0062</m>. This probability of 0.0062 using the normal approximation is remarkably close to the true probability of 0.0061 from the binomial distribution!
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection>
+    <title>The normal approximation breaks down on small intervals (special topic)</title>
+    <warning>
+    <title>The normal approximation may fail on small intervals</title>
+    <p>
+      {The normal approximation to the binomial distribution tends to perform poorly when estimating the probability of a small range of counts, even when the conditions are met.}
+    </p>
+
+    </warning>
+
+    <p>
+      Suppose we wanted to compute the probability of observing 69, 70, or 71 smokers in 400 when <m>p=0.20</m>. With such a large sample, we might be tempted to apply the normal approximation and use the range 69 to 71. However, we would find that the binomial solution and the normal approximation notably differ:
+      <md>
+        <mrow>\text{ Binomial: } \amp \ 0.0703
+        \amp \text{ Normal: } \amp \ 0.0476</mrow>
+      </md>
+    </p>
+
+    <p>
+      We can identify the cause of this discrepancy using <xref ref="normApproxToBinomFail">Figure</xref>, which shows the areas representing the binomial probability (outlined) and normal approximation (shaded). Notice that the width of the area under the normal distribution is 0.5 units too slim on both sides of the interval. The binomial distribution is a discrete distribution, and the each bar is centered over an integer value. Looking closely at <xref ref="normApproxToBinomFail">Figure</xref>, we can see that the bar corresponding to 69 begins at 68.5 and ends at 69.5, the bar corresponding to 70 begins at 69.5 and ends at 70.5, etc.
+    </p>
+
+    <figure xml:id="normApproxToBinomFail" >
+      <caption>A normal curve with the area between 69 and 71 shaded. The outlined area from 68.5 to 71.5 represents the exact binomial probability.</caption>
+      <image width="73%" source="images/normApproxToBinomFail.png" />
+    </figure>
+
+    <aside>
+      <title>Improving the accuracy of the normal approximation to the
+      binomial distribution</title>
+      <p>
+        The normal approximation to the binomial distribution for intervals of values is usually improved if cutoff values for the lower end of a shaded region are reduced by 0.5 and the cutoff value for the upper end are increased by 0.5. This correction is called the continuity correction and accounts for the fact that the binomial distribution is discrete.
+      </p>
+    </aside>
+    <example>
+      <statement>
+        <p>
+          Use the method described to find a more accurate estimate for the probability of observing 69, 70, or 71 smokers in 400 randomly selected people when <m>p=0.20</m>.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          Instead of standardizing 69 and 71, we will standardize 68.5 and 71.5:
+          <md>
+            <mrow>Z_{left} \amp = \frac{68.5-80}{8} = -1.4375</mrow>
+            <mrow>Z_{right} \amp = \frac{71.5-80}{8} = -1.0625</mrow>
+            <mrow>P(-1.4375 \amp \lt  Z \lt  -1.0625) = 0.0687</mrow>
+          </md>
+        </p>
+
+        <p>
+          The probability 0.0687 is much closer to the true value of 0.0703 than the previous estimate of 0.0476 we calculated using normal approximation without the continuity correction.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      It is always possible to apply the continuity correction when finding a normal approximation to the binomial distribution. However, when <m>n</m> is very large or when the interval is wide, the benefit of the modification is limited since the added area becomes negligible compared to the overall area being calculated.
+    </p>
+
+    <p>
+      <index><main>distribution</main><sub>binomial!normal approximation</sub></index>
+      <index><main>distribution</main><sub>binomial</sub></index>
+    </p>
+  </subsection>
+</section>

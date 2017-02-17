@@ -1,0 +1,926 @@
+
+<section xml:id="differenceOfTwoProportions">
+  <title>Difference of two proportions</title>
+  <introduction>
+    <p>
+      We would like to make conclusions about the difference in two population proportions: <m>p_1 - p_2</m>. We consider three examples. In the first, we compare the approval of the 2010 healthcare law under two different question phrasings. In the second application, a company weighs whether they should switch to a higher quality parts manufacturer. In the last example, we examine the cancer risk to dogs from the use of yard herbicides.
+    </p>
+
+    <p>
+      In our investigations, we first identify a reasonable point estimate of <m>p_1 - p_2</m> based on the sample. You may have already guessed its form: <m>\hat{p}_1 - \hat{p}_2</m><index><main>point estimate</main><sub>difference of proportions</sub></index>. Next, we develop a formula for the standard deviation of <m>\hat{p}_1 - \hat{p}_2</m>.
+    </p>
+  </introduction>
+
+  <subsection>
+    <title>Sampling distribution of the difference of two proportions</title>
+    <p>
+      The mean or expected value of <m>\hat{p}_1 - \hat{p}_2</m> is <m>p_1 - p_2</m>. The standard deviation can be computed as:
+      <md>
+        <mrow>SD_{\hat{p}_1 - \hat{p}_2}
+          = \sqrt{SD_{\hat{p}_1}^2 + SD_{\hat{p}_2}^2} 
+          = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}</mrow>
+      </md>
+    </p>
+
+    <p>
+      In addition to the mean and the standard deviation of <m>\hat{p}_1 - \hat{p}_2</m>, we would like to the know the shape of its distribution. First, the sampling distribution for each sample proportion must be nearly normal, and secondly, the samples must be independent. Under these two conditions, the sampling distribution of <m>\hat{p}_1 - \hat{p}_2</m> may be well approximated using the normal model.
+    </p>
+
+    <definition>
+      <statement>
+        <p>
+          {\tBoxTitle{Conditions for the sampling distribution of <m>\hat{p}_1 - \hat{p}_2</m> to be normal}
+          The difference <m>\hat{p}_1 - \hat{p}_2</m> tends to follow a normal model when
+          <ul>
+            <li>
+              <p>
+                each proportion separately follows a normal model (check <m>n_1p_1 \geq 10</m>, <m>n_1(1-p_1) \geq 10</m>, <m>n_2p_2 \geq 10</m>, and <m>n_2(1-p_2) \geq 10</m>) and
+              </p>
+            </li>
+
+            <li>
+              <p>
+                the two samples are independent of each other.
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          The standard deviation of the difference in sample proportions is
+          <index><main>standard deviation</main><sub>difference in proportions</sub></index>
+          <md>
+            <mrow>SD_{\hat{p}_1 - \hat{p}_2}
+              = \sqrt{\frac{p_1(1-p_1)}{n_1} + \frac{p_2(1-p_2)}{n_2}}</mrow>
+          </md>
+          where <m>p_1</m> and <m>p_2</m> represent the population proportions, and <m>n_1</m> and <m>n_2</m> represent the sample sizes.
+        </p>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>Confidence Interval for <m>p_1 -p_2</m></title>
+    <p>
+      In the setting of confidence intervals, the sample proportions are used in place of the population proportions to verify the success-failure condition and also compute standard error, just as was the case with a single proportion.
+    </p>
+
+    <example xml:id="pewPollResultsForRandomizedStatementOrdering">
+      <statement>
+        <p>
+          The way a question is phrased can influence a person's response. For example, Pew Research Center conducted a survey with the following question:<fn>MISSINGoiRedirect. Sample sizes for each polling group are approximate.</fn>
+        </p>
+
+        <blockquote>
+        As you may know, by 2014 nearly all Americans will be required to have health insurance. [People who do not buy insurance will pay a penalty] while [People who cannot afford it will receive financial help from the government]. Do you approve or disapprove of this policy?
+        </blockquote>
+
+        <p>
+          <index><main>data</main><sub>health care</sub></index>For each randomly sampled respondent, the statements in brackets were randomized: either they were kept in the order given above, or the two statements were reversed. <xref ref="pewPollResultsForRandomizedStatementOrdering">Table</xref> shows the results of this experiment. Create and interpret a 90<percent /> confidence interval of the difference in approval.
+        </p>
+      </statement>
+      <answer>
+        <table>
+          <caption>Results for a Pew Research Center poll where the ordering of two statements in a question regarding healthcare were randomized.</caption>
+          <tabular>
+            {p{50mm}c p{13mm}p{14mm}p{16.5mm}c}
+              &amp;\ &amp; Sample size (<m>n_i</m>) &amp; Approve law (<percent />)  &amp; Disapprove law (<percent />)  &amp; Other \\
+            \hline
+            <q>people who cannot afford it will receive financial help from the government</q> is given second \vspace{2.5mm}
+              &amp; &amp; 771  &amp; 47  &amp; 49  &amp; 3 \\
+            <q>people who do not buy it will pay a penalty</q> is given second
+              &amp; &amp; 732  &amp; 34  &amp; 63  &amp; 3 \\
+            \hline
+          </tabular>
+        </table>
+
+        <p>
+          First the conditions must be verified. Because each group is a simple random sample, the observations are independent, both within the samples and between the samples. The success-failure condition should also be verified:
+          <md>
+            <mrow>771 \times 0.47 \amp \ge 10
+              \amp 771 \times 0.53 \amp \ge 10
+              \amp 732 \times 0.34 \amp \ge 10
+              \amp 732 \times 0.66 \amp \ge 10</mrow>
+          </md>
+        </p>
+
+        <p>
+          Because all conditions are met, the normal model can be used for the point estimate of the difference in support, where <m>p_1</m> corresponds to the original ordering and <m>p_2</m> to the reversed ordering:
+          <me>
+            \hat{p}_{1} - \hat{p}_{2} = 0.47 - 0.34 = 0.13
+          </me>
+        </p>
+
+        <p>
+          The standard error may be computed from Equation<nbsp /><xref ref="sdForDiffOfProp" /> using the sample proportions in place of the population proportions:
+          <me>
+            SE = \sqrt{\frac{0.47(1-0.47)}{771} + \frac{0.34(1-0.34)}{732}} = 0.025
+          </me>
+        </p>
+
+        <p>
+          For a 90<percent /> confidence interval, we use <m>z^{\star} = 1.645</m>:
+          <md>
+            <mrow>\text{ point estimate }  \ \pm\ z^{\star}SE
+            \rightarrow
+            0.13 \ \pm\ 1.645 \times  0.025
+            \rightarrow
+            (0.09, 0.17)</mrow>
+          </md>
+        </p>
+
+        <p>
+          We are 90<percent /> confident that the approval rating for the 2010 healthcare law changes between 9<percent /> and 17<percent /> due to the ordering of the two statements in the survey question. Because the entire interval is positive, we have evidence that the approval rating <em>increased</em>. The Pew Research Center reported that this modestly large difference suggests that the opinions of much of the public are still fluid on the health insurance mandate.
+          <index><main>data</main><sub>health care</sub></index>
+        </p>
+      </answer>
+    </example>
+
+    <definition>
+      <title>Constructing a confidence interval for the difference of two proportion</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the CI being used.
+              <ul>
+                <li>
+                  <p>
+                    2-proportion z-interval
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions.
+              <ul>
+                <li>
+                  <p>
+                    2 independent random samples OR 2 randomly allocated treatments.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>n_1\hat{p}_1\geq10</m>, <m>n_1(1-\hat{p}_1)\geq10</m>   <m>n_2\hat{p}_2\geq10</m>, <m>n_2(1-\hat{p}_2)\geq10</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Plug in the numbers and write the interval in the form
+              <me>
+                \text{ point estimate }  \pm z^\star \times \text{ SE of estimate }
+              </me>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate is <m>\hat{p}_1-\hat{p}_2</m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Use critical value <m>z^*</m> = 1.96 for a 95<percent /> CI,
+
+                      otherwise find <m>z^*</m> using the <m>t</m>-table at row <m>\infty</m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Use SE = <m>\sqrt{\frac{\hat{p}_1(1-\hat{p}_1)}{n_1} + \frac{\hat{p}_2(1-\hat{p}_2)}{n_2}}</m>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Evaluate the CI and write in the form (<em><nbsp /> <nbsp /> <nbsp /></em>, <em><nbsp /> <nbsp /> <nbsp /></em>).
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Interpret the interval: ``We are [XX]<percent /> confident that the true difference in the proportion of [...] is between [...] and [...].
+            </p>
+          </li>
+
+          <li>
+            <p>
+              State the conclusion to the original question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+
+    <example>
+      <statement>
+        <p>
+          A remote control car company is considering a new manufacturer for wheel gears. The new manufacturer would be more expensive but their higher quality gears are more reliable, resulting in happier customers and fewer warranty claims. However, management must be convinced that the more expensive gears are worth the conversion before they approve the switch. The quality control engineer collects a sample of gears, examining 1000 gears from each company and finds that 899 gears pass inspection from the current supplier and 958 pass inspection from the prospective supplier. Using these data, construct a 95<percent /> confidence interval for the difference in the proportion that pass inspection.
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We will calculate a 2-proportion z-interval.
+        </p>
+
+        <p>
+          The samples are independent, but not necessarily random, so to proceed we must assume the gears are all independent. For this sample we will suppose this assumption is reasonable, but the engineer would be more knowledgeable as to whether this assumption is appropriate. We also must verify the minimum sample size conditions:
+          <md>
+            <mrow>1000 \times \frac{899}{1000} \amp \ge 10
+              \amp 1000 \times \frac{101}{1000} \amp \ge 10
+              \amp 1000 \times \frac{958}{1000} \amp \ge 10
+              \amp 1000 \times \frac{42}{1000} \amp \ge 10</mrow>
+          </md>
+        </p>
+
+        <p>
+          To construct a confidence interval, we first identify the point estimate and standard error, then we can construct the confidence interval:
+          <md>
+            <mrow>\amp \text{ point estimate }  = 0.958 - 0.899 = 0.059</mrow>
+            <mrow>\amp SE = \sqrt{\frac{0.899(1-0.899)}{1000} +
+                  \frac{0.958(1-0.958)}{1000}}
+              = 0.0114</mrow>
+            <mrow>\amp 0.059\ \pm\ 1.96 \times 0.0114</mrow>
+            <mrow>\amp (0.037, 0.081)</mrow>
+          </md>
+        </p>
+
+        <p>
+          We are 95<percent /> confident that the true difference in proportion of current and prospective gears that pass inspection is between 0.037 and 0.081, favoring the prospective gears. Because the entire interval is above zero, the data provide strong evidence that the prospective gears pass inspection more often than the current gears. The remote control car company should go with the new manufacturer.
+        </p>
+      </answer>
+    </example>
+  </subsection>
+
+  <subsection xml:id="pooledHTForProportionsSection">
+    <title>Hypothesis testing when <m>H_0: p_1 = p_2</m></title>
+    <p>
+      <index><main>data</main><sub>cancer in dogs, herbicide</sub></index>
+    </p>
+
+    <p>
+      Here we use a new example to examine a special estimate of the standard error when <m>H_0: p_1 = p_2</m>. We investigate whether there is an increased risk of cancer in dogs that are exposed to the herbicide 2,4-dichlorophenoxyacetic acid (2,4-D). A study in 1994 examined 491 dogs that had developed cancer and 945 dogs as a control group.<fn>Hayes HM, Tarone RE, Cantor KP, Jessen CR, McCurnin DM, and Richardson RC. 1991. Case-Control Study of Canine Malignant Lymphoma: Positive Association With Dog Owner's Use of 2, 4-Dichlorophenoxyacetic Acid Herbicides. Journal of the National Cancer Institute 83(17):1226-1231.</fn> Of these two groups, researchers identified which dogs had been exposed to 2,4-D in their owner's yard. The results are shown in <xref ref="x24DAndCancerInDogs">Table</xref>.
+    </p>
+
+    <table xml:id="x24DAndCancerInDogs" >
+      <caption>Summary results for cancer in dogs and the use of 2,4-D by the dog's owner.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>cancer</cell>
+          <cell>no cancer</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>2,4-D</cell>
+          <cell>191</cell>
+          <cell>304</cell>
+        </row>
+        <row>
+          <cell>no 2,4-D</cell>
+          <cell>300</cell>
+          <cell>641</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <exercise>
+      <statement>
+        <p>
+          Is this study an experiment or an observational study?<fn>The owners were not instructed to apply or not apply the herbicide, so this is an observational study. This question was especially tricky because one group was called the <em>control group</em>, which is a term usually seen in experiments.</fn>
+        </p>
+      </statement>
+    </exercise>
+    <p>
+      \begin{exercise} Set up hypotheses to test whether 2,4-D and the occurrence of cancer in dogs are related. Use a one-sided test and compare across the cancer and no cancer groups.
+    </p>
+
+    <example xml:id="condFor24DAndCancerInDogsNormalInference">
+      <statement>
+        <p>
+          Are the conditions for using the normal model and make inference on the results?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          (1) It is unclear whether this is a random sample. However, if we believe the dogs in both the cancer and no cancer groups are representative of each respective population and that the dogs in the study do not interact in any way, then we may find it reasonable to assume independence between observations. (2) The success-failure condition (minimums of 10) easily holds for each sample.
+        </p>
+
+        <p>
+          Under the assumption of independence, we can use the normal model and make statements regarding the canine population based on the data.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      In the hypotheses for Guided <xref ref="htFor24DAndCancerInDogs">Practice</xref>, the null is that the proportion of dogs with exposure to 2,4-D is the same in each group. The point estimate of the difference in sample proportions is <m>\hat{p}_c - \hat{p}_n = 0.067</m>. To identify the p-value for this test, we first check conditions (<xref ref="condFor24DAndCancerInDogsNormalInference">Example</xref>) and compute the standard error of the difference.
+    </p>
+
+    <p>
+      The standard deviation is given by
+      <md>
+        <mrow>SD = \sqrt{\frac{p_c(1-p_c)}{n_c} + \frac{p_n(1-p_n)}{n_n}}</mrow>
+      </md>
+    </p>
+
+    <p>
+      In a hypothesis test, the distribution of the test statistic is always examined as though the null hypothesis is true, i.e. in this case, <m>p_c = p_n</m>. The standard deviation formula should reflect this equality in the null hypothesis. We will use <m>p</m> to represent the common rate of dogs that are exposed to 2,4-D in the two groups:
+      <md>
+        <mrow>SD \amp = \sqrt{\frac{p(1-p)}{n_c} + \frac{p(1-p)}{n_n}}</mrow>
+        <mrow>\amp = \sqrt{p(1-p)}\sqrt{\frac{1}{n_c} + \frac{1}{n_n}}</mrow>
+      </md>
+    </p>
+
+    <p>
+      We don't know the exposure rate, <m>p</m>, but we can obtain a good estimate of it by <em>pooling</em> the results of both samples to find <m>\hat{p}</m>:
+      <me>
+        \hat{p} = \frac{\text{ \# of ``successes'' } }{\text{ \# of cases } } = \frac{191 + 300}{191+300+304+641} = 0.342
+      </me>
+    </p>
+
+    <p>
+      This is called the <term>pooled estimate</term> of the sample proportion, and we use it to compute the standard error when the null hypothesis is that <m>p_1 = p_2</m> (e.g. <m>p_c = p_n</m> or <m>p_c - p_n = 0</m>). We also typically use it to verify the success-failure condition.
+    </p>
+
+    <definition>
+      <title>Pooled estimate of a proportion</title>
+      <statement>
+        <p>
+          When the null hypothesis is <m>p_1 = p_2</m>, it is useful to find the pooled estimate of the shared proportion:
+          <md>
+            <mrow>\hat{p} = \frac{\text{ number of ``successes'' } }{\text{ number of cases } } = \frac{x_1+x_2}{n_1+n_2}=\frac{\hat{p}_1n_1 + \hat{p}_2n_2}{n_1 + n_2}</mrow>
+          </md>
+        </p>
+
+        <p>
+          Here <m>x_1</m> represents the number of successes in sample 1. <m>x_1</m> can be computed as <m>\hat{p}_1n_1</m> if it is unknown. Similarly, <m>x_2</m> represents the number of successes in sample<nbsp />2. It also can be computed as <m>\hat{p}_2n_2</m>.
+        </p>
+      </statement>
+    </definition>
+
+    <aside>
+      <title>Use the pooled proportion estimate when $\mathbf{H_0: p_1 = p_2}$</title>
+      <p>
+        When the null hypothesis suggests the proportions are equal, we use the pooled proportion estimate (<m>\hat{p}</m>) to verify the success-failure condition and also to estimate the standard error:
+        <md>
+          <mrow>SE =\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</mrow>
+        </md>
+      </p>
+
+      <p>
+        }
+        <index><main></main></index>data!cancer in dogs, herbicide
+      </p>
+    </aside>
+    <exercise xml:id="verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs">
+      <statement>
+        <p>
+          Using Equation<nbsp /><xref ref="seOfDiffInPropUsingPooledEstimate" />, <m>\hat{p}=0.342</m>, <m>n_1 = 491</m>, and <m>n_2=945</m>, verify the standard error estimate in the context of a hypothesis test is <m>SE = 0.026</m>.
+        </p>
+      </statement>
+    </exercise>
+
+    <example>
+      <statement>
+        <p>
+          Complete the hypothesis test using a significance level of 0.01.
+        </p>
+      </statement>
+      <answer>
+        <p>
+        We will complete a 2-proportion z-test. The conditions are met - we will assume that there two independent random samples. Using the pooled proportion:
+        <md>
+          <mrow>n_1\hat{p} \amp = 491 \times 0.342 = 167.9
+            \amp  n_1(1 - \hat{p}) \amp = 491 \times 0.658 = 323.1</mrow>
+          <mrow>n_2\hat{p} \amp = 945 \times 0.342 = 323.2
+            \amp  n_2(1 - \hat{p}) \amp = 945 \times 0.658 = 621.8</mrow>
+        </md>
+        are all at least 10. Now we set up hypotheses, which were identified in Guided <xref ref="htFor24DAndCancerInDogs">Practice</xref>:
+        <ul>
+          <li>
+          <title>invalidlabel</title>
+          <p>
+          The proportion of dogs with exposure to 2,4-D is the same in <q>cancer</q> and <q>no cancer</q> dogs, <m>p_c - p_n = 0</m>.
+            </p>
+          </li>
+
+          <li>
+          <title>invalidlabel</title>
+          <p>
+            Dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, <m>p_c - p_n > 0</m>.
+              </p>
+            </li>
+          </ul>
+        </p>
+
+        <p>
+          We will use a significance level of <m>\alpha = 0.01</m>. All values are much larger than 10. Under the assumption that there were two independent random samples, we can proceed.
+        </p>
+
+        <p>
+          Next, we compute the test statistic using the standard error using the result of Guided <xref ref="verifySEOfPooledEstimateOf24DWithCancerNoCancerDogs">Practice</xref>:
+          <md>
+            <mrow>Z = \frac{\text{ point estimate }  - \text{ null value } }{SE} = \frac{0.067 - 0}{0.026} = 2.58</mrow>
+          </md>
+        </p>
+
+        <p>
+          Looking up <m>Z=2.58</m> in the normal probability table: 0.9951. However this is the lower tail, and the upper tail represents the p-value: <m>1-0.9951 = 0.0049</m>. Because the p-value is smaller than <m>\alpha = 0.01</m>, we reject the null hypothesis and conclude that there is an association between dogs getting cancer and owners using 2,4-D.
+        </p>
+      </answer>
+    </example>
+
+    <definition>
+      <title>Hypothesis test for the difference of two proportions</title>
+      <statement>
+        <ol>
+          <li>
+            <p>
+              State the name of the test being used.
+              <ul>
+                <li>
+                  <p>
+                    2-proportion z-test
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Verify conditions to ensure the standard error estimate is reasonable and the point estimate is nearly normal and unbiased.
+              <ul>
+                <li>
+                  <p>
+                    2<nbsp />independent random samples OR 2 randomly allocated treatments.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Calculate the pooled sample proportion <m>\hat{p}</m> and verify <m>n_1\hat{p}</m>, <m>n_2\hat{p}</m>, <m>n_1(1 - \hat{p})</m>, and <m>n_2(1 - \hat{p})</m> are greater than or equal to 10.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the hypotheses in plain language and using mathematical notation.
+              <ul>
+                <li>
+                  <p>
+                    <m>H_0: p_1 = p_2</m> (or <m>p_1 - p_2 = 0</m>)
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    <m>H_A: p_1 \ne \text{ or }  \lt  \text{ or }  > p_2</m>
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identify the significance level <m>\alpha</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Calculate the test statistic: <m>\text{Z}  = \frac{\text{ point estimate }  - \text{ null value } }{\text{ SE of estimate } }</m>
+              <ul>
+                <li>
+                  <p>
+                    The point estimate is <m>\hat{p}_1 - \hat{p}_2</m>.
+                  </p>
+                </li>
+
+                <li>
+                  <p>
+                    Use <m>SE</m> = <m>\sqrt{\hat{p}(1-\hat{p})}\sqrt{\frac{1}{n_1} + \frac{1}{n_2}}</m>.
+                  </p>
+                </li>
+              </ul>
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Find the p-value and compare it to <m>\alpha</m> to determine whether to reject or not reject <m>H_0</m>.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Write the conclusion in the context of the question.
+            </p>
+          </li>
+        </ol>
+      </statement>
+    </definition>
+  </subsection>
+
+  <subsection>
+    <title>Calculator: the 2-proportion z-test and z-interval</title>
+    <definition>
+      <title>TI-83/84: 2-proportion z-interval</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>STAT</c>, <c>TESTS</c>, <c>2-PropZInt</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>B:2-PropZInt</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x1</c> be the <em>number</em> of yes's (must be an integer) in sample 1 and let <c>n1</c> be the size of sample 1.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x2</c> be the <em>number</em> of yes's (must be an integer) in sample 2 and let <c>n2</c> be the size of sample 2.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>C-Level</c> be the desired confidence level.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>(<em><nbsp /><nbsp /></em>,<em><nbsp /><nbsp /></em>)</c></cell>
+                    <cell>the confidence interval</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\hat{p}_1}</m></cell>
+                    <cell>sample 1 proportion</cell>
+                    <cell><nbsp /><nbsp /></cell>
+                    <cell><m>\textttmath{n_1}</m></cell>
+                    <cell>size of sample 1</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\hat{p}_2}</m></cell>
+                    <cell>sample 2 proportion</cell>
+                    <cell></cell>
+                    <cell><m>\textttmath{n_2}</m></cell>
+                    <cell>size of sample 2</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: 2-proportion z-interval</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>INTR</c> option (<c>F4</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>Z</c> option (<c>F1</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>2-P</c> option (<c>F4</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Specify the interval details:
+                <ul>
+                  <li>
+                    <p>
+                      Confidence level of interest for <c>C-Level</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Enter the number of successes for each group, <c>x1</c> and <c>x2</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Enter the sample size for each group, <c>n1</c> and <c>n2</c>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit the <c>EXE</c> button, which returns
+                <tabular>
+                  <row>
+                    <cell><c>Left</c>, <c>Right</c></cell>
+                    <cell>the ends of the confidence interval</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\hat{p}1}</m>, <m>\textttmath{\hat{p}2}</m></cell>
+                    <cell>the sample proportions</cell>
+                  </row>
+                  <row>
+                    <cell><c>n1</c>, <c>n2</c></cell>
+                    <cell>sample sizes</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          {Use the data in <xref ref="x24DAndCancerInDogsTableInCalcSection">Table</xref> and a calculator to find a 95<percent /> confidence interval for the difference in proportion of dogs with cancer that have been exposed to 2,4-D versus not exposed to 2,4-D.}
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Correctly going through the calculator steps should lead to an interval of (0.01484, 0.11926). There is no value given for the pooled proportion since we do not pool for confidence intervals.
+        </p>
+      </hint>
+    </exercise>
+
+    <table xml:id="x24DAndCancerInDogsTableInCalcSection" >
+      <caption>Summary results for cancer in dogs and the use of 2,4-D by the dog's owner.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell></cell>
+          <cell>cancer</cell>
+          <cell>no cancer</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>2,4-D</cell>
+          <cell>191</cell>
+          <cell>304</cell>
+        </row>
+        <row>
+          <cell>no 2,4-D</cell>
+          <cell>300</cell>
+          <cell>641</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <definition>
+      <title>TI-83/84: 2-proportion z-test</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          Use <c>STAT</c>, <c>TESTS</c>, <c>2-PropZTest</c>.
+          <ol>
+            <li>
+              <p>
+                Choose <c>STAT</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Right arrow to <c>TESTS</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Down arrow and choose <c>6:2-PropZTest</c>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x1</c> be the <em>number</em> of yes's (must be an integer) in sample 1 and let <c>n1</c> be the size of sample 1.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Let <c>x2</c> be the <em>number</em> of yes's (must be an integer) in sample 2 and let <c>n2</c> be the size of sample 2.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <m>\textttmath{\ne}</m>, <m>\textttmath{\lt }</m>, or <m>\textttmath{>}</m> to correspond to H<m>_A</m>.
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose <c>Calculate</c> and hit <c>ENTER</c>, which returns:
+                <tabular>
+                  <row>
+                    <cell><c>z</c></cell>
+                    <cell>Z-statistic</cell>
+                    <cell><nbsp /><nbsp /></cell>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\hat{p}_1}</m></cell>
+                    <cell>sample 1 proportion</cell>
+                    <cell></cell>
+                    <cell><m>\textttmath{\hat{p}}</m></cell>
+                    <cell>pooled sample proportion</cell>
+                  </row>
+                  <row>
+                    <cell><m>\textttmath{\hat{p}_2}</m></cell>
+                    <cell>sample 2 proportion</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <definition>
+      <title>Casio fx-9750GII: 2-proportion z-test</title>
+      <statement>
+        <p>
+          MISSINGVIDEOLINK
+          <ol>
+            <li>
+              <p>
+                Navigate to <c>STAT</c> (<c>MENU</c> button, then hit the <c>2</c> button or select <c>STAT</c>).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>TEST</c> option (<c>F3</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>Z</c> option (<c>F1</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Choose the <c>2-P</c> option (<c>F4</c> button).
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Specify the test details:
+                <ul>
+                  <li>
+                    <p>
+                      Specify the sidedness of the test using the <c>F1</c>, <c>F2</c>, and <c>F3</c> keys.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Enter the number of successes for each group, <c>x1</c> and <c>x2</c>.
+                    </p>
+                  </li>
+
+                  <li>
+                    <p>
+                      Enter the sample size for each group, <c>n1</c> and <c>n2</c>.
+                    </p>
+                  </li>
+                </ul>
+              </p>
+            </li>
+
+            <li>
+              <p>
+                Hit the <c>EXE</c> button, which returns
+                <tabular>
+                  <row>
+                    <cell><c>z</c></cell>
+                    <cell>Z-statistic</cell>
+                    <cell>\hspace{3mm}</cell>
+                    <cell><m>\textttmath{\hat{p}1}</m>, <m>\textttmath{\hat{p}2}</m></cell>
+                    <cell>sample proportions</cell>
+                  </row>
+                  <row>
+                    <cell><c>p</c></cell>
+                    <cell>p-value</cell>
+                    <cell></cell>
+                    <cell><m>\textttmath{\hat{p}}</m></cell>
+                    <cell>pooled proportion</cell>
+                  </row>
+                  <row>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell></cell>
+                    <cell><c>n1</c>, <c>n2</c></cell>
+                    <cell>sample sizes</cell>
+                  </row>
+                </tabular>
+              </p>
+            </li>
+          </ol>
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          {Use the data in <xref ref="x24DAndCancerInDogsTableInCalcSection">Table</xref> and a calculator to find the Z-score and p-value for one-sided test with H<m>_A</m>: dogs with cancer are more likely to have been exposed to 2,4-D than dogs without cancer, <m>p_c - p_n > 0</m>.}<fn>Correctly going through the calculator steps should lead to a solution with <m>Z=2.55</m> and <m>\text{ p-value } =0.0055</m>. The pooled proportion is <m>\hat{p}=0.342</m>.</fn>
+        </p>
+      </statement>
+    </exercise>
+  </subsection>
+</section>

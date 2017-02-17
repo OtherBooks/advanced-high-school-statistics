@@ -1,0 +1,778 @@
+
+<section xml:id="numericalData">
+  <title>Examining numerical data MISSINGVIDEOLINK</title>
+  <introduction>
+    <p>
+      In this section we will focus on numerical variables. The <c>email50</c> and <c>county</c> data sets from <xref ref="dataBasics">Section</xref> provide rich opportunities for examples. Recall that outcomes of numerical variables are numbers on which it is reasonable to perform basic arithmetic operations. For example, the <c>pop2010</c> variable, which represents the populations of counties in 2010, is numerical since we can sensibly discuss the difference or ratio of the populations in two counties. On the other hand, area codes and zip codes are not numerical, but rather they are<nbsp />categorical variables.
+    </p>
+  </introduction>
+
+  <subsection xml:id="scatterPlots">
+    <title>Scatterplots for paired data</title>
+    <p>
+      <index><main>data</main><sub>email50</sub></index>
+    </p>
+
+    <p>
+      Sometimes researchers wish to see the relationship between two variables. When we talk of a relationship or an association between variables, we are interested in how one variable behaves as the other variable increases or decreases.
+    </p>
+
+    <p>
+      A <term>scatterplot</term> provides a case-by-case view of data that illustrates the relationship between two numerical variables. In <xref ref="county_fed_spendVsPoverty">Figure</xref>, a scatterplot was used to examine how federal spending and poverty were related in the <c>county</c> data set. Another scatterplot is shown in <xref ref="email50LinesCharacters">Figure</xref>, comparing the number of line breaks (<c>line_breaks</c>) and number of characters (<c>num_char</c>) in emails for the <c>email50</c> data set. In any scatterplot, each point represents a single case. Since there are 50 cases in <c>email50</c>, there are 50 points in <xref ref="email50LinesCharacters">Figure</xref>.
+    </p>
+
+    <figure xml:id="email50LinesCharacters" >
+      <caption>A scatterplot of <c>line_breaks</c> versus <c>num_char</c> for the <c>email50</c> data.</caption>
+      <image width="75%" source="images/email50LinesCharacters.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          A scatterplot requires paired data. What does <term>paired data</term> mean?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          We say observations are <em>paired</em> when the two observations correspond to each other. In unpaired data, there is no such correspondence. Here the two observations correspond to a particular email.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      The variable that is suspected to be the response variable is plotted on the vertical (y)<nbsp />axis and the variable that is suspected to be the explanatory variable is plotted on the horizontal (x)<nbsp />axis. In this example, the variables could be switched since either variable could reasonably serve as the explanatory variable or the response variable.
+    </p>
+
+    <aside>
+      <title>Drawing scatterplots</title>
+      <p>
+        (1)<nbsp />Decide which variable should go on each axis, and draw and label the two axes.
+      </p>
+
+      <p>
+        (2)<nbsp />Note the range of each variable, and add tick marks and scales to each<nbsp />axis.
+      </p>
+
+      <p>
+        (3)<nbsp />Plot the dots as you would on an <m>x,y</m>-coordinate plane.
+      </p>
+    </aside>
+    <p>
+      The association between two variables can be <em>positive</em><index><main>positive association|textbf</main></index> or <em>negative</em><index><main>negative association|textbf</main></index>, or there can be no association. Positive association means that larger values of the first variable are associated with larger values of the second variable. Additionally, the association can follow a linear trend or a curved (nonlinear) trend.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          What would it mean for two variables to have a <em>negative</em> association? What about <em>no</em> association?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Negative association implies that larger values of the first variable are associated with smaller values of the second variable. No association implies that the values of the second variable tend to be independent of changes in the first variable.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          What does the scatterplot in <xref ref="email50LinesCharacters">Figure</xref> reveal about the email data?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The association between the number of characters in an email and the number of lines in an email is positive (when one is larger, the other tends to be larger as well). As the number of characters increases, number of lines increases is an approximately linear fashion.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      <index><main>data</main><sub>cars</sub></index>
+    </p>
+
+    <example xml:id="carsPriceVsWeight">
+      <statement>
+        <p>
+          Consider a new data set of 54 cars with two variables: vehicle price and<nbsp />weight.<fn>Subset of data from MISSINGoiRedirect</fn> A scatterplot of vehicle price versus weight is shown in <xref ref="carsPriceVsWeight">Figure</xref>. What can be said about the relationship between these variables?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          The relationship is evidently nonlinear, as highlighted by the dashed line. This is different from previous scatterplots we've seen, such as <xref ref="county_fed_spendVsPoverty">Figure</xref> and <xref ref="email50LinesCharacters">Figure</xref>, which show relationships that are very linear.
+        </p>
+
+        <figure>
+          <caption>A scatterplot of <c>price</c> versus <c>weight</c> for 54 cars.</caption>
+          <image width="65%" source="images/carsPriceVsWeight.png" />
+        </figure>
+      </answer>
+    </example>
+
+    <p>
+      <index><main>data</main><sub>cars</sub></index>
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          Describe two variables that would have a horseshoe shaped (i.e. <q>U</q>-shaped) association in a scatterplot.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Consider a variable that represents something that is only good in moderation. Water consumption fits this description since water becomes toxic when consumed in excessive quantities. If health was represented on the vertical axis and water consumption on the horizontal axis, then we would create an upside down <q>U</q><nbsp />shape.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="dotPlot">
+    <title>Stem-and-leaf plots and dot plots</title>
+    <p>
+      Sometimes two variables is one too many: only one variable may be of interest. In these cases we want to focus not on the association between two variables, but on the distribution of a single variable. The term <term>distribution</term> refers to the values that a variable takes and the frequency of these values. Let's take a closer look at the <c>email50</c> data set and focus on the number of characters in each email. To simplify the data, we will round the numbers and record the values in thousands. Thus, 22105 is recorded as 22.
+    </p>
+
+    <table>
+      <caption>The number of characters, in thousands, for the data set of 50<nbsp />emails.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>22</cell>
+          <cell>0</cell>
+          <cell>64</cell>
+          <cell>10</cell>
+          <cell>6</cell>
+          <cell>26</cell>
+          <cell>25</cell>
+          <cell>11</cell>
+          <cell>4</cell>
+          <cell>14</cell>
+        </row>
+        <row>
+          <cell>7</cell>
+          <cell>1</cell>
+          <cell>10</cell>
+          <cell>2</cell>
+          <cell>7</cell>
+          <cell>5</cell>
+          <cell>7</cell>
+          <cell>4</cell>
+          <cell>14</cell>
+          <cell>3</cell>
+        </row>
+        <row>
+          <cell>1</cell>
+          <cell>5</cell>
+          <cell>43</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>3</cell>
+          <cell>25</cell>
+          <cell>1</cell>
+          <cell>9</cell>
+          <cell>1</cell>
+        </row>
+        <row>
+          <cell>2</cell>
+          <cell>9</cell>
+          <cell>0</cell>
+          <cell>5</cell>
+          <cell>3</cell>
+          <cell>6</cell>
+          <cell>26</cell>
+          <cell>11</cell>
+          <cell>25</cell>
+          <cell>9</cell>
+        </row>
+        <row>
+          <cell>42</cell>
+          <cell>17</cell>
+          <cell>29</cell>
+          <cell>12</cell>
+          <cell>27</cell>
+          <cell>10</cell>
+          <cell>0</cell>
+          <cell>0</cell>
+          <cell>1</cell>
+          <cell>16</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <p>
+      Rather than look at the data as a list of numbers, which makes the distribution difficult to discern, we will organize it into a table called a <term>stem-and-leaf plot</term> shown in <xref ref="stemandleafemail50">Figure</xref>. In a stem-and-leaf plot, each number is broken into two parts. The first part is called the <term>stem</term> and consists of the beginning digit(s). The second part is called the <term>leaf</term> and consists of the final digit(s). The stems are written in a column in ascending order, and the leaves that match up with those stems are written on the corresponding row. <xref ref="stemandleafemail50">Figure</xref> shows a stem-and-leaf plot of the number of characters in 50 emails. The stem represents the ten thousands place and the leaf represents the thousands place. For example, <c>1 <m>|</m> 2</c> corresponds to 12 thousand. When making a stem-and-leaf plot, remember to include a legend that describes what the stem and what the leaf represent. Without this, there is no way of knowing if 1 <m>|</m> 2 represents 1.2, 12, 120, 1200, etc.
+    </p>
+
+    <figure xml:id="stemandleafemail50" >
+      <caption>A stem-and-leaf plot of the number of characters in 50 emails.</caption>
+      <pre>
+        0 | 00000011111223334455566777999
+                           1 | 0001124467
+                           2 | 25556679
+                           3 |
+                           4 | 23
+                           5 |
+                           6 | 4
+
+                         Legend: 1 | 2 = 12,000
+      </pre>
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          There are a lot of numbers on the first row of the stem-and-leaf plot. Why is this the case?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There are a lot of numbers on the first row because there are a lot of values in the data set less than 10 thousand.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      When there are too many numbers on one row or there are only a few stems, we <em>split</em> each row into two halves, with the leaves from 0-4 on the first half and the leaves from 5-9 on the second half. The resulting graph is called a <em>split stem-and-leaf plot</em><index><main>stem-and-leaf plot</main><sub>split stem-and-leaf plot|textbf</sub></index>. <xref ref="splitstemandleaf50email">Figure</xref> shows the previous stem-and-leaf redone as a split stem-and-leaf.
+    </p>
+
+    <figure xml:id="splitstemandleaf50email" >
+      <caption>A split stem-and-leaf.</caption>
+      <pre>
+        0 | 000000111112233344
+                                  0 | 55566777999
+                                  1 | 00011244
+                                  1 | 67
+                                  2 | 2
+                                  2 | 5556679
+                                  3 |
+                                  3 |
+                                  4 | 23
+                                  4 |
+                                  5 |
+                                  5 |
+                                  6 | 4
+
+                                Legend: 1 | 2 = 12,000
+      </pre>
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          What is the smallest number in this data set? What is the largest?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The smallest number is less than 1 thousand, and the largest is 64 thousand. That is a big range!
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      Another simple graph for numerical data is a dot plot. A<nbsp /><term>dot plot</term> uses dots to show the <term>frequency</term>, or number of occurrences, of the values in a data set. The higher the stack of dots, the greater the number occurrences there are of the corresponding value. An example using the same data set, number of characters from 50 emails, is shown in <xref ref="emailCharactersDotPlotStacked">Figure</xref>.
+    </p>
+
+    <figure xml:id="emailCharactersDotPlotStacked" >
+      <caption>A dot plot of <c>num_char</c> for the <c>email50</c> data set.</caption>
+      <image width="82%" source="images/emailCharactersDotPlotStackedRounded.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          Imagine rotating the dot plot 90 degrees clockwise. What do you notice?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          It has a similar shape as the stem-and-leaf plot! The values on the horizontal axis correspond to the stems and the number of dots in each interval correspond the number of leaves needed for each stem.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      These graphs make it easy to observe important features of the data, such as the location of clusters and presence of gaps.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          Based on both the stem-and-leaf and dot plot, where are the values clustered and where are the gaps for the <c>email50</c> data set?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          There is a large cluster in the 0 to less than 20 thousand range, with a peak around 1 thousand. There are gaps between 30 and 40 thousand and between the two values in the 40 thousands and the largest value of approximately 64 thousand.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Additionally, we can easily identify any observations that appear to be unusually distant from the rest of the data. Unusually distant observations are called <em>outliers</em><index><main>outlier|textbf</main></index>. Later in this chapter we will provide numerical rules of thumb for identifying outliers. For now, it is sufficient to identify them by observing gaps in the graph. In this case, it would be reasonable to classify the emails with character counts of 42 thousand, 43 thousand, and 64 thousand as outliers since they are numerically distant from most of the data.
+    </p>
+
+    <definition>
+      <title>Outliers are extreme</title>
+      <statement>
+        <p>
+          An <term>outlier</term> is an observation that appears extreme relative to the rest of the data.
+        </p>
+      </statement>
+    </definition>
+
+    <aside>
+      <title>Why it is important to look for outliers</title>
+      <p>
+        Examination of data for possible outliers serves many useful purposes, including
+        <ol>
+          <li>
+            <p>
+              Identifying asymmetry in the distribution.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Identifying data collection or entry errors. For instance, we re-examined the email purported to have 64 thousand characters to ensure this value was accurate.
+            </p>
+          </li>
+
+          <li>
+            <p>
+              Providing insight into interesting properties of the data.
+            </p>
+          </li>
+        </ol>
+      </p>
+    </aside>
+    <exercise>
+      <statement>
+        <p>
+          The observation 64 thousand, a suspected outlier, was found to be an accurate observation. What would such an observation suggest about the nature of character counts in emails?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          That occasionally there may be very long emails.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Consider a data set that consists of the following numbers: 12, 12, 12, 12, 12, 13, 13, 14, 14, 15, 19. Which graph would better illustrate the data: a stem-and-leaf plot or a dot plot? Explain.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Because all the values begin with 1, there would be only one stem (or two in a split stem-and-leaf). This would not provide a good sense of the distribution. For example, the gap between 15 and 19 would not be visually apparent. A dot plot would be better here.
+        </p>
+      </hint>
+    </exercise>
+  </subsection>
+
+  <subsection xml:id="histogramsAndShape">
+    <title>Histograms</title>
+    <p>
+      Stem-and-leaf plots and dot plots are ideal for displaying data from small samples because they show the exact values of the observations and how frequently they occur. However, they are impractical for larger samples. For larger samples, rather than showing the frequency of every value, we prefer to think of the value as belonging to a <em>bin</em>. For example, in the <c>email50</c> data set, we create a table of counts for the number of cases with character counts between 0 and 5,000, then the number of cases between 5,000 and 10,000, and so on. Such a table, shown in <xref ref="binnedNumCharTable">Table</xref>, is called a <term>frequency table</term>. Observations that fall on the boundary of a bin (e.g.<nbsp />5,000) are generally allocated to the lower bin.<fn>This is called <em>left inclusive</em>.</fn> These binned counts are plotted as bars in <xref ref="email50NumCharHist">Figure</xref> into what is called a <term>histogram</term> or <term>frequency histogram</term>, which resembles the stacked dot plot shown in <xref ref="emailCharactersDotPlotStacked">Figure</xref>.
+    </p>
+
+    <table xml:id="binnedNumCharTable" >
+      <caption>The counts for the binned <c>num_char</c> data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Characters</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(in thousands)</cell>
+          <cell>0-5</cell>
+          <cell>5-10</cell>
+          <cell>10-15</cell>
+          <cell>15-20</cell>
+          <cell>20-25</cell>
+          <cell>25-30</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>55-60</cell>
+          <cell>60-65</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Count</cell>
+          <cell>19</cell>
+          <cell>12</cell>
+          <cell>6</cell>
+          <cell>2</cell>
+          <cell>3</cell>
+          <cell>5</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>0</cell>
+          <cell>1</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="emailCharactersDotPlotStackedRoundedHist" >
+      <caption>A histogram of <c>num_char</c>. This histogram is drawn over the corresponding dot plot.</caption>
+      <image width="82%" source="images/emailCharactersDotPlotStackedRoundedHist.png" />
+    </figure>
+
+    <figure xml:id="email50NumCharHist" >
+      <caption>A histogram of <c>num_char</c>. This histogram uses bins or class intervals of width 5.</caption>
+      <image width="82%" source="images/email50NumCharHist.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          What can you see in the dot plot and stem-and-leaf plot that you cannot see in the frequency histogram?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          Character counts for individual emails.
+        </p>
+      </hint>
+    </exercise>
+
+    <aside>
+      <title>Drawing histograms</title>
+      <p>
+        1. The variable is always placed on the horizontal axis. Before drawing the histogram, label both axes and draw a scale for each.
+      </p>
+
+      <p>
+        2. Draw bars such that the height of the bar is the frequency of that bin and the width of the bar corresponds to the bin width.
+      </p>
+    </aside>
+    <p>
+      Histograms provide a view of the <term>data density</term>. Higher bars represent where the data are relatively more common. For instance, there are many more emails between 0 and 10,000 characters than emails between 10,000 and 20,000 in the data set. The bars make it easy to see how the density of the data changes relative to the number of characters.
+    </p>
+
+    <example>
+      <statement>
+        <p>
+          How many emails had fewer than 10 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          The height of the bars corresponds to frequency. There were 19 cases from 0 to less than 5 thousand and 12 cases from 5 thousand to less than 10 thousand, so there were <m>19+12=31</m> emails with fewer than 10 thousand characters.
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Approximately how many emails had fewer than 1 thousand chacters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          Based just on this histogram, we cannot know the exact answer to this question. We only know that 19 emails had between 0 and 5 thousand characters. If the number of emails is evenly distribution on this interval, then we can estimate that approximately 19/5<nbsp /><m>\approx</m> 4 emails fell in the range between 0 and 1 thousand.
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          What <em>percent</em> of the emails had 10 thousand or more characters?
+        </p>
+      </statement>
+      <answer>
+        <p>
+          From the first example, we know that 31 emails had fewer than 10 thousand characters. Since there are 50 emails in total, there must be 19 emails that have 10 thousand or more characters. To find the percent, compute <m>19/50 = 0.38 = 38\%</m>.
+        </p>
+      </answer>
+    </example>
+
+    <p>
+      Sometimes questions such as the ones above can be answered more easily with a <term>cumulative frequency histogram</term>. This type of histogram shows cumulative, or total, frequency achieved by each bin, rather than the frequency in that particular bin.
+    </p>
+
+    <table xml:id="binnedNumCharTableCumulative" >
+      <caption>The cumulative frequencies for the binned <c>num_char</c> data.</caption>
+      <tabular>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Characters</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>(in thousands)</cell>
+          <cell>0-5</cell>
+          <cell>5-10</cell>
+          <cell>10-15</cell>
+          <cell>15-20</cell>
+          <cell>20-25</cell>
+          <cell>25-30</cell>
+          <cell>30-35</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>55-60</cell>
+          <cell>60-65</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Cumulative</cell>
+          <cell></cell>
+        </row>
+        <row>
+          <cell>Frequency</cell>
+          <cell>19</cell>
+          <cell>31</cell>
+          <cell>37</cell>
+          <cell>39</cell>
+          <cell>42</cell>
+          <cell>47</cell>
+          <cell>47</cell>
+          <cell><m>\cdots</m></cell>
+          <cell>49</cell>
+          <cell>50</cell>
+        </row>
+        <row bottom="minor">
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+          <cell></cell>
+        </row>
+      </tabular>
+    </table>
+
+    <figure xml:id="email50NumCharCumulativeFreqHist" >
+      <caption>A cumulative frequency histogram of <c>num_char</c>. This histogram uses bins or class intervals of width 5.</caption>
+      <image width="82%" source="images/email50NumCharCumulativeFreqHist.png" />
+    </figure>
+
+    <example>
+      <statement>
+        <p>
+          How many of the emails had fewer than 20 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          By tracing the height of the 15-20 thousand bin over to the vertical axis, we can see that it has a height just under 40 on the cumulative frequency scale. Therefore, we estimate that <m>\approx</m>39 of the emails had fewer than 30 thousand characters. Note that, unlike with a regular frequency histogram, we do not add up the height of the bars in a cumulative frequency histogram because each bar already represents a cumulative sum.
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Using the cumulative frequency histogram, how many of the emails had 10-15 thousand characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          To answer this question, we do a subtraction. <m>\approx</m>39 had fewer than 15-20 thousand emails and <m>\approx</m>37 had fewer than 10-15 thousand emails, so <m>\approx</m>2 must have had between 10-15 thousand emails.
+        </p>
+      </solution>
+    </example>
+
+    <example>
+      <statement>
+        <p>
+          Approximately 25 of the emails had fewer than how many characters?
+        </p>
+      </statement>
+      <solution>
+        <p>
+          This time we are given a cumulative frequency, so we start at 25 on the vertical axis and trace it across to see which bin it hits. It hits the 5-10 thousand bin, so 25 of the emails had fewer than a value somewhere between 5 and 10 thousand characters.
+        </p>
+      </solution>
+    </example>
+
+    <p>
+      Knowing that 25 of the emails had fewer than a value between 5 and 10 thousand characters is useful information, but it is even more useful if we know what percent of the total 25 represents. Knowing that there were 50 total emails tells us that <m>25 / 50 = 0.5 = 50\%</m> of the emails had fewer than a value between 5 and 10 thousand characters. When we want to know what fraction or percent of the data meet a certain criteria, we use relative frequency instead of frequency. <em>Relative frequency</em><index><main>relative frequency|textbf</main></index> is a fancy term for percent or proportion. It tells us how large a number is relative to the total.
+    </p>
+
+    <p>
+      Just as we constructed a frequency table, frequency histogram, and cumulative frequency histogram, we can construct a relative frequency table, relative frequency histogram, and cumulative relative frequency histogram.
+    </p>
+    <exercise>
+      <statement>
+        <p>
+          How will the <em>shape</em> of the relative frequency histograms differ from the frequency histograms?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The shape will remain exactly the same. Changing from frequency to relative frequency involves dividing all the frequencies by the same number, so only the vertical scale (the numbers on the y-axis) change.
+        </p>
+      </hint>
+    </exercise>
+    <warning>
+    <title>Pay close attention to the vertical axis of a histogram</title>
+    <p>
+      {We can misinterpret a histogram if we forget to check whether the vertical axis represents frequency, relative frequency, cumulative frequency, or cumulative relative frequency.}
+    </p>
+
+    </warning>
+  </subsection>
+
+  <subsection xml:id="shape">
+    <title>Describing Shape</title>
+    <p>
+      Frequency and relative frequency histograms are especially convenient for describing the <term>shape</term> of the data distribution . <xref ref="email50NumCharHist">Figure</xref> shows that most emails have a relatively small number of characters, while fewer emails have a very large number of characters. When data trail off to the right in this way and have a longer right tail<index><main>tail|textbf</main></index><index><main>skew</main><sub>tail</sub></index>, the shape is said to be <em>right skewed</em><index><main>skew</main><sub>right skewed|textbf</sub></index>.<fn>Other ways to describe data that are skewed to the right: \termni{skewed to the right}, \termni{skewed to the high end}, or \termni{skewed to the positive end}.</fn>
+    </p>
+
+    <p>
+      Data sets with the reverse characteristic <mdash /> a long, thin tail to the left <mdash /> are said to be <em>left skewed</em><index><main>skew</main><sub>left skewed|textbf</sub></index>. We also say that such a distribution has a long left tail. Data sets that show roughly equal trailing off in both directions are called <term>symmetric</term>.<index><main>skew</main><sub>symmetric</sub></index>
+    </p>
+
+    <definition>
+      <title>Long tails to identify skew</title>
+      <statement>
+        <p>
+          When data trail off in one direction, the distribution has a <term>long tail</term>. <index><main>skew</main><sub>long tail|textbf</sub></index> If a distribution has a long left tail, it is left skewed. If a distribution has a long right tail, it is right skewed.
+        </p>
+      </statement>
+    </definition>
+
+    <exercise>
+      <statement>
+        <p>
+          Take a look at the dot plot in <xref ref="emailCharactersDotPlotStacked">Figure</xref>. Can you see the skew in the data? Is it easier to see the skew in the frequency histogram, the dot plot, or the stem-and-leaf plot?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          The skew is visible in all three plots. However, it is not easily visible in the cumulative frequency histogram.
+        </p>
+      </hint>
+    </exercise>
+    <exercise>
+      <statement>
+        <p>
+          Would you expect the distribution of number of pets per household to be right skewed, left skewed, or approximately symmetric? Explain.
+        </p>
+      </statement>
+      <hint>
+        <p>
+          We suspect most households would have 0, 1, or 2 pets but that a smaller number of households will have 3, 4, 5, or more pets, so there will be greater density over the small numbers, suggesting the distribution will have a long right tail and be right skewed.
+        </p>
+      </hint>
+    </exercise>
+    <p>
+      In addition to looking at whether a distribution is skewed or symmetric, histograms, stem-and-leaf plots, and dot plots can be used to identify modes. A <term>mode</term> is represented by a prominent peak in the distribution.<fn>Another definition of mode, which is not typically used in statistics, is the value with the most occurrences. It is common to have <em>no</em> observations with the same value in a data set, which makes this other definition useless for many real data sets.</fn> There is only one prominent peak in the histogram of <c>num_char</c>.
+    </p>
+
+    <p>
+      <xref ref="singleBiMultiModalPlots">Figure</xref> shows histograms that have one, two, or three prominent peaks. Such distributions are called <em>unimodal</em><index><main>modality</main><sub>unimodal|textbf</sub></index>, <em>bimodal</em><index><main>modality</main><sub>bimodal|textbf</sub></index>, and <em>multimodal</em><index><main>modality</main><sub>multimodal|textbf</sub></index>, respectively. Any distribution with more than 2 prominent peaks is called multimodal. Notice that in <xref ref="email50NumCharHist">Figure</xref> there was one prominent peak in the unimodal distribution with a second less prominent peak that was not counted since it only differs from its neighboring bins by a few observations.
+    </p>
+
+    <figure xml:id="singleBiMultiModalPlots" >
+      <caption>Counting only prominent peaks, the distributions are (left to right) unimodal, bimodal, and multimodal.</caption>
+      <image width="73%" source="images/singleBiMultiModalPlots.png" />
+    </figure>
+
+    <exercise>
+      <statement>
+        <p>
+          Height measurements of young students and adult teachers at a K-3 elementary school were taken. How many modes would you anticipate in this height data set?
+        </p>
+      </statement>
+      <hint>
+        <p>
+          There might be two height groups visible in the data set: one of the students and one of the adults. That is, the data are probably bimodal.
+        </p>
+      </hint>
+    </exercise>
+
+    <aside>
+      <title>Looking for modes</title>
+      <p>
+        Looking for modes isn't about finding a clear and correct answer about the number of modes in a distribution, which is why <em>prominent</em> is not rigorously defined in this book. The important part of this examination is to better understand your data and how it might be structured.
+      </p>
+    </aside>
+  </subsection>
+</section>
